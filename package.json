@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "fountain-pen": "^4.0.1",
+    "pareto-runtime": "^0.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.2"
+  },
+  "name": "typesafe-typescript-ast",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc && npm run makeEscBinExecutable",
+    "generate-ts-api": "npm run build && ./dist/generateCode/esc/bin/generateTypescriptASTCode.js ./src/pub/esc",
+    "copyPackage": "npx copyPackage",
+    "makeEscBinExecutable": "find ./dist/*/esc/bin/ -type f -name \"*.js\" -exec chmod 777 {} +",
+    "pubMin": "npm run validatePublishReadiness && npm version minor && npm run copyPackage && cd ./dist/pub && git push && npm publish",
+    "pubPatch": "npm run validatePublishReadiness && npm version patch && npm run copyPackage && cd ./dist/pub && git push && npm publish",
+    "test": "./dist/test/esc/bin/test.js ./data/test",
+    "update2latest": "ncu -u --packageFile package.json && npm install && tsc",
+    "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run build"
+  },
+  "version": "0.5.0"
+}
