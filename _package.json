@@ -1,15 +1,10 @@
 {
   "author": "Corno",
   "bugs": {
-    "url": "https://github.com/corno/typesafe-typescript-ast/issues"
-  },
-  "dependencies": {
-    "pareto-runtime": "^0.10.0",
-    "ts-morph": "^12.2.0",
-    "typescript": "^4.4.4"
+    "url": "https://github.com/corno/generate-typesafe-ast/issues"
   },
 	"description": "this package creates a typesafe TypeScript AST. Instead of just 1 generic 'Node' type, there over a hundred specific types. This is useful if you want to want to code that is dependent on the type of node from the AST",
-  "homepage": "https://github.com/corno/typesafe-typescript-ast#readme",
+  "homepage": "https://github.com/corno/generate-typesafe-ast#readme",
   "keywords": [
     "TypeScript",
     "AST",
@@ -17,9 +12,9 @@
   ],
   "license": "ISC",
   "main": ".",
-  "name": "typesafe-typescript-ast",
+  "name": "generate-typesafe-ast",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/corno/typesafe-typescript-ast.git"
+    "url": "git+https://github.com/corno/generate-typesafe-ast.git"
   }
 }
