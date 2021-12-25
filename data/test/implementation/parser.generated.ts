@@ -2194,7 +2194,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ArrayLiteralExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -2218,7 +2218,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ArrayType",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -2507,7 +2507,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ArrowFunction",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -2871,7 +2871,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "BinaryExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -2968,7 +2968,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "BreakStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -3259,7 +3259,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "Block",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -3437,7 +3437,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "CallExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -3557,7 +3557,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "CaseBlock",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -3658,7 +3658,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "CaseClause",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -3730,7 +3730,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "CatchClause",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -3834,7 +3834,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ConditionalExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -3906,7 +3906,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ConstructSignature",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4017,7 +4017,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "DefaultClause",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4051,7 +4051,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ElementAccessExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4134,7 +4134,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ExportDeclaration",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4178,7 +4178,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ExpressionStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4278,7 +4278,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ForStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4397,7 +4397,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "FunctionDeclaration",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4517,7 +4517,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "IfStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4648,7 +4648,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "FunctionType",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4746,7 +4746,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ImportClause",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4818,7 +4818,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ImportDeclaration",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -4959,7 +4959,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "IndexSignature",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5111,7 +5111,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "InterfaceDeclaration",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5197,7 +5197,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ImportSpecifier",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5250,7 +5250,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "LabeledStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5348,7 +5348,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "LiteralType",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5401,7 +5401,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "MethodSignature",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5444,7 +5444,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "NamespaceImport",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5506,7 +5506,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "NamedImports",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5695,7 +5695,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "NewExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5797,7 +5797,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ObjectLiteralExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5821,7 +5821,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "OptionalType",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5970,7 +5970,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "Parameter",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -5994,7 +5994,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ParenthesizedExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6018,7 +6018,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ParenthesizedType",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6042,7 +6042,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "PostfixUnaryExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6066,7 +6066,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "PrefixUnaryExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6100,7 +6100,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "PropertyAccessExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6236,7 +6236,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "PropertyAssignment",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6395,7 +6395,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "PropertySignature",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6467,7 +6467,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "QualifiedName",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6602,7 +6602,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ReturnStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6722,7 +6722,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "SourceFile",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6815,7 +6815,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "SwitchStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -6906,7 +6906,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TemplateExpression",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7054,7 +7054,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TemplateSpan",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7098,7 +7098,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "ThrowStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7190,7 +7190,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TryStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7278,7 +7278,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TupleType",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7402,7 +7402,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TypeAliasDeclaration",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7454,7 +7454,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TypeLiteral",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7497,7 +7497,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TypeParameter",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7669,7 +7669,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "TypeReference",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7777,7 +7777,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "UnionType",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -7964,7 +7964,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "VariableDeclaration",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -8026,7 +8026,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "VariableDeclarationList",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -8104,7 +8104,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "VariableStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return
@@ -8177,7 +8177,7 @@ export function parse<Annotation>(
         if (children.length > 0) {
             reportUnexpectedChild({
                 path: "WhileStatement",
-                child: children[0],
+                child: children[children.length - 1],
             })
         }
         return

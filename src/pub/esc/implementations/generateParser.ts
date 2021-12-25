@@ -712,7 +712,7 @@ export function generateParser(
                                                         $w.snippet(`path: "${key}",`)
                                                     })
                                                     $w.line(($w) => {
-                                                        $w.snippet(`child: children[0],`)
+                                                        $w.snippet(`child: children[children.length - 1],`)
                                                     })
                                                 })
                                                 $w.snippet(`})`)
