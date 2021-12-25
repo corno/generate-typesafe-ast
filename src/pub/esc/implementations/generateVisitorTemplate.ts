@@ -13,7 +13,7 @@ export function generateVisitorTemplate(
         $w.snippet(`import * as pr from "pareto-runtime"`)
     })
     $w.line(($w) => {
-        $w.snippet(`import * as api from "../interfaces/typedAST"`)
+        $w.snippet(`import * as api from "../interface/ts_api.generated"`)
     })
     $w.line(($w) => { })
     $w.line(($w) => {

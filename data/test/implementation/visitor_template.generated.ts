@@ -1,5 +1,5 @@
 import * as pr from "pareto-runtime"
-import * as api from "../interfaces/typedAST"
+import * as api from "../interface/ts_api.generated"
 
 export type FOO<Annotation> = {
     "AnyKeyword"?: ($: api.TAnyKeyword<Annotation>) => void

@@ -7,6 +7,7 @@ import { createBlock } from "fountain-pen/implementations/fountain-pen"
 import { generateAPI } from "./generateAPI"
 import { generateParser } from "./generateParser"
 import { generateVisitorTemplate } from "./generateVisitorTemplate"
+import { generateUntypedAPI } from "./generateUntypedAPI"
 
 export type Directory = {
     createFile(
@@ -101,6 +102,12 @@ export function generateCode(
             generate(
                 $,
                 generateAPI,
+            )
+        })
+        $.createFile("uast.generated.ts", ($) => {
+            generate(
+                $,
+                generateUntypedAPI,
             )
         })
 

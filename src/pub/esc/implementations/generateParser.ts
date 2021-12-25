@@ -72,10 +72,10 @@ export function generateParser(
         $w.snippet(`import * as pr from "pareto-runtime"`)
     })
     $w.line(($w) => {
-        $w.snippet(`import * as tast from "../../interfaces/typedAST"`)
+        $w.snippet(`import * as tast from "../interface/ts_api.generated"`)
     })
     $w.line(($w) => {
-        $w.snippet(`import * as uast from "../../interfaces/untypedAST"`)
+        $w.snippet(`import * as uast from "../interface/uast.generated"`)
     })
 
     $w.line(($w) => { })
