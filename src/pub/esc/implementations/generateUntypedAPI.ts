@@ -15,6 +15,9 @@ export function generateUntypedAPI(
                 $w.snippet(`kindName: string`)
             })
             $w.line(($w) => {
+                $w.snippet(`value: string`)
+            })
+            $w.line(($w) => {
                 $w.snippet(`annotation: Annotation`)
             })
             $w.line(($w) => {
