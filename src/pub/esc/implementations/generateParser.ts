@@ -30,7 +30,7 @@ export function generateParser(
                 pr.cc($[1], ($) => {
                     const x = grammar.valueTypes[$.name]
                     if (x === undefined) {
-                        throw new Error("HMMM")
+                        throw new Error(`no such value type: '${$.name}'`)
                     }
                     findNextPossibleTokensInSymbolType(
                         x,

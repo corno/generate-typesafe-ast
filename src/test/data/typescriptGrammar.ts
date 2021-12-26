@@ -1,6 +1,6 @@
-import { Grammar } from "../../../pub/esc/interfaces"
+import * as gr from "../../pub/esc/interfaces"
 
-export const typescriptGrammar: Grammar = {
+export const typescriptGrammar: gr.Grammar = {
     valueTypes: {
         expression: ["choice", {
             options: {

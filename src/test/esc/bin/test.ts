@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as pr from "pareto-runtime"
-import * as tsg from "../data/typescriptGrammar"
+import * as tsg from "../../data/typescriptGrammar"
 import * as gta from "../../../pub/esc/implementations"
 
 
