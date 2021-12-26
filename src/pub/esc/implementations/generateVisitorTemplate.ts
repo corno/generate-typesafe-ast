@@ -26,6 +26,23 @@ export function generateVisitorTemplate(
                 path: string,
             ) {
 
+                switch ($.type[0]) {
+                    case "composite":
+                        pr.cc($.type[1], ($) => {
+                            generateValue(
+                                $,
+                                $w,
+                                path,
+                            )
+                        })
+                        break
+                    case "leaf":
+                        pr.cc($.type[1], ($) => {
+                        })
+                        break
+                    default:
+                        pr.au($.type[0])
+                }
                 $w.line(($w) => {
                     $w.snippet(`"${path}"?: `)
                     switch ($.type[0]) {
@@ -139,6 +156,23 @@ export function generateVisitorTemplate(
                 $w: wapi.Block,
                 path: string,
             ) {
+                switch ($.type[0]) {
+                    case "composite":
+                        pr.cc($.type[1], ($) => {
+                            generateValue(
+                                $,
+                                $w,
+                                path,
+                            )
+                        })
+                        break
+                    case "leaf":
+                        pr.cc($.type[1], ($) => {
+                        })
+                        break
+                    default:
+                        pr.au($.type[0])
+                }
                 $w.line(($w) => {
                     $w.snippet(`"${path}": `)
                     switch ($.type[0]) {

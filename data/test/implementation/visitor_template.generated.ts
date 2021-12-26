@@ -10,10 +10,22 @@ export type FOO<Annotation> = {
         begin: ($: api.NGexpression_arrayLiteral$<Annotation>) => void,
         end: ($: api.NGexpression_arrayLiteral$<Annotation>) => void,
     }
+    "Gexpression_arrowFunction$_equalsGreaterThan$"?: ($: api.NGexpression_arrowFunction$_equalsGreaterThan$<Annotation>) => void
     "Gexpression_arrowFunction$"?: {
         begin: ($: api.NGexpression_arrowFunction$<Annotation>) => void,
         end: ($: api.NGexpression_arrowFunction$<Annotation>) => void,
     }
+    "Gexpression_binary$_operator_ampersandAmpersand$"?: ($: api.NGexpression_binary$_operator_ampersandAmpersand$<Annotation>) => void
+    "Gexpression_binary$_operator_barBar$"?: ($: api.NGexpression_binary$_operator_barBar$<Annotation>) => void
+    "Gexpression_binary$_operator_equals$"?: ($: api.NGexpression_binary$_operator_equals$<Annotation>) => void
+    "Gexpression_binary$_operator_equalsEqualsEquals$"?: ($: api.NGexpression_binary$_operator_equalsEqualsEquals$<Annotation>) => void
+    "Gexpression_binary$_operator_exclamationEqualsEquals$"?: ($: api.NGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>) => void
+    "Gexpression_binary$_operator_greaterThan$"?: ($: api.NGexpression_binary$_operator_greaterThan$<Annotation>) => void
+    "Gexpression_binary$_operator_lessThan$"?: ($: api.NGexpression_binary$_operator_lessThan$<Annotation>) => void
+    "Gexpression_binary$_operator_minus$"?: ($: api.NGexpression_binary$_operator_minus$<Annotation>) => void
+    "Gexpression_binary$_operator_minusEquals$"?: ($: api.NGexpression_binary$_operator_minusEquals$<Annotation>) => void
+    "Gexpression_binary$_operator_plus$"?: ($: api.NGexpression_binary$_operator_plus$<Annotation>) => void
+    "Gexpression_binary$_operator_plusEquals$"?: ($: api.NGexpression_binary$_operator_plusEquals$<Annotation>) => void
     "Gexpression_binary$"?: {
         begin: ($: api.NGexpression_binary$<Annotation>) => void,
         end: ($: api.NGexpression_binary$<Annotation>) => void,
@@ -22,6 +34,8 @@ export type FOO<Annotation> = {
         begin: ($: api.NGexpression_call$<Annotation>) => void,
         end: ($: api.NGexpression_call$<Annotation>) => void,
     }
+    "Gexpression_conditional$_questionToken$"?: ($: api.NGexpression_conditional$_questionToken$<Annotation>) => void
+    "Gexpression_conditional$_colonToken$"?: ($: api.NGexpression_conditional$_colonToken$<Annotation>) => void
     "Gexpression_conditional$"?: {
         begin: ($: api.NGexpression_conditional$<Annotation>) => void,
         end: ($: api.NGexpression_conditional$<Annotation>) => void,
@@ -37,6 +51,10 @@ export type FOO<Annotation> = {
     }
     "Gexpression_noSubstitutionTemplateLiteral$"?: ($: api.NGexpression_noSubstitutionTemplateLiteral$<Annotation>) => void
     "Gexpression_nullKeyword$"?: ($: api.NGexpression_nullKeyword$<Annotation>) => void
+    "Gexpression_objectLiteral$$"?: {
+        begin: ($: api.NGexpression_objectLiteral$$<Annotation>) => void,
+        end: ($: api.NGexpression_objectLiteral$$<Annotation>) => void,
+    }
     "Gexpression_objectLiteral$"?: {
         begin: ($: api.NGexpression_objectLiteral$<Annotation>) => void,
         end: ($: api.NGexpression_objectLiteral$<Annotation>) => void,
@@ -57,6 +75,13 @@ export type FOO<Annotation> = {
         begin: ($: api.NGexpression_propertyAccess$<Annotation>) => void,
         end: ($: api.NGexpression_propertyAccess$<Annotation>) => void,
     }
+    "Gexpression_template$_head$"?: ($: api.NGexpression_template$_head$<Annotation>) => void
+    "Gexpression_template$_spans$_x_middle$"?: ($: api.NGexpression_template$_spans$_x_middle$<Annotation>) => void
+    "Gexpression_template$_spans$_x_tail$"?: ($: api.NGexpression_template$_spans$_x_tail$<Annotation>) => void
+    "Gexpression_template$_spans$"?: {
+        begin: ($: api.NGexpression_template$_spans$<Annotation>) => void,
+        end: ($: api.NGexpression_template$_spans$<Annotation>) => void,
+    }
     "Gexpression_template$"?: {
         begin: ($: api.NGexpression_template$<Annotation>) => void,
         end: ($: api.NGexpression_template$<Annotation>) => void,
@@ -67,6 +92,7 @@ export type FOO<Annotation> = {
     "Gmodifier_export$"?: ($: api.NGmodifier_export$<Annotation>) => void
     "Gmodifier_readonly$"?: ($: api.NGmodifier_readonly$<Annotation>) => void
     "GnumericLiteral$"?: ($: api.NGnumericLiteral$<Annotation>) => void
+    "Gparameter$_questionToken$"?: ($: api.NGparameter$_questionToken$<Annotation>) => void
     "Gparameter$"?: {
         begin: ($: api.NGparameter$<Annotation>) => void,
         end: ($: api.NGparameter$<Annotation>) => void,
@@ -95,6 +121,22 @@ export type FOO<Annotation> = {
         begin: ($: api.NGstatement_if$<Annotation>) => void,
         end: ($: api.NGstatement_if$<Annotation>) => void,
     }
+    "Gstatement_import$_clause$_namespace$"?: {
+        begin: ($: api.NGstatement_import$_clause$_namespace$<Annotation>) => void,
+        end: ($: api.NGstatement_import$_clause$_namespace$<Annotation>) => void,
+    }
+    "Gstatement_import$_clause$_named$$"?: {
+        begin: ($: api.NGstatement_import$_clause$_named$$<Annotation>) => void,
+        end: ($: api.NGstatement_import$_clause$_named$$<Annotation>) => void,
+    }
+    "Gstatement_import$_clause$_named$"?: {
+        begin: ($: api.NGstatement_import$_clause$_named$<Annotation>) => void,
+        end: ($: api.NGstatement_import$_clause$_named$<Annotation>) => void,
+    }
+    "Gstatement_import$_clause$"?: {
+        begin: ($: api.NGstatement_import$_clause$<Annotation>) => void,
+        end: ($: api.NGstatement_import$_clause$<Annotation>) => void,
+    }
     "Gstatement_import$"?: {
         begin: ($: api.NGstatement_import$<Annotation>) => void,
         end: ($: api.NGstatement_import$<Annotation>) => void,
@@ -111,6 +153,18 @@ export type FOO<Annotation> = {
         begin: ($: api.NGstatement_return$<Annotation>) => void,
         end: ($: api.NGstatement_return$<Annotation>) => void,
     }
+    "Gstatement_switch$_caseBlock$_case$"?: {
+        begin: ($: api.NGstatement_switch$_caseBlock$_case$<Annotation>) => void,
+        end: ($: api.NGstatement_switch$_caseBlock$_case$<Annotation>) => void,
+    }
+    "Gstatement_switch$_caseBlock$_default$"?: {
+        begin: ($: api.NGstatement_switch$_caseBlock$_default$<Annotation>) => void,
+        end: ($: api.NGstatement_switch$_caseBlock$_default$<Annotation>) => void,
+    }
+    "Gstatement_switch$_caseBlock$"?: {
+        begin: ($: api.NGstatement_switch$_caseBlock$<Annotation>) => void,
+        end: ($: api.NGstatement_switch$_caseBlock$<Annotation>) => void,
+    }
     "Gstatement_switch$"?: {
         begin: ($: api.NGstatement_switch$<Annotation>) => void,
         end: ($: api.NGstatement_switch$<Annotation>) => void,
@@ -118,6 +172,10 @@ export type FOO<Annotation> = {
     "Gstatement_throw$"?: {
         begin: ($: api.NGstatement_throw$<Annotation>) => void,
         end: ($: api.NGstatement_throw$<Annotation>) => void,
+    }
+    "Gstatement_try$_catchClause$"?: {
+        begin: ($: api.NGstatement_try$_catchClause$<Annotation>) => void,
+        end: ($: api.NGstatement_try$_catchClause$<Annotation>) => void,
     }
     "Gstatement_try$"?: {
         begin: ($: api.NGstatement_try$<Annotation>) => void,
@@ -146,6 +204,7 @@ export type FOO<Annotation> = {
         begin: ($: api.NGtype_function$<Annotation>) => void,
         end: ($: api.NGtype_function$<Annotation>) => void,
     }
+    "Gtype_literal$_null$"?: ($: api.NGtype_literal$_null$<Annotation>) => void
     "Gtype_literal$"?: {
         begin: ($: api.NGtype_literal$<Annotation>) => void,
         end: ($: api.NGtype_literal$<Annotation>) => void,
@@ -169,6 +228,10 @@ export type FOO<Annotation> = {
         end: ($: api.NGtype_typeLiteral$<Annotation>) => void,
     }
     "Gtype_string$"?: ($: api.NGtype_string$<Annotation>) => void
+    "Gtype_typeReference$_x_qualifiedName$"?: {
+        begin: ($: api.NGtype_typeReference$_x_qualifiedName$<Annotation>) => void,
+        end: ($: api.NGtype_typeReference$_x_qualifiedName$<Annotation>) => void,
+    }
     "Gtype_typeReference$"?: {
         begin: ($: api.NGtype_typeReference$<Annotation>) => void,
         end: ($: api.NGtype_typeReference$<Annotation>) => void,
@@ -195,6 +258,7 @@ export type FOO<Annotation> = {
         begin: ($: api.NGtypeSignature_method$<Annotation>) => void,
         end: ($: api.NGtypeSignature_method$<Annotation>) => void,
     }
+    "GtypeSignature_property$_quesionToken$"?: ($: api.NGtypeSignature_property$_quesionToken$<Annotation>) => void
     "GtypeSignature_property$"?: {
         begin: ($: api.NGtypeSignature_property$<Annotation>) => void,
         end: ($: api.NGtypeSignature_property$<Annotation>) => void,
@@ -207,6 +271,7 @@ export type FOO<Annotation> = {
         begin: ($: api.NGvariableDeclarationList$<Annotation>) => void,
         end: ($: api.NGvariableDeclarationList$<Annotation>) => void,
     }
+    "root_endOfFile$"?: ($: api.Nroot_endOfFile$<Annotation>) => void
     "root"?: {
         begin: ($: api.Nroot<Annotation>) => void,
         end: ($: api.Nroot<Annotation>) => void,
@@ -222,10 +287,22 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("Gexpression_arrayLiteral$ begin") },
         end: ($) => { console.log("Gexpression_arrayLiteral$ end") },
     },
+    "Gexpression_arrowFunction$_equalsGreaterThan$": ($) => { console.log("Gexpression_arrowFunction$_equalsGreaterThan$") },
     "Gexpression_arrowFunction$": {
         begin: ($) => { console.log("Gexpression_arrowFunction$ begin") },
         end: ($) => { console.log("Gexpression_arrowFunction$ end") },
     },
+    "Gexpression_binary$_operator_ampersandAmpersand$": ($) => { console.log("Gexpression_binary$_operator_ampersandAmpersand$") },
+    "Gexpression_binary$_operator_barBar$": ($) => { console.log("Gexpression_binary$_operator_barBar$") },
+    "Gexpression_binary$_operator_equals$": ($) => { console.log("Gexpression_binary$_operator_equals$") },
+    "Gexpression_binary$_operator_equalsEqualsEquals$": ($) => { console.log("Gexpression_binary$_operator_equalsEqualsEquals$") },
+    "Gexpression_binary$_operator_exclamationEqualsEquals$": ($) => { console.log("Gexpression_binary$_operator_exclamationEqualsEquals$") },
+    "Gexpression_binary$_operator_greaterThan$": ($) => { console.log("Gexpression_binary$_operator_greaterThan$") },
+    "Gexpression_binary$_operator_lessThan$": ($) => { console.log("Gexpression_binary$_operator_lessThan$") },
+    "Gexpression_binary$_operator_minus$": ($) => { console.log("Gexpression_binary$_operator_minus$") },
+    "Gexpression_binary$_operator_minusEquals$": ($) => { console.log("Gexpression_binary$_operator_minusEquals$") },
+    "Gexpression_binary$_operator_plus$": ($) => { console.log("Gexpression_binary$_operator_plus$") },
+    "Gexpression_binary$_operator_plusEquals$": ($) => { console.log("Gexpression_binary$_operator_plusEquals$") },
     "Gexpression_binary$": {
         begin: ($) => { console.log("Gexpression_binary$ begin") },
         end: ($) => { console.log("Gexpression_binary$ end") },
@@ -234,6 +311,8 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("Gexpression_call$ begin") },
         end: ($) => { console.log("Gexpression_call$ end") },
     },
+    "Gexpression_conditional$_questionToken$": ($) => { console.log("Gexpression_conditional$_questionToken$") },
+    "Gexpression_conditional$_colonToken$": ($) => { console.log("Gexpression_conditional$_colonToken$") },
     "Gexpression_conditional$": {
         begin: ($) => { console.log("Gexpression_conditional$ begin") },
         end: ($) => { console.log("Gexpression_conditional$ end") },
@@ -249,6 +328,10 @@ export const foo: FOO<string> = {
     },
     "Gexpression_noSubstitutionTemplateLiteral$": ($) => { console.log("Gexpression_noSubstitutionTemplateLiteral$") },
     "Gexpression_nullKeyword$": ($) => { console.log("Gexpression_nullKeyword$") },
+    "Gexpression_objectLiteral$$": {
+        begin: ($) => { console.log("Gexpression_objectLiteral$$ begin") },
+        end: ($) => { console.log("Gexpression_objectLiteral$$ end") },
+    },
     "Gexpression_objectLiteral$": {
         begin: ($) => { console.log("Gexpression_objectLiteral$ begin") },
         end: ($) => { console.log("Gexpression_objectLiteral$ end") },
@@ -269,6 +352,13 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("Gexpression_propertyAccess$ begin") },
         end: ($) => { console.log("Gexpression_propertyAccess$ end") },
     },
+    "Gexpression_template$_head$": ($) => { console.log("Gexpression_template$_head$") },
+    "Gexpression_template$_spans$_x_middle$": ($) => { console.log("Gexpression_template$_spans$_x_middle$") },
+    "Gexpression_template$_spans$_x_tail$": ($) => { console.log("Gexpression_template$_spans$_x_tail$") },
+    "Gexpression_template$_spans$": {
+        begin: ($) => { console.log("Gexpression_template$_spans$ begin") },
+        end: ($) => { console.log("Gexpression_template$_spans$ end") },
+    },
     "Gexpression_template$": {
         begin: ($) => { console.log("Gexpression_template$ begin") },
         end: ($) => { console.log("Gexpression_template$ end") },
@@ -279,6 +369,7 @@ export const foo: FOO<string> = {
     "Gmodifier_export$": ($) => { console.log("Gmodifier_export$") },
     "Gmodifier_readonly$": ($) => { console.log("Gmodifier_readonly$") },
     "GnumericLiteral$": ($) => { console.log("GnumericLiteral$") },
+    "Gparameter$_questionToken$": ($) => { console.log("Gparameter$_questionToken$") },
     "Gparameter$": {
         begin: ($) => { console.log("Gparameter$ begin") },
         end: ($) => { console.log("Gparameter$ end") },
@@ -307,6 +398,22 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("Gstatement_if$ begin") },
         end: ($) => { console.log("Gstatement_if$ end") },
     },
+    "Gstatement_import$_clause$_namespace$": {
+        begin: ($) => { console.log("Gstatement_import$_clause$_namespace$ begin") },
+        end: ($) => { console.log("Gstatement_import$_clause$_namespace$ end") },
+    },
+    "Gstatement_import$_clause$_named$$": {
+        begin: ($) => { console.log("Gstatement_import$_clause$_named$$ begin") },
+        end: ($) => { console.log("Gstatement_import$_clause$_named$$ end") },
+    },
+    "Gstatement_import$_clause$_named$": {
+        begin: ($) => { console.log("Gstatement_import$_clause$_named$ begin") },
+        end: ($) => { console.log("Gstatement_import$_clause$_named$ end") },
+    },
+    "Gstatement_import$_clause$": {
+        begin: ($) => { console.log("Gstatement_import$_clause$ begin") },
+        end: ($) => { console.log("Gstatement_import$_clause$ end") },
+    },
     "Gstatement_import$": {
         begin: ($) => { console.log("Gstatement_import$ begin") },
         end: ($) => { console.log("Gstatement_import$ end") },
@@ -323,6 +430,18 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("Gstatement_return$ begin") },
         end: ($) => { console.log("Gstatement_return$ end") },
     },
+    "Gstatement_switch$_caseBlock$_case$": {
+        begin: ($) => { console.log("Gstatement_switch$_caseBlock$_case$ begin") },
+        end: ($) => { console.log("Gstatement_switch$_caseBlock$_case$ end") },
+    },
+    "Gstatement_switch$_caseBlock$_default$": {
+        begin: ($) => { console.log("Gstatement_switch$_caseBlock$_default$ begin") },
+        end: ($) => { console.log("Gstatement_switch$_caseBlock$_default$ end") },
+    },
+    "Gstatement_switch$_caseBlock$": {
+        begin: ($) => { console.log("Gstatement_switch$_caseBlock$ begin") },
+        end: ($) => { console.log("Gstatement_switch$_caseBlock$ end") },
+    },
     "Gstatement_switch$": {
         begin: ($) => { console.log("Gstatement_switch$ begin") },
         end: ($) => { console.log("Gstatement_switch$ end") },
@@ -330,6 +449,10 @@ export const foo: FOO<string> = {
     "Gstatement_throw$": {
         begin: ($) => { console.log("Gstatement_throw$ begin") },
         end: ($) => { console.log("Gstatement_throw$ end") },
+    },
+    "Gstatement_try$_catchClause$": {
+        begin: ($) => { console.log("Gstatement_try$_catchClause$ begin") },
+        end: ($) => { console.log("Gstatement_try$_catchClause$ end") },
     },
     "Gstatement_try$": {
         begin: ($) => { console.log("Gstatement_try$ begin") },
@@ -358,6 +481,7 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("Gtype_function$ begin") },
         end: ($) => { console.log("Gtype_function$ end") },
     },
+    "Gtype_literal$_null$": ($) => { console.log("Gtype_literal$_null$") },
     "Gtype_literal$": {
         begin: ($) => { console.log("Gtype_literal$ begin") },
         end: ($) => { console.log("Gtype_literal$ end") },
@@ -381,6 +505,10 @@ export const foo: FOO<string> = {
         end: ($) => { console.log("Gtype_typeLiteral$ end") },
     },
     "Gtype_string$": ($) => { console.log("Gtype_string$") },
+    "Gtype_typeReference$_x_qualifiedName$": {
+        begin: ($) => { console.log("Gtype_typeReference$_x_qualifiedName$ begin") },
+        end: ($) => { console.log("Gtype_typeReference$_x_qualifiedName$ end") },
+    },
     "Gtype_typeReference$": {
         begin: ($) => { console.log("Gtype_typeReference$ begin") },
         end: ($) => { console.log("Gtype_typeReference$ end") },
@@ -407,6 +535,7 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("GtypeSignature_method$ begin") },
         end: ($) => { console.log("GtypeSignature_method$ end") },
     },
+    "GtypeSignature_property$_quesionToken$": ($) => { console.log("GtypeSignature_property$_quesionToken$") },
     "GtypeSignature_property$": {
         begin: ($) => { console.log("GtypeSignature_property$ begin") },
         end: ($) => { console.log("GtypeSignature_property$ end") },
@@ -419,6 +548,7 @@ export const foo: FOO<string> = {
         begin: ($) => { console.log("GvariableDeclarationList$ begin") },
         end: ($) => { console.log("GvariableDeclarationList$ end") },
     },
+    "root_endOfFile$": ($) => { console.log("root_endOfFile$") },
     "root": {
         begin: ($) => { console.log("root begin") },
         end: ($) => { console.log("root end") },
