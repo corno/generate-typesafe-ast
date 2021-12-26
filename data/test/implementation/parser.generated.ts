@@ -32,10 +32,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function Gblock$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGblock$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -122,8 +122,7 @@ export function parse<Annotation>(
                 })
             }
             return
-        }
-        Gblock$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -166,10 +165,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_arrayLiteral$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_arrayLiteral$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -265,8 +264,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_arrayLiteral$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["arrayLiteral", $])
@@ -290,10 +288,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_arrowFunction$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_arrowFunction$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -327,7 +325,7 @@ export function parse<Annotation>(
                     }
                     pr.cc(elements, ($) => {
                         const _parameters = $
-                        let optional: tast.VTGexpression_arrowFunction$_returnType<Annotation> = null
+                        let optional: tast.VGexpression_arrowFunction$_returnType<Annotation> = null
                         const setOptional = () => {
                             Gtype(node, children, ($) => {
                                 optional = $
@@ -404,10 +402,10 @@ export function parse<Annotation>(
                                 })
                                 return
                             }
-                            function Gexpression_arrowFunction$_equalsGreaterThan$(
+                            ((
                                 $: uast.Node<Annotation>,
                                 callback: ($: tast.NGexpression_arrowFunction$_equalsGreaterThan$<Annotation>) => void,
-                            ): void {
+                            ): void => {
                                 const node = $
                                 const children: uast.Node<Annotation>[] = []
                                 $.children.forEach(($) => { children.push($) })
@@ -423,8 +421,7 @@ export function parse<Annotation>(
                                     content: null
                                 })
                                 return
-                            }
-                            Gexpression_arrowFunction$_equalsGreaterThan$(
+                            })(
                                 currentChild,
                                 ($) => {
                                     const _equalsGreaterThan = $
@@ -560,8 +557,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_arrowFunction$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["arrowFunction", $])
@@ -585,10 +581,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_binary$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_binary$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -640,10 +636,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_ampersandAmpersand$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_ampersandAmpersand$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -659,8 +655,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_ampersandAmpersand$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["ampersandAmpersand", $])
@@ -684,10 +679,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_barBar$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_barBar$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -703,8 +698,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_barBar$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["barBar", $])
@@ -728,10 +722,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_equals$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_equals$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -747,8 +741,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_equals$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["equals", $])
@@ -772,10 +765,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_equalsEqualsEquals$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_equalsEqualsEquals$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -791,8 +784,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_equalsEqualsEquals$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["equalsEqualsEquals", $])
@@ -816,10 +808,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_exclamationEqualsEquals$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -835,8 +827,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_exclamationEqualsEquals$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["exclamationEqualsEquals", $])
@@ -860,10 +851,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_greaterThan$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_greaterThan$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -879,8 +870,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_greaterThan$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["greaterThan", $])
@@ -904,10 +894,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_lessThan$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_lessThan$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -923,8 +913,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_lessThan$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["lessThan", $])
@@ -948,10 +937,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_minus$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_minus$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -967,8 +956,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_minus$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["minus", $])
@@ -992,10 +980,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_minusEquals$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_minusEquals$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -1011,8 +999,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_minusEquals$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["minusEquals", $])
@@ -1036,10 +1023,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_plus$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_plus$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -1055,8 +1042,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_plus$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["plus", $])
@@ -1080,10 +1066,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_binary$_operator_plusEquals$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_binary$_operator_plusEquals$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -1099,8 +1085,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                Gexpression_binary$_operator_plusEquals$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gexpression_binary$_operator(["plusEquals", $])
@@ -1168,8 +1153,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_binary$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["binary", $])
@@ -1193,10 +1177,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_call$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_call$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1370,8 +1354,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_call$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["call", $])
@@ -1395,10 +1378,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_conditional$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_conditional$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1429,10 +1412,10 @@ export function parse<Annotation>(
                             })
                             return
                         }
-                        function Gexpression_conditional$_questionToken$(
+                        ((
                             $: uast.Node<Annotation>,
                             callback: ($: tast.NGexpression_conditional$_questionToken$<Annotation>) => void,
-                        ): void {
+                        ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
                             $.children.forEach(($) => { children.push($) })
@@ -1448,8 +1431,7 @@ export function parse<Annotation>(
                                 content: null
                             })
                             return
-                        }
-                        Gexpression_conditional$_questionToken$(
+                        })(
                             currentChild,
                             ($) => {
                                 const _questionToken = $
@@ -1471,10 +1453,10 @@ export function parse<Annotation>(
                                         })
                                         return
                                     }
-                                    function Gexpression_conditional$_colonToken$(
+                                    ((
                                         $: uast.Node<Annotation>,
                                         callback: ($: tast.NGexpression_conditional$_colonToken$<Annotation>) => void,
-                                    ): void {
+                                    ): void => {
                                         const node = $
                                         const children: uast.Node<Annotation>[] = []
                                         $.children.forEach(($) => { children.push($) })
@@ -1490,8 +1472,7 @@ export function parse<Annotation>(
                                             content: null
                                         })
                                         return
-                                    }
-                                    Gexpression_conditional$_colonToken$(
+                                    })(
                                         currentChild,
                                         ($) => {
                                             const _colonToken = $
@@ -1518,8 +1499,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_conditional$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["conditional", $])
@@ -1543,10 +1523,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_elementAccess$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_elementAccess$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1576,8 +1556,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_elementAccess$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["elementAccess", $])
@@ -1601,10 +1580,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_false$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_false$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1620,8 +1599,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gexpression_false$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["false", $])
@@ -1650,10 +1628,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_new$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_new$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1759,8 +1737,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_new$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["new", $])
@@ -1784,10 +1761,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_noSubstitutionTemplateLiteral$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_noSubstitutionTemplateLiteral$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1803,8 +1780,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gexpression_noSubstitutionTemplateLiteral$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["noSubstitutionTemplateLiteral", $])
@@ -1833,10 +1809,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_nullKeyword$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_nullKeyword$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1852,8 +1828,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gexpression_nullKeyword$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["nullKeyword", $])
@@ -1877,10 +1852,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_objectLiteral$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_objectLiteral$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -1905,10 +1880,10 @@ export function parse<Annotation>(
                             })
                             return
                         }
-                        function Gexpression_objectLiteral$$(
+                        ((
                             $: uast.Node<Annotation>,
                             callback: ($: tast.NGexpression_objectLiteral$$<Annotation>) => void,
-                        ): void {
+                        ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
                             $.children.forEach(($) => { children.push($) })
@@ -1983,8 +1958,7 @@ export function parse<Annotation>(
                                 })
                             }
                             return
-                        }
-                        Gexpression_objectLiteral$$(
+                        })(
                             currentChild,
                             ($) => {
                                 elements.push($)
@@ -2017,8 +1991,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_objectLiteral$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["objectLiteral", $])
@@ -2042,10 +2015,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_parenthesizedExpression$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_parenthesizedExpression$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2065,8 +2038,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_parenthesizedExpression$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["parenthesizedExpression", $])
@@ -2090,10 +2062,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_postfixUnary$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_postfixUnary$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2113,8 +2085,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_postfixUnary$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["postfixUnary", $])
@@ -2138,10 +2109,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_prefixUnary$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_prefixUnary$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2161,8 +2132,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_prefixUnary$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["prefixUnary", $])
@@ -2186,10 +2156,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_propertyAccess$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_propertyAccess$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2219,8 +2189,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_propertyAccess$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["propertyAccess", $])
@@ -2249,10 +2218,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_template$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_template$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2281,10 +2250,10 @@ export function parse<Annotation>(
                         })
                         return
                     }
-                    function Gexpression_template$_head$(
+                    ((
                         $: uast.Node<Annotation>,
                         callback: ($: tast.NGexpression_template$_head$<Annotation>) => void,
-                    ): void {
+                    ): void => {
                         const node = $
                         const children: uast.Node<Annotation>[] = []
                         $.children.forEach(($) => { children.push($) })
@@ -2300,8 +2269,7 @@ export function parse<Annotation>(
                             content: $.value
                         })
                         return
-                    }
-                    Gexpression_template$_head$(
+                    })(
                         currentChild,
                         ($) => {
                             const _head = $
@@ -2323,10 +2291,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gexpression_template$_spans$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGexpression_template$_spans$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -2374,10 +2342,10 @@ export function parse<Annotation>(
                                                     })
                                                     return
                                                 }
-                                                function Gexpression_template$_spans$_x_middle$(
+                                                ((
                                                     $: uast.Node<Annotation>,
                                                     callback: ($: tast.NGexpression_template$_spans$_x_middle$<Annotation>) => void,
-                                                ): void {
+                                                ): void => {
                                                     const node = $
                                                     const children: uast.Node<Annotation>[] = []
                                                     $.children.forEach(($) => { children.push($) })
@@ -2393,8 +2361,7 @@ export function parse<Annotation>(
                                                         content: $.value
                                                     })
                                                     return
-                                                }
-                                                Gexpression_template$_spans$_x_middle$(
+                                                })(
                                                     currentChild,
                                                     ($) => {
                                                         choiceEnd_Gexpression_template$_spans$_x(["middle", $])
@@ -2418,10 +2385,10 @@ export function parse<Annotation>(
                                                     })
                                                     return
                                                 }
-                                                function Gexpression_template$_spans$_x_tail$(
+                                                ((
                                                     $: uast.Node<Annotation>,
                                                     callback: ($: tast.NGexpression_template$_spans$_x_tail$<Annotation>) => void,
-                                                ): void {
+                                                ): void => {
                                                     const node = $
                                                     const children: uast.Node<Annotation>[] = []
                                                     $.children.forEach(($) => { children.push($) })
@@ -2437,8 +2404,7 @@ export function parse<Annotation>(
                                                         content: $.value
                                                     })
                                                     return
-                                                }
-                                                Gexpression_template$_spans$_x_tail$(
+                                                })(
                                                     currentChild,
                                                     ($) => {
                                                         choiceEnd_Gexpression_template$_spans$_x(["tail", $])
@@ -2470,8 +2436,7 @@ export function parse<Annotation>(
                                         })
                                     }
                                     return
-                                }
-                                Gexpression_template$_spans$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         elements.push($)
@@ -2507,8 +2472,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gexpression_template$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["template", $])
@@ -2532,10 +2496,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gexpression_true$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGexpression_true$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2551,8 +2515,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gexpression_true$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gexpression(["true", $])
@@ -2701,7 +2664,7 @@ export function parse<Annotation>(
             }
             pr.cc(elements, ($) => {
                 const _parameters = $
-                let optional: tast.VTGfunctionDefinition_returnType<Annotation> = null
+                let optional: tast.VGfunctionDefinition_returnType<Annotation> = null
                 const setOptional = () => {
                     Gtype(node, children, ($) => {
                         optional = $
@@ -2794,10 +2757,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function Gidentifier$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGidentifier$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -2813,8 +2776,7 @@ export function parse<Annotation>(
                 content: $.value
             })
             return
-        }
-        Gidentifier$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -2904,10 +2866,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gmodifier_declare$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGmodifier_declare$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2923,8 +2885,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gmodifier_declare$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gmodifier(["declare", $])
@@ -2948,10 +2909,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gmodifier_export$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGmodifier_export$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -2967,8 +2928,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gmodifier_export$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gmodifier(["export", $])
@@ -2992,10 +2952,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gmodifier_readonly$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGmodifier_readonly$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -3011,8 +2971,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gmodifier_readonly$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gmodifier(["readonly", $])
@@ -3064,10 +3023,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function GnumericLiteral$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGnumericLiteral$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -3083,8 +3042,7 @@ export function parse<Annotation>(
                 content: $.value
             })
             return
-        }
-        GnumericLiteral$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -3114,10 +3072,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function Gparameter$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGparameter$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -3132,7 +3090,7 @@ export function parse<Annotation>(
             }
             Gidentifier(node, children, ($) => {
                 const _name = $
-                let optional: tast.VTGparameter$_questionToken<Annotation> = null
+                let optional: tast.VGparameter$_questionToken<Annotation> = null
                 const setOptional = () => {
                     currentChild = children.pop()
                     if (currentChild === undefined) {
@@ -3150,10 +3108,10 @@ export function parse<Annotation>(
                         })
                         return
                     }
-                    function Gparameter$_questionToken$(
+                    ((
                         $: uast.Node<Annotation>,
                         callback: ($: tast.NGparameter$_questionToken$<Annotation>) => void,
-                    ): void {
+                    ): void => {
                         const node = $
                         const children: uast.Node<Annotation>[] = []
                         $.children.forEach(($) => { children.push($) })
@@ -3169,8 +3127,7 @@ export function parse<Annotation>(
                             content: null
                         })
                         return
-                    }
-                    Gparameter$_questionToken$(
+                    })(
                         currentChild,
                         ($) => {
                             optional = $
@@ -3187,7 +3144,7 @@ export function parse<Annotation>(
                 }
                 pr.cc(optional, ($) => {
                     const _questionToken = $
-                    let optional: tast.VTGparameter$_type<Annotation> = null
+                    let optional: tast.VGparameter$_type<Annotation> = null
                     const setOptional = () => {
                         Gtype(node, children, ($) => {
                             optional = $
@@ -3263,8 +3220,7 @@ export function parse<Annotation>(
                 })
             }
             return
-        }
-        Gparameter$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -3312,17 +3268,17 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_break$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_break$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    let optional: tast.VTGstatement_break$<Annotation> = null
+                    let optional: tast.VGstatement_break$<Annotation> = null
                     const setOptional = () => {
                         Gidentifier(node, children, ($) => {
                             optional = $
@@ -3349,8 +3305,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_break$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["break", $])
@@ -3374,10 +3329,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_export$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_export$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -3397,8 +3352,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_export$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["export", $])
@@ -3422,10 +3376,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_expression$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_expression$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -3445,8 +3399,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_expression$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["expression", $])
@@ -3470,10 +3423,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_for$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_for$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -3511,8 +3464,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_for$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["for", $])
@@ -3536,10 +3488,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_function$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_function$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -3583,7 +3535,7 @@ export function parse<Annotation>(
                             const _name = $
                             GfunctionDefinition(node, children, ($) => {
                                 const _definition = $
-                                let optional: tast.VTGstatement_function$_block<Annotation> = null
+                                let optional: tast.VGstatement_function$_block<Annotation> = null
                                 const setOptional = () => {
                                     Gblock(node, children, ($) => {
                                         optional = $
@@ -3616,8 +3568,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_function$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["function", $])
@@ -3641,10 +3592,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_if$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_if$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -3661,7 +3612,7 @@ export function parse<Annotation>(
                         const _expression = $
                         Gstatement(node, children, ($) => {
                             const _thenStatement = $
-                            let optional: tast.VTGstatement_if$_elseStatement<Annotation> = null
+                            let optional: tast.VGstatement_if$_elseStatement<Annotation> = null
                             const setOptional = () => {
                                 Gstatement(node, children, ($) => {
                                     optional = $
@@ -3740,8 +3691,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_if$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["if", $])
@@ -3765,10 +3715,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_import$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_import$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -3797,10 +3747,10 @@ export function parse<Annotation>(
                         })
                         return
                     }
-                    function Gstatement_import$_clause$(
+                    ((
                         $: uast.Node<Annotation>,
                         callback: ($: tast.NGstatement_import$_clause$<Annotation>) => void,
-                    ): void {
+                    ): void => {
                         const node = $
                         const children: uast.Node<Annotation>[] = []
                         $.children.forEach(($) => { children.push($) })
@@ -3839,10 +3789,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gstatement_import$_clause$_namespace$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGstatement_import$_clause$_namespace$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -3862,8 +3812,7 @@ export function parse<Annotation>(
                                         })
                                     }
                                     return
-                                }
-                                Gstatement_import$_clause$_namespace$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gstatement_import$_clause$(["namespace", $])
@@ -3887,10 +3836,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function Gstatement_import$_clause$_named$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGstatement_import$_clause$_named$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -3915,10 +3864,10 @@ export function parse<Annotation>(
                                             })
                                             return
                                         }
-                                        function Gstatement_import$_clause$_named$$(
+                                        ((
                                             $: uast.Node<Annotation>,
                                             callback: ($: tast.NGstatement_import$_clause$_named$$<Annotation>) => void,
-                                        ): void {
+                                        ): void => {
                                             const node = $
                                             const children: uast.Node<Annotation>[] = []
                                             $.children.forEach(($) => { children.push($) })
@@ -3933,7 +3882,7 @@ export function parse<Annotation>(
                                             }
                                             Gidentifier(node, children, ($) => {
                                                 const _name = $
-                                                let optional: tast.VTGstatement_import$_clause$_named$$_as<Annotation> = null
+                                                let optional: tast.VGstatement_import$_clause$_named$$_as<Annotation> = null
                                                 const setOptional = () => {
                                                     Gidentifier(node, children, ($) => {
                                                         optional = $
@@ -3962,8 +3911,7 @@ export function parse<Annotation>(
                                                 })
                                             }
                                             return
-                                        }
-                                        Gstatement_import$_clause$_named$$(
+                                        })(
                                             currentChild,
                                             ($) => {
                                                 elements.push($)
@@ -3996,8 +3944,7 @@ export function parse<Annotation>(
                                         })
                                     }
                                     return
-                                }
-                                Gstatement_import$_clause$_named$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         choiceEnd_Gstatement_import$_clause$(["named", $])
@@ -4028,8 +3975,7 @@ export function parse<Annotation>(
                             })
                         }
                         return
-                    }
-                    Gstatement_import$_clause$(
+                    })(
                         currentChild,
                         ($) => {
                             const _clause = $
@@ -4049,8 +3995,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_import$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["import", $])
@@ -4074,10 +4019,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_interface$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_interface$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -4187,8 +4132,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_interface$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["interface", $])
@@ -4212,10 +4156,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_labeled$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_labeled$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -4245,8 +4189,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_labeled$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["labeled", $])
@@ -4270,17 +4213,17 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_return$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_return$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    let optional: tast.VTGstatement_return$<Annotation> = null
+                    let optional: tast.VGstatement_return$<Annotation> = null
                     const setOptional = () => {
                         Gexpression(node, children, ($) => {
                             optional = $
@@ -4364,8 +4307,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_return$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["return", $])
@@ -4389,10 +4331,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_switch$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_switch$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -4423,10 +4365,10 @@ export function parse<Annotation>(
                             })
                             return
                         }
-                        function Gstatement_switch$_caseBlock$(
+                        ((
                             $: uast.Node<Annotation>,
                             callback: ($: tast.NGstatement_switch$_caseBlock$<Annotation>) => void,
-                        ): void {
+                        ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
                             $.children.forEach(($) => { children.push($) })
@@ -4464,10 +4406,10 @@ export function parse<Annotation>(
                                             })
                                             return
                                         }
-                                        function Gstatement_switch$_caseBlock$_case$(
+                                        ((
                                             $: uast.Node<Annotation>,
                                             callback: ($: tast.NGstatement_switch$_caseBlock$_case$<Annotation>) => void,
-                                        ): void {
+                                        ): void => {
                                             const node = $
                                             const children: uast.Node<Annotation>[] = []
                                             $.children.forEach(($) => { children.push($) })
@@ -4564,8 +4506,7 @@ export function parse<Annotation>(
                                                 })
                                             }
                                             return
-                                        }
-                                        Gstatement_switch$_caseBlock$_case$(
+                                        })(
                                             currentChild,
                                             ($) => {
                                                 choiceEnd_Gstatement_switch$_caseBlock$(["case", $])
@@ -4589,10 +4530,10 @@ export function parse<Annotation>(
                                             })
                                             return
                                         }
-                                        function Gstatement_switch$_caseBlock$_default$(
+                                        ((
                                             $: uast.Node<Annotation>,
                                             callback: ($: tast.NGstatement_switch$_caseBlock$_default$<Annotation>) => void,
-                                        ): void {
+                                        ): void => {
                                             const node = $
                                             const children: uast.Node<Annotation>[] = []
                                             $.children.forEach(($) => { children.push($) })
@@ -4679,8 +4620,7 @@ export function parse<Annotation>(
                                                 })
                                             }
                                             return
-                                        }
-                                        Gstatement_switch$_caseBlock$_default$(
+                                        })(
                                             currentChild,
                                             ($) => {
                                                 choiceEnd_Gstatement_switch$_caseBlock$(["default", $])
@@ -4734,8 +4674,7 @@ export function parse<Annotation>(
                                 })
                             }
                             return
-                        }
-                        Gstatement_switch$_caseBlock$(
+                        })(
                             currentChild,
                             ($) => {
                                 const _caseBlock = $
@@ -4753,8 +4692,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_switch$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["switch", $])
@@ -4778,10 +4716,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_throw$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_throw$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -4801,8 +4739,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_throw$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["throw", $])
@@ -4826,10 +4763,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_try$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_try$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -4860,10 +4797,10 @@ export function parse<Annotation>(
                             })
                             return
                         }
-                        function Gstatement_try$_catchClause$(
+                        ((
                             $: uast.Node<Annotation>,
                             callback: ($: tast.NGstatement_try$_catchClause$<Annotation>) => void,
-                        ): void {
+                        ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
                             $.children.forEach(($) => { children.push($) })
@@ -4893,8 +4830,7 @@ export function parse<Annotation>(
                                 })
                             }
                             return
-                        }
-                        Gstatement_try$_catchClause$(
+                        })(
                             currentChild,
                             ($) => {
                                 const _catchClause = $
@@ -4912,8 +4848,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_try$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["try", $])
@@ -4937,10 +4872,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_typeAlias$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_typeAlias$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5022,8 +4957,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_typeAlias$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["typeAlias", $])
@@ -5047,10 +4981,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_variable$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_variable$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5105,8 +5039,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_variable$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["variable", $])
@@ -5130,10 +5063,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gstatement_while$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGstatement_while$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5163,8 +5096,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gstatement_while$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gstatement(["while", $])
@@ -5272,10 +5204,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function GstringLiteral$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGstringLiteral$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -5291,8 +5223,7 @@ export function parse<Annotation>(
                 content: $.value
             })
             return
-        }
-        GstringLiteral$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -5335,10 +5266,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_any$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_any$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5354,8 +5285,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gtype_any$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["any", $])
@@ -5379,10 +5309,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_array$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_array$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5402,8 +5332,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_array$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["array", $])
@@ -5427,10 +5356,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_boolean$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_boolean$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5446,8 +5375,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gtype_boolean$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["boolean", $])
@@ -5471,10 +5399,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_function$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_function$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5508,7 +5436,7 @@ export function parse<Annotation>(
                     }
                     pr.cc(elements, ($) => {
                         const _parameters = $
-                        let optional: tast.VTGtype_function$_returnType<Annotation> = null
+                        let optional: tast.VGtype_function$_returnType<Annotation> = null
                         const setOptional = () => {
                             Gtype(node, children, ($) => {
                                 optional = $
@@ -5582,8 +5510,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_function$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["function", $])
@@ -5607,10 +5534,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_literal$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_literal$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5649,10 +5576,10 @@ export function parse<Annotation>(
                                 })
                                 return
                             }
-                            function Gtype_literal$_null$(
+                            ((
                                 $: uast.Node<Annotation>,
                                 callback: ($: tast.NGtype_literal$_null$<Annotation>) => void,
-                            ): void {
+                            ): void => {
                                 const node = $
                                 const children: uast.Node<Annotation>[] = []
                                 $.children.forEach(($) => { children.push($) })
@@ -5668,8 +5595,7 @@ export function parse<Annotation>(
                                     content: null
                                 })
                                 return
-                            }
-                            Gtype_literal$_null$(
+                            })(
                                 currentChild,
                                 ($) => {
                                     choiceEnd_Gtype_literal$(["null", $])
@@ -5705,8 +5631,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_literal$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["literal", $])
@@ -5730,10 +5655,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_parenthesized$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_parenthesized$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5753,8 +5678,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_parenthesized$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["parenthesized", $])
@@ -5778,10 +5702,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_never$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_never$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5797,8 +5721,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gtype_never$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["never", $])
@@ -5822,10 +5745,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_number$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_number$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5841,8 +5764,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gtype_number$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["number", $])
@@ -5866,10 +5788,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_optional$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_optional$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -5889,8 +5811,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_optional$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["optional", $])
@@ -5914,10 +5835,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_tuple$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_tuple$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6001,8 +5922,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_tuple$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["tuple", $])
@@ -6026,10 +5946,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_typeLiteral$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_typeLiteral$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6077,8 +5997,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_typeLiteral$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["typeLiteral", $])
@@ -6102,10 +6021,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_string$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_string$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6121,8 +6040,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gtype_string$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["string", $])
@@ -6146,10 +6064,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_typeReference$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_typeReference$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6267,10 +6185,10 @@ export function parse<Annotation>(
                                 })
                                 return
                             }
-                            function Gtype_typeReference$_x_qualifiedName$(
+                            ((
                                 $: uast.Node<Annotation>,
                                 callback: ($: tast.NGtype_typeReference$_x_qualifiedName$<Annotation>) => void,
-                            ): void {
+                            ): void => {
                                 const node = $
                                 const children: uast.Node<Annotation>[] = []
                                 $.children.forEach(($) => { children.push($) })
@@ -6300,8 +6218,7 @@ export function parse<Annotation>(
                                     })
                                 }
                                 return
-                            }
-                            Gtype_typeReference$_x_qualifiedName$(
+                            })(
                                 currentChild,
                                 ($) => {
                                     choiceEnd_Gtype_typeReference$_x(["qualifiedName", $])
@@ -6332,8 +6249,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_typeReference$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["typeReference", $])
@@ -6357,10 +6273,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_undefined$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_undefined$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6376,8 +6292,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gtype_undefined$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["undefined", $])
@@ -6401,10 +6316,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_union$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_union$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6488,8 +6403,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                Gtype_union$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["union", $])
@@ -6513,10 +6427,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function Gtype_void$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtype_void$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6532,8 +6446,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                Gtype_void$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_Gtype(["void", $])
@@ -6637,10 +6550,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function GtypeParameter$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGtypeParameter$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -6660,8 +6573,7 @@ export function parse<Annotation>(
                 })
             }
             return
-        }
-        GtypeParameter$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -6704,10 +6616,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function GtypeSignature_construct$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtypeSignature_construct$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6756,8 +6668,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                GtypeSignature_construct$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_GtypeSignature(["construct", $])
@@ -6781,10 +6692,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function GtypeSignature_index$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtypeSignature_index$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6826,7 +6737,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         Gparameter(node, children, ($) => {
                             const _parameter = $
-                            let optional: tast.VTGtypeSignature_index$_type<Annotation> = null
+                            let optional: tast.VGtypeSignature_index$_type<Annotation> = null
                             const setOptional = () => {
                                 Gtype(node, children, ($) => {
                                     optional = $
@@ -6902,8 +6813,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                GtypeSignature_index$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_GtypeSignature(["index", $])
@@ -6927,10 +6837,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function GtypeSignature_method$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtypeSignature_method$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -6960,8 +6870,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                GtypeSignature_method$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_GtypeSignature(["method", $])
@@ -6985,10 +6894,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function GtypeSignature_property$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.NGtypeSignature_property$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -7030,7 +6939,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         GidentifierOrStringLiteral(node, children, ($) => {
                             const _name = $
-                            let optional: tast.VTGtypeSignature_property$_quesionToken<Annotation> = null
+                            let optional: tast.VGtypeSignature_property$_quesionToken<Annotation> = null
                             const setOptional = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
@@ -7048,10 +6957,10 @@ export function parse<Annotation>(
                                     })
                                     return
                                 }
-                                function GtypeSignature_property$_quesionToken$(
+                                ((
                                     $: uast.Node<Annotation>,
                                     callback: ($: tast.NGtypeSignature_property$_quesionToken$<Annotation>) => void,
-                                ): void {
+                                ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
@@ -7067,8 +6976,7 @@ export function parse<Annotation>(
                                         content: null
                                     })
                                     return
-                                }
-                                GtypeSignature_property$_quesionToken$(
+                                })(
                                     currentChild,
                                     ($) => {
                                         optional = $
@@ -7085,7 +6993,7 @@ export function parse<Annotation>(
                             }
                             pr.cc(optional, ($) => {
                                 const _quesionToken = $
-                                let optional: tast.VTGtypeSignature_property$_type<Annotation> = null
+                                let optional: tast.VGtypeSignature_property$_type<Annotation> = null
                                 const setOptional = () => {
                                     Gtype(node, children, ($) => {
                                         optional = $
@@ -7163,8 +7071,7 @@ export function parse<Annotation>(
                         })
                     }
                     return
-                }
-                GtypeSignature_property$(
+                })(
                     currentChild,
                     ($) => {
                         choiceEnd_GtypeSignature(["property", $])
@@ -7220,10 +7127,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function GvariableDeclaration$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGvariableDeclaration$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -7238,7 +7145,7 @@ export function parse<Annotation>(
             }
             Gidentifier(node, children, ($) => {
                 const _name = $
-                let optional: tast.VTGvariableDeclaration$_type<Annotation> = null
+                let optional: tast.VGvariableDeclaration$_type<Annotation> = null
                 const setOptional = () => {
                     Gtype(node, children, ($) => {
                         optional = $
@@ -7299,7 +7206,7 @@ export function parse<Annotation>(
                 }
                 pr.cc(optional, ($) => {
                     const _type = $
-                    let optional: tast.VTGvariableDeclaration$_expression<Annotation> = null
+                    let optional: tast.VGvariableDeclaration$_expression<Annotation> = null
                     const setOptional = () => {
                         Gexpression(node, children, ($) => {
                             optional = $
@@ -7387,8 +7294,7 @@ export function parse<Annotation>(
                 })
             }
             return
-        }
-        GvariableDeclaration$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -7418,10 +7324,10 @@ export function parse<Annotation>(
             })
             return
         }
-        function GvariableDeclarationList$(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.NGvariableDeclarationList$<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -7460,8 +7366,7 @@ export function parse<Annotation>(
                 })
             }
             return
-        }
-        GvariableDeclarationList$(
+        })(
             currentChild,
             ($) => {
                 callback($)
@@ -7474,10 +7379,10 @@ export function parse<Annotation>(
         })
         return
     } else {
-        function root(
+        ((
             $: uast.Node<Annotation>,
             callback: ($: tast.Nroot<Annotation>) => void,
-        ): void {
+        ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
@@ -7575,10 +7480,10 @@ export function parse<Annotation>(
                     })
                     return
                 }
-                function root_endOfFile$(
+                ((
                     $: uast.Node<Annotation>,
                     callback: ($: tast.Nroot_endOfFile$<Annotation>) => void,
-                ): void {
+                ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
@@ -7594,8 +7499,7 @@ export function parse<Annotation>(
                         content: null
                     })
                     return
-                }
-                root_endOfFile$(
+                })(
                     currentChild,
                     ($) => {
                         const _endOfFile = $
@@ -7613,8 +7517,7 @@ export function parse<Annotation>(
                 })
             }
             return
-        }
-        root(
+        })(
             $,
             ($) => {
                 callback($)

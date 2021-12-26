@@ -130,11 +130,12 @@ export function generateParser(
                 $: g.Node2,
                 path: string,
                 $w: wapi.Block,
+                call: ($w: wapi.Line) => void
             ) {
 
                 $w.line(($w) => {
 
-                    $w.snippet(`function ${path}(`)
+                    $w.snippet(`((`)
                     $w.indent(($w) => {
                         $w.line(($w) => {
                             $w.snippet(`$: uast.Node<Annotation>,`)
@@ -143,7 +144,7 @@ export function generateParser(
                             $w.snippet(`callback: ($: tast.N${path}<Annotation>) => void,`)
                         })
                     })
-                    $w.snippet(`): void {`)
+                    $w.snippet(`): void => {`)
                     $w.indent(($w) => {
                         $w.line(($w) => {
                             $w.snippet(`const node = $`)
@@ -267,7 +268,8 @@ export function generateParser(
                                 pr.au($.type[0])
                         }
                     })
-                    $w.snippet(`}`)
+                    $w.snippet(`})`)
+                    call($w)
                 })
 
             }
@@ -379,7 +381,7 @@ export function generateParser(
                     case "optional":
                         pr.cc($.cardinality[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`let optional: tast.VT${path}<Annotation> = null`)
+                                $w.snippet(`let optional: tast.V${path}<Annotation> = null`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`const setOptional = () => {`)
@@ -734,23 +736,23 @@ export function generateParser(
                                 $,
                                 `${path}$`,
                                 $w,
-                            )
-                            $w.line(($w) => {
-                                $w.snippet(`${path}$(`)
-                                $w.indent(($w) => {
-                                    $w.line(($w) => {
-                                        $w.snippet(`currentChild,`)
-                                    })
-                                    $w.line(($w) => {
-                                        $w.snippet(`($) => {`)
-                                        $w.indent(($w) => {
-                                            endCallback($w)
+                                ($w) => {
+                                    $w.snippet(`(`)
+                                    $w.indent(($w) => {
+                                        $w.line(($w) => {
+                                            $w.snippet(`currentChild,`)
                                         })
-                                        $w.snippet(`}`)
+                                        $w.line(($w) => {
+                                            $w.snippet(`($) => {`)
+                                            $w.indent(($w) => {
+                                                endCallback($w)
+                                            })
+                                            $w.snippet(`}`)
+                                        })
                                     })
-                                })
-                                $w.snippet(`)`)
-                            })
+                                    $w.snippet(`)`)
+                                }
+                            )
                         })
                         break
                     default:
@@ -818,25 +820,26 @@ export function generateParser(
                         grammar.root,
                         "root",
                         $w,
-                    )
-                    $w.line(($w) => {
-                        $w.snippet(`root(`)
-                        $w.indent(($w) => {
-                            $w.line(($w) => {
-                                $w.snippet(`$,`)
-                            })
-                            $w.line(($w) => {
-                                $w.snippet(`($) => {`)
-                                $w.indent(($w) => {
-                                    $w.line(($w) => {
-                                        $w.snippet(`callback($)`)
-                                    })
+                        ($w) => {
+
+                            $w.snippet(`(`)
+                            $w.indent(($w) => {
+                                $w.line(($w) => {
+                                    $w.snippet(`$,`)
                                 })
-                                $w.snippet(`},`)
+                                $w.line(($w) => {
+                                    $w.snippet(`($) => {`)
+                                    $w.indent(($w) => {
+                                        $w.line(($w) => {
+                                            $w.snippet(`callback($)`)
+                                        })
+                                    })
+                                    $w.snippet(`},`)
+                                })
                             })
-                        })
-                        $w.snippet(`)`)
-                    })
+                            $w.snippet(`)`)
+                        },
+                    )
                     $w.line(($w) => {
                         $w.snippet(`return`)
                     })

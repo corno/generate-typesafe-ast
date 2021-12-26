@@ -1,9 +1,429 @@
 import * as pr from "pareto-runtime"
 import * as api from "../interface/ts_api.generated"
 
-export type FOO<Annotation> = {}
+export type FOO<Annotation> = {
+    "Gblock$"?: {
+        begin: ($: api.NGblock$<Annotation>) => void,
+        end: ($: api.NGblock$<Annotation>) => void,
+    }
+    "Gexpression_arrayLiteral$"?: {
+        begin: ($: api.NGexpression_arrayLiteral$<Annotation>) => void,
+        end: ($: api.NGexpression_arrayLiteral$<Annotation>) => void,
+    }
+    "Gexpression_arrowFunction$"?: {
+        begin: ($: api.NGexpression_arrowFunction$<Annotation>) => void,
+        end: ($: api.NGexpression_arrowFunction$<Annotation>) => void,
+    }
+    "Gexpression_binary$"?: {
+        begin: ($: api.NGexpression_binary$<Annotation>) => void,
+        end: ($: api.NGexpression_binary$<Annotation>) => void,
+    }
+    "Gexpression_call$"?: {
+        begin: ($: api.NGexpression_call$<Annotation>) => void,
+        end: ($: api.NGexpression_call$<Annotation>) => void,
+    }
+    "Gexpression_conditional$"?: {
+        begin: ($: api.NGexpression_conditional$<Annotation>) => void,
+        end: ($: api.NGexpression_conditional$<Annotation>) => void,
+    }
+    "Gexpression_elementAccess$"?: {
+        begin: ($: api.NGexpression_elementAccess$<Annotation>) => void,
+        end: ($: api.NGexpression_elementAccess$<Annotation>) => void,
+    }
+    "Gexpression_false$"?: ($: api.NGexpression_false$<Annotation>) => void
+    "Gexpression_new$"?: {
+        begin: ($: api.NGexpression_new$<Annotation>) => void,
+        end: ($: api.NGexpression_new$<Annotation>) => void,
+    }
+    "Gexpression_noSubstitutionTemplateLiteral$"?: ($: api.NGexpression_noSubstitutionTemplateLiteral$<Annotation>) => void
+    "Gexpression_nullKeyword$"?: ($: api.NGexpression_nullKeyword$<Annotation>) => void
+    "Gexpression_objectLiteral$"?: {
+        begin: ($: api.NGexpression_objectLiteral$<Annotation>) => void,
+        end: ($: api.NGexpression_objectLiteral$<Annotation>) => void,
+    }
+    "Gexpression_parenthesizedExpression$"?: {
+        begin: ($: api.NGexpression_parenthesizedExpression$<Annotation>) => void,
+        end: ($: api.NGexpression_parenthesizedExpression$<Annotation>) => void,
+    }
+    "Gexpression_postfixUnary$"?: {
+        begin: ($: api.NGexpression_postfixUnary$<Annotation>) => void,
+        end: ($: api.NGexpression_postfixUnary$<Annotation>) => void,
+    }
+    "Gexpression_prefixUnary$"?: {
+        begin: ($: api.NGexpression_prefixUnary$<Annotation>) => void,
+        end: ($: api.NGexpression_prefixUnary$<Annotation>) => void,
+    }
+    "Gexpression_propertyAccess$"?: {
+        begin: ($: api.NGexpression_propertyAccess$<Annotation>) => void,
+        end: ($: api.NGexpression_propertyAccess$<Annotation>) => void,
+    }
+    "Gexpression_template$"?: {
+        begin: ($: api.NGexpression_template$<Annotation>) => void,
+        end: ($: api.NGexpression_template$<Annotation>) => void,
+    }
+    "Gexpression_true$"?: ($: api.NGexpression_true$<Annotation>) => void
+    "Gidentifier$"?: ($: api.NGidentifier$<Annotation>) => void
+    "Gmodifier_declare$"?: ($: api.NGmodifier_declare$<Annotation>) => void
+    "Gmodifier_export$"?: ($: api.NGmodifier_export$<Annotation>) => void
+    "Gmodifier_readonly$"?: ($: api.NGmodifier_readonly$<Annotation>) => void
+    "GnumericLiteral$"?: ($: api.NGnumericLiteral$<Annotation>) => void
+    "Gparameter$"?: {
+        begin: ($: api.NGparameter$<Annotation>) => void,
+        end: ($: api.NGparameter$<Annotation>) => void,
+    }
+    "Gstatement_break$"?: {
+        begin: ($: api.NGstatement_break$<Annotation>) => void,
+        end: ($: api.NGstatement_break$<Annotation>) => void,
+    }
+    "Gstatement_export$"?: {
+        begin: ($: api.NGstatement_export$<Annotation>) => void,
+        end: ($: api.NGstatement_export$<Annotation>) => void,
+    }
+    "Gstatement_expression$"?: {
+        begin: ($: api.NGstatement_expression$<Annotation>) => void,
+        end: ($: api.NGstatement_expression$<Annotation>) => void,
+    }
+    "Gstatement_for$"?: {
+        begin: ($: api.NGstatement_for$<Annotation>) => void,
+        end: ($: api.NGstatement_for$<Annotation>) => void,
+    }
+    "Gstatement_function$"?: {
+        begin: ($: api.NGstatement_function$<Annotation>) => void,
+        end: ($: api.NGstatement_function$<Annotation>) => void,
+    }
+    "Gstatement_if$"?: {
+        begin: ($: api.NGstatement_if$<Annotation>) => void,
+        end: ($: api.NGstatement_if$<Annotation>) => void,
+    }
+    "Gstatement_import$"?: {
+        begin: ($: api.NGstatement_import$<Annotation>) => void,
+        end: ($: api.NGstatement_import$<Annotation>) => void,
+    }
+    "Gstatement_interface$"?: {
+        begin: ($: api.NGstatement_interface$<Annotation>) => void,
+        end: ($: api.NGstatement_interface$<Annotation>) => void,
+    }
+    "Gstatement_labeled$"?: {
+        begin: ($: api.NGstatement_labeled$<Annotation>) => void,
+        end: ($: api.NGstatement_labeled$<Annotation>) => void,
+    }
+    "Gstatement_return$"?: {
+        begin: ($: api.NGstatement_return$<Annotation>) => void,
+        end: ($: api.NGstatement_return$<Annotation>) => void,
+    }
+    "Gstatement_switch$"?: {
+        begin: ($: api.NGstatement_switch$<Annotation>) => void,
+        end: ($: api.NGstatement_switch$<Annotation>) => void,
+    }
+    "Gstatement_throw$"?: {
+        begin: ($: api.NGstatement_throw$<Annotation>) => void,
+        end: ($: api.NGstatement_throw$<Annotation>) => void,
+    }
+    "Gstatement_try$"?: {
+        begin: ($: api.NGstatement_try$<Annotation>) => void,
+        end: ($: api.NGstatement_try$<Annotation>) => void,
+    }
+    "Gstatement_typeAlias$"?: {
+        begin: ($: api.NGstatement_typeAlias$<Annotation>) => void,
+        end: ($: api.NGstatement_typeAlias$<Annotation>) => void,
+    }
+    "Gstatement_variable$"?: {
+        begin: ($: api.NGstatement_variable$<Annotation>) => void,
+        end: ($: api.NGstatement_variable$<Annotation>) => void,
+    }
+    "Gstatement_while$"?: {
+        begin: ($: api.NGstatement_while$<Annotation>) => void,
+        end: ($: api.NGstatement_while$<Annotation>) => void,
+    }
+    "GstringLiteral$"?: ($: api.NGstringLiteral$<Annotation>) => void
+    "Gtype_any$"?: ($: api.NGtype_any$<Annotation>) => void
+    "Gtype_array$"?: {
+        begin: ($: api.NGtype_array$<Annotation>) => void,
+        end: ($: api.NGtype_array$<Annotation>) => void,
+    }
+    "Gtype_boolean$"?: ($: api.NGtype_boolean$<Annotation>) => void
+    "Gtype_function$"?: {
+        begin: ($: api.NGtype_function$<Annotation>) => void,
+        end: ($: api.NGtype_function$<Annotation>) => void,
+    }
+    "Gtype_literal$"?: {
+        begin: ($: api.NGtype_literal$<Annotation>) => void,
+        end: ($: api.NGtype_literal$<Annotation>) => void,
+    }
+    "Gtype_parenthesized$"?: {
+        begin: ($: api.NGtype_parenthesized$<Annotation>) => void,
+        end: ($: api.NGtype_parenthesized$<Annotation>) => void,
+    }
+    "Gtype_never$"?: ($: api.NGtype_never$<Annotation>) => void
+    "Gtype_number$"?: ($: api.NGtype_number$<Annotation>) => void
+    "Gtype_optional$"?: {
+        begin: ($: api.NGtype_optional$<Annotation>) => void,
+        end: ($: api.NGtype_optional$<Annotation>) => void,
+    }
+    "Gtype_tuple$"?: {
+        begin: ($: api.NGtype_tuple$<Annotation>) => void,
+        end: ($: api.NGtype_tuple$<Annotation>) => void,
+    }
+    "Gtype_typeLiteral$"?: {
+        begin: ($: api.NGtype_typeLiteral$<Annotation>) => void,
+        end: ($: api.NGtype_typeLiteral$<Annotation>) => void,
+    }
+    "Gtype_string$"?: ($: api.NGtype_string$<Annotation>) => void
+    "Gtype_typeReference$"?: {
+        begin: ($: api.NGtype_typeReference$<Annotation>) => void,
+        end: ($: api.NGtype_typeReference$<Annotation>) => void,
+    }
+    "Gtype_undefined$"?: ($: api.NGtype_undefined$<Annotation>) => void
+    "Gtype_union$"?: {
+        begin: ($: api.NGtype_union$<Annotation>) => void,
+        end: ($: api.NGtype_union$<Annotation>) => void,
+    }
+    "Gtype_void$"?: ($: api.NGtype_void$<Annotation>) => void
+    "GtypeParameter$"?: {
+        begin: ($: api.NGtypeParameter$<Annotation>) => void,
+        end: ($: api.NGtypeParameter$<Annotation>) => void,
+    }
+    "GtypeSignature_construct$"?: {
+        begin: ($: api.NGtypeSignature_construct$<Annotation>) => void,
+        end: ($: api.NGtypeSignature_construct$<Annotation>) => void,
+    }
+    "GtypeSignature_index$"?: {
+        begin: ($: api.NGtypeSignature_index$<Annotation>) => void,
+        end: ($: api.NGtypeSignature_index$<Annotation>) => void,
+    }
+    "GtypeSignature_method$"?: {
+        begin: ($: api.NGtypeSignature_method$<Annotation>) => void,
+        end: ($: api.NGtypeSignature_method$<Annotation>) => void,
+    }
+    "GtypeSignature_property$"?: {
+        begin: ($: api.NGtypeSignature_property$<Annotation>) => void,
+        end: ($: api.NGtypeSignature_property$<Annotation>) => void,
+    }
+    "GvariableDeclaration$"?: {
+        begin: ($: api.NGvariableDeclaration$<Annotation>) => void,
+        end: ($: api.NGvariableDeclaration$<Annotation>) => void,
+    }
+    "GvariableDeclarationList$"?: {
+        begin: ($: api.NGvariableDeclarationList$<Annotation>) => void,
+        end: ($: api.NGvariableDeclarationList$<Annotation>) => void,
+    }
+    "root"?: {
+        begin: ($: api.Nroot<Annotation>) => void,
+        end: ($: api.Nroot<Annotation>) => void,
+    }
+}
 
-export const foo: FOO<string> = {}
+export const foo: FOO<string> = {
+    "Gblock$": {
+        begin: ($) => { console.log("Gblock$ begin") },
+        end: ($) => { console.log("Gblock$ end") },
+    },
+    "Gexpression_arrayLiteral$": {
+        begin: ($) => { console.log("Gexpression_arrayLiteral$ begin") },
+        end: ($) => { console.log("Gexpression_arrayLiteral$ end") },
+    },
+    "Gexpression_arrowFunction$": {
+        begin: ($) => { console.log("Gexpression_arrowFunction$ begin") },
+        end: ($) => { console.log("Gexpression_arrowFunction$ end") },
+    },
+    "Gexpression_binary$": {
+        begin: ($) => { console.log("Gexpression_binary$ begin") },
+        end: ($) => { console.log("Gexpression_binary$ end") },
+    },
+    "Gexpression_call$": {
+        begin: ($) => { console.log("Gexpression_call$ begin") },
+        end: ($) => { console.log("Gexpression_call$ end") },
+    },
+    "Gexpression_conditional$": {
+        begin: ($) => { console.log("Gexpression_conditional$ begin") },
+        end: ($) => { console.log("Gexpression_conditional$ end") },
+    },
+    "Gexpression_elementAccess$": {
+        begin: ($) => { console.log("Gexpression_elementAccess$ begin") },
+        end: ($) => { console.log("Gexpression_elementAccess$ end") },
+    },
+    "Gexpression_false$": ($) => { console.log("Gexpression_false$") },
+    "Gexpression_new$": {
+        begin: ($) => { console.log("Gexpression_new$ begin") },
+        end: ($) => { console.log("Gexpression_new$ end") },
+    },
+    "Gexpression_noSubstitutionTemplateLiteral$": ($) => { console.log("Gexpression_noSubstitutionTemplateLiteral$") },
+    "Gexpression_nullKeyword$": ($) => { console.log("Gexpression_nullKeyword$") },
+    "Gexpression_objectLiteral$": {
+        begin: ($) => { console.log("Gexpression_objectLiteral$ begin") },
+        end: ($) => { console.log("Gexpression_objectLiteral$ end") },
+    },
+    "Gexpression_parenthesizedExpression$": {
+        begin: ($) => { console.log("Gexpression_parenthesizedExpression$ begin") },
+        end: ($) => { console.log("Gexpression_parenthesizedExpression$ end") },
+    },
+    "Gexpression_postfixUnary$": {
+        begin: ($) => { console.log("Gexpression_postfixUnary$ begin") },
+        end: ($) => { console.log("Gexpression_postfixUnary$ end") },
+    },
+    "Gexpression_prefixUnary$": {
+        begin: ($) => { console.log("Gexpression_prefixUnary$ begin") },
+        end: ($) => { console.log("Gexpression_prefixUnary$ end") },
+    },
+    "Gexpression_propertyAccess$": {
+        begin: ($) => { console.log("Gexpression_propertyAccess$ begin") },
+        end: ($) => { console.log("Gexpression_propertyAccess$ end") },
+    },
+    "Gexpression_template$": {
+        begin: ($) => { console.log("Gexpression_template$ begin") },
+        end: ($) => { console.log("Gexpression_template$ end") },
+    },
+    "Gexpression_true$": ($) => { console.log("Gexpression_true$") },
+    "Gidentifier$": ($) => { console.log("Gidentifier$") },
+    "Gmodifier_declare$": ($) => { console.log("Gmodifier_declare$") },
+    "Gmodifier_export$": ($) => { console.log("Gmodifier_export$") },
+    "Gmodifier_readonly$": ($) => { console.log("Gmodifier_readonly$") },
+    "GnumericLiteral$": ($) => { console.log("GnumericLiteral$") },
+    "Gparameter$": {
+        begin: ($) => { console.log("Gparameter$ begin") },
+        end: ($) => { console.log("Gparameter$ end") },
+    },
+    "Gstatement_break$": {
+        begin: ($) => { console.log("Gstatement_break$ begin") },
+        end: ($) => { console.log("Gstatement_break$ end") },
+    },
+    "Gstatement_export$": {
+        begin: ($) => { console.log("Gstatement_export$ begin") },
+        end: ($) => { console.log("Gstatement_export$ end") },
+    },
+    "Gstatement_expression$": {
+        begin: ($) => { console.log("Gstatement_expression$ begin") },
+        end: ($) => { console.log("Gstatement_expression$ end") },
+    },
+    "Gstatement_for$": {
+        begin: ($) => { console.log("Gstatement_for$ begin") },
+        end: ($) => { console.log("Gstatement_for$ end") },
+    },
+    "Gstatement_function$": {
+        begin: ($) => { console.log("Gstatement_function$ begin") },
+        end: ($) => { console.log("Gstatement_function$ end") },
+    },
+    "Gstatement_if$": {
+        begin: ($) => { console.log("Gstatement_if$ begin") },
+        end: ($) => { console.log("Gstatement_if$ end") },
+    },
+    "Gstatement_import$": {
+        begin: ($) => { console.log("Gstatement_import$ begin") },
+        end: ($) => { console.log("Gstatement_import$ end") },
+    },
+    "Gstatement_interface$": {
+        begin: ($) => { console.log("Gstatement_interface$ begin") },
+        end: ($) => { console.log("Gstatement_interface$ end") },
+    },
+    "Gstatement_labeled$": {
+        begin: ($) => { console.log("Gstatement_labeled$ begin") },
+        end: ($) => { console.log("Gstatement_labeled$ end") },
+    },
+    "Gstatement_return$": {
+        begin: ($) => { console.log("Gstatement_return$ begin") },
+        end: ($) => { console.log("Gstatement_return$ end") },
+    },
+    "Gstatement_switch$": {
+        begin: ($) => { console.log("Gstatement_switch$ begin") },
+        end: ($) => { console.log("Gstatement_switch$ end") },
+    },
+    "Gstatement_throw$": {
+        begin: ($) => { console.log("Gstatement_throw$ begin") },
+        end: ($) => { console.log("Gstatement_throw$ end") },
+    },
+    "Gstatement_try$": {
+        begin: ($) => { console.log("Gstatement_try$ begin") },
+        end: ($) => { console.log("Gstatement_try$ end") },
+    },
+    "Gstatement_typeAlias$": {
+        begin: ($) => { console.log("Gstatement_typeAlias$ begin") },
+        end: ($) => { console.log("Gstatement_typeAlias$ end") },
+    },
+    "Gstatement_variable$": {
+        begin: ($) => { console.log("Gstatement_variable$ begin") },
+        end: ($) => { console.log("Gstatement_variable$ end") },
+    },
+    "Gstatement_while$": {
+        begin: ($) => { console.log("Gstatement_while$ begin") },
+        end: ($) => { console.log("Gstatement_while$ end") },
+    },
+    "GstringLiteral$": ($) => { console.log("GstringLiteral$") },
+    "Gtype_any$": ($) => { console.log("Gtype_any$") },
+    "Gtype_array$": {
+        begin: ($) => { console.log("Gtype_array$ begin") },
+        end: ($) => { console.log("Gtype_array$ end") },
+    },
+    "Gtype_boolean$": ($) => { console.log("Gtype_boolean$") },
+    "Gtype_function$": {
+        begin: ($) => { console.log("Gtype_function$ begin") },
+        end: ($) => { console.log("Gtype_function$ end") },
+    },
+    "Gtype_literal$": {
+        begin: ($) => { console.log("Gtype_literal$ begin") },
+        end: ($) => { console.log("Gtype_literal$ end") },
+    },
+    "Gtype_parenthesized$": {
+        begin: ($) => { console.log("Gtype_parenthesized$ begin") },
+        end: ($) => { console.log("Gtype_parenthesized$ end") },
+    },
+    "Gtype_never$": ($) => { console.log("Gtype_never$") },
+    "Gtype_number$": ($) => { console.log("Gtype_number$") },
+    "Gtype_optional$": {
+        begin: ($) => { console.log("Gtype_optional$ begin") },
+        end: ($) => { console.log("Gtype_optional$ end") },
+    },
+    "Gtype_tuple$": {
+        begin: ($) => { console.log("Gtype_tuple$ begin") },
+        end: ($) => { console.log("Gtype_tuple$ end") },
+    },
+    "Gtype_typeLiteral$": {
+        begin: ($) => { console.log("Gtype_typeLiteral$ begin") },
+        end: ($) => { console.log("Gtype_typeLiteral$ end") },
+    },
+    "Gtype_string$": ($) => { console.log("Gtype_string$") },
+    "Gtype_typeReference$": {
+        begin: ($) => { console.log("Gtype_typeReference$ begin") },
+        end: ($) => { console.log("Gtype_typeReference$ end") },
+    },
+    "Gtype_undefined$": ($) => { console.log("Gtype_undefined$") },
+    "Gtype_union$": {
+        begin: ($) => { console.log("Gtype_union$ begin") },
+        end: ($) => { console.log("Gtype_union$ end") },
+    },
+    "Gtype_void$": ($) => { console.log("Gtype_void$") },
+    "GtypeParameter$": {
+        begin: ($) => { console.log("GtypeParameter$ begin") },
+        end: ($) => { console.log("GtypeParameter$ end") },
+    },
+    "GtypeSignature_construct$": {
+        begin: ($) => { console.log("GtypeSignature_construct$ begin") },
+        end: ($) => { console.log("GtypeSignature_construct$ end") },
+    },
+    "GtypeSignature_index$": {
+        begin: ($) => { console.log("GtypeSignature_index$ begin") },
+        end: ($) => { console.log("GtypeSignature_index$ end") },
+    },
+    "GtypeSignature_method$": {
+        begin: ($) => { console.log("GtypeSignature_method$ begin") },
+        end: ($) => { console.log("GtypeSignature_method$ end") },
+    },
+    "GtypeSignature_property$": {
+        begin: ($) => { console.log("GtypeSignature_property$ begin") },
+        end: ($) => { console.log("GtypeSignature_property$ end") },
+    },
+    "GvariableDeclaration$": {
+        begin: ($) => { console.log("GvariableDeclaration$ begin") },
+        end: ($) => { console.log("GvariableDeclaration$ end") },
+    },
+    "GvariableDeclarationList$": {
+        begin: ($) => { console.log("GvariableDeclarationList$ begin") },
+        end: ($) => { console.log("GvariableDeclarationList$ end") },
+    },
+    "root": {
+        begin: ($) => { console.log("root begin") },
+        end: ($) => { console.log("root end") },
+    },
+}
 
 export function visit<Annotation>(
     $: api.Nroot<Annotation>,
