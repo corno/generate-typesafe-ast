@@ -1,127 +1,565 @@
 import * as gr from "../../pub/esc/interfaces"
 
 export const typescriptGrammar: gr.Grammar = {
-    valueTypes: {
+    globalValueTypes: {
+        block: ["node", {
+            name: "Block",
+            type: ["composite", {
+                cardinality: ["array", {}],
+                type: ["reference", { name: "statement" }]
+            }],
+        }],
         expression: ["choice", {
             options: {
                 arrayLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ArrayLiteralExpression"
+                        name: "ArrayLiteralExpression",
+                        type: ["composite", {
+                            cardinality: ["array", {}],
+                            type: ["reference", { name: "expression" }],
+                        }],
                     }]
                 },
                 arrowFunction: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ArrowFunction"
+                        name: "ArrowFunction",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "parameters",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", {
+                                                name: "parameter"
+                                            }]
+                                        }
+                                    },
+                                    {
+                                        name: "returnType",
+                                        value: {
+                                            cardinality: ["optional", {}],
+                                            type: ["reference", { name: "type" }],
+                                        }
+                                    },
+                                    {
+                                        name: "equalsGreaterThan",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["node", {
+                                                name: "EqualsGreaterThanToken",
+                                                type: ["leaf", { hasTextContent: false }],
+                                            }]
+                                        }
+                                    },
+                                    {
+                                        name: "implementation",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["choice", {
+                                                options: {
+                                                    "block": {
+                                                        cardinality: ["one", {}],
+                                                        type: ["reference", {
+                                                            name: "block",
+                                                        }]
+                                                    },
+                                                    "expression": {
+                                                        cardinality: ["one", {}],
+                                                        type: ["reference", { name: "expression" }],
+                                                    },
+                                                }
+                                            }]
+                                        }
+                                    },
+                                ],
+                            }],
+                        }]
                     }]
                 },
                 binary: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "BinaryExpression"
+                        name: "BinaryExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "leftHandSide",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                    {
+                                        name: "operator",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["choice", {
+                                                options: {
+                                                    ampersandAmpersand: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "AmpersandAmpersandToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    },
+                                                    barBar: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "BarBarToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    },
+                                                    equals: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "EqualsToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    },
+                                                    equalsEqualsEquals: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "EqualsEqualsEqualsToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    },
+                                                    exclamationEqualsEquals: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "ExclamationEqualsEqualsToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    },
+                                                    greaterThan: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "GreaterThanToken",
+                                                            type: ["leaf", { hasTextContent: false }],
+                                                        }]
+                                                    },
+                                                    lessThan: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "LessThanToken",
+                                                            type: ["leaf", { hasTextContent: false }],
+                                                        }]
+                                                    },
+                                                    minus: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "MinusToken",
+                                                            type: ["leaf", { hasTextContent: false }],
+                                                        }]
+                                                    },
+                                                    minusEquals: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "MinusEqualsToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    },
+                                                    plus: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "PlusToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    },
+                                                    plusEquals: {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "PlusEqualsToken",
+                                                            type: ["leaf", { hasTextContent: false }]
+                                                        }]
+                                                    }
+                                                }
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "rightHandSide",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    }]
+                            }]
+                        }]
                     }]
                 },
                 call: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "CallExpression"
+                        name: "CallExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "function",
+                                        value: {
+                                            "cardinality": ["one", {}],
+                                            type: ["reference", { name: "expression" }]
+                                        }
+                                    },
+                                    {
+                                        name: "typeParameters",
+                                        value: {
+                                            "cardinality": ["array", {}],
+                                            type: ["reference", { name: "type" }],
+                                        }
+                                    },
+                                    {
+                                        name: "parameters",
+                                        value: {
+                                            "cardinality": ["array", {}],
+                                            type: ["reference", { name: "expression" }]
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 conditional: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ConditionalExpression"
+                        name: "ConditionalExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "test",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                    {
+                                        name: "questionToken",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["node", {
+                                                name: "QuestionToken",
+                                                type: ["leaf", { hasTextContent: false }]
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "ifExpression",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                    {
+                                        name: "colonToken",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["node", {
+                                                name: "ColonToken",
+                                                type: ["leaf", { hasTextContent: false }],
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "elseExpression",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 elementAccess: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ElementAccessExpression"
+                        name: "ElementAccessExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "array",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                    {
+                                        name: "element",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    }]
+                            }],
+                        }]
                     }]
                 },
                 false: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "FalseKeyword"
+                        name: "FalseKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 identifier: {
                     cardinality: ["one", {}],
-                    type: ["node", {
-                        name: "Identifier"
-                    }]
+                    type: ["reference", {
+                        name: "identifier"
+                    }],
                 },
                 new: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NewExpression"
+                        name: "NewExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "class",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "identifier"
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "parameters",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 noSubstitutionTemplateLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NoSubstitutionTemplateLiteral"
+                        name: "NoSubstitutionTemplateLiteral",
+                        type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 numericLiteral: {
                     cardinality: ["one", {}],
-                    type: ["node", {
-                        name: "NumericLiteral"
-                    }]
+                    type: ["reference", {
+                        name: "numericLiteral",
+                    }],
                 },
                 nullKeyword: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NullKeyword"
+                        name: "NullKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 objectLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ObjectLiteralExpression"
+                        name: "ObjectLiteralExpression",
+                        type: ["composite", {
+                            cardinality: ["array", {}],
+                            type: ["node", {
+                                name: "PropertyAssignment",
+                                type: ["composite", {
+                                    cardinality: ["one", {}],
+                                    type: ["sequence", {
+                                        elements: [
+                                            {
+                                                name: "name",
+                                                value: {
+                                                    cardinality: ["one", {}],
+                                                    type: ["choice", {
+                                                        options: {
+                                                            identifier: {
+                                                                cardinality: ["one", {}],
+                                                                type: ["reference", {
+                                                                    name: "identifier"
+                                                                }],
+                                                            },
+                                                            numericLiteral: {
+                                                                cardinality: ["one", {}],
+                                                                type: ["reference", {
+                                                                    name: "numericLiteral",
+                                                                }],
+                                                            },
+                                                            stringLiteral: {
+                                                                cardinality: ["one", {}],
+                                                                type: ["reference", {
+                                                                    name: "stringLiteral"
+                                                                }]
+                                                            },
+                                                        }
+                                                    }]
+                                                }
+                                            },
+                                            {
+                                                name: "expression",
+                                                value: {
+                                                    cardinality: ["one", {}],
+                                                    type: ["reference", { name: "expression" }],
+                                                }
+                                            },
+                                        ]
+                                    }]
+                                }]
+                            }]
+                        }],
                     }]
                 },
                 parenthesizedExpression: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ParenthesizedExpression"
+                        name: "ParenthesizedExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "expression" }],
+                        }],
                     }]
                 },
                 postfixUnary: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PostfixUnaryExpression"
+                        name: "PostfixUnaryExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "expression" }],
+                        }],
                     }]
                 },
                 prefixUnary: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PrefixUnaryExpression"
+                        name: "PrefixUnaryExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "expression" }],
+                        }],
                     }]
                 },
                 propertyAccess: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PropertyAccessExpression"
+                        name: "PropertyAccessExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "object",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                    {
+                                        name: "property",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        }
+                                    },
+                                ]
+                            }]
+                        }],
                     }]
                 },
                 stringLiteral: {
                     cardinality: ["one", {}],
-                    type: ["node", {
-                        name: "StringLiteral"
+                    type: ["reference", {
+                        name: "stringLiteral"
                     }]
                 },
                 template: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TemplateExpression"
+                        name: "TemplateExpression",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "head",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["node", {
+                                                name: "TemplateHead",
+                                                type: ["leaf", { hasTextContent: true }],
+                                            }]
+                                        }
+                                    },
+                                    {
+                                        name: "spans",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["node", {
+                                                name: "TemplateSpan",
+                                                type: ["composite", {
+                                                    cardinality: ["one", {}],
+                                                    type: ["sequence", {
+                                                        elements: [
+                                                            {
+                                                                name: "expression",
+                                                                value: {
+                                                                    cardinality: ["one", {}],
+                                                                    type: ["reference", { name: "expression" }],
+                                                                }
+                                                            },
+                                                            {
+                                                                name: "x",
+                                                                value: {
+                                                                    cardinality: ["one", {}],
+                                                                    type: ["choice", {
+                                                                        options: {
+                                                                            middle: {
+                                                                                cardinality: ["one", {}],
+                                                                                type: ["node", {
+                                                                                    name: "TemplateMiddle",
+                                                                                    type: ["leaf", { hasTextContent: true }],
+                                                                                }],
+                                                                            },
+                                                                            tail: {
+                                                                                cardinality: ["one", {}],
+                                                                                type: ["node", {
+                                                                                    name: "TemplateTail",
+                                                                                    type: ["leaf", { hasTextContent: true }]
+                                                                                }],
+                                                                            }
+                                                                        }
+                                                                    }],
+                                                                }
+                                                            },
+                                                        ]
+                                                    }]
+                                                }]
+                                            }]
+                                        }
+                                    }]
+                            }]
+                        }]
                     }]
                 },
                 true: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TrueKeyword"
+                        name: "TrueKeyword",
+                        type: ["leaf", { hasTextContent: false }]
                     }]
                 },
             }
@@ -132,8 +570,8 @@ export const typescriptGrammar: gr.Grammar = {
                     name: "typeParameters",
                     value: {
                         cardinality: ["array", {}],
-                        type: ["node", {
-                            name: "TypeParameter"
+                        type: ["reference", {
+                            name: "typeParameter"
                         }]
                     },
                 },
@@ -141,8 +579,8 @@ export const typescriptGrammar: gr.Grammar = {
                     name: "parameters",
                     value: {
                         cardinality: ["array", {}],
-                        type: ["node", {
-                            name: "Parameter"
+                        type: ["reference", {
+                            name: "parameter"
                         }]
                     },
                 },
@@ -155,19 +593,22 @@ export const typescriptGrammar: gr.Grammar = {
                 },
             ]
         }],
+        identifier: ["node", {
+            name: "Identifier",
+            type: ["leaf", { hasTextContent: true }]
+        }],
         identifierOrStringLiteral: ["choice", {
             options: {
-
                 identifier: {
                     cardinality: ["one", {}],
-                    type: ["node", {
-                        name: "Identifier"
-                    }]
+                    type: ["reference", {
+                        name: "identifier"
+                    }],
                 },
                 stringLiteral: {
                     cardinality: ["one", {}],
-                    type: ["node", {
-                        name: "StringLiteral"
+                    type: ["reference", {
+                        name: "stringLiteral"
                     }]
                 },
             }
@@ -178,1725 +619,1106 @@ export const typescriptGrammar: gr.Grammar = {
                 declare: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "DeclareKeyword"
+                        name: "DeclareKeyword",
+                        type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 export: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ExportKeyword"
+                        name: "ExportKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 readonly: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ReadonlyKeyword"
+                        name: "ReadonlyKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
             }
+        }],
+        numericLiteral: ["node", {
+            name: "NumericLiteral",
+            type: ["leaf", { hasTextContent: true }],
+        }],
+        parameter: ["node", {
+            name: "Parameter",
+            type: ["composite", {
+                cardinality: ["one", {}],
+                type: ["sequence", {
+                    elements: [
+                        {
+                            name: "name",
+                            value: {
+                                cardinality: ["one", {}],
+                                type: ["reference", {
+                                    name: "identifier"
+                                }],
+                            }
+                        },
+                        {
+                            name: "questionToken",
+                            value: {
+                                cardinality: ["optional", {}],
+                                type: ["node", {
+                                    name: "QuestionToken",
+                                    type: ["leaf", { hasTextContent: false }],
+                                }]
+                            }
+                        },
+                        {
+                            name: "type",
+                            value: {
+                                cardinality: ["optional", {}],
+                                type: ["reference", { name: "type" }],
+                            }
+                        }]
+                }]
+            }]
         }],
         statement: ["choice", {
             options: {
                 block: {
                     cardinality: ["one", {}],
-                    type: ["node", {
-                        name: "Block"
+                    type: ["reference", {
+                        name: "block"
                     }]
                 },
                 break: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "BreakStatement"
+                        name: "BreakStatement",
+                        type: ["composite", {
+                            cardinality: ["optional", {}],
+                            type: ["reference", {
+                                name: "identifier"
+                            }],
+                        }],
                     }]
                 },
                 export: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ExportDeclaration"
+                        name: "ExportDeclaration",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", {
+                                name: "stringLiteral"
+                            }],
+                        }]
                     }]
                 },
                 expression: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ExpressionStatement"
+                        name: "ExpressionStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "expression" }]
+                        }],
                     }]
                 },
                 for: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ForStatement"
+                        name: "ForStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "initializer",
+                                        value: {
+                                            "cardinality": ["one", {}],
+                                            type: ["reference", {
+                                                name: "variableDeclarationList"
+                                            }]
+                                        }
+                                    },
+                                    {
+                                        name: "condition",
+                                        value: {
+                                            "cardinality": ["one", {}],
+                                            type: ["reference", { name: "expression" }]
+                                        }
+                                    },
+                                    {
+                                        name: "incrementer",
+                                        value: {
+                                            "cardinality": ["one", {}],
+                                            type: ["reference", { name: "expression" }]
+                                        }
+                                    },
+                                    {
+                                        name: "block",
+                                        value: {
+                                            "cardinality": ["one", {}],
+                                            type: ["reference", {
+                                                name: "block",
+                                            }]
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 function: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "FunctionDeclaration"
+                        name: "FunctionDeclaration",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "modifiers",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "modifier" }]
+                                        },
+                                    },
+                                    {
+                                        name: "name",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "identifier"
+                                            }],
+                                        },
+                                    },
+                                    {
+                                        name: "definition",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "functionDefinition"
+                                            }]
+                                        },
+                                    },
+                                    {
+                                        name: "block",
+                                        value: {
+                                            cardinality: ["optional", {}],
+                                            type: ["reference", {
+                                                name: "block"
+                                            }]
+                                        },
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 if: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "IfStatement"
+                        name: "IfStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "expression",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        },
+                                    },
+                                    {
+                                        name: "thenStatement",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "statement" }],
+                                        },
+                                    },
+                                    {
+                                        name: "elseStatement",
+                                        value: {
+                                            cardinality: ["optional", {}],
+                                            type: ["reference", { name: "statement" }],
+                                        },
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 import: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ImportDeclaration"
+                        name: "ImportDeclaration",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "clause",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["node", {
+                                                name: "ImportClause",
+                                                type: ["composite", {
+                                                    cardinality: ["one", {}],
+                                                    type: ["choice", {
+                                                        options: {
+                                                            namespace: {
+                                                                cardinality: ["one", {}],
+                                                                type: ["node", {
+                                                                    name: "NamespaceImport",
+                                                                    type: ["composite", {
+                                                                        cardinality: ["one", {}],
+                                                                        type: ["reference", {
+                                                                            name: "identifier"
+                                                                        }],
+                                                                    }],
+                                                                }]
+                                                            },
+                                                            named: {
+                                                                cardinality: ["one", {}],
+                                                                type: ["node", {
+                                                                    name: "NamedImports",
+                                                                    type: ["composite", {
+                                                                        cardinality: ["array", {}],
+                                                                        type: ["node", {
+                                                                            name: "ImportSpecifier",
+                                                                            type: ["composite", {
+                                                                                cardinality: ["one", {}],
+                                                                                type: ["sequence", {
+                                                                                    elements: [
+                                                                                        {
+                                                                                            name: "name",
+                                                                                            value: {
+                                                                                                cardinality: ["one", {}],
+                                                                                                type: ["reference", {
+                                                                                                    name: "identifier"
+                                                                                                }],
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            name: "as",
+                                                                                            value: {
+                                                                                                cardinality: ["optional", {}],
+                                                                                                type: ["reference", {
+                                                                                                    name: "identifier"
+                                                                                                }],
+                                                                                            }
+                                                                                        },
+                                                                                    ]
+                                                                                }]
+                                                                            }]
+                                                                        }]
+                                                                    }]
+                                                                }]
+                                                            }
+                                                        }
+                                                    }]
+                                                }]
+                                            }]
+                                        }
+                                    },
+                                    {
+                                        name: "file",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "stringLiteral"
+                                            }],
+                                        }
+                                    }]
+                            }]
+                        }]
                     }]
                 },
                 interface: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "InterfaceDeclaration"
+                        name: "InterfaceDeclaration",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "modifiers",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "modifier" }]
+                                        },
+                                    },
+                                    {
+                                        name: "name",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "identifier"
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "typeParameters",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", {
+                                                name: "typeParameter"
+                                            }]
+                                        },
+                                    },
+                                    {
+                                        name: "signature",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "typeSignature" }]
+                                        },
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 labeled: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "LabeledStatement"
+                        name: "LabeledStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "label",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "identifier"
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "statement",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "statement" }],
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 return: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ReturnStatement"
+                        name: "ReturnStatement",
+                        type: ["composite", {
+                            cardinality: ["optional", {}],
+                            type: ["reference", { name: "expression" }],
+                        }],
                     }]
                 },
                 switch: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "SwitchStatement"
+                        name: "SwitchStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "expression",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }]
+                                        }
+                                    },
+                                    {
+                                        name: "caseBlock",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["node", {
+                                                name: "CaseBlock",
+                                                type: ["composite", {
+                                                    cardinality: ["array", {}],
+                                                    type: ["choice", {
+                                                        options: {
+                                                            "case": {
+                                                                cardinality: ["one", {}],
+                                                                type: ["node", {
+                                                                    name: "CaseClause",
+                                                                    type: ["composite", {
+                                                                        cardinality: ["one", {}],
+                                                                        type: ["sequence", {
+                                                                            elements: [
+                                                                                {
+                                                                                    name: "case",
+                                                                                    value: {
+                                                                                        cardinality: ["one", {}],
+                                                                                        type: ["reference", { name: "expression" }]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    name: "statements",
+                                                                                    value: {
+                                                                                        cardinality: ["array", {}],
+                                                                                        type: ["reference", { name: "statement" }]
+                                                                                    },
+                                                                                }]
+                                                                        }]
+                                                                    }]
+                                                                }]
+                                                            },
+                                                            "default": {
+                                                                cardinality: ["one", {}],
+                                                                type: ["node", {
+                                                                    name: "DefaultClause",
+                                                                    type: ["composite", {
+                                                                        cardinality: ["array", {}],
+                                                                        type: ["reference", { name: "statement" }]
+                                                                    }]
+                                                                }]
+                                                            },
+                                                        }
+                                                    }]
+                                                }]
+                                            }]
+                                        }
+                                    },
+                                ]
+                            }],
+                        }]
                     }]
                 },
                 throw: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ThrowStatement"
+                        name: "ThrowStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "expression" }],
+                        }]
                     }]
                 },
                 try: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TryStatement"
+                        name: "TryStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "block",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "block"
+                                            }]
+                                        },
+                                    },
+                                    {
+                                        name: "catchClause",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["node", {
+                                                name: "CatchClause",
+                                                type: ["composite", {
+                                                    cardinality: ["one", {}],
+                                                    type: ["sequence", {
+                                                        elements: [
+                                                            {
+                                                                name: "variable",
+                                                                value: {
+                                                                    cardinality: ["one", {}],
+                                                                    type: ["reference", {
+                                                                        name: "variableDeclaration"
+                                                                    }]
+                                                                }
+                                                            },
+                                                            {
+                                                                name: "block",
+                                                                value: {
+                                                                    cardinality: ["one", {}],
+                                                                    type: ["reference", {
+                                                                        name: "block"
+                                                                    }]
+                                                                }
+                                                            },
+                                                        ]
+                                                    }]
+                                                }]
+                                            }]
+                                        },
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 typeAlias: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TypeAliasDeclaration"
+                        name: "TypeAliasDeclaration",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "modifiers",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "modifier" }]
+                                        },
+                                    },
+                                    {
+                                        name: "name",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "identifier"
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "typeParameters",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", {
+                                                name: "typeParameter"
+                                            }]
+                                        },
+                                    },
+                                    {
+                                        name: "type",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "type" }],
+                                        },
+                                    }
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 variable: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "VariableStatement"
+                        name: "VariableStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "modifiers",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "modifier" }]
+                                        },
+                                    },
+                                    {
+                                        name: "variableDeclarationList",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "variableDeclarationList"
+                                            }]
+                                        },
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 while: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "WhileStatement"
+                        name: "WhileStatement",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "condition",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "expression" }],
+                                        },
+                                    },
+                                    {
+                                        name: "block",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "block"
+                                            }],
+                                        },
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
             }
+        }],
+        stringLiteral: ["node", {
+            name: "StringLiteral",
+            type: ["leaf", { hasTextContent: true }]
         }],
         type: ["choice", {
             options: {
                 any: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "AnyKeyword"
+                        name: "AnyKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 array: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ArrayType"
+                        name: "ArrayType",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "type" }],
+                        }]
                     }]
                 },
                 boolean: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "BooleanKeyword"
+                        name: "BooleanKeyword",
+                        type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 function: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "FunctionType"
+                        name: "FunctionType",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "parameters",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", {
+                                                name: "parameter"
+                                            }]
+                                        },
+                                    },
+                                    {
+                                        name: "returnType",
+                                        value: {
+                                            cardinality: ["optional", {}],
+                                            type: ["reference", { name: "type" }],
+                                        },
+                                    }]
+                            }]
+                        }]
                     }]
                 },
                 literal: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "LiteralType"
+                        name: "LiteralType",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["choice", {
+                                options: {
+                                    null: {
+                                        cardinality: ["one", {}],
+                                        type: ["node", {
+                                            name: "NullKeyword",
+                                            type: ["leaf", { hasTextContent: false }],
+                                        }]
+                                    },
+                                    string: {
+                                        cardinality: ["one", {}],
+                                        type: ["reference", {
+                                            name: "stringLiteral"
+                                        }],
+                                    },
+                                }
+                            }]
+                        }]
                     }]
                 },
                 parenthesized: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ParenthesizedType"
+                        name: "ParenthesizedType",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "type" }],
+                        }],
                     }]
                 },
                 never: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NeverKeyword"
+                        name: "NeverKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 number: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NumberKeyword"
+                        name: "NumberKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 optional: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "OptionalType"
+                        name: "OptionalType",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["reference", { name: "type" }],
+                        }],
                     }]
                 },
                 tuple: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TupleType"
+                        name: "TupleType",
+                        type: ["composite", {
+                            cardinality: ["array", {}],
+                            type: ["reference", { name: "type" }],
+                        }],
                     }]
                 },
                 typeLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TypeLiteral"
+                        name: "TypeLiteral",
+                        type: ["composite", {
+                            cardinality: ["array", {}],
+                            type: ["reference", { name: "typeSignature" }],
+                        }],
                     }]
                 },
                 string: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "StringKeyword"
+                        name: "StringKeyword",
+                        type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 typeReference: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TypeReference"
+                        name: "TypeReference",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "x",
+                                        value: {
+                                            "cardinality": ["one", {}],
+                                            type: ["choice", {
+                                                options: {
+                                                    "identifier": {
+                                                        cardinality: ["one", {}],
+                                                        type: ["reference", {
+                                                            name: "identifier"
+                                                        }],
+                                                    },
+                                                    "qualifiedName": {
+                                                        cardinality: ["one", {}],
+                                                        type: ["node", {
+                                                            name: "QualifiedName",
+                                                            type: ["composite", {
+                                                                cardinality: ["one", {}],
+                                                                type: ["sequence", {
+                                                                    elements: [
+                                                                        {
+                                                                            name: "context",
+                                                                            value: {
+                                                                                cardinality: ["one", {}],
+                                                                                type: ["reference", {
+                                                                                    name: "identifier"
+                                                                                }],
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            name: "type",
+                                                                            value: {
+                                                                                cardinality: ["one", {}],
+                                                                                type: ["reference", {
+                                                                                    name: "identifier"
+                                                                                }],
+                                                                            }
+                                                                        },
+                                                                    ]
+                                                                }],
+                                                            }]
+                                                        }]
+                                                    }
+                                                }
+                                            }]
+                                        }
+                                    },
+                                    {
+                                        name: "parameters",
+                                        value: {
+                                            "cardinality": ["array", {}],
+                                            type: ["reference", { name: "type" }],
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 undefined: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "UndefinedKeyword"
+                        name: "UndefinedKeyword",
+                        type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 union: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "UnionType"
+                        name: "UnionType",
+                        type: ["composite", {
+                            cardinality: ["array", {}],
+                            type: ["reference", { name: "type" }],
+                        }],
                     }]
                 },
                 void: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "VoidKeyword"
+                        name: "VoidKeyword",
+                        type: ["leaf", { hasTextContent: false }]
                     }]
                 },
             }
+        }],
+        typeParameter: ["node", {
+            name: "TypeParameter",
+            type: ["composite", {
+                cardinality: ["one", {}],
+                type: ["reference", {
+                    name: "identifier"
+                }],
+            }]
         }],
         typeSignature: ["choice", {
             options: {
                 construct: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ConstructSignature"
+                        name: "ConstructSignature",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "parameters",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", {
+                                                name: "parameter"
+                                            }]
+                                        }
+                                    },
+                                    {
+                                        name: "returnType",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "type"
+                                            }]
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 index: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "IndexSignature"
+                        name: "IndexSignature",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "modifiers",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "modifier" }]
+                                        },
+                                    },
+                                    {
+                                        name: "parameter",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "parameter"
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "type",
+                                        value: {
+                                            cardinality: ["optional", {}],
+                                            type: ["reference", { name: "type" }],
+                                        },
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 method: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "MethodSignature"
+                        name: "MethodSignature",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "name",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "identifier"
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "definition",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", {
+                                                name: "functionDefinition"
+                                            }]
+                                        }
+                                    },
+                                ]
+                            }]
+                        }]
                     }]
                 },
                 property: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PropertySignature"
+                        name: "PropertySignature",
+                        type: ["composite", {
+                            cardinality: ["one", {}],
+                            type: ["sequence", {
+                                elements: [
+                                    {
+                                        name: "modifiers",
+                                        value: {
+                                            cardinality: ["array", {}],
+                                            type: ["reference", { name: "modifier" }]
+                                        },
+                                    },
+                                    {
+                                        name: "name",
+                                        value: {
+                                            cardinality: ["one", {}],
+                                            type: ["reference", { name: "identifierOrStringLiteral" }],
+                                        }
+                                    },
+                                    {
+                                        name: "quesionToken",
+                                        value: {
+                                            cardinality: ["optional", {}],
+                                            type: ["node", {
+                                                name: "QuestionToken",
+                                                type: ["leaf", { hasTextContent: false }],
+                                            }],
+                                        }
+                                    },
+                                    {
+                                        name: "type",
+                                        value: {
+                                            cardinality: ["optional", {}],
+                                            type: ["reference", { name: "type" }],
+                                        },
+                                    }
+                                ]
+                            }]
+                        }]
                     }]
                 },
             }
         }],
+        variableDeclaration: ["node", {
+            name: "VariableDeclaration",
+            type: ["composite", {
+                cardinality: ["one", {}],
+                type: ["sequence", {
+                    elements: [
+                        {
+                            name: "name",
+                            value: {
+                                cardinality: ["one", {}],
+                                type: ["reference", {
+                                    name: "identifier"
+                                }],
+                            },
+                        },
+                        {
+                            name: "type",
+                            value: {
+                                cardinality: ["optional", {}],
+                                type: ["reference", { name: "type" }],
+                            },
+                        },
+                        {
+                            name: "expression",
+                            value: {
+                                cardinality: ["optional", {}],
+                                type: ["reference", { name: "expression" }],
+                            },
+                        },
+                    ]
+                }]
+            }]
+        }],
+        variableDeclarationList: ["node", {
+            name: "VariableDeclarationList",
+            type: ["composite", {
+                cardinality: ["array", {}],
+                type: ["reference", {
+                    name: "variableDeclaration"
+                }]
+            }],
+        }]
     },
-    nodes: {
-        AnyKeyword: { type: ["leaf", { hasTextContent: false }] },
-        ArrayLiteralExpression: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["reference", { name: "expression" }],
-            }]
-        },
-        ArrayType: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "type" }],
-            }]
-        },
-        ArrowFunction: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "parameters",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["node", {
-                                    name: "Parameter"
-                                }]
-                            }
+    root: {
+        name: "SourceFile",
+        type: ["composite", {
+            cardinality: ["one", {}],
+            type: ["sequence", {
+                elements: [
+                    {
+                        name: "statements",
+                        value: {
+                            cardinality: ["array", {}],
+                            type: ["reference", { name: "statement" }]
                         },
-                        {
-                            name: "returnType",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
-                            }
-                        },
-                        {
-                            name: "equalsGreaterThan",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "EqualsGreaterThanToken"
-                                }]
-                            }
-                        },
-                        {
-                            name: "implementation",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["choice", {
-                                    options: {
-                                        "block": {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "Block",
-                                            }]
-                                        },
-                                        "expression": {
-                                            cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
-                                        },
-                                    }
-                                }]
-                            }
-                        },
-                    ],
-                }],
-            }]
-        },
-        BinaryExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "leftHandSide",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                        {
-                            name: "operator",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["choice", {
-                                    options: {
-                                        ampersandAmpersand: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "AmpersandAmpersandToken"
-                                                }
-                                            ]
-                                        },
-                                        barBar: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "BarBarToken"
-                                                }
-                                            ]
-                                        },
-                                        equals: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "EqualsToken"
-                                                }
-                                            ]
-                                        },
-                                        equalsEqualsEquals: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "EqualsEqualsEqualsToken"
-                                                }
-                                            ]
-                                        },
-                                        exclamationEqualsEquals: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "ExclamationEqualsEqualsToken"
-                                                }
-                                            ]
-                                        },
-                                        greaterThan: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "GreaterThanToken"
-                                                }
-                                            ]
-                                        },
-                                        lessThan: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "LessThanToken"
-                                                }
-                                            ]
-                                        },
-                                        minus: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "MinusToken"
-                                                }
-                                            ]
-                                        },
-                                        minusEquals: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "MinusEqualsToken"
-                                                }
-                                            ]
-                                        },
-                                        plus: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "PlusToken"
-                                                }
-                                            ]
-                                        },
-                                        plusEquals: {
-                                            cardinality: [
-                                                "one",
-                                                {}
-                                            ],
-                                            type: [
-                                                "node",
-                                                {
-                                                    name: "PlusEqualsToken"
-                                                }
-                                            ]
-                                        }
-                                    }
-                                }],
-                            }
-                        },
-                        {
-                            name: "rightHandSide",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        }
-                    ]
-                }]
-            }]
-        },
-        AmpersandAmpersandToken: { type: ["leaf", { hasTextContent: false }] },
-        BarBarToken: { type: ["leaf", { hasTextContent: false }] },
-        BreakStatement: {
-            type: ["composite", {
-                cardinality: ["optional", {}],
-                type: ["node", {
-                    name: "Identifier",
-                }]
-            }]
-        },
-        EqualsEqualsEqualsToken: { type: ["leaf", { hasTextContent: false }] },
-        EqualsToken: { type: ["leaf", { hasTextContent: false }] },
-        ExclamationEqualsEqualsToken: { type: ["leaf", { hasTextContent: false }] },
-        GreaterThanToken: { type: ["leaf", { hasTextContent: false }] },
-        LessThanToken: { type: ["leaf", { hasTextContent: false }] },
-        MinusToken: { type: ["leaf", { hasTextContent: false }] },
-        MinusEqualsToken: { type: ["leaf", { hasTextContent: false }] },
-        PlusToken: { type: ["leaf", { hasTextContent: false }] },
-        PlusEqualsToken: { type: ["leaf", { hasTextContent: false }] },
-        BooleanKeyword: { type: ["leaf", { hasTextContent: false }] },
-        Block: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["reference", { name: "statement" }]
-            }]
-        },
-        CallExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "function",
-                            value: {
-                                "cardinality": ["one", {}],
-                                type: ["reference", { name: "expression" }]
-                            }
-                        },
-                        {
-                            name: "typeParameters",
-                            value: {
-                                "cardinality": ["array", {}],
-                                type: ["reference", { name: "type" }],
-                            }
-                        },
-                        {
-                            name: "parameters",
-                            value: {
-                                "cardinality": ["array", {}],
-                                type: ["reference", { name: "expression" }]
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        CaseBlock: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["choice", {
-                    options: {
-                        "case": {
+                    },
+                    {
+                        name: "endOfFile",
+                        value: {
                             cardinality: ["one", {}],
                             type: ["node", {
-                                name: "CaseClause"
-                            }]
-                        },
-                        "default": {
-                            cardinality: ["one", {}],
-                            type: ["node", {
-                                name: "DefaultClause"
-                            }]
-                        },
-                    }
-                }]
-            }]
-        },
-        CaseClause: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "case",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }]
-                            }
-                        },
-                        {
-                            name: "statements",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "statement" }]
-                            },
-                        }
-                    ]
-                }]
-            }]
-        },
-        CatchClause: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "variable",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "VariableDeclaration"
-                                }]
-                            }
-                        },
-                        {
-                            name: "block",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Block"
-                                }]
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        ColonToken: { type: ["leaf", { hasTextContent: false }] },
-        ConditionalExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "test",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                        {
-                            name: "questionToken",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "QuestionToken"
-                                }],
-                            }
-                        },
-                        {
-                            name: "ifExpression",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                        {
-                            name: "colonToken",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "ColonToken"
-                                }],
-                            }
-                        },
-                        {
-                            name: "elseExpression",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        ConstructSignature: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "parameters",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["node", {
-                                    name: "Parameter"
-                                }]
-                            }
-                        },
-                        {
-                            name: "returnType",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", {
-                                    name: "type"
-                                }]
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        DeclareKeyword: { type: ["leaf", { hasTextContent: false }] },
-        DefaultClause: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["reference", { name: "statement" }]
-            }]
-        },
-        ElementAccessExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "array",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                        {
-                            name: "element",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        }
-                    ]
-                }],
-            }]
-        },
-        EndOfFileToken: { type: ["leaf", { hasTextContent: false }] },
-        EqualsGreaterThanToken: { type: ["leaf", { hasTextContent: false }] },
-        ExportDeclaration: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["node", {
-                    name: "StringLiteral"
-                }]
-            }]
-        },
-        ExportKeyword: { type: ["leaf", { hasTextContent: false }] },
-        ExpressionStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "expression" }]
-            }]
-        },
-        FalseKeyword: { type: ["leaf", { hasTextContent: false }] },
-        ForStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "initializer",
-                            value: {
-                                "cardinality": ["one", {}],
-                                type: ["node", {
-                                    name: "VariableDeclarationList"
-                                }]
-                            }
-                        },
-                        {
-                            name: "condition",
-                            value: {
-                                "cardinality": ["one", {}],
-                                type: ["reference", { name: "expression" }]
-                            }
-                        },
-                        {
-                            name: "incrementer",
-                            value: {
-                                "cardinality": ["one", {}],
-                                type: ["reference", { name: "expression" }]
-                            }
-                        },
-                        {
-                            name: "block",
-                            value: {
-                                "cardinality": ["one", {}],
-                                type: ["node", {
-                                    name: "Block",
-                                }]
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        FunctionDeclaration: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "modifiers",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "modifier" }]
-                            }
-                            ,
-                        },
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier"
-                                }]
-                            },
-                        },
-                        {
-                            name: "definition",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", {
-                                    name: "functionDefinition"
-                                }]
-                            },
-                        },
-                        {
-                            name: "block",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["node", {
-                                    name: "Block"
-                                }]
-                            },
-                        },
-                    ]
-                }]
-            }]
-        },
-        Identifier: { type: ["leaf", { hasTextContent: true }] },
-        IfStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "expression",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            },
-                        },
-                        {
-                            name: "thenStatement",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "statement" }],
-                            },
-                        },
-                        {
-                            name: "elseStatement",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "statement" }],
-                            },
-                        },
-                    ]
-                }]
-            }]
-        },
-        FunctionType: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "parameters",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["node", {
-                                    name: "Parameter"
-                                }]
-                            },
-                        },
-                        {
-                            name: "returnType",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
-                            },
-                        }
-                    ]
-                }]
-            }]
-        },
-        ImportClause: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["choice", {
-                    options: {
-                        namespace: {
-                            cardinality: ["one", {}],
-                            type: ["node", {
-                                name: "NamespaceImport"
-                            }]
-                        },
-                        named: {
-                            cardinality: ["one", {}],
-                            type: ["node", {
-                                name: "NamedImports"
+                                name: "EndOfFileToken",
+                                type: ["leaf", { hasTextContent: false }]
                             }]
                         }
-                    }
-                }]
+                    }]
             }]
-        },
-        ImportDeclaration: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "clause",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "ImportClause"
-                                }]
-                            }
-                        },
-                        {
-                            name: "file",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "StringLiteral"
-                                }]
-                            }
-                        }
-                    ]
-                }]
-            }]
-        },
-        IndexSignature: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "modifiers",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "modifier" }]
-                            }
-                            ,
-                        },
-                        {
-                            name: "parameter",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Parameter"
-                                }],
-                            }
-                        },
-                        {
-                            name: "type",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
-                            },
-                        },
-
-                    ]
-                }]
-            }]
-        },
-        InterfaceDeclaration: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "modifiers",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "modifier" }]
-                            }
-                            ,
-                        },
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier"
-                                }]
-                            }
-                        },
-                        {
-                            name: "typeParameters",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["node", {
-                                    name: "TypeParameter"
-                                }]
-                            },
-                        },
-                        {
-                            name: "signature",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "typeSignature" }]
-                            },
-                        },
-                    ]
-                }]
-            }]
-        },
-        ImportSpecifier: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier"
-                                }]
-                            }
-                        },
-                        {
-                            name: "as",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["node", {
-                                    name: "Identifier"
-                                }]
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        LabeledStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "label",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier"
-                                }]
-                            }
-                        },
-                        {
-                            name: "statement",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "statement" }],
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        LiteralType: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["choice", {
-                    options: {
-                        null: {
-                            cardinality: ["one", {}],
-                            type: ["node", {
-                                name: "NullKeyword",
-                            }]
-                        },
-                        string: {
-                            cardinality: ["one", {}],
-                            type: ["node", {
-                                name: "StringLiteral",
-                            }]
-                        },
-                    }
-                }]
-            }]
-        },
-        MethodSignature: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier",
-                                }]
-                            }
-                        },
-                        {
-                            name: "definition",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", {
-                                    name: "functionDefinition"
-                                }]
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        NamespaceImport: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["node", {
-                    name: "Identifier"
-                }]
-            }]
-        },
-        NamedImports: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["node", {
-                    name: "ImportSpecifier"
-                }]
-            }]
-        },
-        NeverKeyword: { type: ["leaf", { hasTextContent: false }] },
-        NumberKeyword: { type: ["leaf", { hasTextContent: false }] },
-        NumericLiteral: { type: ["leaf", { hasTextContent: true }] },
-        NewExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "class",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier",
-                                }]
-                            }
-                        },
-                        {
-                            name: "parameters",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        NullKeyword: { type: ["leaf", { hasTextContent: false }] },
-        NoSubstitutionTemplateLiteral: { type: ["leaf", { hasTextContent: false }] },
-        ObjectLiteralExpression: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["node", {
-                    name: "PropertyAssignment"
-                }]
-            }]
-        },
-        OptionalType: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "type" }],
-            }]
-        },
-        Parameter: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier",
-                                }]
-                            }
-                        },
-                        {
-                            name: "questionToken",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["node", {
-                                    name: "QuestionToken",
-                                }]
-                            }
-                        },
-                        {
-                            name: "type",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
-                            }
-                        }
-                    ]
-                }]
-            }]
-        },
-        ParenthesizedExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "expression" }],
-            }]
-        },
-        ParenthesizedType: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "type" }],
-            }]
-        },
-        PostfixUnaryExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "expression" }],
-            }]
-        },
-        PrefixUnaryExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "expression" }],
-            }]
-        },
-        PropertyAccessExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "object",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                        {
-                            name: "property",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        PropertyAssignment: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["choice", {
-                                    options: {
-                                        identifier: {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "Identifier"
-                                            }]
-                                        },
-                                        numericLiteral: {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "NumericLiteral"
-                                            }]
-                                        },
-                                        stringLiteral: {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "StringLiteral"
-                                            }]
-                                        },
-                                    }
-                                }]
-                            }
-                        },
-                        {
-                            name: "expression",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        PropertySignature: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "modifiers",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "modifier" }]
-                            }
-                            ,
-                        },
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "identifierOrStringLiteral" }],
-                            }
-                        },
-                        {
-                            name: "quesionToken",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["node", {
-                                    name: "QuestionToken",
-                                }],
-                            }
-                        },
-                        {
-                            name: "type",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
-                            },
-                        }
-
-                    ]
-                }]
-            }]
-        },
-        QualifiedName: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "context",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier",
-                                }]
-                            }
-                        },
-                        {
-                            name: "type",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier",
-                                }]
-                            }
-                        },
-                    ]
-                }],
-            }]
-        },
-        QuestionToken: { type: ["leaf", { hasTextContent: false }] },
-        ReadonlyKeyword: { type: ["leaf", { hasTextContent: false }] },
-        ReturnStatement: {
-            type: ["composite", {
-                cardinality: ["optional", {}],
-                type: ["reference", { name: "expression" }],
-            }]
-        },
-        SourceFile: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "statements",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "statement" }]
-                            },
-                        },
-                        {
-                            name: "endOfFile",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "EndOfFileToken"
-                                }]
-                            }
-                        }
-                    ]
-
-                }]
-            }]
-        },
-        StringKeyword: { type: ["leaf", { hasTextContent: false }] },
-        StringLiteral: { type: ["leaf", { hasTextContent: true }] },
-        SwitchStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "expression",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }]
-                            }
-                        },
-                        {
-                            name: "caseBlock",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "CaseBlock"
-                                }]
-                            }
-                        },
-                    ]
-                }],
-            }]
-        },
-        TemplateExpression: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "head",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "TemplateHead",
-                                }]
-                            }
-                        },
-                        {
-                            name: "spans",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["node", {
-                                    name: "TemplateSpan",
-                                }]
-                            }
-                        }
-                    ]
-                }]
-            }]
-        },
-        TemplateHead: { type: ["leaf", { hasTextContent: true }] },
-        TemplateMiddle: { type: ["leaf", { hasTextContent: false }] },
-        TemplateSpan: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "expression",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            }
-                        },
-                        {
-                            name: "x",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["choice", {
-                                    options: {
-                                        middle: {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "TemplateMiddle"
-                                            }],
-                                        },
-                                        tail: {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "TemplateTail"
-                                            }],
-
-                                        }
-                                    }
-                                }],
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        TemplateTail: { type: ["leaf", { hasTextContent: false }] },
-
-        ThrowStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["reference", { name: "expression" }],
-            }]
-        },
-        TrueKeyword: { type: ["leaf", { hasTextContent: false }] },
-        TryStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "block",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Block"
-                                }]
-                            },
-                        },
-                        {
-                            name: "catchClause",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "CatchClause"
-                                }]
-                            },
-                        },
-                    ]
-                }]
-            }]
-        },
-        TupleType: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["reference", { name: "type" }],
-            }]
-        },
-        TypeAliasDeclaration: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "modifiers",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "modifier" }]
-                            }
-                            ,
-                        },
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier"
-                                }]
-                            }
-                        },
-                        {
-                            name: "typeParameters",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["node", {
-                                    name: "TypeParameter"
-                                }]
-                            },
-                        },
-                        {
-                            name: "type",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "type" }],
-                            },
-                        }
-
-                    ]
-                }]
-            }]
-        },
-        TypeLiteral: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["reference", { name: "typeSignature" }],
-            }]
-        },
-        TypeParameter: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["node", {
-                    name: "Identifier"
-                }],
-            }]
-        },
-        TypeReference: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "x",
-                            value: {
-                                "cardinality": ["one", {}],
-                                type: ["choice", {
-                                    options: {
-                                        "identifier": {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "Identifier",
-                                            }]
-                                        },
-                                        "qualifiedName": {
-                                            cardinality: ["one", {}],
-                                            type: ["node", {
-                                                name: "QualifiedName",
-                                            }]
-                                        }
-                                    }
-                                }]
-                            }
-                        },
-                        {
-                            name: "parameters",
-                            value: {
-                                "cardinality": ["array", {}],
-                                type: ["reference", { name: "type" }],
-                            }
-                        },
-                    ]
-                }]
-            }]
-        },
-        UndefinedKeyword: { type: ["leaf", { hasTextContent: false }] },
-        UnionType: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["reference", { name: "type" }],
-            }]
-        },
-        VariableDeclaration: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "name",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Identifier"
-                                }]
-                            },
-                        },
-                        {
-                            name: "type",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
-                            },
-                        },
-                        {
-                            name: "expression",
-                            value: {
-                                cardinality: ["optional", {}],
-                                type: ["reference", { name: "expression" }],
-                            },
-                        },
-                    ]
-                }]
-            }]
-        },
-        VariableDeclarationList: {
-            type: ["composite", {
-                cardinality: ["array", {}],
-                type: ["node", {
-                    name: "VariableDeclaration"
-                }]
-            }]
-        },
-        VariableStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "modifiers",
-                            value: {
-                                cardinality: ["array", {}],
-                                type: ["reference", { name: "modifier" }]
-                            }
-                            ,
-                        },
-                        {
-                            name: "variableDeclarationList",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "VariableDeclarationList"
-                                }]
-                            },
-                        },
-                    ]
-                }]
-            }]
-        },
-        VoidKeyword: { type: ["leaf", { hasTextContent: false }] },
-        WhileStatement: {
-            type: ["composite", {
-                cardinality: ["one", {}],
-                type: ["sequence", {
-                    elements: [
-                        {
-                            name: "condition",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["reference", { name: "expression" }],
-                            },
-                        },
-                        {
-                            name: "block",
-                            value: {
-                                cardinality: ["one", {}],
-                                type: ["node", {
-                                    name: "Block"
-                                }],
-                            },
-                        },
-                    ]
-                }]
-            }]
-        },
-    },
-    rootNode: "SourceFile"
+        }]
+    }
 }

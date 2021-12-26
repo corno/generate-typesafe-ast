@@ -28,7 +28,7 @@ export function generateParser(
                 break
             case "reference":
                 pr.cc($[1], ($) => {
-                    const x = grammar.valueTypes[$.name]
+                    const x = grammar.globalValueTypes[$.name]
                     if (x === undefined) {
                         throw new Error(`no such value type: '${$.name}'`)
                     }
@@ -87,7 +87,7 @@ export function generateParser(
                 $w.snippet(`$: uast.Node<Annotation>,`)
             })
             $w.line(($w) => {
-                $w.snippet(`callback: ($: tast.T${grammar.rootNode}<Annotation>) => void,`)
+                $w.snippet(`callback: ($: tast.Nroot<Annotation>) => void,`)
             })
             $w.line(($w) => {
                 $w.snippet(`reportUnexpectedRoot: ($: { root: uast.Node<Annotation>, }) => void,`)
@@ -126,7 +126,152 @@ export function generateParser(
                     $w.snippet(`}`)
                 })
             }
-            function generateSymbol(
+            function generateNode(
+                $: g.Node2,
+                path: string,
+                $w: wapi.Block,
+            ) {
+
+                $w.line(($w) => {
+
+                    $w.snippet(`function ${path}(`)
+                    $w.indent(($w) => {
+                        $w.line(($w) => {
+                            $w.snippet(`$: uast.Node<Annotation>,`)
+                        })
+                        $w.line(($w) => {
+                            $w.snippet(`callback: ($: tast.N${path}<Annotation>) => void,`)
+                        })
+                    })
+                    $w.snippet(`): void {`)
+                    $w.indent(($w) => {
+                        $w.line(($w) => {
+                            $w.snippet(`const node = $`)
+                        })
+                        $w.line(($w) => {
+                            $w.snippet(`const children: uast.Node<Annotation>[] = []`)
+                        })
+                        $w.line(($w) => {
+                            $w.snippet(`$.children.forEach(($) => { children.push($) })`)
+                        })
+                        $w.line(($w) => {
+                            $w.snippet(`children.reverse()`)
+                        })
+                        switch ($.type[0]) {
+                            case "composite":
+                                pr.cc($.type[1], ($) => {
+                                    $w.line(($w) => {
+                                        $w.snippet(`let currentChild: uast.Node<Annotation> | undefined`)
+                                    })
+                                    $w.line(($w) => {
+                                        $w.snippet(`let nextChild: uast.Node<Annotation> | undefined`)
+                                    })
+                                    generateValue(
+                                        $,
+                                        path,
+                                        $w,
+                                        ($w) => {
+                                            $w.line(($w) => {
+                                                $w.snippet(`callback({`)
+                                                $w.indent(($w) => {
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`annotation: node.annotation,`)
+                                                    })
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`content: $,`)
+                                                    })
+                                                })
+                                                $w.snippet(`})`)
+                                            })
+                                        }
+                                    )
+                                    $w.line(($w) => {
+                                        $w.snippet(`if (children.length > 0) {`)
+                                        $w.indent(($w) => {
+                                            $w.line(($w) => {
+                                                $w.snippet(`reportUnexpectedChild({`)
+                                                $w.indent(($w) => {
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`path: "${path}",`)
+                                                    })
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`child: children[children.length - 1],`)
+                                                    })
+                                                })
+                                                $w.snippet(`})`)
+                                            })
+                                        })
+                                        $w.snippet(`}`)
+                                    })
+                                    // $w.line(($w) => {
+                                    //     $w.snippet(`callback({`)
+                                    //     $w.indent(($w) => {
+                                    //         $w.line(($w) => {
+                                    //             $w.snippet(`annotation: $.annotation,`)
+                                    //         })
+                                    //         $w.line(($w) => {
+                                    //             $w.snippet(`content: `)
+                                    //             $w.snippet(`FIXME`)
+                                    //         })
+                                    //     })
+                                    //     $w.snippet(`})`)
+                                    // })
+                                    $w.line(($w) => {
+                                        $w.snippet(`return`)
+                                    })
+                                })
+                                break
+                            case "leaf":
+                                pr.cc($.type[1], ($) => {
+                                    $w.line(($w) => {
+                                        $w.snippet(`if (children.length > 0) {`)
+                                        $w.indent(($w) => {
+                                            $w.line(($w) => {
+                                                $w.snippet(`reportUnexpectedChild({`)
+                                                $w.indent(($w) => {
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`path: "${path}",`)
+                                                    })
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`child: children[0],`)
+                                                    })
+                                                })
+                                                $w.snippet(`})`)
+                                            })
+                                        })
+                                        $w.snippet(`}`)
+                                    })
+                                    $w.line(($w) => {
+                                        $w.snippet(`callback({`)
+                                        $w.indent(($w) => {
+                                            $w.line(($w) => {
+                                                $w.snippet(`annotation: $.annotation,`)
+                                            })
+                                            $w.line(($w) => {
+                                                $w.snippet(`content: `)
+                                                if ($.hasTextContent) {
+                                                    $w.snippet(`$.value`)
+                                                } else {
+                                                    $w.snippet(`null`)
+                                                }
+                                            })
+                                        })
+                                        $w.snippet(`})`)
+                                    })
+                                    $w.line(($w) => {
+                                        $w.snippet(`return`)
+                                    })
+                                })
+                                break
+                            default:
+                                pr.au($.type[0])
+                        }
+                    })
+                    $w.snippet(`}`)
+                })
+
+            }
+            function generateValue(
                 $: g.Value,
                 path: string,
                 $w: wapi.Block,
@@ -139,12 +284,12 @@ export function generateParser(
                     case "array":
                         pr.cc($.cardinality[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`const elements: tast.S${path}<Annotation> = []`)
+                                $w.snippet(`const elements: tast.V${path}<Annotation> = []`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`const processElement = () => {`)
                                 $w.indent(($w) => {
-                                    generateSymbolType(
+                                    generateValueType(
                                         symbol.type,
                                         path,
                                         $w,
@@ -223,7 +368,7 @@ export function generateParser(
                         break
                     case "one":
                         pr.cc($.cardinality[1], ($) => {
-                            generateSymbolType(
+                            generateValueType(
                                 symbol.type,
                                 path,
                                 $w,
@@ -234,12 +379,12 @@ export function generateParser(
                     case "optional":
                         pr.cc($.cardinality[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`let optional: tast.S${path}<Annotation> = null`)
+                                $w.snippet(`let optional: tast.VT${path}<Annotation> = null`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`const setOptional = () => {`)
                                 $w.indent(($w) => {
-                                    generateSymbolType(
+                                    generateValueType(
                                         symbol.type,
                                         path,
                                         $w,
@@ -329,7 +474,7 @@ export function generateParser(
                         pr.au($.cardinality[0])
                 }
             }
-            function generateSymbolType(
+            function generateValueType(
                 $: g.ValueType,
                 path: string,
                 $w: wapi.Block,
@@ -358,7 +503,7 @@ export function generateParser(
                                 )
                             })
                             $w.line(($w) => {
-                                $w.snippet(`const choiceEnd_${path} = ($: tast.X${path}<Annotation>) => {`)
+                                $w.snippet(`const choiceEnd_${path} = ($: tast.VT${path}<Annotation>) => {`)
                                 $w.indent(($w) => {
                                     endCallback(
                                         $w,
@@ -395,7 +540,7 @@ export function generateParser(
                                             $w.snippet(`const choose_${key} = () => {`)
                                             $w.indent(($w) => {
 
-                                                generateSymbol(
+                                                generateValue(
                                                     option,
                                                     `${path}_${key}`,
                                                     $w,
@@ -474,7 +619,7 @@ export function generateParser(
                     case "reference":
                         pr.cc($[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`X_${$.name}(node, children, ($) => {`)
+                                $w.snippet(`G${$.name}(node, children, ($) => {`)
                                 $w.indent(($w) => {
                                     endCallback(
                                         $w,
@@ -487,7 +632,7 @@ export function generateParser(
                     case "sequence":
                         pr.cc($[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`const sequenceEnd = ($: tast.X${path}<Annotation>) => {`)
+                                $w.snippet(`const sequenceEnd = ($: tast.VT${path}<Annotation>) => {`)
                                 $w.indent(($w) => {
                                     endCallback(
                                         $w,
@@ -501,7 +646,7 @@ export function generateParser(
                             ) {
                                 const element = elements.pop()
                                 if (element !== undefined) {
-                                    generateSymbol(
+                                    generateValue(
                                         element.value,
                                         `${path}_${element.name}`,
                                         $w,
@@ -585,8 +730,13 @@ export function generateParser(
                                 })
                                 $w.snippet(`}`)
                             })
+                            generateNode(
+                                $,
+                                `${path}$`,
+                                $w,
+                            )
                             $w.line(($w) => {
-                                $w.snippet(`${$.name}(`)
+                                $w.snippet(`${path}$(`)
                                 $w.indent(($w) => {
                                     $w.line(($w) => {
                                         $w.snippet(`currentChild,`)
@@ -607,11 +757,11 @@ export function generateParser(
                         pr.au($[0])
                 }
             }
-            g.forEachEntry(grammar.valueTypes, ($, key) => {
+            g.forEachEntry(grammar.globalValueTypes, ($, key) => {
 
                 $w.line(($w) => {
 
-                    $w.snippet(`function X_${key}(`)
+                    $w.snippet(`function G${key}(`)
                     $w.indent(($w) => {
                         $w.line(($w) => {
                             $w.snippet(`node: uast.Node<Annotation>,`)
@@ -631,7 +781,7 @@ export function generateParser(
                         $w.line(($w) => {
                             $w.snippet(`let nextChild: uast.Node<Annotation> | undefined`)
                         })
-                        generateSymbolType(
+                        generateValueType(
                             $,
                             `G${key}`,
                             $w,
@@ -646,151 +796,8 @@ export function generateParser(
                 })
             })
 
-            g.forEachEntry(grammar.nodes, ($, key) => {
-                const tokenName = key
-
-                $w.line(($w) => {
-
-                    $w.snippet(`function ${key}(`)
-                    $w.indent(($w) => {
-                        $w.line(($w) => {
-                            $w.snippet(`$: uast.Node<Annotation>,`)
-                        })
-                        $w.line(($w) => {
-                            $w.snippet(`callback: ($: tast.T${key}<Annotation>) => void,`)
-                        })
-                    })
-                    $w.snippet(`): void {`)
-                    $w.indent(($w) => {
-                        $w.line(($w) => {
-                            $w.snippet(`const node = $`)
-                        })
-                        $w.line(($w) => {
-                            $w.snippet(`const children: uast.Node<Annotation>[] = []`)
-                        })
-                        $w.line(($w) => {
-                            $w.snippet(`$.children.forEach(($) => { children.push($) })`)
-                        })
-                        $w.line(($w) => {
-                            $w.snippet(`children.reverse()`)
-                        })
-                        switch ($.type[0]) {
-                            case "composite":
-                                pr.cc($.type[1], ($) => {
-                                    $w.line(($w) => {
-                                        $w.snippet(`let currentChild: uast.Node<Annotation> | undefined`)
-                                    })
-                                    $w.line(($w) => {
-                                        $w.snippet(`let nextChild: uast.Node<Annotation> | undefined`)
-                                    })
-                                    generateSymbol(
-                                        $,
-                                        `T${key}`,
-                                        $w,
-                                        ($w) => {
-                                            $w.line(($w) => {
-                                                $w.snippet(`callback({`)
-                                                $w.indent(($w) => {
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`annotation: node.annotation,`)
-                                                    })
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`content: $,`)
-                                                    })
-                                                })
-                                                $w.snippet(`})`)
-                                            })
-                                        }
-                                    )
-                                    $w.line(($w) => {
-                                        $w.snippet(`if (children.length > 0) {`)
-                                        $w.indent(($w) => {
-                                            $w.line(($w) => {
-                                                $w.snippet(`reportUnexpectedChild({`)
-                                                $w.indent(($w) => {
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`path: "${key}",`)
-                                                    })
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`child: children[children.length - 1],`)
-                                                    })
-                                                })
-                                                $w.snippet(`})`)
-                                            })
-                                        })
-                                        $w.snippet(`}`)
-                                    })
-                                    // $w.line(($w) => {
-                                    //     $w.snippet(`callback({`)
-                                    //     $w.indent(($w) => {
-                                    //         $w.line(($w) => {
-                                    //             $w.snippet(`annotation: $.annotation,`)
-                                    //         })
-                                    //         $w.line(($w) => {
-                                    //             $w.snippet(`content: `)
-                                    //             $w.snippet(`FIXME`)
-                                    //         })
-                                    //     })
-                                    //     $w.snippet(`})`)
-                                    // })
-                                    $w.line(($w) => {
-                                        $w.snippet(`return`)
-                                    })
-                                })
-                                break
-                            case "leaf":
-                                pr.cc($.type[1], ($) => {
-                                    $w.line(($w) => {
-                                        $w.snippet(`if (children.length > 0) {`)
-                                        $w.indent(($w) => {
-                                            $w.line(($w) => {
-                                                $w.snippet(`reportUnexpectedChild({`)
-                                                $w.indent(($w) => {
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`path: "${key}",`)
-                                                    })
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`child: children[0],`)
-                                                    })
-                                                })
-                                                $w.snippet(`})`)
-                                            })
-                                        })
-                                        $w.snippet(`}`)
-                                    })
-                                    $w.line(($w) => {
-                                        $w.snippet(`callback({`)
-                                        $w.indent(($w) => {
-                                            $w.line(($w) => {
-                                                $w.snippet(`annotation: $.annotation,`)
-                                            })
-                                            $w.line(($w) => {
-                                                $w.snippet(`content: `)
-                                                if ($.hasTextContent) {
-                                                    $w.snippet(`$.value`)
-                                                } else {
-                                                    $w.snippet(`null`)
-                                                }
-                                            })
-                                        })
-                                        $w.snippet(`})`)
-                                    })
-                                    $w.line(($w) => {
-                                        $w.snippet(`return`)
-                                    })
-                                })
-                                break
-                            default:
-                                pr.au($.type[0])
-                        }
-                    })
-                    $w.snippet(`}`)
-                })
-            })
-
-
             $w.line(($w) => {
-                $w.snippet(`if ($.kindName !== "${grammar.rootNode}") {`)
+                $w.snippet(`if ($.kindName !== "${grammar.root.name}") {`)
                 $w.indent(($w) => {
                     $w.line(($w) => {
                         $w.snippet(`reportUnexpectedRoot({`)
@@ -807,8 +814,13 @@ export function generateParser(
                 })
                 $w.snippet(`} else {`)
                 $w.indent(($w) => {
+                    generateNode(
+                        grammar.root,
+                        "root",
+                        $w,
+                    )
                     $w.line(($w) => {
-                        $w.snippet(`${grammar.rootNode}(`)
+                        $w.snippet(`root(`)
                         $w.indent(($w) => {
                             $w.line(($w) => {
                                 $w.snippet(`$,`)

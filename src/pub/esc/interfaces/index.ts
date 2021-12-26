@@ -19,9 +19,7 @@ export type ValueType =
     | ["choice", {
         "options": Options
     }]
-    | ["node", {
-        "name": string
-    }]
+    | ["node", Node2]
     | ["sequence", {
         elements: SequenceElement[]
     }]
@@ -32,13 +30,18 @@ export type Value = {
 }
 
 export type Grammar = {
-    valueTypes: {
+    globalValueTypes: {
         [key: string]: ValueType
     }
-    nodes: {
-        [key: string]: Node
-    }
-    rootNode: string
+    root: Node2
+}
+
+export type Node2 = {
+    name: string
+    type:
+    | ["composite", Composite]
+    | ["leaf", Leaf]
+
 }
 
 export type Leaf = {
@@ -46,12 +49,6 @@ export type Leaf = {
 }
 
 export type Composite = Value
-
-export type Node = {
-    type:
-    | ["composite", Composite]
-    | ["leaf", Leaf]
-}
 
 export function forEachEntry<T>(
     dictionary: { [key: string]: T },
