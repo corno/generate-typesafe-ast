@@ -6,7 +6,7 @@ export function parse<Annotation>(
     $: uast.Node<Annotation>,
     callback: ($: tast.Nroot<Annotation>) => void,
     reportUnexpectedRoot: ($: { root: uast.Node<Annotation>, }) => void,
-    reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, }) => void,
+    reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, expected: null | string[] }) => void,
     reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,
 ): void {
     function Gblock(
@@ -29,6 +29,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "Gblock",
                 child: currentChild,
+                expected: ["Block"],
             })
             return
         }
@@ -115,12 +116,6 @@ export function parse<Annotation>(
                     content: $,
                 })
             })
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "Gblock$",
-                    child: children[children.length - 1],
-                })
-            }
             return
         })(
             currentChild,
@@ -128,6 +123,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "Gblock$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     function Gexpression(
         node: uast.Node<Annotation>,
@@ -162,6 +164,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_arrayLiteral",
                         child: currentChild,
+                        expected: ["ArrayLiteralExpression"],
                     })
                     return
                 }
@@ -257,12 +260,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_arrayLiteral$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -270,6 +267,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["arrayLiteral", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_arrayLiteral$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_arrowFunction = () => {
                 currentChild = children.pop()
@@ -285,6 +289,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_arrowFunction",
                         child: currentChild,
+                        expected: ["ArrowFunction"],
                     })
                     return
                 }
@@ -399,6 +404,7 @@ export function parse<Annotation>(
                                 reportUnexpectedChild({
                                     path: "Gexpression_arrowFunction$_equalsGreaterThan",
                                     child: currentChild,
+                                    expected: ["EqualsGreaterThanToken"],
                                 })
                                 return
                             }
@@ -410,12 +416,6 @@ export function parse<Annotation>(
                                 const children: uast.Node<Annotation>[] = []
                                 $.children.forEach(($) => { children.push($) })
                                 children.reverse()
-                                if (children.length > 0) {
-                                    reportUnexpectedChild({
-                                        path: "Gexpression_arrowFunction$_equalsGreaterThan$",
-                                        child: children[0],
-                                    })
-                                }
                                 callback({
                                     annotation: $.annotation,
                                     content: null
@@ -542,20 +542,22 @@ export function parse<Annotation>(
                                                 reportUnexpectedChild({
                                                     path: "Gexpression_arrowFunction$_implementation",
                                                     child: nextChild,
+                                                    expected: Block,ArrayLiteralExpression,ArrowFunction,BinaryExpression,CallExpression,ConditionalExpression,ElementAccessExpression,FalseKeyword,Identifier,NewExpression,NoSubstitutionTemplateLiteral,NumericLiteral,NullKeyword,ObjectLiteralExpression,ParenthesizedExpression,PostfixUnaryExpression,PrefixUnaryExpression,PropertyAccessExpression,StringLiteral,TemplateExpression,TrueKeyword,
                                                 })
                                             }
                                         }
                                     }
                                 }
                             )
+                            if (children.length > 0) {
+                                reportUnexpectedChild({
+                                    path: "Gexpression_arrowFunction$_equalsGreaterThan$",
+                                    child: children[children.length - 1],
+                                    expected: null,
+                                })
+                            }
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_arrowFunction$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -563,6 +565,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["arrowFunction", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_arrowFunction$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_binary = () => {
                 currentChild = children.pop()
@@ -578,6 +587,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_binary",
                         child: currentChild,
+                        expected: ["BinaryExpression"],
                     })
                     return
                 }
@@ -633,6 +643,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_ampersandAmpersand",
                                         child: currentChild,
+                                        expected: ["AmpersandAmpersandToken"],
                                     })
                                     return
                                 }
@@ -644,12 +655,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_ampersandAmpersand$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -661,6 +666,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["ampersandAmpersand", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_ampersandAmpersand$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_barBar = () => {
                                 currentChild = children.pop()
@@ -676,6 +688,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_barBar",
                                         child: currentChild,
+                                        expected: ["BarBarToken"],
                                     })
                                     return
                                 }
@@ -687,12 +700,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_barBar$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -704,6 +711,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["barBar", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_barBar$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_equals = () => {
                                 currentChild = children.pop()
@@ -719,6 +733,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_equals",
                                         child: currentChild,
+                                        expected: ["EqualsToken"],
                                     })
                                     return
                                 }
@@ -730,12 +745,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_equals$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -747,6 +756,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["equals", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_equals$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_equalsEqualsEquals = () => {
                                 currentChild = children.pop()
@@ -762,6 +778,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_equalsEqualsEquals",
                                         child: currentChild,
+                                        expected: ["EqualsEqualsEqualsToken"],
                                     })
                                     return
                                 }
@@ -773,12 +790,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_equalsEqualsEquals$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -790,6 +801,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["equalsEqualsEquals", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_equalsEqualsEquals$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_exclamationEqualsEquals = () => {
                                 currentChild = children.pop()
@@ -805,6 +823,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_exclamationEqualsEquals",
                                         child: currentChild,
+                                        expected: ["ExclamationEqualsEqualsToken"],
                                     })
                                     return
                                 }
@@ -816,12 +835,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_exclamationEqualsEquals$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -833,6 +846,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["exclamationEqualsEquals", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_exclamationEqualsEquals$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_greaterThan = () => {
                                 currentChild = children.pop()
@@ -848,6 +868,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_greaterThan",
                                         child: currentChild,
+                                        expected: ["GreaterThanToken"],
                                     })
                                     return
                                 }
@@ -859,12 +880,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_greaterThan$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -876,6 +891,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["greaterThan", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_greaterThan$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_lessThan = () => {
                                 currentChild = children.pop()
@@ -891,6 +913,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_lessThan",
                                         child: currentChild,
+                                        expected: ["LessThanToken"],
                                     })
                                     return
                                 }
@@ -902,12 +925,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_lessThan$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -919,6 +936,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["lessThan", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_lessThan$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_minus = () => {
                                 currentChild = children.pop()
@@ -934,6 +958,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_minus",
                                         child: currentChild,
+                                        expected: ["MinusToken"],
                                     })
                                     return
                                 }
@@ -945,12 +970,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_minus$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -962,6 +981,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["minus", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_minus$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_minusEquals = () => {
                                 currentChild = children.pop()
@@ -977,6 +1003,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_minusEquals",
                                         child: currentChild,
+                                        expected: ["MinusEqualsToken"],
                                     })
                                     return
                                 }
@@ -988,12 +1015,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_minusEquals$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -1005,6 +1026,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["minusEquals", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_minusEquals$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_plus = () => {
                                 currentChild = children.pop()
@@ -1020,6 +1048,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_plus",
                                         child: currentChild,
+                                        expected: ["PlusToken"],
                                     })
                                     return
                                 }
@@ -1031,12 +1060,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_plus$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -1048,6 +1071,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["plus", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_plus$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_plusEquals = () => {
                                 currentChild = children.pop()
@@ -1063,6 +1093,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_plusEquals",
                                         child: currentChild,
+                                        expected: ["PlusEqualsToken"],
                                     })
                                     return
                                 }
@@ -1074,12 +1105,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_binary$_operator_plusEquals$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -1091,6 +1116,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gexpression_binary$_operator(["plusEquals", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_binary$_operator_plusEquals$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             switch (nextChild.kindName) {
                                 case "AmpersandAmpersandToken": {
@@ -1141,17 +1173,12 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator",
                                         child: nextChild,
+                                        expected: AmpersandAmpersandToken,BarBarToken,EqualsToken,EqualsEqualsEqualsToken,ExclamationEqualsEqualsToken,GreaterThanToken,LessThanToken,MinusToken,MinusEqualsToken,PlusToken,PlusEqualsToken,
                                     })
                                 }
                             }
                         }
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_binary$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -1159,6 +1186,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["binary", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_binary$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_call = () => {
                 currentChild = children.pop()
@@ -1174,6 +1208,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_call",
                         child: currentChild,
+                        expected: ["CallExpression"],
                     })
                     return
                 }
@@ -1347,12 +1382,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_call$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -1360,6 +1389,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["call", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_call$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_conditional = () => {
                 currentChild = children.pop()
@@ -1375,6 +1411,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_conditional",
                         child: currentChild,
+                        expected: ["ConditionalExpression"],
                     })
                     return
                 }
@@ -1409,6 +1446,7 @@ export function parse<Annotation>(
                             reportUnexpectedChild({
                                 path: "Gexpression_conditional$_questionToken",
                                 child: currentChild,
+                                expected: ["QuestionToken"],
                             })
                             return
                         }
@@ -1420,12 +1458,6 @@ export function parse<Annotation>(
                             const children: uast.Node<Annotation>[] = []
                             $.children.forEach(($) => { children.push($) })
                             children.reverse()
-                            if (children.length > 0) {
-                                reportUnexpectedChild({
-                                    path: "Gexpression_conditional$_questionToken$",
-                                    child: children[0],
-                                })
-                            }
                             callback({
                                 annotation: $.annotation,
                                 content: null
@@ -1450,6 +1482,7 @@ export function parse<Annotation>(
                                         reportUnexpectedChild({
                                             path: "Gexpression_conditional$_colonToken",
                                             child: currentChild,
+                                            expected: ["ColonToken"],
                                         })
                                         return
                                     }
@@ -1461,12 +1494,6 @@ export function parse<Annotation>(
                                         const children: uast.Node<Annotation>[] = []
                                         $.children.forEach(($) => { children.push($) })
                                         children.reverse()
-                                        if (children.length > 0) {
-                                            reportUnexpectedChild({
-                                                path: "Gexpression_conditional$_colonToken$",
-                                                child: children[0],
-                                            })
-                                        }
                                         callback({
                                             annotation: $.annotation,
                                             content: null
@@ -1488,16 +1515,24 @@ export function parse<Annotation>(
                                             })
                                         }
                                     )
+                                    if (children.length > 0) {
+                                        reportUnexpectedChild({
+                                            path: "Gexpression_conditional$_colonToken$",
+                                            child: children[children.length - 1],
+                                            expected: null,
+                                        })
+                                    }
                                 })
                             }
                         )
+                        if (children.length > 0) {
+                            reportUnexpectedChild({
+                                path: "Gexpression_conditional$_questionToken$",
+                                child: children[children.length - 1],
+                                expected: null,
+                            })
+                        }
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_conditional$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -1505,6 +1540,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["conditional", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_conditional$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_elementAccess = () => {
                 currentChild = children.pop()
@@ -1520,6 +1562,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_elementAccess",
                         child: currentChild,
+                        expected: ["ElementAccessExpression"],
                     })
                     return
                 }
@@ -1549,12 +1592,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_elementAccess$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -1562,6 +1599,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["elementAccess", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_elementAccess$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_false = () => {
                 currentChild = children.pop()
@@ -1577,6 +1621,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_false",
                         child: currentChild,
+                        expected: ["FalseKeyword"],
                     })
                     return
                 }
@@ -1588,12 +1633,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_false$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -1605,6 +1644,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["false", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_false$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_identifier = () => {
                 Gidentifier(node, children, ($) => {
@@ -1625,6 +1671,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_new",
                         child: currentChild,
+                        expected: ["NewExpression"],
                     })
                     return
                 }
@@ -1730,12 +1777,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_new$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -1743,6 +1784,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["new", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_new$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_noSubstitutionTemplateLiteral = () => {
                 currentChild = children.pop()
@@ -1758,6 +1806,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_noSubstitutionTemplateLiteral",
                         child: currentChild,
+                        expected: ["NoSubstitutionTemplateLiteral"],
                     })
                     return
                 }
@@ -1769,12 +1818,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_noSubstitutionTemplateLiteral$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -1786,6 +1829,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["noSubstitutionTemplateLiteral", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_noSubstitutionTemplateLiteral$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_numericLiteral = () => {
                 GnumericLiteral(node, children, ($) => {
@@ -1806,6 +1856,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_nullKeyword",
                         child: currentChild,
+                        expected: ["NullKeyword"],
                     })
                     return
                 }
@@ -1817,12 +1868,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_nullKeyword$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -1834,6 +1879,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["nullKeyword", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_nullKeyword$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_objectLiteral = () => {
                 currentChild = children.pop()
@@ -1849,6 +1901,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_objectLiteral",
                         child: currentChild,
+                        expected: ["ObjectLiteralExpression"],
                     })
                     return
                 }
@@ -1877,6 +1930,7 @@ export function parse<Annotation>(
                             reportUnexpectedChild({
                                 path: "Gexpression_objectLiteral$",
                                 child: currentChild,
+                                expected: ["PropertyAssignment"],
                             })
                             return
                         }
@@ -1947,15 +2001,10 @@ export function parse<Annotation>(
                                         reportUnexpectedChild({
                                             path: "Gexpression_objectLiteral$$_name",
                                             child: nextChild,
+                                            expected: Identifier,NumericLiteral,StringLiteral,
                                         })
                                     }
                                 }
-                            }
-                            if (children.length > 0) {
-                                reportUnexpectedChild({
-                                    path: "Gexpression_objectLiteral$$",
-                                    child: children[children.length - 1],
-                                })
                             }
                             return
                         })(
@@ -1964,6 +2013,13 @@ export function parse<Annotation>(
                                 elements.push($)
                             }
                         )
+                        if (children.length > 0) {
+                            reportUnexpectedChild({
+                                path: "Gexpression_objectLiteral$$",
+                                child: children[children.length - 1],
+                                expected: null,
+                            })
+                        }
                     }
                     arrayLoop: while (true) {
                         if (children.length === 0) {
@@ -1984,12 +2040,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_objectLiteral$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -1997,6 +2047,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["objectLiteral", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_objectLiteral$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_parenthesizedExpression = () => {
                 currentChild = children.pop()
@@ -2012,6 +2069,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_parenthesizedExpression",
                         child: currentChild,
+                        expected: ["ParenthesizedExpression"],
                     })
                     return
                 }
@@ -2031,12 +2089,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_parenthesizedExpression$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -2044,6 +2096,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["parenthesizedExpression", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_parenthesizedExpression$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_postfixUnary = () => {
                 currentChild = children.pop()
@@ -2059,6 +2118,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_postfixUnary",
                         child: currentChild,
+                        expected: ["PostfixUnaryExpression"],
                     })
                     return
                 }
@@ -2078,12 +2138,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_postfixUnary$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -2091,6 +2145,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["postfixUnary", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_postfixUnary$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_prefixUnary = () => {
                 currentChild = children.pop()
@@ -2106,6 +2167,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_prefixUnary",
                         child: currentChild,
+                        expected: ["PrefixUnaryExpression"],
                     })
                     return
                 }
@@ -2125,12 +2187,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_prefixUnary$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -2138,6 +2194,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["prefixUnary", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_prefixUnary$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_propertyAccess = () => {
                 currentChild = children.pop()
@@ -2153,6 +2216,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_propertyAccess",
                         child: currentChild,
+                        expected: ["PropertyAccessExpression"],
                     })
                     return
                 }
@@ -2182,12 +2246,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_propertyAccess$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -2195,6 +2253,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["propertyAccess", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_propertyAccess$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_stringLiteral = () => {
                 GstringLiteral(node, children, ($) => {
@@ -2215,6 +2280,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_template",
                         child: currentChild,
+                        expected: ["TemplateExpression"],
                     })
                     return
                 }
@@ -2247,6 +2313,7 @@ export function parse<Annotation>(
                         reportUnexpectedChild({
                             path: "Gexpression_template$_head",
                             child: currentChild,
+                            expected: ["TemplateHead"],
                         })
                         return
                     }
@@ -2258,12 +2325,6 @@ export function parse<Annotation>(
                         const children: uast.Node<Annotation>[] = []
                         $.children.forEach(($) => { children.push($) })
                         children.reverse()
-                        if (children.length > 0) {
-                            reportUnexpectedChild({
-                                path: "Gexpression_template$_head$",
-                                child: children[0],
-                            })
-                        }
                         callback({
                             annotation: $.annotation,
                             content: $.value
@@ -2288,6 +2349,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_template$_spans",
                                         child: currentChild,
+                                        expected: ["TemplateSpan"],
                                     })
                                     return
                                 }
@@ -2339,6 +2401,7 @@ export function parse<Annotation>(
                                                     reportUnexpectedChild({
                                                         path: "Gexpression_template$_spans$_x_middle",
                                                         child: currentChild,
+                                                        expected: ["TemplateMiddle"],
                                                     })
                                                     return
                                                 }
@@ -2350,12 +2413,6 @@ export function parse<Annotation>(
                                                     const children: uast.Node<Annotation>[] = []
                                                     $.children.forEach(($) => { children.push($) })
                                                     children.reverse()
-                                                    if (children.length > 0) {
-                                                        reportUnexpectedChild({
-                                                            path: "Gexpression_template$_spans$_x_middle$",
-                                                            child: children[0],
-                                                        })
-                                                    }
                                                     callback({
                                                         annotation: $.annotation,
                                                         content: $.value
@@ -2367,6 +2424,13 @@ export function parse<Annotation>(
                                                         choiceEnd_Gexpression_template$_spans$_x(["middle", $])
                                                     }
                                                 )
+                                                if (children.length > 0) {
+                                                    reportUnexpectedChild({
+                                                        path: "Gexpression_template$_spans$_x_middle$",
+                                                        child: children[children.length - 1],
+                                                        expected: null,
+                                                    })
+                                                }
                                             }
                                             const choose_tail = () => {
                                                 currentChild = children.pop()
@@ -2382,6 +2446,7 @@ export function parse<Annotation>(
                                                     reportUnexpectedChild({
                                                         path: "Gexpression_template$_spans$_x_tail",
                                                         child: currentChild,
+                                                        expected: ["TemplateTail"],
                                                     })
                                                     return
                                                 }
@@ -2393,12 +2458,6 @@ export function parse<Annotation>(
                                                     const children: uast.Node<Annotation>[] = []
                                                     $.children.forEach(($) => { children.push($) })
                                                     children.reverse()
-                                                    if (children.length > 0) {
-                                                        reportUnexpectedChild({
-                                                            path: "Gexpression_template$_spans$_x_tail$",
-                                                            child: children[0],
-                                                        })
-                                                    }
                                                     callback({
                                                         annotation: $.annotation,
                                                         content: $.value
@@ -2410,6 +2469,13 @@ export function parse<Annotation>(
                                                         choiceEnd_Gexpression_template$_spans$_x(["tail", $])
                                                     }
                                                 )
+                                                if (children.length > 0) {
+                                                    reportUnexpectedChild({
+                                                        path: "Gexpression_template$_spans$_x_tail$",
+                                                        child: children[children.length - 1],
+                                                        expected: null,
+                                                    })
+                                                }
                                             }
                                             switch (nextChild.kindName) {
                                                 case "TemplateMiddle": {
@@ -2424,17 +2490,12 @@ export function parse<Annotation>(
                                                     reportUnexpectedChild({
                                                         path: "Gexpression_template$_spans$_x",
                                                         child: nextChild,
+                                                        expected: TemplateMiddle,TemplateTail,
                                                     })
                                                 }
                                             }
                                         }
                                     })
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gexpression_template$_spans$",
-                                            child: children[children.length - 1],
-                                        })
-                                    }
                                     return
                                 })(
                                     currentChild,
@@ -2442,6 +2503,13 @@ export function parse<Annotation>(
                                         elements.push($)
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gexpression_template$_spans$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             arrayLoop: while (true) {
                                 if (children.length === 0) {
@@ -2467,8 +2535,9 @@ export function parse<Annotation>(
                     )
                     if (children.length > 0) {
                         reportUnexpectedChild({
-                            path: "Gexpression_template$",
+                            path: "Gexpression_template$_head$",
                             child: children[children.length - 1],
+                            expected: null,
                         })
                     }
                     return
@@ -2478,6 +2547,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["template", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_template$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_true = () => {
                 currentChild = children.pop()
@@ -2493,6 +2569,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression_true",
                         child: currentChild,
+                        expected: ["TrueKeyword"],
                     })
                     return
                 }
@@ -2504,12 +2581,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gexpression_true$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -2521,6 +2592,13 @@ export function parse<Annotation>(
                         choiceEnd_Gexpression(["true", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gexpression_true$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             switch (nextChild.kindName) {
                 case "ArrayLiteralExpression": {
@@ -2607,6 +2685,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression",
                         child: nextChild,
+                        expected: ArrayLiteralExpression,ArrowFunction,BinaryExpression,CallExpression,ConditionalExpression,ElementAccessExpression,FalseKeyword,Identifier,NewExpression,NoSubstitutionTemplateLiteral,NumericLiteral,NullKeyword,ObjectLiteralExpression,ParenthesizedExpression,PostfixUnaryExpression,PrefixUnaryExpression,PropertyAccessExpression,StringLiteral,TemplateExpression,TrueKeyword,
                     })
                 }
             }
@@ -2754,6 +2833,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "Gidentifier",
                 child: currentChild,
+                expected: ["Identifier"],
             })
             return
         }
@@ -2765,12 +2845,6 @@ export function parse<Annotation>(
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
             children.reverse()
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "Gidentifier$",
-                    child: children[0],
-                })
-            }
             callback({
                 annotation: $.annotation,
                 content: $.value
@@ -2782,6 +2856,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "Gidentifier$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     function GidentifierOrStringLiteral(
         node: uast.Node<Annotation>,
@@ -2825,6 +2906,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GidentifierOrStringLiteral",
                         child: nextChild,
+                        expected: Identifier,StringLiteral,
                     })
                 }
             }
@@ -2863,6 +2945,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gmodifier_declare",
                         child: currentChild,
+                        expected: ["DeclareKeyword"],
                     })
                     return
                 }
@@ -2874,12 +2957,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gmodifier_declare$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -2891,6 +2968,13 @@ export function parse<Annotation>(
                         choiceEnd_Gmodifier(["declare", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gmodifier_declare$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_export = () => {
                 currentChild = children.pop()
@@ -2906,6 +2990,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gmodifier_export",
                         child: currentChild,
+                        expected: ["ExportKeyword"],
                     })
                     return
                 }
@@ -2917,12 +3002,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gmodifier_export$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -2934,6 +3013,13 @@ export function parse<Annotation>(
                         choiceEnd_Gmodifier(["export", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gmodifier_export$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_readonly = () => {
                 currentChild = children.pop()
@@ -2949,6 +3035,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gmodifier_readonly",
                         child: currentChild,
+                        expected: ["ReadonlyKeyword"],
                     })
                     return
                 }
@@ -2960,12 +3047,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gmodifier_readonly$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -2977,6 +3058,13 @@ export function parse<Annotation>(
                         choiceEnd_Gmodifier(["readonly", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gmodifier_readonly$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             switch (nextChild.kindName) {
                 case "DeclareKeyword": {
@@ -2995,6 +3083,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gmodifier",
                         child: nextChild,
+                        expected: DeclareKeyword,ExportKeyword,ReadonlyKeyword,
                     })
                 }
             }
@@ -3020,6 +3109,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "GnumericLiteral",
                 child: currentChild,
+                expected: ["NumericLiteral"],
             })
             return
         }
@@ -3031,12 +3121,6 @@ export function parse<Annotation>(
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
             children.reverse()
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "GnumericLiteral$",
-                    child: children[0],
-                })
-            }
             callback({
                 annotation: $.annotation,
                 content: $.value
@@ -3048,6 +3132,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "GnumericLiteral$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     function Gparameter(
         node: uast.Node<Annotation>,
@@ -3069,6 +3160,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "Gparameter",
                 child: currentChild,
+                expected: ["Parameter"],
             })
             return
         }
@@ -3105,6 +3197,7 @@ export function parse<Annotation>(
                         reportUnexpectedChild({
                             path: "Gparameter$_questionToken",
                             child: currentChild,
+                            expected: ["QuestionToken"],
                         })
                         return
                     }
@@ -3116,12 +3209,6 @@ export function parse<Annotation>(
                         const children: uast.Node<Annotation>[] = []
                         $.children.forEach(($) => { children.push($) })
                         children.reverse()
-                        if (children.length > 0) {
-                            reportUnexpectedChild({
-                                path: "Gparameter$_questionToken$",
-                                child: children[0],
-                            })
-                        }
                         callback({
                             annotation: $.annotation,
                             content: null
@@ -3133,6 +3220,13 @@ export function parse<Annotation>(
                             optional = $
                         }
                     )
+                    if (children.length > 0) {
+                        reportUnexpectedChild({
+                            path: "Gparameter$_questionToken$",
+                            child: children[children.length - 1],
+                            expected: null,
+                        })
+                    }
                 }
                 if (children.length === 0) {} else {
                     nextChild = children[children.length - 1]
@@ -3213,12 +3307,6 @@ export function parse<Annotation>(
                     })
                 })
             })
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "Gparameter$",
-                    child: children[children.length - 1],
-                })
-            }
             return
         })(
             currentChild,
@@ -3226,6 +3314,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "Gparameter$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     function Gstatement(
         node: uast.Node<Annotation>,
@@ -3265,6 +3360,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_break",
                         child: currentChild,
+                        expected: ["BreakStatement"],
                     })
                     return
                 }
@@ -3298,12 +3394,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_break$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -3311,6 +3401,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["break", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_break$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_export = () => {
                 currentChild = children.pop()
@@ -3326,6 +3423,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_export",
                         child: currentChild,
+                        expected: ["ExportDeclaration"],
                     })
                     return
                 }
@@ -3345,12 +3443,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_export$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -3358,6 +3450,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["export", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_export$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_expression = () => {
                 currentChild = children.pop()
@@ -3373,6 +3472,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_expression",
                         child: currentChild,
+                        expected: ["ExpressionStatement"],
                     })
                     return
                 }
@@ -3392,12 +3492,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_expression$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -3405,6 +3499,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["expression", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_expression$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_for = () => {
                 currentChild = children.pop()
@@ -3420,6 +3521,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_for",
                         child: currentChild,
+                        expected: ["ForStatement"],
                     })
                     return
                 }
@@ -3457,12 +3559,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_for$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -3470,6 +3566,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["for", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_for$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_function = () => {
                 currentChild = children.pop()
@@ -3485,6 +3588,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_function",
                         child: currentChild,
+                        expected: ["FunctionDeclaration"],
                     })
                     return
                 }
@@ -3561,12 +3665,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_function$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -3574,6 +3672,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["function", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_function$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_if = () => {
                 currentChild = children.pop()
@@ -3589,6 +3694,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_if",
                         child: currentChild,
+                        expected: ["IfStatement"],
                     })
                     return
                 }
@@ -3684,12 +3790,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_if$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -3697,6 +3797,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["if", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_if$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_import = () => {
                 currentChild = children.pop()
@@ -3712,6 +3819,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_import",
                         child: currentChild,
+                        expected: ["ImportDeclaration"],
                     })
                     return
                 }
@@ -3744,6 +3852,7 @@ export function parse<Annotation>(
                         reportUnexpectedChild({
                             path: "Gstatement_import$_clause",
                             child: currentChild,
+                            expected: ["ImportClause"],
                         })
                         return
                     }
@@ -3786,6 +3895,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gstatement_import$_clause$_namespace",
                                         child: currentChild,
+                                        expected: ["NamespaceImport"],
                                     })
                                     return
                                 }
@@ -3805,12 +3915,6 @@ export function parse<Annotation>(
                                             content: $,
                                         })
                                     })
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gstatement_import$_clause$_namespace$",
-                                            child: children[children.length - 1],
-                                        })
-                                    }
                                     return
                                 })(
                                     currentChild,
@@ -3818,6 +3922,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gstatement_import$_clause$(["namespace", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gstatement_import$_clause$_namespace$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             const choose_named = () => {
                                 currentChild = children.pop()
@@ -3833,6 +3944,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gstatement_import$_clause$_named",
                                         child: currentChild,
+                                        expected: ["NamedImports"],
                                     })
                                     return
                                 }
@@ -3861,6 +3973,7 @@ export function parse<Annotation>(
                                             reportUnexpectedChild({
                                                 path: "Gstatement_import$_clause$_named$",
                                                 child: currentChild,
+                                                expected: ["ImportSpecifier"],
                                             })
                                             return
                                         }
@@ -3904,12 +4017,6 @@ export function parse<Annotation>(
                                                     })
                                                 })
                                             })
-                                            if (children.length > 0) {
-                                                reportUnexpectedChild({
-                                                    path: "Gstatement_import$_clause$_named$$",
-                                                    child: children[children.length - 1],
-                                                })
-                                            }
                                             return
                                         })(
                                             currentChild,
@@ -3917,6 +4024,13 @@ export function parse<Annotation>(
                                                 elements.push($)
                                             }
                                         )
+                                        if (children.length > 0) {
+                                            reportUnexpectedChild({
+                                                path: "Gstatement_import$_clause$_named$$",
+                                                child: children[children.length - 1],
+                                                expected: null,
+                                            })
+                                        }
                                     }
                                     arrayLoop: while (true) {
                                         if (children.length === 0) {
@@ -3937,12 +4051,6 @@ export function parse<Annotation>(
                                             content: $,
                                         })
                                     })
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "Gstatement_import$_clause$_named$",
-                                            child: children[children.length - 1],
-                                        })
-                                    }
                                     return
                                 })(
                                     currentChild,
@@ -3950,6 +4058,13 @@ export function parse<Annotation>(
                                         choiceEnd_Gstatement_import$_clause$(["named", $])
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "Gstatement_import$_clause$_named$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             switch (nextChild.kindName) {
                                 case "NamespaceImport": {
@@ -3964,15 +4079,10 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gstatement_import$_clause$",
                                         child: nextChild,
+                                        expected: NamespaceImport,NamedImports,
                                     })
                                 }
                             }
-                        }
-                        if (children.length > 0) {
-                            reportUnexpectedChild({
-                                path: "Gstatement_import$_clause$",
-                                child: children[children.length - 1],
-                            })
                         }
                         return
                     })(
@@ -3990,8 +4100,9 @@ export function parse<Annotation>(
                     )
                     if (children.length > 0) {
                         reportUnexpectedChild({
-                            path: "Gstatement_import$",
+                            path: "Gstatement_import$_clause$",
                             child: children[children.length - 1],
+                            expected: null,
                         })
                     }
                     return
@@ -4001,6 +4112,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["import", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_import$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_interface = () => {
                 currentChild = children.pop()
@@ -4016,6 +4134,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_interface",
                         child: currentChild,
+                        expected: ["InterfaceDeclaration"],
                     })
                     return
                 }
@@ -4125,12 +4244,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_interface$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -4138,6 +4251,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["interface", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_interface$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_labeled = () => {
                 currentChild = children.pop()
@@ -4153,6 +4273,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_labeled",
                         child: currentChild,
+                        expected: ["LabeledStatement"],
                     })
                     return
                 }
@@ -4182,12 +4303,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_labeled$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -4195,6 +4310,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["labeled", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_labeled$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_return = () => {
                 currentChild = children.pop()
@@ -4210,6 +4332,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_return",
                         child: currentChild,
+                        expected: ["ReturnStatement"],
                     })
                     return
                 }
@@ -4300,12 +4423,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_return$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -4313,6 +4430,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["return", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_return$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_switch = () => {
                 currentChild = children.pop()
@@ -4328,6 +4452,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_switch",
                         child: currentChild,
+                        expected: ["SwitchStatement"],
                     })
                     return
                 }
@@ -4362,6 +4487,7 @@ export function parse<Annotation>(
                             reportUnexpectedChild({
                                 path: "Gstatement_switch$_caseBlock",
                                 child: currentChild,
+                                expected: ["CaseBlock"],
                             })
                             return
                         }
@@ -4403,6 +4529,7 @@ export function parse<Annotation>(
                                             reportUnexpectedChild({
                                                 path: "Gstatement_switch$_caseBlock$_case",
                                                 child: currentChild,
+                                                expected: ["CaseClause"],
                                             })
                                             return
                                         }
@@ -4499,12 +4626,6 @@ export function parse<Annotation>(
                                                     })
                                                 })
                                             })
-                                            if (children.length > 0) {
-                                                reportUnexpectedChild({
-                                                    path: "Gstatement_switch$_caseBlock$_case$",
-                                                    child: children[children.length - 1],
-                                                })
-                                            }
                                             return
                                         })(
                                             currentChild,
@@ -4512,6 +4633,13 @@ export function parse<Annotation>(
                                                 choiceEnd_Gstatement_switch$_caseBlock$(["case", $])
                                             }
                                         )
+                                        if (children.length > 0) {
+                                            reportUnexpectedChild({
+                                                path: "Gstatement_switch$_caseBlock$_case$",
+                                                child: children[children.length - 1],
+                                                expected: null,
+                                            })
+                                        }
                                     }
                                     const choose_default = () => {
                                         currentChild = children.pop()
@@ -4527,6 +4655,7 @@ export function parse<Annotation>(
                                             reportUnexpectedChild({
                                                 path: "Gstatement_switch$_caseBlock$_default",
                                                 child: currentChild,
+                                                expected: ["DefaultClause"],
                                             })
                                             return
                                         }
@@ -4613,12 +4742,6 @@ export function parse<Annotation>(
                                                     content: $,
                                                 })
                                             })
-                                            if (children.length > 0) {
-                                                reportUnexpectedChild({
-                                                    path: "Gstatement_switch$_caseBlock$_default$",
-                                                    child: children[children.length - 1],
-                                                })
-                                            }
                                             return
                                         })(
                                             currentChild,
@@ -4626,6 +4749,13 @@ export function parse<Annotation>(
                                                 choiceEnd_Gstatement_switch$_caseBlock$(["default", $])
                                             }
                                         )
+                                        if (children.length > 0) {
+                                            reportUnexpectedChild({
+                                                path: "Gstatement_switch$_caseBlock$_default$",
+                                                child: children[children.length - 1],
+                                                expected: null,
+                                            })
+                                        }
                                     }
                                     switch (nextChild.kindName) {
                                         case "CaseClause": {
@@ -4640,6 +4770,7 @@ export function parse<Annotation>(
                                             reportUnexpectedChild({
                                                 path: "Gstatement_switch$_caseBlock$",
                                                 child: nextChild,
+                                                expected: CaseClause,DefaultClause,
                                             })
                                         }
                                     }
@@ -4667,12 +4798,6 @@ export function parse<Annotation>(
                                     content: $,
                                 })
                             })
-                            if (children.length > 0) {
-                                reportUnexpectedChild({
-                                    path: "Gstatement_switch$_caseBlock$",
-                                    child: children[children.length - 1],
-                                })
-                            }
                             return
                         })(
                             currentChild,
@@ -4684,13 +4809,14 @@ export function parse<Annotation>(
                                 })
                             }
                         )
+                        if (children.length > 0) {
+                            reportUnexpectedChild({
+                                path: "Gstatement_switch$_caseBlock$",
+                                child: children[children.length - 1],
+                                expected: null,
+                            })
+                        }
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_switch$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -4698,6 +4824,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["switch", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_switch$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_throw = () => {
                 currentChild = children.pop()
@@ -4713,6 +4846,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_throw",
                         child: currentChild,
+                        expected: ["ThrowStatement"],
                     })
                     return
                 }
@@ -4732,12 +4866,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_throw$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -4745,6 +4873,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["throw", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_throw$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_try = () => {
                 currentChild = children.pop()
@@ -4760,6 +4895,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_try",
                         child: currentChild,
+                        expected: ["TryStatement"],
                     })
                     return
                 }
@@ -4794,6 +4930,7 @@ export function parse<Annotation>(
                             reportUnexpectedChild({
                                 path: "Gstatement_try$_catchClause",
                                 child: currentChild,
+                                expected: ["CatchClause"],
                             })
                             return
                         }
@@ -4823,12 +4960,6 @@ export function parse<Annotation>(
                                     })
                                 })
                             })
-                            if (children.length > 0) {
-                                reportUnexpectedChild({
-                                    path: "Gstatement_try$_catchClause$",
-                                    child: children[children.length - 1],
-                                })
-                            }
                             return
                         })(
                             currentChild,
@@ -4840,13 +4971,14 @@ export function parse<Annotation>(
                                 })
                             }
                         )
+                        if (children.length > 0) {
+                            reportUnexpectedChild({
+                                path: "Gstatement_try$_catchClause$",
+                                child: children[children.length - 1],
+                                expected: null,
+                            })
+                        }
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_try$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -4854,6 +4986,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["try", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_try$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_typeAlias = () => {
                 currentChild = children.pop()
@@ -4869,6 +5008,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_typeAlias",
                         child: currentChild,
+                        expected: ["TypeAliasDeclaration"],
                     })
                     return
                 }
@@ -4950,12 +5090,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_typeAlias$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -4963,6 +5097,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["typeAlias", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_typeAlias$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_variable = () => {
                 currentChild = children.pop()
@@ -4978,6 +5119,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_variable",
                         child: currentChild,
+                        expected: ["VariableStatement"],
                     })
                     return
                 }
@@ -5032,12 +5174,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_variable$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -5045,6 +5181,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["variable", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_variable$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_while = () => {
                 currentChild = children.pop()
@@ -5060,6 +5203,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement_while",
                         child: currentChild,
+                        expected: ["WhileStatement"],
                     })
                     return
                 }
@@ -5089,12 +5233,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gstatement_while$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -5102,6 +5240,13 @@ export function parse<Annotation>(
                         choiceEnd_Gstatement(["while", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gstatement_while$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             switch (nextChild.kindName) {
                 case "Block": {
@@ -5176,6 +5321,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement",
                         child: nextChild,
+                        expected: Block,BreakStatement,ExportDeclaration,ExpressionStatement,ForStatement,FunctionDeclaration,IfStatement,ImportDeclaration,InterfaceDeclaration,LabeledStatement,ReturnStatement,SwitchStatement,ThrowStatement,TryStatement,TypeAliasDeclaration,VariableStatement,WhileStatement,
                     })
                 }
             }
@@ -5201,6 +5347,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "GstringLiteral",
                 child: currentChild,
+                expected: ["StringLiteral"],
             })
             return
         }
@@ -5212,12 +5359,6 @@ export function parse<Annotation>(
             const children: uast.Node<Annotation>[] = []
             $.children.forEach(($) => { children.push($) })
             children.reverse()
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "GstringLiteral$",
-                    child: children[0],
-                })
-            }
             callback({
                 annotation: $.annotation,
                 content: $.value
@@ -5229,6 +5370,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "GstringLiteral$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     function Gtype(
         node: uast.Node<Annotation>,
@@ -5263,6 +5411,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_any",
                         child: currentChild,
+                        expected: ["AnyKeyword"],
                     })
                     return
                 }
@@ -5274,12 +5423,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_any$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -5291,6 +5434,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["any", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_any$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_array = () => {
                 currentChild = children.pop()
@@ -5306,6 +5456,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_array",
                         child: currentChild,
+                        expected: ["ArrayType"],
                     })
                     return
                 }
@@ -5325,12 +5476,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_array$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -5338,6 +5483,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["array", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_array$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_boolean = () => {
                 currentChild = children.pop()
@@ -5353,6 +5505,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_boolean",
                         child: currentChild,
+                        expected: ["BooleanKeyword"],
                     })
                     return
                 }
@@ -5364,12 +5517,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_boolean$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -5381,6 +5528,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["boolean", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_boolean$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_function = () => {
                 currentChild = children.pop()
@@ -5396,6 +5550,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_function",
                         child: currentChild,
+                        expected: ["FunctionType"],
                     })
                     return
                 }
@@ -5503,12 +5658,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_function$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -5516,6 +5665,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["function", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_function$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_literal = () => {
                 currentChild = children.pop()
@@ -5531,6 +5687,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_literal",
                         child: currentChild,
+                        expected: ["LiteralType"],
                     })
                     return
                 }
@@ -5573,6 +5730,7 @@ export function parse<Annotation>(
                                 reportUnexpectedChild({
                                     path: "Gtype_literal$_null",
                                     child: currentChild,
+                                    expected: ["NullKeyword"],
                                 })
                                 return
                             }
@@ -5584,12 +5742,6 @@ export function parse<Annotation>(
                                 const children: uast.Node<Annotation>[] = []
                                 $.children.forEach(($) => { children.push($) })
                                 children.reverse()
-                                if (children.length > 0) {
-                                    reportUnexpectedChild({
-                                        path: "Gtype_literal$_null$",
-                                        child: children[0],
-                                    })
-                                }
                                 callback({
                                     annotation: $.annotation,
                                     content: null
@@ -5601,6 +5753,13 @@ export function parse<Annotation>(
                                     choiceEnd_Gtype_literal$(["null", $])
                                 }
                             )
+                            if (children.length > 0) {
+                                reportUnexpectedChild({
+                                    path: "Gtype_literal$_null$",
+                                    child: children[children.length - 1],
+                                    expected: null,
+                                })
+                            }
                         }
                         const choose_string = () => {
                             GstringLiteral(node, children, ($) => {
@@ -5620,15 +5779,10 @@ export function parse<Annotation>(
                                 reportUnexpectedChild({
                                     path: "Gtype_literal$",
                                     child: nextChild,
+                                    expected: NullKeyword,StringLiteral,
                                 })
                             }
                         }
-                    }
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_literal$",
-                            child: children[children.length - 1],
-                        })
                     }
                     return
                 })(
@@ -5637,6 +5791,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["literal", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_literal$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_parenthesized = () => {
                 currentChild = children.pop()
@@ -5652,6 +5813,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_parenthesized",
                         child: currentChild,
+                        expected: ["ParenthesizedType"],
                     })
                     return
                 }
@@ -5671,12 +5833,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_parenthesized$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -5684,6 +5840,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["parenthesized", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_parenthesized$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_never = () => {
                 currentChild = children.pop()
@@ -5699,6 +5862,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_never",
                         child: currentChild,
+                        expected: ["NeverKeyword"],
                     })
                     return
                 }
@@ -5710,12 +5874,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_never$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -5727,6 +5885,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["never", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_never$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_number = () => {
                 currentChild = children.pop()
@@ -5742,6 +5907,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_number",
                         child: currentChild,
+                        expected: ["NumberKeyword"],
                     })
                     return
                 }
@@ -5753,12 +5919,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_number$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -5770,6 +5930,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["number", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_number$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_optional = () => {
                 currentChild = children.pop()
@@ -5785,6 +5952,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_optional",
                         child: currentChild,
+                        expected: ["OptionalType"],
                     })
                     return
                 }
@@ -5804,12 +5972,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_optional$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -5817,6 +5979,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["optional", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_optional$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_tuple = () => {
                 currentChild = children.pop()
@@ -5832,6 +6001,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_tuple",
                         child: currentChild,
+                        expected: ["TupleType"],
                     })
                     return
                 }
@@ -5915,12 +6085,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_tuple$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -5928,6 +6092,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["tuple", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_tuple$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_typeLiteral = () => {
                 currentChild = children.pop()
@@ -5943,6 +6114,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_typeLiteral",
                         child: currentChild,
+                        expected: ["TypeLiteral"],
                     })
                     return
                 }
@@ -5990,12 +6162,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_typeLiteral$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -6003,6 +6169,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["typeLiteral", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_typeLiteral$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_string = () => {
                 currentChild = children.pop()
@@ -6018,6 +6191,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_string",
                         child: currentChild,
+                        expected: ["StringKeyword"],
                     })
                     return
                 }
@@ -6029,12 +6203,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_string$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -6046,6 +6214,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["string", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_string$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_typeReference = () => {
                 currentChild = children.pop()
@@ -6061,6 +6236,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_typeReference",
                         child: currentChild,
+                        expected: ["TypeReference"],
                     })
                     return
                 }
@@ -6182,6 +6358,7 @@ export function parse<Annotation>(
                                 reportUnexpectedChild({
                                     path: "Gtype_typeReference$_x_qualifiedName",
                                     child: currentChild,
+                                    expected: ["QualifiedName"],
                                 })
                                 return
                             }
@@ -6211,12 +6388,6 @@ export function parse<Annotation>(
                                         })
                                     })
                                 })
-                                if (children.length > 0) {
-                                    reportUnexpectedChild({
-                                        path: "Gtype_typeReference$_x_qualifiedName$",
-                                        child: children[children.length - 1],
-                                    })
-                                }
                                 return
                             })(
                                 currentChild,
@@ -6224,6 +6395,13 @@ export function parse<Annotation>(
                                     choiceEnd_Gtype_typeReference$_x(["qualifiedName", $])
                                 }
                             )
+                            if (children.length > 0) {
+                                reportUnexpectedChild({
+                                    path: "Gtype_typeReference$_x_qualifiedName$",
+                                    child: children[children.length - 1],
+                                    expected: null,
+                                })
+                            }
                         }
                         switch (nextChild.kindName) {
                             case "Identifier": {
@@ -6238,15 +6416,10 @@ export function parse<Annotation>(
                                 reportUnexpectedChild({
                                     path: "Gtype_typeReference$_x",
                                     child: nextChild,
+                                    expected: Identifier,QualifiedName,
                                 })
                             }
                         }
-                    }
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_typeReference$",
-                            child: children[children.length - 1],
-                        })
                     }
                     return
                 })(
@@ -6255,6 +6428,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["typeReference", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_typeReference$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_undefined = () => {
                 currentChild = children.pop()
@@ -6270,6 +6450,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_undefined",
                         child: currentChild,
+                        expected: ["UndefinedKeyword"],
                     })
                     return
                 }
@@ -6281,12 +6462,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_undefined$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -6298,6 +6473,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["undefined", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_undefined$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_union = () => {
                 currentChild = children.pop()
@@ -6313,6 +6495,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_union",
                         child: currentChild,
+                        expected: ["UnionType"],
                     })
                     return
                 }
@@ -6396,12 +6579,6 @@ export function parse<Annotation>(
                             content: $,
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_union$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -6409,6 +6586,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["union", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_union$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_void = () => {
                 currentChild = children.pop()
@@ -6424,6 +6608,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype_void",
                         child: currentChild,
+                        expected: ["VoidKeyword"],
                     })
                     return
                 }
@@ -6435,12 +6620,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "Gtype_void$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -6452,6 +6631,13 @@ export function parse<Annotation>(
                         choiceEnd_Gtype(["void", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "Gtype_void$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             switch (nextChild.kindName) {
                 case "AnyKeyword": {
@@ -6522,6 +6708,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype",
                         child: nextChild,
+                        expected: AnyKeyword,ArrayType,BooleanKeyword,FunctionType,LiteralType,ParenthesizedType,NeverKeyword,NumberKeyword,OptionalType,TupleType,TypeLiteral,StringKeyword,TypeReference,UndefinedKeyword,UnionType,VoidKeyword,
                     })
                 }
             }
@@ -6547,6 +6734,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "GtypeParameter",
                 child: currentChild,
+                expected: ["TypeParameter"],
             })
             return
         }
@@ -6566,12 +6754,6 @@ export function parse<Annotation>(
                     content: $,
                 })
             })
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "GtypeParameter$",
-                    child: children[children.length - 1],
-                })
-            }
             return
         })(
             currentChild,
@@ -6579,6 +6761,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "GtypeParameter$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     function GtypeSignature(
         node: uast.Node<Annotation>,
@@ -6613,6 +6802,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GtypeSignature_construct",
                         child: currentChild,
+                        expected: ["ConstructSignature"],
                     })
                     return
                 }
@@ -6661,12 +6851,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "GtypeSignature_construct$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -6674,6 +6858,13 @@ export function parse<Annotation>(
                         choiceEnd_GtypeSignature(["construct", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "GtypeSignature_construct$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_index = () => {
                 currentChild = children.pop()
@@ -6689,6 +6880,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GtypeSignature_index",
                         child: currentChild,
+                        expected: ["IndexSignature"],
                     })
                     return
                 }
@@ -6806,12 +6998,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "GtypeSignature_index$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -6819,6 +7005,13 @@ export function parse<Annotation>(
                         choiceEnd_GtypeSignature(["index", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "GtypeSignature_index$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_method = () => {
                 currentChild = children.pop()
@@ -6834,6 +7027,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GtypeSignature_method",
                         child: currentChild,
+                        expected: ["MethodSignature"],
                     })
                     return
                 }
@@ -6863,12 +7057,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "GtypeSignature_method$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -6876,6 +7064,13 @@ export function parse<Annotation>(
                         choiceEnd_GtypeSignature(["method", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "GtypeSignature_method$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             const choose_property = () => {
                 currentChild = children.pop()
@@ -6891,6 +7086,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GtypeSignature_property",
                         child: currentChild,
+                        expected: ["PropertySignature"],
                     })
                     return
                 }
@@ -6954,6 +7150,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "GtypeSignature_property$_quesionToken",
                                         child: currentChild,
+                                        expected: ["QuestionToken"],
                                     })
                                     return
                                 }
@@ -6965,12 +7162,6 @@ export function parse<Annotation>(
                                     const children: uast.Node<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    if (children.length > 0) {
-                                        reportUnexpectedChild({
-                                            path: "GtypeSignature_property$_quesionToken$",
-                                            child: children[0],
-                                        })
-                                    }
                                     callback({
                                         annotation: $.annotation,
                                         content: null
@@ -6982,6 +7173,13 @@ export function parse<Annotation>(
                                         optional = $
                                     }
                                 )
+                                if (children.length > 0) {
+                                    reportUnexpectedChild({
+                                        path: "GtypeSignature_property$_quesionToken$",
+                                        child: children[children.length - 1],
+                                        expected: null,
+                                    })
+                                }
                             }
                             if (children.length === 0) {} else {
                                 nextChild = children[children.length - 1]
@@ -7064,12 +7262,6 @@ export function parse<Annotation>(
                             })
                         })
                     })
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "GtypeSignature_property$",
-                            child: children[children.length - 1],
-                        })
-                    }
                     return
                 })(
                     currentChild,
@@ -7077,6 +7269,13 @@ export function parse<Annotation>(
                         choiceEnd_GtypeSignature(["property", $])
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "GtypeSignature_property$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             }
             switch (nextChild.kindName) {
                 case "ConstructSignature": {
@@ -7099,6 +7298,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GtypeSignature",
                         child: nextChild,
+                        expected: ConstructSignature,IndexSignature,MethodSignature,PropertySignature,
                     })
                 }
             }
@@ -7124,6 +7324,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "GvariableDeclaration",
                 child: currentChild,
+                expected: ["VariableDeclaration"],
             })
             return
         }
@@ -7287,12 +7488,6 @@ export function parse<Annotation>(
                     })
                 })
             })
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "GvariableDeclaration$",
-                    child: children[children.length - 1],
-                })
-            }
             return
         })(
             currentChild,
@@ -7300,6 +7495,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "GvariableDeclaration$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     function GvariableDeclarationList(
         node: uast.Node<Annotation>,
@@ -7321,6 +7523,7 @@ export function parse<Annotation>(
             reportUnexpectedChild({
                 path: "GvariableDeclarationList",
                 child: currentChild,
+                expected: ["VariableDeclarationList"],
             })
             return
         }
@@ -7359,12 +7562,6 @@ export function parse<Annotation>(
                     content: $,
                 })
             })
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "GvariableDeclarationList$",
-                    child: children[children.length - 1],
-                })
-            }
             return
         })(
             currentChild,
@@ -7372,6 +7569,13 @@ export function parse<Annotation>(
                 callback($)
             }
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "GvariableDeclarationList$",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
     }
     if ($.kindName !== "SourceFile") {
         reportUnexpectedRoot({
@@ -7477,6 +7681,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "root_endOfFile",
                         child: currentChild,
+                        expected: ["EndOfFileToken"],
                     })
                     return
                 }
@@ -7488,12 +7693,6 @@ export function parse<Annotation>(
                     const children: uast.Node<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    if (children.length > 0) {
-                        reportUnexpectedChild({
-                            path: "root_endOfFile$",
-                            child: children[0],
-                        })
-                    }
                     callback({
                         annotation: $.annotation,
                         content: null
@@ -7509,13 +7708,14 @@ export function parse<Annotation>(
                         })
                     }
                 )
+                if (children.length > 0) {
+                    reportUnexpectedChild({
+                        path: "root_endOfFile$",
+                        child: children[children.length - 1],
+                        expected: null,
+                    })
+                }
             })
-            if (children.length > 0) {
-                reportUnexpectedChild({
-                    path: "root",
-                    child: children[children.length - 1],
-                })
-            }
             return
         })(
             $,
@@ -7523,6 +7723,13 @@ export function parse<Annotation>(
                 callback($)
             },
         )
+        if (children.length > 0) {
+            reportUnexpectedChild({
+                path: "root",
+                child: children[children.length - 1],
+                expected: null,
+            })
+        }
         return
     }
 }

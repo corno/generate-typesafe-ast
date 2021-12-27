@@ -1,4 +1,4 @@
-import * as gr from "../../pub/esc/interfaces"
+import * as gr from "../../pub/interface/types"
 
 export const typescriptGrammar: gr.Grammar = {
     globalValueTypes: {

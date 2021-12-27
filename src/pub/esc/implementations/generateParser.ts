@@ -1,6 +1,6 @@
 import * as pr from "pareto-runtime"
 
-import * as g from "../interfaces"
+import * as g from "../../interface/types"
 import * as wapi from "fountain-pen/interfaces/fountain-pen"
 
 export function generateParser(
@@ -16,10 +16,9 @@ export function generateParser(
         switch ($[0]) {
             case "choice":
                 pr.cc($[1], ($) => {
-                    pr.Objectkeys($.options).forEach((key) => {
-                        const option = $.options[key]
+                    pr.forEachEntry($.options, ($, key) => {
                         findNextPossibleTokensInSymbolType(
-                            option.type,
+                            $.type,
                             onToken,
                             onEnd
                         )
@@ -93,7 +92,7 @@ export function generateParser(
                 $w.snippet(`reportUnexpectedRoot: ($: { root: uast.Node<Annotation>, }) => void,`)
             })
             $w.line(($w) => {
-                $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, }) => void,`)
+                $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, expected: null | string[] }) => void,`)
             })
             $w.line(($w) => {
                 $w.snippet(`reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,`)
@@ -186,24 +185,6 @@ export function generateParser(
                                             })
                                         }
                                     )
-                                    $w.line(($w) => {
-                                        $w.snippet(`if (children.length > 0) {`)
-                                        $w.indent(($w) => {
-                                            $w.line(($w) => {
-                                                $w.snippet(`reportUnexpectedChild({`)
-                                                $w.indent(($w) => {
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`path: "${path}",`)
-                                                    })
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`child: children[children.length - 1],`)
-                                                    })
-                                                })
-                                                $w.snippet(`})`)
-                                            })
-                                        })
-                                        $w.snippet(`}`)
-                                    })
                                     // $w.line(($w) => {
                                     //     $w.snippet(`callback({`)
                                     //     $w.indent(($w) => {
@@ -224,24 +205,6 @@ export function generateParser(
                                 break
                             case "leaf":
                                 pr.cc($.type[1], ($) => {
-                                    $w.line(($w) => {
-                                        $w.snippet(`if (children.length > 0) {`)
-                                        $w.indent(($w) => {
-                                            $w.line(($w) => {
-                                                $w.snippet(`reportUnexpectedChild({`)
-                                                $w.indent(($w) => {
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`path: "${path}",`)
-                                                    })
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`child: children[0],`)
-                                                    })
-                                                })
-                                                $w.snippet(`})`)
-                                            })
-                                        })
-                                        $w.snippet(`}`)
-                                    })
                                     $w.line(($w) => {
                                         $w.snippet(`callback({`)
                                         $w.indent(($w) => {
@@ -270,6 +233,27 @@ export function generateParser(
                     })
                     $w.snippet(`})`)
                     call($w)
+                })
+                $w.line(($w) => {
+                    $w.snippet(`if (children.length > 0) {`)
+                    $w.indent(($w) => {
+                        $w.line(($w) => {
+                            $w.snippet(`reportUnexpectedChild({`)
+                            $w.indent(($w) => {
+                                $w.line(($w) => {
+                                    $w.snippet(`path: "${path}",`)
+                                })
+                                $w.line(($w) => {
+                                    $w.snippet(`child: children[children.length - 1],`)
+                                })
+                                $w.line(($w) => {
+                                    $w.snippet(`expected: null,`)
+                                })
+                            })
+                            $w.snippet(`})`)
+                        })
+                    })
+                    $w.snippet(`}`)
                 })
 
             }
@@ -604,6 +588,9 @@ export function generateParser(
                                                             $w.line(($w) => {
                                                                 $w.snippet(`child: nextChild,`)
                                                             })
+                                                            $w.line(($w) => {
+                                                                $w.snippet(`expected: ${pr.Objectkeys(possibleTokens)},`)
+                                                            })
                                                         })
                                                         $w.snippet(`})`)
                                                     })
@@ -723,6 +710,9 @@ export function generateParser(
                                             $w.line(($w) => {
                                                 $w.snippet(`child: currentChild,`)
                                             })
+                                            $w.line(($w) => {
+                                                $w.snippet(`expected: ["${$.name}"],`)
+                                            })
                                         })
                                         $w.snippet(`})`)
                                     })
@@ -759,7 +749,7 @@ export function generateParser(
                         pr.au($[0])
                 }
             }
-            g.forEachEntry(grammar.globalValueTypes, ($, key) => {
+            pr.forEachEntry(grammar.globalValueTypes, ($, key) => {
 
                 $w.line(($w) => {
 

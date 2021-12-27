@@ -1,4 +1,4 @@
-import * as pr from "pareto-runtime"
+//import * as pr from "pareto-runtime"
 
 export type Options = { [key: string]: Value }
 
@@ -8,8 +8,8 @@ export type Cardinality =
     | ["array", {}]
 
 export type SequenceElement = {
-    name: string,
-    value: Value,
+    "name": string,
+    "value": Value,
 }
 
 export type ValueType =
@@ -21,40 +21,31 @@ export type ValueType =
     }]
     | ["node", Node2]
     | ["sequence", {
-        elements: SequenceElement[]
+        "elements": SequenceElement[]
     }]
 
 export type Value = {
-    cardinality: Cardinality
-    type: ValueType
+    "cardinality": Cardinality
+    "type": ValueType
 }
 
 export type Grammar = {
-    globalValueTypes: {
+    "globalValueTypes": {
         [key: string]: ValueType
     }
-    root: Node2
+    "root": Node2
 }
 
 export type Node2 = {
-    name: string
-    type:
+    "name": string
+    "type":
     | ["composite", Composite]
     | ["leaf", Leaf]
 
 }
 
 export type Leaf = {
-    hasTextContent: boolean,
+    "hasTextContent": boolean,
 }
 
 export type Composite = Value
-
-export function forEachEntry<T>(
-    dictionary: { [key: string]: T },
-    callback: (entry: T, key: string) => void,
-) {
-    pr.Objectkeys(dictionary).forEach((key) => {
-        callback(dictionary[key], key)
-    })
-}

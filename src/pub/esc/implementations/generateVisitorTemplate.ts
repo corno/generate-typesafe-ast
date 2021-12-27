@@ -1,6 +1,6 @@
 import * as pr from "pareto-runtime"
 
-import * as g from "../interfaces"
+import * as g from "../../interface/types"
 import * as wapi from "fountain-pen/interfaces/fountain-pen"
 
 export function generateVisitorTemplate(
@@ -485,7 +485,7 @@ export function generateVisitorTemplate(
                         pr.au($.cardinality[0])
                 }
             }
-            g.forEachEntry(grammar.globalValueTypes, ($, key) => {
+            pr.forEachEntry(grammar.globalValueTypes, ($, key) => {
                 $w.line(($w) => {
 
                     $w.snippet(`function X_${key}(`)

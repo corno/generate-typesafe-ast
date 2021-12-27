@@ -1,6 +1,6 @@
 import * as pr from "pareto-runtime"
 
-import * as g from "../interfaces"
+import * as g from "../../interface/types"
 import * as wapi from "fountain-pen/interfaces/fountain-pen"
 
 export function generateUntypedAPI(
