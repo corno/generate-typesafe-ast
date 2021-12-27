@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "fountain-pen": "^4.0.1",
-    "pareto-runtime": "^0.14.0"
+    "pareto-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.5"
