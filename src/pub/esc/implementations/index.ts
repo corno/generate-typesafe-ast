@@ -20,7 +20,11 @@ export type Directory = {
     ): void
 }
 
-function createDirectory(
+function wrapDirectory(
+    mkDir: (
+        name: string,
+        x: () => void,
+    ) => void,
     writeFile: (
         name: string,
         data: string,
@@ -31,16 +35,31 @@ function createDirectory(
             dirName,
             callback,
         ) {
-            callback(
-                createDirectory(
-                    (
-                        fileName,
-                        data,
-                    ) => {
-                        writeFile(pr.join([dirName, fileName]), data)
-                    }
-                )
+            console.error("!!!!!!!!!!!!!!!!!!", dirName)
+            mkDir(
+                dirName,
+                () => {
+
+                    callback(
+                        wrapDirectory(
+                            (
+                                subDirName,
+                                x
+                            ) => {
+                                mkDir(pr.join([dirName, subDirName]), x)
+                            },
+                            (
+                                fileName,
+                                data,
+                            ) => {
+                                writeFile(pr.join([dirName, fileName]), data)
+                            }
+                        )
+                    )
+                }
             )
+
+
         },
         createFile(
             name,
@@ -100,13 +119,13 @@ export function generateCode(
                         generateUntypedAPI,
                     )
                 })
-        
+
             })
-    
+
         })
         $.createDirectory("esc", ($) => {
             $.createDirectory("implementation", ($) => {
-        
+
                 $.createFile("parser.generated.ts", ($) => {
                     generate(
                         $,
@@ -120,11 +139,41 @@ export function generateCode(
                     )
                 })
             })
-    
+
         })
     }
 
-    const targetDir = createDirectory(
+    const targetDir = wrapDirectory(
+        (
+            dirName,
+            x
+        ) => {
+            pr.mkdir(pr.join([targetDirPath, dirName]), ($) => {
+                switch ($[0]) {
+                    case "error":
+                        pr.cc($[1], ($) => {
+                            switch ($.type[0]) {
+                                case "other":
+                                    pr.cc($.type[1], ($) => {
+                                        throw new Error("IMPLEMENT ME")
+                                    })
+                                    break
+                                default:
+                                    pr.au($.type[0])
+                            }
+                        })
+                        break
+                    case "success":
+                        pr.cc($[1], ($) => {
+                            console.error("2!!!!!!!!!!!!!!!!!!", dirName)
+                            x()
+                        })
+                        break
+                    default:
+                        pr.au($[0])
+                }
+            })
+        },
         (
             fileName,
             data,
@@ -132,7 +181,35 @@ export function generateCode(
             pr.writeFile(
                 pr.join([targetDirPath, fileName]),
                 data,
-                () => {},
+                ($) => {
+                    switch ($[0]) {
+                        case "error":
+                            pr.cc($[1], ($) => {
+                                console.error(`error while writing`, pr.join([targetDirPath, fileName]))
+                                switch ($.type[0]) {
+                                    case "no entity":
+                                        pr.cc($.type[1], ($) => {
+                                            console.error(`no entity`)
+
+                                        })
+                                        break
+                                    case "other":
+                                        pr.cc($.type[1], ($) => {
+                                        })
+                                        break
+                                    default:
+                                        pr.au($.type[0])
+                                }
+                            })
+                            break
+                        case "success":
+                            pr.cc($[1], ($) => {
+                            })
+                            break
+                        default:
+                            pr.au($[0])
+                    }
+                },
             )
         }
     )
