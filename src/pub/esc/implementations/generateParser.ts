@@ -185,22 +185,6 @@ export function generateParser(
                                             })
                                         }
                                     )
-                                    // $w.line(($w) => {
-                                    //     $w.snippet(`callback({`)
-                                    //     $w.indent(($w) => {
-                                    //         $w.line(($w) => {
-                                    //             $w.snippet(`annotation: $.annotation,`)
-                                    //         })
-                                    //         $w.line(($w) => {
-                                    //             $w.snippet(`content: `)
-                                    //             $w.snippet(`FIXME`)
-                                    //         })
-                                    //     })
-                                    //     $w.snippet(`})`)
-                                    // })
-                                    $w.line(($w) => {
-                                        $w.snippet(`return`)
-                                    })
                                 })
                                 break
                             case "leaf":
@@ -222,38 +206,38 @@ export function generateParser(
                                         })
                                         $w.snippet(`})`)
                                     })
-                                    $w.line(($w) => {
-                                        $w.snippet(`return`)
-                                    })
                                 })
                                 break
                             default:
                                 pr.au($.type[0])
                         }
+                        $w.line(($w) => {
+                            $w.snippet(`if (children.length > 0) {`)
+                            $w.indent(($w) => {
+                                $w.line(($w) => {
+                                    $w.snippet(`reportUnexpectedChild({`)
+                                    $w.indent(($w) => {
+                                        $w.line(($w) => {
+                                            $w.snippet(`path: "${path}",`)
+                                        })
+                                        $w.line(($w) => {
+                                            $w.snippet(`child: children[children.length - 1],`)
+                                        })
+                                        $w.line(($w) => {
+                                            $w.snippet(`expected: null,`)
+                                        })
+                                    })
+                                    $w.snippet(`})`)
+                                })
+                                $w.line(($w) => {
+                                    $w.snippet(`return`)
+                                })
+                            })
+                            $w.snippet(`}`)
+                        })
                     })
                     $w.snippet(`})`)
                     call($w)
-                })
-                $w.line(($w) => {
-                    $w.snippet(`if (children.length > 0) {`)
-                    $w.indent(($w) => {
-                        $w.line(($w) => {
-                            $w.snippet(`reportUnexpectedChild({`)
-                            $w.indent(($w) => {
-                                $w.line(($w) => {
-                                    $w.snippet(`path: "${path}",`)
-                                })
-                                $w.line(($w) => {
-                                    $w.snippet(`child: children[children.length - 1],`)
-                                })
-                                $w.line(($w) => {
-                                    $w.snippet(`expected: null,`)
-                                })
-                            })
-                            $w.snippet(`})`)
-                        })
-                    })
-                    $w.snippet(`}`)
                 })
 
             }
@@ -589,7 +573,7 @@ export function generateParser(
                                                                 $w.snippet(`child: nextChild,`)
                                                             })
                                                             $w.line(($w) => {
-                                                                $w.snippet(`expected: ${pr.Objectkeys(possibleTokens)},`)
+                                                                $w.snippet(`expected: ${pr.Objectkeys(possibleTokens).map(($) => `"${$}"`).join(", ")},`)
                                                             })
                                                         })
                                                         $w.snippet(`})`)
@@ -830,9 +814,6 @@ export function generateParser(
                             $w.snippet(`)`)
                         },
                     )
-                    $w.line(($w) => {
-                        $w.snippet(`return`)
-                    })
                 })
                 $w.snippet(`}`)
             })
