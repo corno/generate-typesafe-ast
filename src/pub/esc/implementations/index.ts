@@ -35,7 +35,6 @@ function wrapDirectory(
             dirName,
             callback,
         ) {
-            console.error("!!!!!!!!!!!!!!!!!!", dirName)
             mkDir(
                 dirName,
                 () => {
@@ -165,7 +164,6 @@ export function generateCode(
                         break
                     case "success":
                         pr.cc($[1], ($) => {
-                            console.error("2!!!!!!!!!!!!!!!!!!", dirName)
                             x()
                         })
                         break
