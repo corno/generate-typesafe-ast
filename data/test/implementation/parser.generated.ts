@@ -549,7 +549,7 @@ export function parse<Annotation>(
                                                 reportUnexpectedChild({
                                                     path: "Gexpression_arrowFunction$_implementation",
                                                     child: nextChild,
-                                                    expected: "Block", "ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword",
+                                                    expected: ["Block", "ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword"],
                                                 })
                                             }
                                         }
@@ -1173,7 +1173,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator",
                                         child: nextChild,
-                                        expected: "AmpersandAmpersandToken", "BarBarToken", "EqualsToken", "EqualsEqualsEqualsToken", "ExclamationEqualsEqualsToken", "GreaterThanToken", "LessThanToken", "MinusToken", "MinusEqualsToken", "PlusToken", "PlusEqualsToken",
+                                        expected: ["AmpersandAmpersandToken", "BarBarToken", "EqualsToken", "EqualsEqualsEqualsToken", "ExclamationEqualsEqualsToken", "GreaterThanToken", "LessThanToken", "MinusToken", "MinusEqualsToken", "PlusToken", "PlusEqualsToken"],
                                     })
                                 }
                             }
@@ -2001,7 +2001,7 @@ export function parse<Annotation>(
                                         reportUnexpectedChild({
                                             path: "Gexpression_objectLiteral$$_name",
                                             child: nextChild,
-                                            expected: "Identifier", "NumericLiteral", "StringLiteral",
+                                            expected: ["Identifier", "NumericLiteral", "StringLiteral"],
                                         })
                                     }
                                 }
@@ -2497,7 +2497,7 @@ export function parse<Annotation>(
                                                     reportUnexpectedChild({
                                                         path: "Gexpression_template$_spans$_x",
                                                         child: nextChild,
-                                                        expected: "TemplateMiddle", "TemplateTail",
+                                                        expected: ["TemplateMiddle", "TemplateTail"],
                                                     })
                                                 }
                                             }
@@ -2685,7 +2685,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gexpression",
                         child: nextChild,
-                        expected: "ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword",
+                        expected: ["ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword"],
                     })
                 }
             }
@@ -2906,7 +2906,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GidentifierOrStringLiteral",
                         child: nextChild,
-                        expected: "Identifier", "StringLiteral",
+                        expected: ["Identifier", "StringLiteral"],
                     })
                 }
             }
@@ -3083,7 +3083,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gmodifier",
                         child: nextChild,
-                        expected: "DeclareKeyword", "ExportKeyword", "ReadonlyKeyword",
+                        expected: ["DeclareKeyword", "ExportKeyword", "ReadonlyKeyword"],
                     })
                 }
             }
@@ -4079,7 +4079,7 @@ export function parse<Annotation>(
                                     reportUnexpectedChild({
                                         path: "Gstatement_import$_clause$",
                                         child: nextChild,
-                                        expected: "NamespaceImport", "NamedImports",
+                                        expected: ["NamespaceImport", "NamedImports"],
                                     })
                                 }
                             }
@@ -4770,7 +4770,7 @@ export function parse<Annotation>(
                                             reportUnexpectedChild({
                                                 path: "Gstatement_switch$_caseBlock$",
                                                 child: nextChild,
-                                                expected: "CaseClause", "DefaultClause",
+                                                expected: ["CaseClause", "DefaultClause"],
                                             })
                                         }
                                     }
@@ -5321,7 +5321,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gstatement",
                         child: nextChild,
-                        expected: "Block", "BreakStatement", "ExportDeclaration", "ExpressionStatement", "ForStatement", "FunctionDeclaration", "IfStatement", "ImportDeclaration", "InterfaceDeclaration", "LabeledStatement", "ReturnStatement", "SwitchStatement", "ThrowStatement", "TryStatement", "TypeAliasDeclaration", "VariableStatement", "WhileStatement",
+                        expected: ["Block", "BreakStatement", "ExportDeclaration", "ExpressionStatement", "ForStatement", "FunctionDeclaration", "IfStatement", "ImportDeclaration", "InterfaceDeclaration", "LabeledStatement", "ReturnStatement", "SwitchStatement", "ThrowStatement", "TryStatement", "TypeAliasDeclaration", "VariableStatement", "WhileStatement"],
                     })
                 }
             }
@@ -5779,7 +5779,7 @@ export function parse<Annotation>(
                                 reportUnexpectedChild({
                                     path: "Gtype_literal$",
                                     child: nextChild,
-                                    expected: "NullKeyword", "StringLiteral",
+                                    expected: ["NullKeyword", "StringLiteral"],
                                 })
                             }
                         }
@@ -6416,7 +6416,7 @@ export function parse<Annotation>(
                                 reportUnexpectedChild({
                                     path: "Gtype_typeReference$_x",
                                     child: nextChild,
-                                    expected: "Identifier", "QualifiedName",
+                                    expected: ["Identifier", "QualifiedName"],
                                 })
                             }
                         }
@@ -6708,7 +6708,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "Gtype",
                         child: nextChild,
-                        expected: "AnyKeyword", "ArrayType", "BooleanKeyword", "FunctionType", "LiteralType", "ParenthesizedType", "NeverKeyword", "NumberKeyword", "OptionalType", "TupleType", "TypeLiteral", "StringKeyword", "TypeReference", "UndefinedKeyword", "UnionType", "VoidKeyword",
+                        expected: ["AnyKeyword", "ArrayType", "BooleanKeyword", "FunctionType", "LiteralType", "ParenthesizedType", "NeverKeyword", "NumberKeyword", "OptionalType", "TupleType", "TypeLiteral", "StringKeyword", "TypeReference", "UndefinedKeyword", "UnionType", "VoidKeyword"],
                     })
                 }
             }
@@ -7298,7 +7298,7 @@ export function parse<Annotation>(
                     reportUnexpectedChild({
                         path: "GtypeSignature",
                         child: nextChild,
-                        expected: "ConstructSignature", "IndexSignature", "MethodSignature", "PropertySignature",
+                        expected: ["ConstructSignature", "IndexSignature", "MethodSignature", "PropertySignature"],
                     })
                 }
             }

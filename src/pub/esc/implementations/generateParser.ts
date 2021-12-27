@@ -573,7 +573,7 @@ export function generateParser(
                                                                 $w.snippet(`child: nextChild,`)
                                                             })
                                                             $w.line(($w) => {
-                                                                $w.snippet(`expected: ${pr.Objectkeys(possibleTokens).map(($) => `"${$}"`).join(", ")},`)
+                                                                $w.snippet(`expected: [${pr.Objectkeys(possibleTokens).map(($) => `"${$}"`).join(", ")}],`)
                                                             })
                                                         })
                                                         $w.snippet(`})`)
