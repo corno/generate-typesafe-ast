@@ -38,10 +38,10 @@ export function generateAPI(
             $w.snippet(`export type N${path}<Annotation> = {`)
             $w.indent(($w) => {
                 $w.line(($w) => {
-                    $w.snippet(`annotation: Annotation,`)
+                    $w.snippet(`readonly "annotation": Annotation,`)
                 })
                 $w.line(($w) => {
-                    $w.snippet(`content: `)
+                    $w.snippet(`readonly "content": `)
                     switch ($.type[0]) {
                         case "composite":
                             pr.cc($.type[1], ($) => {
@@ -141,7 +141,7 @@ export function generateAPI(
                         $w.indent(($w) => {
                             $.elements.forEach(($) => {
                                 $w.line(($w) => {
-                                    $w.snippet(`readonly ${$.name}:  V${path}_${$.name}<Annotation>`)
+                                    $w.snippet(`readonly "${$.name}":  V${path}_${$.name}<Annotation>`)
                                 })
                             })
                         })

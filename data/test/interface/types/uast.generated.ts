@@ -1,8 +1,8 @@
+import * as pr from "pareto-runtime"
+
 export type Node<Annotation> = {
-    kindName: string
-    value: string
-    annotation: Annotation
-    children: {
-        forEach(callback: ($: Node<Annotation>) => void): void
-    }
+    readonly "kindName": string
+    readonly "value": string
+    readonly "annotation": Annotation
+    readonly "children": pr.IReadonlyArray<Node<Annotation>>
 }

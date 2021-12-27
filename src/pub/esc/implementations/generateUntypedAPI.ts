@@ -9,25 +9,24 @@ export function generateUntypedAPI(
     log: (str: string) => void,
 ) {
     $w.line(($w) => {
+        $w.snippet(`import * as pr from "pareto-runtime"`)
+    })
+    $w.line(($w) => {
+    })
+    $w.line(($w) => {
         $w.snippet(`export type Node<Annotation> = {`)
         $w.indent(($w) => {
             $w.line(($w) => {
-                $w.snippet(`kindName: string`)
+                $w.snippet(`readonly "kindName": string`)
             })
             $w.line(($w) => {
-                $w.snippet(`value: string`)
+                $w.snippet(`readonly "value": string`)
             })
             $w.line(($w) => {
-                $w.snippet(`annotation: Annotation`)
+                $w.snippet(`readonly "annotation": Annotation`)
             })
             $w.line(($w) => {
-                $w.snippet(`children: {`)
-                $w.indent(($w) => {
-                    $w.line(($w) => {
-                        $w.snippet(`forEach(callback: ($: Node<Annotation>) => void): void`)
-                    })
-                })
-                $w.snippet(`}`)
+                $w.snippet(`readonly "children": pr.IReadonlyArray<Node<Annotation>>`)
             })
         })
         $w.snippet(`}`)
