@@ -84,6 +84,46 @@ export function generateCode(
         )
     }
 
+    function x($: Directory) {
+
+        $.createDirectory("interface", ($) => {
+            $.createDirectory("types", ($) => {
+                $.createFile("ts_api.generated.ts", ($) => {
+                    generate(
+                        $,
+                        generateAPI,
+                    )
+                })
+                $.createFile("uast.generated.ts", ($) => {
+                    generate(
+                        $,
+                        generateUntypedAPI,
+                    )
+                })
+        
+            })
+    
+        })
+        $.createDirectory("esc", ($) => {
+            $.createDirectory("implementation", ($) => {
+        
+                $.createFile("parser.generated.ts", ($) => {
+                    generate(
+                        $,
+                        generateParser,
+                    )
+                })
+                $.createFile("visitor_template.generated.ts", ($) => {
+                    generate(
+                        $,
+                        generateVisitorTemplate,
+                    )
+                })
+            })
+    
+        })
+    }
+
     const targetDir = createDirectory(
         (
             fileName,
@@ -96,36 +136,7 @@ export function generateCode(
             )
         }
     )
+    x(targetDir)
 
-    targetDir.createDirectory("interface", ($) => {
-        $.createFile("ts_api.generated.ts", ($) => {
-            generate(
-                $,
-                generateAPI,
-            )
-        })
-        $.createFile("uast.generated.ts", ($) => {
-            generate(
-                $,
-                generateUntypedAPI,
-            )
-        })
-
-    })
-    targetDir.createDirectory("implementation", ($) => {
-
-        $.createFile("parser.generated.ts", ($) => {
-            generate(
-                $,
-                generateParser,
-            )
-        })
-        $.createFile("visitor_template.generated.ts", ($) => {
-            generate(
-                $,
-                generateVisitorTemplate,
-            )
-        })
-    })
 
 }

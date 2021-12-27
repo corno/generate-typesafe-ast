@@ -1,5 +1,5 @@
 import * as pr from "pareto-runtime"
-import * as api from "../interface/ts_api.generated"
+import * as api from "../../interface/types/ts_api.generated"
 
 export type FOO<Annotation> = {
     "Gblock$"?: {
