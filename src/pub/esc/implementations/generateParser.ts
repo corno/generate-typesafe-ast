@@ -1,7 +1,7 @@
 import * as pr from "pareto-runtime"
 
 import * as g from "../../interface/types"
-import * as wapi from "fountain-pen/interfaces/fountain-pen"
+import * as wapi from "fountain-pen/esc/interfaces/fountain-pen"
 
 export function generateParser(
     grammar: g.Grammar,

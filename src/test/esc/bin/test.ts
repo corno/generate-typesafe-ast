@@ -2,6 +2,7 @@
 import * as pr from "pareto-runtime"
 import * as tsg from "../../data/typescriptGrammar"
 import * as gta from "../../../pub/esc/implementations"
+import * as wapi from "fountain-pen/esc/implementations/fountain-pen"
 
 
 const [, , targetDirPath] = pr.getProcessArguments()
@@ -11,7 +12,21 @@ if (targetDirPath === undefined) {
     pr.processExit(1)
 }
 
-gta.generateCode(
-    tsg.typescriptGrammar,
-    targetDirPath
+wapi.createContext(
+    pr.trimRight,
+).configure(
+    {
+        indentation: "    ",
+        newline: "\r\n",
+        trimLines: true,
+    },
+    ($i) => {
+
+        gta.generateCode(
+            $i,
+            tsg.typescriptGrammar,
+            targetDirPath
+        )
+    }
 )
+

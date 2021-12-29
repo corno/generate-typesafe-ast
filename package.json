@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "fountain-pen": "^4.0.1",
+    "fountain-pen": "^4.1.0",
     "pareto-runtime": "^0.15.0"
   },
   "devDependencies": {

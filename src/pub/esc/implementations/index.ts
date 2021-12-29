@@ -1,9 +1,8 @@
 import * as pr from "pareto-runtime"
 
 import * as g from "../../interface/types"
-import * as wapi from "fountain-pen/interfaces/fountain-pen"
+import * as wapi from "fountain-pen/esc/interfaces/fountain-pen"
 
-import { createBlock } from "fountain-pen/implementations/fountain-pen"
 import { generateAPI } from "./generateAPI"
 import { generateParser } from "./generateParser"
 import { generateVisitorTemplate } from "./generateVisitorTemplate"
@@ -21,6 +20,7 @@ export type Directory = {
 }
 
 function wrapDirectory(
+    writeContext: wapi.ConfiguredContext,
     mkDir: (
         name: string,
         x: () => void,
@@ -41,6 +41,7 @@ function wrapDirectory(
 
                     callback(
                         wrapDirectory(
+                            writeContext,
                             (
                                 subDirName,
                                 x
@@ -65,23 +66,25 @@ function wrapDirectory(
             callback,
         ) {
             let out = ""
-            const block = createBlock(
-                {
-                    indentation: "    ",
-                    newline: "\r\n",
-                    trimLines: true,
+            writeContext.processBlock(
+                ($i) => {
+                    callback($i)
                 },
-                (str) => {
-                    out += str
+                {
+                    onData: ($) => {
+                        out += $
+                    },
+                    onEnd: ($) => {
+                        writeFile(name, out)
+                    },
                 }
             )
-            callback(block)
-            writeFile(name, out)
         }
     }
 }
 
 export function generateCode(
+    writeContext: wapi.ConfiguredContext,
     grammar: g.Grammar,
     targetDirPath: string,
 ) {
@@ -143,6 +146,7 @@ export function generateCode(
     }
 
     const targetDir = wrapDirectory(
+        writeContext,
         (
             dirName,
             x
