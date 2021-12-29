@@ -20,7 +20,7 @@ export type VGexpression_arrayLiteral<Annotation> = VTGexpression_arrayLiteral<A
 export type VTGexpression_arrowFunction$_parameters<Annotation> = Gparameter<Annotation>
 export type VGexpression_arrowFunction$_parameters<Annotation> = VTGexpression_arrowFunction$_parameters<Annotation>[]
 export type VTGexpression_arrowFunction$_returnType<Annotation> = Gtype<Annotation>
-export type VGexpression_arrowFunction$_returnType<Annotation> = null | VTGexpression_arrowFunction$_returnType<Annotation>
+export type VGexpression_arrowFunction$_returnType<Annotation> = pr.optional<VTGexpression_arrowFunction$_returnType<Annotation>>
 
 export type NGexpression_arrowFunction$_equalsGreaterThan$<Annotation> = {
     readonly "annotation": Annotation,
@@ -412,7 +412,7 @@ export type VGfunctionDefinition_typeParameters<Annotation> = VTGfunctionDefinit
 export type VTGfunctionDefinition_parameters<Annotation> = Gparameter<Annotation>
 export type VGfunctionDefinition_parameters<Annotation> = VTGfunctionDefinition_parameters<Annotation>[]
 export type VTGfunctionDefinition_returnType<Annotation> = Gtype<Annotation>
-export type VGfunctionDefinition_returnType<Annotation> = null | VTGfunctionDefinition_returnType<Annotation>
+export type VGfunctionDefinition_returnType<Annotation> = pr.optional<VTGfunctionDefinition_returnType<Annotation>>
 export type VTGfunctionDefinition<Annotation> = {
     readonly "typeParameters":  VGfunctionDefinition_typeParameters<Annotation>
     readonly "parameters":  VGfunctionDefinition_parameters<Annotation>
@@ -471,9 +471,9 @@ export type NGparameter$_questionToken$<Annotation> = {
     readonly "annotation": Annotation,
 }
 export type VTGparameter$_questionToken<Annotation> = NGparameter$_questionToken$<Annotation>
-export type VGparameter$_questionToken<Annotation> = null | VTGparameter$_questionToken<Annotation>
+export type VGparameter$_questionToken<Annotation> = pr.optional<VTGparameter$_questionToken<Annotation>>
 export type VTGparameter$_type<Annotation> = Gtype<Annotation>
-export type VGparameter$_type<Annotation> = null | VTGparameter$_type<Annotation>
+export type VGparameter$_type<Annotation> = pr.optional<VTGparameter$_type<Annotation>>
 export type VTGparameter$<Annotation> = {
     readonly "name":  VGparameter$_name<Annotation>
     readonly "questionToken":  VGparameter$_questionToken<Annotation>
@@ -490,7 +490,7 @@ export type Gparameter<Annotation> =  VTGparameter<Annotation>
 export type VTGstatement_block<Annotation> = Gblock<Annotation>
 export type VGstatement_block<Annotation> = VTGstatement_block<Annotation>
 export type VTGstatement_break$<Annotation> = Gidentifier<Annotation>
-export type VGstatement_break$<Annotation> = null | VTGstatement_break$<Annotation>
+export type VGstatement_break$<Annotation> = pr.optional<VTGstatement_break$<Annotation>>
 
 export type NGstatement_break$<Annotation> = {
     readonly "annotation": Annotation,
@@ -545,7 +545,7 @@ export type VGstatement_function$_name<Annotation> = VTGstatement_function$_name
 export type VTGstatement_function$_definition<Annotation> = GfunctionDefinition<Annotation>
 export type VGstatement_function$_definition<Annotation> = VTGstatement_function$_definition<Annotation>
 export type VTGstatement_function$_block<Annotation> = Gblock<Annotation>
-export type VGstatement_function$_block<Annotation> = null | VTGstatement_function$_block<Annotation>
+export type VGstatement_function$_block<Annotation> = pr.optional<VTGstatement_function$_block<Annotation>>
 export type VTGstatement_function$<Annotation> = {
     readonly "modifiers":  VGstatement_function$_modifiers<Annotation>
     readonly "name":  VGstatement_function$_name<Annotation>
@@ -565,7 +565,7 @@ export type VGstatement_if$_expression<Annotation> = VTGstatement_if$_expression
 export type VTGstatement_if$_thenStatement<Annotation> = Gstatement<Annotation>
 export type VGstatement_if$_thenStatement<Annotation> = VTGstatement_if$_thenStatement<Annotation>
 export type VTGstatement_if$_elseStatement<Annotation> = Gstatement<Annotation>
-export type VGstatement_if$_elseStatement<Annotation> = null | VTGstatement_if$_elseStatement<Annotation>
+export type VGstatement_if$_elseStatement<Annotation> = pr.optional<VTGstatement_if$_elseStatement<Annotation>>
 export type VTGstatement_if$<Annotation> = {
     readonly "expression":  VGstatement_if$_expression<Annotation>
     readonly "thenStatement":  VGstatement_if$_thenStatement<Annotation>
@@ -591,7 +591,7 @@ export type VGstatement_import$_clause$_namespace<Annotation> = VTGstatement_imp
 export type VTGstatement_import$_clause$_named$$_name<Annotation> = Gidentifier<Annotation>
 export type VGstatement_import$_clause$_named$$_name<Annotation> = VTGstatement_import$_clause$_named$$_name<Annotation>
 export type VTGstatement_import$_clause$_named$$_as<Annotation> = Gidentifier<Annotation>
-export type VGstatement_import$_clause$_named$$_as<Annotation> = null | VTGstatement_import$_clause$_named$$_as<Annotation>
+export type VGstatement_import$_clause$_named$$_as<Annotation> = pr.optional<VTGstatement_import$_clause$_named$$_as<Annotation>>
 export type VTGstatement_import$_clause$_named$$<Annotation> = {
     readonly "name":  VGstatement_import$_clause$_named$$_name<Annotation>
     readonly "as":  VGstatement_import$_clause$_named$$_as<Annotation>
@@ -675,7 +675,7 @@ export type NGstatement_labeled$<Annotation> = {
 export type VTGstatement_labeled<Annotation> = NGstatement_labeled$<Annotation>
 export type VGstatement_labeled<Annotation> = VTGstatement_labeled<Annotation>
 export type VTGstatement_return$<Annotation> = Gexpression<Annotation>
-export type VGstatement_return$<Annotation> = null | VTGstatement_return$<Annotation>
+export type VGstatement_return$<Annotation> = pr.optional<VTGstatement_return$<Annotation>>
 
 export type NGstatement_return$<Annotation> = {
     readonly "annotation": Annotation,
@@ -876,7 +876,7 @@ export type VGtype_boolean<Annotation> = VTGtype_boolean<Annotation>
 export type VTGtype_function$_parameters<Annotation> = Gparameter<Annotation>
 export type VGtype_function$_parameters<Annotation> = VTGtype_function$_parameters<Annotation>[]
 export type VTGtype_function$_returnType<Annotation> = Gtype<Annotation>
-export type VGtype_function$_returnType<Annotation> = null | VTGtype_function$_returnType<Annotation>
+export type VGtype_function$_returnType<Annotation> = pr.optional<VTGtype_function$_returnType<Annotation>>
 export type VTGtype_function$<Annotation> = {
     readonly "parameters":  VGtype_function$_parameters<Annotation>
     readonly "returnType":  VGtype_function$_returnType<Annotation>
@@ -1067,7 +1067,7 @@ export type VGtypeSignature_index$_modifiers<Annotation> = VTGtypeSignature_inde
 export type VTGtypeSignature_index$_parameter<Annotation> = Gparameter<Annotation>
 export type VGtypeSignature_index$_parameter<Annotation> = VTGtypeSignature_index$_parameter<Annotation>
 export type VTGtypeSignature_index$_type<Annotation> = Gtype<Annotation>
-export type VGtypeSignature_index$_type<Annotation> = null | VTGtypeSignature_index$_type<Annotation>
+export type VGtypeSignature_index$_type<Annotation> = pr.optional<VTGtypeSignature_index$_type<Annotation>>
 export type VTGtypeSignature_index$<Annotation> = {
     readonly "modifiers":  VGtypeSignature_index$_modifiers<Annotation>
     readonly "parameter":  VGtypeSignature_index$_parameter<Annotation>
@@ -1106,9 +1106,9 @@ export type NGtypeSignature_property$_quesionToken$<Annotation> = {
     readonly "annotation": Annotation,
 }
 export type VTGtypeSignature_property$_quesionToken<Annotation> = NGtypeSignature_property$_quesionToken$<Annotation>
-export type VGtypeSignature_property$_quesionToken<Annotation> = null | VTGtypeSignature_property$_quesionToken<Annotation>
+export type VGtypeSignature_property$_quesionToken<Annotation> = pr.optional<VTGtypeSignature_property$_quesionToken<Annotation>>
 export type VTGtypeSignature_property$_type<Annotation> = Gtype<Annotation>
-export type VGtypeSignature_property$_type<Annotation> = null | VTGtypeSignature_property$_type<Annotation>
+export type VGtypeSignature_property$_type<Annotation> = pr.optional<VTGtypeSignature_property$_type<Annotation>>
 export type VTGtypeSignature_property$<Annotation> = {
     readonly "modifiers":  VGtypeSignature_property$_modifiers<Annotation>
     readonly "name":  VGtypeSignature_property$_name<Annotation>
@@ -1132,9 +1132,9 @@ export type GtypeSignature<Annotation> =  VTGtypeSignature<Annotation>
 export type VTGvariableDeclaration$_name<Annotation> = Gidentifier<Annotation>
 export type VGvariableDeclaration$_name<Annotation> = VTGvariableDeclaration$_name<Annotation>
 export type VTGvariableDeclaration$_type<Annotation> = Gtype<Annotation>
-export type VGvariableDeclaration$_type<Annotation> = null | VTGvariableDeclaration$_type<Annotation>
+export type VGvariableDeclaration$_type<Annotation> = pr.optional<VTGvariableDeclaration$_type<Annotation>>
 export type VTGvariableDeclaration$_expression<Annotation> = Gexpression<Annotation>
-export type VGvariableDeclaration$_expression<Annotation> = null | VTGvariableDeclaration$_expression<Annotation>
+export type VGvariableDeclaration$_expression<Annotation> = pr.optional<VTGvariableDeclaration$_expression<Annotation>>
 export type VTGvariableDeclaration$<Annotation> = {
     readonly "name":  VGvariableDeclaration$_name<Annotation>
     readonly "type":  VGvariableDeclaration$_type<Annotation>

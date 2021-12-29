@@ -183,7 +183,7 @@ export function generateAPI(
                     break
                 case "optional":
                     pr.cc($.cardinality[1], ($) => {
-                        $w.snippet(`null | VT${path}<Annotation>`)
+                        $w.snippet(`pr.optional<VT${path}<Annotation>>`)
                     })
                     break
                 default:

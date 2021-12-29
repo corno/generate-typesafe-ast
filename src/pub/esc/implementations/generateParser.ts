@@ -92,7 +92,7 @@ export function generateParser(
                 $w.snippet(`reportUnexpectedRoot: ($: { root: uast.Node<Annotation>, }) => void,`)
             })
             $w.line(($w) => {
-                $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, expected: null | string[] }) => void,`)
+                $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, expected: pr.optional<string[]> }) => void,`)
             })
             $w.line(($w) => {
                 $w.snippet(`reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,`)
