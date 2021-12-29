@@ -195,14 +195,11 @@ export function generateParser(
                                             $w.line(($w) => {
                                                 $w.snippet(`annotation: $.annotation,`)
                                             })
-                                            $w.line(($w) => {
-                                                $w.snippet(`content: `)
-                                                if ($.hasTextContent) {
-                                                    $w.snippet(`$.value`)
-                                                } else {
-                                                    $w.snippet(`null`)
-                                                }
-                                            })
+                                            if ($.hasTextContent) {
+                                                $w.line(($w) => {
+                                                    $w.snippet(`content: $.value`)
+                                                })
+                                            }
                                         })
                                         $w.snippet(`})`)
                                     })

@@ -24,7 +24,6 @@ export type VGexpression_arrowFunction$_returnType<Annotation> = null | VTGexpre
 
 export type NGexpression_arrowFunction$_equalsGreaterThan$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_arrowFunction$_equalsGreaterThan<Annotation> = NGexpression_arrowFunction$_equalsGreaterThan$<Annotation>
 export type VGexpression_arrowFunction$_equalsGreaterThan<Annotation> = VTGexpression_arrowFunction$_equalsGreaterThan<Annotation>
@@ -55,77 +54,66 @@ export type VGexpression_binary$_leftHandSide<Annotation> = VTGexpression_binary
 
 export type NGexpression_binary$_operator_ampersandAmpersand$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_ampersandAmpersand<Annotation> = NGexpression_binary$_operator_ampersandAmpersand$<Annotation>
 export type VGexpression_binary$_operator_ampersandAmpersand<Annotation> = VTGexpression_binary$_operator_ampersandAmpersand<Annotation>
 
 export type NGexpression_binary$_operator_barBar$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_barBar<Annotation> = NGexpression_binary$_operator_barBar$<Annotation>
 export type VGexpression_binary$_operator_barBar<Annotation> = VTGexpression_binary$_operator_barBar<Annotation>
 
 export type NGexpression_binary$_operator_equals$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_equals<Annotation> = NGexpression_binary$_operator_equals$<Annotation>
 export type VGexpression_binary$_operator_equals<Annotation> = VTGexpression_binary$_operator_equals<Annotation>
 
 export type NGexpression_binary$_operator_equalsEqualsEquals$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_equalsEqualsEquals<Annotation> = NGexpression_binary$_operator_equalsEqualsEquals$<Annotation>
 export type VGexpression_binary$_operator_equalsEqualsEquals<Annotation> = VTGexpression_binary$_operator_equalsEqualsEquals<Annotation>
 
 export type NGexpression_binary$_operator_exclamationEqualsEquals$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_exclamationEqualsEquals<Annotation> = NGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>
 export type VGexpression_binary$_operator_exclamationEqualsEquals<Annotation> = VTGexpression_binary$_operator_exclamationEqualsEquals<Annotation>
 
 export type NGexpression_binary$_operator_greaterThan$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_greaterThan<Annotation> = NGexpression_binary$_operator_greaterThan$<Annotation>
 export type VGexpression_binary$_operator_greaterThan<Annotation> = VTGexpression_binary$_operator_greaterThan<Annotation>
 
 export type NGexpression_binary$_operator_lessThan$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_lessThan<Annotation> = NGexpression_binary$_operator_lessThan$<Annotation>
 export type VGexpression_binary$_operator_lessThan<Annotation> = VTGexpression_binary$_operator_lessThan<Annotation>
 
 export type NGexpression_binary$_operator_minus$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_minus<Annotation> = NGexpression_binary$_operator_minus$<Annotation>
 export type VGexpression_binary$_operator_minus<Annotation> = VTGexpression_binary$_operator_minus<Annotation>
 
 export type NGexpression_binary$_operator_minusEquals$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_minusEquals<Annotation> = NGexpression_binary$_operator_minusEquals$<Annotation>
 export type VGexpression_binary$_operator_minusEquals<Annotation> = VTGexpression_binary$_operator_minusEquals<Annotation>
 
 export type NGexpression_binary$_operator_plus$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_plus<Annotation> = NGexpression_binary$_operator_plus$<Annotation>
 export type VGexpression_binary$_operator_plus<Annotation> = VTGexpression_binary$_operator_plus<Annotation>
 
 export type NGexpression_binary$_operator_plusEquals$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_binary$_operator_plusEquals<Annotation> = NGexpression_binary$_operator_plusEquals$<Annotation>
 export type VGexpression_binary$_operator_plusEquals<Annotation> = VTGexpression_binary$_operator_plusEquals<Annotation>
@@ -181,7 +169,6 @@ export type VGexpression_conditional$_test<Annotation> = VTGexpression_condition
 
 export type NGexpression_conditional$_questionToken$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_conditional$_questionToken<Annotation> = NGexpression_conditional$_questionToken$<Annotation>
 export type VGexpression_conditional$_questionToken<Annotation> = VTGexpression_conditional$_questionToken<Annotation>
@@ -190,7 +177,6 @@ export type VGexpression_conditional$_ifExpression<Annotation> = VTGexpression_c
 
 export type NGexpression_conditional$_colonToken$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_conditional$_colonToken<Annotation> = NGexpression_conditional$_colonToken$<Annotation>
 export type VGexpression_conditional$_colonToken<Annotation> = VTGexpression_conditional$_colonToken<Annotation>
@@ -230,7 +216,6 @@ export type VGexpression_elementAccess<Annotation> = VTGexpression_elementAccess
 
 export type NGexpression_false$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_false<Annotation> = NGexpression_false$<Annotation>
 export type VGexpression_false<Annotation> = VTGexpression_false<Annotation>
@@ -255,7 +240,6 @@ export type VGexpression_new<Annotation> = VTGexpression_new<Annotation>
 
 export type NGexpression_noSubstitutionTemplateLiteral$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_noSubstitutionTemplateLiteral<Annotation> = NGexpression_noSubstitutionTemplateLiteral$<Annotation>
 export type VGexpression_noSubstitutionTemplateLiteral<Annotation> = VTGexpression_noSubstitutionTemplateLiteral<Annotation>
@@ -264,7 +248,6 @@ export type VGexpression_numericLiteral<Annotation> = VTGexpression_numericLiter
 
 export type NGexpression_nullKeyword$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_nullKeyword<Annotation> = NGexpression_nullKeyword$<Annotation>
 export type VGexpression_nullKeyword<Annotation> = VTGexpression_nullKeyword<Annotation>
@@ -399,7 +382,6 @@ export type VGexpression_template<Annotation> = VTGexpression_template<Annotatio
 
 export type NGexpression_true$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGexpression_true<Annotation> = NGexpression_true$<Annotation>
 export type VGexpression_true<Annotation> = VTGexpression_true<Annotation>
@@ -455,21 +437,18 @@ export type GidentifierOrStringLiteral<Annotation> =  VTGidentifierOrStringLiter
 
 export type NGmodifier_declare$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGmodifier_declare<Annotation> = NGmodifier_declare$<Annotation>
 export type VGmodifier_declare<Annotation> = VTGmodifier_declare<Annotation>
 
 export type NGmodifier_export$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGmodifier_export<Annotation> = NGmodifier_export$<Annotation>
 export type VGmodifier_export<Annotation> = VTGmodifier_export<Annotation>
 
 export type NGmodifier_readonly$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGmodifier_readonly<Annotation> = NGmodifier_readonly$<Annotation>
 export type VGmodifier_readonly<Annotation> = VTGmodifier_readonly<Annotation>
@@ -490,7 +469,6 @@ export type VGparameter$_name<Annotation> = VTGparameter$_name<Annotation>
 
 export type NGparameter$_questionToken$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGparameter$_questionToken<Annotation> = NGparameter$_questionToken$<Annotation>
 export type VGparameter$_questionToken<Annotation> = null | VTGparameter$_questionToken<Annotation>
@@ -877,7 +855,6 @@ export type GstringLiteral<Annotation> =  VTGstringLiteral<Annotation>
 
 export type NGtype_any$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_any<Annotation> = NGtype_any$<Annotation>
 export type VGtype_any<Annotation> = VTGtype_any<Annotation>
@@ -893,7 +870,6 @@ export type VGtype_array<Annotation> = VTGtype_array<Annotation>
 
 export type NGtype_boolean$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_boolean<Annotation> = NGtype_boolean$<Annotation>
 export type VGtype_boolean<Annotation> = VTGtype_boolean<Annotation>
@@ -916,7 +892,6 @@ export type VGtype_function<Annotation> = VTGtype_function<Annotation>
 
 export type NGtype_literal$_null$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_literal$_null<Annotation> = NGtype_literal$_null$<Annotation>
 export type VGtype_literal$_null<Annotation> = VTGtype_literal$_null<Annotation>
@@ -945,14 +920,12 @@ export type VGtype_parenthesized<Annotation> = VTGtype_parenthesized<Annotation>
 
 export type NGtype_never$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_never<Annotation> = NGtype_never$<Annotation>
 export type VGtype_never<Annotation> = VTGtype_never<Annotation>
 
 export type NGtype_number$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_number<Annotation> = NGtype_number$<Annotation>
 export type VGtype_number<Annotation> = VTGtype_number<Annotation>
@@ -986,7 +959,6 @@ export type VGtype_typeLiteral<Annotation> = VTGtype_typeLiteral<Annotation>
 
 export type NGtype_string$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_string<Annotation> = NGtype_string$<Annotation>
 export type VGtype_string<Annotation> = VTGtype_string<Annotation>
@@ -1029,7 +1001,6 @@ export type VGtype_typeReference<Annotation> = VTGtype_typeReference<Annotation>
 
 export type NGtype_undefined$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_undefined<Annotation> = NGtype_undefined$<Annotation>
 export type VGtype_undefined<Annotation> = VTGtype_undefined<Annotation>
@@ -1045,7 +1016,6 @@ export type VGtype_union<Annotation> = VTGtype_union<Annotation>
 
 export type NGtype_void$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtype_void<Annotation> = NGtype_void$<Annotation>
 export type VGtype_void<Annotation> = VTGtype_void<Annotation>
@@ -1134,7 +1104,6 @@ export type VGtypeSignature_property$_name<Annotation> = VTGtypeSignature_proper
 
 export type NGtypeSignature_property$_quesionToken$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTGtypeSignature_property$_quesionToken<Annotation> = NGtypeSignature_property$_quesionToken$<Annotation>
 export type VGtypeSignature_property$_quesionToken<Annotation> = null | VTGtypeSignature_property$_quesionToken<Annotation>
@@ -1193,7 +1162,6 @@ export type Vroot_statements<Annotation> = VTroot_statements<Annotation>[]
 
 export type Nroot_endOfFile$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": null,
 }
 export type VTroot_endOfFile<Annotation> = Nroot_endOfFile$<Annotation>
 export type Vroot_endOfFile<Annotation> = VTroot_endOfFile<Annotation>

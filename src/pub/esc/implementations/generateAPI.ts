@@ -40,28 +40,28 @@ export function generateAPI(
                 $w.line(($w) => {
                     $w.snippet(`readonly "annotation": Annotation,`)
                 })
-                $w.line(($w) => {
-                    $w.snippet(`readonly "content": `)
-                    switch ($.type[0]) {
-                        case "composite":
-                            pr.cc($.type[1], ($) => {
-                                $w.snippet(`V${path}<Annotation>`)
+                switch ($.type[0]) {
+                    case "composite":
+                        pr.cc($.type[1], ($) => {
+                            $w.line(($w) => {
+                                $w.snippet(`readonly "content": V${path}<Annotation>`)
+                                $w.snippet(`,`)
                             })
-                            break
-                        case "leaf":
-                            pr.cc($.type[1], ($) => {
-                                if ($.hasTextContent) {
-                                    $w.snippet(`string`)
-                                } else {
-                                    $w.snippet(`null`)
-                                }
-                            })
-                            break
-                        default:
-                            pr.au($.type[0])
-                    }
-                    $w.snippet(`,`)
-                })
+                        })
+                        break
+                    case "leaf":
+                        pr.cc($.type[1], ($) => {
+                            if ($.hasTextContent) {
+                                $w.line(($w) => {
+                                    $w.snippet(`readonly "content": string`)
+                                    $w.snippet(`,`)
+                                })
+                            }
+                        })
+                        break
+                    default:
+                        pr.au($.type[0])
+                }
             })
             $w.snippet(`}`)
         })

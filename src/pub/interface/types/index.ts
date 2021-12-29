@@ -8,44 +8,44 @@ export type Cardinality =
     | ["array", {}]
 
 export type SequenceElement = {
-    "name": string,
-    "value": Value,
+    readonly "name": string,
+    readonly "value": Value,
 }
 
 export type ValueType =
     | ["reference", {
-        "name": string
+        readonly "name": string
     }]
     | ["choice", {
-        "options": Options
+        readonly "options": Options
     }]
     | ["node", Node2]
     | ["sequence", {
-        "elements": SequenceElement[]
+        readonly "elements": SequenceElement[]
     }]
 
 export type Value = {
-    "cardinality": Cardinality
-    "type": ValueType
+    readonly "cardinality": Cardinality
+    readonly "type": ValueType
 }
 
 export type Grammar = {
-    "globalValueTypes": {
+    readonly "globalValueTypes": {
         [key: string]: ValueType
     }
-    "root": Node2
+    readonly "root": Node2
 }
 
 export type Node2 = {
-    "name": string
-    "type":
+    readonly "name": string
+    readonly "type":
     | ["composite", Composite]
     | ["leaf", Leaf]
 
 }
 
 export type Leaf = {
-    "hasTextContent": boolean,
+    readonly "hasTextContent": boolean,
 }
 
 export type Composite = Value
