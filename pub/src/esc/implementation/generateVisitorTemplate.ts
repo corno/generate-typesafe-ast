@@ -237,7 +237,7 @@ export function generateVisitorTemplate(
                         generateValueType(
                             $,
                             $w,
-                            `TG${key}`
+                            `G${key}`
                         )
                     })
                     $w.snippet(`}`)
