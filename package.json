@@ -3,8 +3,7 @@
     "fountain-pen": "^4.1.0",
     "pareto-runtime": "^0.15.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "name": "generate-typesafe-ast",
   "scripts": {
     "build": "rm -rf ./dist && tsc && npm run makeEscBinExecutable",
@@ -16,5 +15,5 @@
     "update2latest": "ncu -u --packageFile package.json && npm install && tsc",
     "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run build"
   },
-  "version": "0.0.15"
+  "version": "0.0.16"
 }
