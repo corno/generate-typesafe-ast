@@ -4,7 +4,7 @@ import * as g from "../../interface/types"
 import * as wapi from "fountain-pen"
 
 export function generateVisitorTemplate(
-    grammar: g.Grammar,
+    grammar: g.TGrammar,
     $w: wapi.Block,
     log: (str: string) => void,
 ) {
@@ -15,270 +15,8 @@ export function generateVisitorTemplate(
     $w.line(($w) => {
         $w.snippet(`import * as api from "../../interface/types/ts_api.generated"`)
     })
-    $w.line(($w) => { })
     $w.line(($w) => {
-        $w.snippet(`export type FOO<Annotation> = {`)
-        $w.indent(($w) => {
-
-            function generateNode(
-                $: g.Node2,
-                $w: wapi.Block,
-                path: string,
-            ) {
-
-                switch ($.type[0]) {
-                    case "composite":
-                        pr.cc($.type[1], ($) => {
-                            generateValue(
-                                $,
-                                $w,
-                                path,
-                            )
-                        })
-                        break
-                    case "leaf":
-                        pr.cc($.type[1], ($) => {
-                        })
-                        break
-                    default:
-                        pr.au($.type[0])
-                }
-                $w.line(($w) => {
-                    $w.snippet(`"${path}"?: `)
-                    switch ($.type[0]) {
-                        case "composite":
-                            pr.cc($.type[1], ($) => {
-                                $w.snippet(`{`)
-                                $w.indent(($w) => {
-                                    $w.line(($w) => {
-                                        $w.snippet(`begin: ($: api.N${path}<Annotation>) => void,`)
-                                    })
-                                    $w.line(($w) => {
-                                        $w.snippet(`end: ($: api.N${path}<Annotation>) => void,`)
-                                    })
-                                })
-                                $w.snippet(`}`)
-                            })
-                            break
-                        case "leaf":
-                            pr.cc($.type[1], ($) => {
-                                $w.snippet(`($: api.N${path}<Annotation>) => void`)
-                            })
-                            break
-                        default:
-                            pr.au($.type[0])
-                    }
-                })
-            }
-            function generateValueType(
-                $: g.ValueType,
-                $w: wapi.Block,
-                path: string,
-            ) {
-                switch ($[0]) {
-                    case "choice":
-                        pr.cc($[1], ($) => {
-                            pr.Objectkeys($.options).forEach((key) => {
-                                const option = $.options[key]
-                                generateValue(
-                                    option,
-                                    $w,
-                                    `${path}_${key}`
-                                )
-                            })
-                        })
-                        break
-                    case "reference":
-                        pr.cc($[1], ($) => {
-
-                        })
-                        break
-                    case "sequence":
-                        pr.cc($[1], ($) => {
-                            $.elements.forEach(($) => {
-                                generateValue(
-                                    $.value,
-                                    $w,
-                                    `${path}_${$.name}`
-                                )
-                            })
-                        })
-                        break
-                    case "node":
-                        pr.cc($[1], ($) => {
-                            generateNode(
-                                $,
-                                $w,
-                                `${path}$`
-                            )
-                        })
-                        break
-                    default:
-                        pr.au($[0])
-                }
-
-            }
-            function generateValue(
-                $: g.Value,
-                $w: wapi.Block,
-                path: string,
-            ) {
-                const symbol = $
-                generateValueType(
-                    symbol.type,
-                    $w,
-                    path,
-                )
-            }
-            pr.Objectkeys(grammar.globalValueTypes).forEach((key) => {
-                const $ = grammar.globalValueTypes[key]
-                generateValueType(
-                    $,
-                    $w,
-                    `G${key}`,
-                )
-            })
-
-            generateNode(
-                grammar.root,
-                $w,
-                "root",
-            )
-        })
-        $w.snippet(`}`)
-    })
-    $w.line(($w) => { })
-    $w.line(($w) => {
-        $w.snippet(`export const foo: FOO<string> = {`)
-        $w.indent(($w) => {
-            function generateNode(
-                $: g.Node2,
-                $w: wapi.Block,
-                path: string,
-            ) {
-                switch ($.type[0]) {
-                    case "composite":
-                        pr.cc($.type[1], ($) => {
-                            generateValue(
-                                $,
-                                $w,
-                                path,
-                            )
-                        })
-                        break
-                    case "leaf":
-                        pr.cc($.type[1], ($) => {
-                        })
-                        break
-                    default:
-                        pr.au($.type[0])
-                }
-                $w.line(($w) => {
-                    $w.snippet(`"${path}": `)
-                    switch ($.type[0]) {
-                        case "composite":
-                            pr.cc($.type[1], ($) => {
-                                $w.snippet(`{`)
-                                $w.indent(($w) => {
-                                    $w.line(($w) => {
-                                        $w.snippet(`begin: ($) => { console.log("${path} begin") },`)
-                                    })
-                                    $w.line(($w) => {
-                                        $w.snippet(`end: ($) => { console.log("${path} end") },`)
-                                    })
-                                })
-                                $w.snippet(`},`)
-                            })
-                            break
-                        case "leaf":
-                            pr.cc($.type[1], ($) => {
-                                $w.snippet(`($) => { console.log("${path}") },`)
-                            })
-                            break
-                        default:
-                            pr.au($.type[0])
-                    }
-                })
-
-            }
-            function generateValueType(
-                $: g.ValueType,
-                $w: wapi.Block,
-                path: string,
-            ) {
-                switch ($[0]) {
-                    case "choice":
-                        pr.cc($[1], ($) => {
-                            pr.Objectkeys($.options).forEach((key) => {
-                                const option = $.options[key]
-                                generateValue(
-                                    option,
-                                    $w,
-                                    `${path}_${key}`
-                                )
-                            })
-                        })
-                        break
-                    case "reference":
-                        pr.cc($[1], ($) => {
-
-                        })
-                        break
-                    case "sequence":
-                        pr.cc($[1], ($) => {
-                            $.elements.forEach(($) => {
-                                generateValue(
-                                    $.value,
-                                    $w,
-                                    `${path}_${$.name}`
-                                )
-                            })
-                        })
-                        break
-                    case "node":
-                        pr.cc($[1], ($) => {
-                            generateNode(
-                                $,
-                                $w,
-                                `${path}$`
-                            )
-                        })
-                        break
-                    default:
-                        pr.au($[0])
-                }
-
-            }
-            function generateValue(
-                $: g.Value,
-                $w: wapi.Block,
-                path: string,
-            ) {
-                const symbol = $
-                generateValueType(
-                    symbol.type,
-                    $w,
-                    path,
-                )
-            }
-            pr.Objectkeys(grammar.globalValueTypes).forEach((key) => {
-                const $ = grammar.globalValueTypes[key]
-                generateValueType(
-                    $,
-                    $w,
-                    `G${key}`,
-                )
-            })
-
-            generateNode(
-                grammar.root,
-                $w,
-                "root",
-            )
-
-
-        })
-        $w.snippet(`}`)
+        $w.snippet(`import * as api from "./visitor_template2.generated"`)
     })
 
     $w.line(($w) => { })
@@ -286,7 +24,7 @@ export function generateVisitorTemplate(
         $w.snippet(`export function visit<Annotation>(`)
         $w.indent(($w) => {
             $w.line(($w) => {
-                $w.snippet(`$: api.Nroot<Annotation>,`)
+                $w.snippet(`$: api.TNroot<Annotation>,`)
             })
             $w.line(($w) => {
                 $w.snippet(`foo: FOO<Annotation>,`)
@@ -296,7 +34,7 @@ export function generateVisitorTemplate(
         $w.indent(($w) => {
 
             function generateNode(
-                $: g.Node2,
+                $: g.TNode2,
                 $w: wapi.Block,
                 path: string,
             ) {
@@ -305,7 +43,7 @@ export function generateVisitorTemplate(
                     $w.snippet(`((`)
                     $w.indent(($w) => {
                         $w.line(($w) => {
-                            $w.snippet(`$: api.N${path}<Annotation>,`)
+                            $w.snippet(`$: api.TN${path}<Annotation>,`)
                         })
                     })
                     $w.snippet(`) => {`)
@@ -347,7 +85,7 @@ export function generateVisitorTemplate(
                 })
             }
             function generateValueType(
-                $: g.ValueType,
+                $: g.TValueType,
                 $w: wapi.Block,
                 path: string,
             ) {
@@ -429,7 +167,7 @@ export function generateVisitorTemplate(
 
             }
             function generateValue(
-                $: g.Value,
+                $: g.TValue,
                 $w: wapi.Block,
                 path: string,
             ) {
@@ -491,7 +229,7 @@ export function generateVisitorTemplate(
                     $w.snippet(`function X_${key}(`)
                     $w.indent(($w) => {
                         $w.line(($w) => {
-                            $w.snippet(`$: api.G${key}<Annotation>,`)
+                            $w.snippet(`$: api.TG${key}<Annotation>,`)
                         })
                     })
                     $w.snippet(`) {`)
@@ -499,7 +237,7 @@ export function generateVisitorTemplate(
                         generateValueType(
                             $,
                             $w,
-                            `G${key}`
+                            `TG${key}`
                         )
                     })
                     $w.snippet(`}`)

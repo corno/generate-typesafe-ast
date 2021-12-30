@@ -1,1178 +1,1178 @@
 import * as pr from "pareto-runtime"
-export type VTGblock$<Annotation> = Gstatement<Annotation>
-export type VGblock$<Annotation> = VTGblock$<Annotation>[]
+export type TVTGblock$<Annotation> = TGstatement<Annotation>
+export type TVGblock$<Annotation> = TVTGblock$<Annotation>[]
 
-export type NGblock$<Annotation> = {
+export type TNGblock$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGblock$<Annotation>,
+    readonly "content": TVGblock$<Annotation>,
 }
-export type VTGblock<Annotation> = NGblock$<Annotation>
-export type Gblock<Annotation> =  VTGblock<Annotation>
-export type VTGexpression_arrayLiteral$<Annotation> = Gexpression<Annotation>
-export type VGexpression_arrayLiteral$<Annotation> = VTGexpression_arrayLiteral$<Annotation>[]
+export type TVTGblock<Annotation> = TNGblock$<Annotation>
+export type TGblock<Annotation> =  TVTGblock<Annotation>
+export type TVTGexpression_arrayLiteral$<Annotation> = TGexpression<Annotation>
+export type TVGexpression_arrayLiteral$<Annotation> = TVTGexpression_arrayLiteral$<Annotation>[]
 
-export type NGexpression_arrayLiteral$<Annotation> = {
+export type TNGexpression_arrayLiteral$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_arrayLiteral$<Annotation>,
+    readonly "content": TVGexpression_arrayLiteral$<Annotation>,
 }
-export type VTGexpression_arrayLiteral<Annotation> = NGexpression_arrayLiteral$<Annotation>
-export type VGexpression_arrayLiteral<Annotation> = VTGexpression_arrayLiteral<Annotation>
-export type VTGexpression_arrowFunction$_parameters<Annotation> = Gparameter<Annotation>
-export type VGexpression_arrowFunction$_parameters<Annotation> = VTGexpression_arrowFunction$_parameters<Annotation>[]
-export type VTGexpression_arrowFunction$_returnType<Annotation> = Gtype<Annotation>
-export type VGexpression_arrowFunction$_returnType<Annotation> = pr.optional<VTGexpression_arrowFunction$_returnType<Annotation>>
+export type TVTGexpression_arrayLiteral<Annotation> = TNGexpression_arrayLiteral$<Annotation>
+export type TVGexpression_arrayLiteral<Annotation> = TVTGexpression_arrayLiteral<Annotation>
+export type TVTGexpression_arrowFunction$_parameters<Annotation> = TGparameter<Annotation>
+export type TVGexpression_arrowFunction$_parameters<Annotation> = TVTGexpression_arrowFunction$_parameters<Annotation>[]
+export type TVTGexpression_arrowFunction$_returnType<Annotation> = TGtype<Annotation>
+export type TVGexpression_arrowFunction$_returnType<Annotation> = pr.optional<TVTGexpression_arrowFunction$_returnType<Annotation>>
 
-export type NGexpression_arrowFunction$_equalsGreaterThan$<Annotation> = {
-    readonly "annotation": Annotation,
-}
-export type VTGexpression_arrowFunction$_equalsGreaterThan<Annotation> = NGexpression_arrowFunction$_equalsGreaterThan$<Annotation>
-export type VGexpression_arrowFunction$_equalsGreaterThan<Annotation> = VTGexpression_arrowFunction$_equalsGreaterThan<Annotation>
-export type VTGexpression_arrowFunction$_implementation_block<Annotation> = Gblock<Annotation>
-export type VGexpression_arrowFunction$_implementation_block<Annotation> = VTGexpression_arrowFunction$_implementation_block<Annotation>
-export type VTGexpression_arrowFunction$_implementation_expression<Annotation> = Gexpression<Annotation>
-export type VGexpression_arrowFunction$_implementation_expression<Annotation> = VTGexpression_arrowFunction$_implementation_expression<Annotation>
-export type VTGexpression_arrowFunction$_implementation<Annotation> =
-    | [ "block", VGexpression_arrowFunction$_implementation_block<Annotation>]
-    | [ "expression", VGexpression_arrowFunction$_implementation_expression<Annotation>]
-export type VGexpression_arrowFunction$_implementation<Annotation> = VTGexpression_arrowFunction$_implementation<Annotation>
-export type VTGexpression_arrowFunction$<Annotation> = {
-    readonly "parameters":  VGexpression_arrowFunction$_parameters<Annotation>
-    readonly "returnType":  VGexpression_arrowFunction$_returnType<Annotation>
-    readonly "equalsGreaterThan":  VGexpression_arrowFunction$_equalsGreaterThan<Annotation>
-    readonly "implementation":  VGexpression_arrowFunction$_implementation<Annotation>
-}
-export type VGexpression_arrowFunction$<Annotation> = VTGexpression_arrowFunction$<Annotation>
-
-export type NGexpression_arrowFunction$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGexpression_arrowFunction$<Annotation>,
-}
-export type VTGexpression_arrowFunction<Annotation> = NGexpression_arrowFunction$<Annotation>
-export type VGexpression_arrowFunction<Annotation> = VTGexpression_arrowFunction<Annotation>
-export type VTGexpression_binary$_leftHandSide<Annotation> = Gexpression<Annotation>
-export type VGexpression_binary$_leftHandSide<Annotation> = VTGexpression_binary$_leftHandSide<Annotation>
-
-export type NGexpression_binary$_operator_ampersandAmpersand$<Annotation> = {
+export type TNGexpression_arrowFunction$_equalsGreaterThan$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_ampersandAmpersand<Annotation> = NGexpression_binary$_operator_ampersandAmpersand$<Annotation>
-export type VGexpression_binary$_operator_ampersandAmpersand<Annotation> = VTGexpression_binary$_operator_ampersandAmpersand<Annotation>
+export type TVTGexpression_arrowFunction$_equalsGreaterThan<Annotation> = TNGexpression_arrowFunction$_equalsGreaterThan$<Annotation>
+export type TVGexpression_arrowFunction$_equalsGreaterThan<Annotation> = TVTGexpression_arrowFunction$_equalsGreaterThan<Annotation>
+export type TVTGexpression_arrowFunction$_implementation_block<Annotation> = TGblock<Annotation>
+export type TVGexpression_arrowFunction$_implementation_block<Annotation> = TVTGexpression_arrowFunction$_implementation_block<Annotation>
+export type TVTGexpression_arrowFunction$_implementation_expression<Annotation> = TGexpression<Annotation>
+export type TVGexpression_arrowFunction$_implementation_expression<Annotation> = TVTGexpression_arrowFunction$_implementation_expression<Annotation>
+export type TVTGexpression_arrowFunction$_implementation<Annotation> =
+    | [ "block", TVGexpression_arrowFunction$_implementation_block<Annotation>]
+    | [ "expression", TVGexpression_arrowFunction$_implementation_expression<Annotation>]
+export type TVGexpression_arrowFunction$_implementation<Annotation> = TVTGexpression_arrowFunction$_implementation<Annotation>
+export type TVTGexpression_arrowFunction$<Annotation> = {
+    readonly "parameters":  TVGexpression_arrowFunction$_parameters<Annotation>
+    readonly "returnType":  TVGexpression_arrowFunction$_returnType<Annotation>
+    readonly "equalsGreaterThan":  TVGexpression_arrowFunction$_equalsGreaterThan<Annotation>
+    readonly "implementation":  TVGexpression_arrowFunction$_implementation<Annotation>
+}
+export type TVGexpression_arrowFunction$<Annotation> = TVTGexpression_arrowFunction$<Annotation>
 
-export type NGexpression_binary$_operator_barBar$<Annotation> = {
+export type TNGexpression_arrowFunction$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGexpression_arrowFunction$<Annotation>,
+}
+export type TVTGexpression_arrowFunction<Annotation> = TNGexpression_arrowFunction$<Annotation>
+export type TVGexpression_arrowFunction<Annotation> = TVTGexpression_arrowFunction<Annotation>
+export type TVTGexpression_binary$_leftHandSide<Annotation> = TGexpression<Annotation>
+export type TVGexpression_binary$_leftHandSide<Annotation> = TVTGexpression_binary$_leftHandSide<Annotation>
+
+export type TNGexpression_binary$_operator_ampersandAmpersand$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_barBar<Annotation> = NGexpression_binary$_operator_barBar$<Annotation>
-export type VGexpression_binary$_operator_barBar<Annotation> = VTGexpression_binary$_operator_barBar<Annotation>
+export type TVTGexpression_binary$_operator_ampersandAmpersand<Annotation> = TNGexpression_binary$_operator_ampersandAmpersand$<Annotation>
+export type TVGexpression_binary$_operator_ampersandAmpersand<Annotation> = TVTGexpression_binary$_operator_ampersandAmpersand<Annotation>
 
-export type NGexpression_binary$_operator_equals$<Annotation> = {
+export type TNGexpression_binary$_operator_barBar$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_equals<Annotation> = NGexpression_binary$_operator_equals$<Annotation>
-export type VGexpression_binary$_operator_equals<Annotation> = VTGexpression_binary$_operator_equals<Annotation>
+export type TVTGexpression_binary$_operator_barBar<Annotation> = TNGexpression_binary$_operator_barBar$<Annotation>
+export type TVGexpression_binary$_operator_barBar<Annotation> = TVTGexpression_binary$_operator_barBar<Annotation>
 
-export type NGexpression_binary$_operator_equalsEqualsEquals$<Annotation> = {
+export type TNGexpression_binary$_operator_equals$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_equalsEqualsEquals<Annotation> = NGexpression_binary$_operator_equalsEqualsEquals$<Annotation>
-export type VGexpression_binary$_operator_equalsEqualsEquals<Annotation> = VTGexpression_binary$_operator_equalsEqualsEquals<Annotation>
+export type TVTGexpression_binary$_operator_equals<Annotation> = TNGexpression_binary$_operator_equals$<Annotation>
+export type TVGexpression_binary$_operator_equals<Annotation> = TVTGexpression_binary$_operator_equals<Annotation>
 
-export type NGexpression_binary$_operator_exclamationEqualsEquals$<Annotation> = {
+export type TNGexpression_binary$_operator_equalsEqualsEquals$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_exclamationEqualsEquals<Annotation> = NGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>
-export type VGexpression_binary$_operator_exclamationEqualsEquals<Annotation> = VTGexpression_binary$_operator_exclamationEqualsEquals<Annotation>
+export type TVTGexpression_binary$_operator_equalsEqualsEquals<Annotation> = TNGexpression_binary$_operator_equalsEqualsEquals$<Annotation>
+export type TVGexpression_binary$_operator_equalsEqualsEquals<Annotation> = TVTGexpression_binary$_operator_equalsEqualsEquals<Annotation>
 
-export type NGexpression_binary$_operator_greaterThan$<Annotation> = {
+export type TNGexpression_binary$_operator_exclamationEqualsEquals$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_greaterThan<Annotation> = NGexpression_binary$_operator_greaterThan$<Annotation>
-export type VGexpression_binary$_operator_greaterThan<Annotation> = VTGexpression_binary$_operator_greaterThan<Annotation>
+export type TVTGexpression_binary$_operator_exclamationEqualsEquals<Annotation> = TNGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>
+export type TVGexpression_binary$_operator_exclamationEqualsEquals<Annotation> = TVTGexpression_binary$_operator_exclamationEqualsEquals<Annotation>
 
-export type NGexpression_binary$_operator_lessThan$<Annotation> = {
+export type TNGexpression_binary$_operator_greaterThan$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_lessThan<Annotation> = NGexpression_binary$_operator_lessThan$<Annotation>
-export type VGexpression_binary$_operator_lessThan<Annotation> = VTGexpression_binary$_operator_lessThan<Annotation>
+export type TVTGexpression_binary$_operator_greaterThan<Annotation> = TNGexpression_binary$_operator_greaterThan$<Annotation>
+export type TVGexpression_binary$_operator_greaterThan<Annotation> = TVTGexpression_binary$_operator_greaterThan<Annotation>
 
-export type NGexpression_binary$_operator_minus$<Annotation> = {
+export type TNGexpression_binary$_operator_lessThan$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_minus<Annotation> = NGexpression_binary$_operator_minus$<Annotation>
-export type VGexpression_binary$_operator_minus<Annotation> = VTGexpression_binary$_operator_minus<Annotation>
+export type TVTGexpression_binary$_operator_lessThan<Annotation> = TNGexpression_binary$_operator_lessThan$<Annotation>
+export type TVGexpression_binary$_operator_lessThan<Annotation> = TVTGexpression_binary$_operator_lessThan<Annotation>
 
-export type NGexpression_binary$_operator_minusEquals$<Annotation> = {
+export type TNGexpression_binary$_operator_minus$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_minusEquals<Annotation> = NGexpression_binary$_operator_minusEquals$<Annotation>
-export type VGexpression_binary$_operator_minusEquals<Annotation> = VTGexpression_binary$_operator_minusEquals<Annotation>
+export type TVTGexpression_binary$_operator_minus<Annotation> = TNGexpression_binary$_operator_minus$<Annotation>
+export type TVGexpression_binary$_operator_minus<Annotation> = TVTGexpression_binary$_operator_minus<Annotation>
 
-export type NGexpression_binary$_operator_plus$<Annotation> = {
+export type TNGexpression_binary$_operator_minusEquals$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_plus<Annotation> = NGexpression_binary$_operator_plus$<Annotation>
-export type VGexpression_binary$_operator_plus<Annotation> = VTGexpression_binary$_operator_plus<Annotation>
+export type TVTGexpression_binary$_operator_minusEquals<Annotation> = TNGexpression_binary$_operator_minusEquals$<Annotation>
+export type TVGexpression_binary$_operator_minusEquals<Annotation> = TVTGexpression_binary$_operator_minusEquals<Annotation>
 
-export type NGexpression_binary$_operator_plusEquals$<Annotation> = {
+export type TNGexpression_binary$_operator_plus$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_binary$_operator_plusEquals<Annotation> = NGexpression_binary$_operator_plusEquals$<Annotation>
-export type VGexpression_binary$_operator_plusEquals<Annotation> = VTGexpression_binary$_operator_plusEquals<Annotation>
-export type VTGexpression_binary$_operator<Annotation> =
-    | [ "ampersandAmpersand", VGexpression_binary$_operator_ampersandAmpersand<Annotation>]
-    | [ "barBar", VGexpression_binary$_operator_barBar<Annotation>]
-    | [ "equals", VGexpression_binary$_operator_equals<Annotation>]
-    | [ "equalsEqualsEquals", VGexpression_binary$_operator_equalsEqualsEquals<Annotation>]
-    | [ "exclamationEqualsEquals", VGexpression_binary$_operator_exclamationEqualsEquals<Annotation>]
-    | [ "greaterThan", VGexpression_binary$_operator_greaterThan<Annotation>]
-    | [ "lessThan", VGexpression_binary$_operator_lessThan<Annotation>]
-    | [ "minus", VGexpression_binary$_operator_minus<Annotation>]
-    | [ "minusEquals", VGexpression_binary$_operator_minusEquals<Annotation>]
-    | [ "plus", VGexpression_binary$_operator_plus<Annotation>]
-    | [ "plusEquals", VGexpression_binary$_operator_plusEquals<Annotation>]
-export type VGexpression_binary$_operator<Annotation> = VTGexpression_binary$_operator<Annotation>
-export type VTGexpression_binary$_rightHandSide<Annotation> = Gexpression<Annotation>
-export type VGexpression_binary$_rightHandSide<Annotation> = VTGexpression_binary$_rightHandSide<Annotation>
-export type VTGexpression_binary$<Annotation> = {
-    readonly "leftHandSide":  VGexpression_binary$_leftHandSide<Annotation>
-    readonly "operator":  VGexpression_binary$_operator<Annotation>
-    readonly "rightHandSide":  VGexpression_binary$_rightHandSide<Annotation>
-}
-export type VGexpression_binary$<Annotation> = VTGexpression_binary$<Annotation>
+export type TVTGexpression_binary$_operator_plus<Annotation> = TNGexpression_binary$_operator_plus$<Annotation>
+export type TVGexpression_binary$_operator_plus<Annotation> = TVTGexpression_binary$_operator_plus<Annotation>
 
-export type NGexpression_binary$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGexpression_binary$<Annotation>,
-}
-export type VTGexpression_binary<Annotation> = NGexpression_binary$<Annotation>
-export type VGexpression_binary<Annotation> = VTGexpression_binary<Annotation>
-export type VTGexpression_call$_function<Annotation> = Gexpression<Annotation>
-export type VGexpression_call$_function<Annotation> = VTGexpression_call$_function<Annotation>
-export type VTGexpression_call$_typeParameters<Annotation> = Gtype<Annotation>
-export type VGexpression_call$_typeParameters<Annotation> = VTGexpression_call$_typeParameters<Annotation>[]
-export type VTGexpression_call$_parameters<Annotation> = Gexpression<Annotation>
-export type VGexpression_call$_parameters<Annotation> = VTGexpression_call$_parameters<Annotation>[]
-export type VTGexpression_call$<Annotation> = {
-    readonly "function":  VGexpression_call$_function<Annotation>
-    readonly "typeParameters":  VGexpression_call$_typeParameters<Annotation>
-    readonly "parameters":  VGexpression_call$_parameters<Annotation>
-}
-export type VGexpression_call$<Annotation> = VTGexpression_call$<Annotation>
-
-export type NGexpression_call$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGexpression_call$<Annotation>,
-}
-export type VTGexpression_call<Annotation> = NGexpression_call$<Annotation>
-export type VGexpression_call<Annotation> = VTGexpression_call<Annotation>
-export type VTGexpression_conditional$_test<Annotation> = Gexpression<Annotation>
-export type VGexpression_conditional$_test<Annotation> = VTGexpression_conditional$_test<Annotation>
-
-export type NGexpression_conditional$_questionToken$<Annotation> = {
+export type TNGexpression_binary$_operator_plusEquals$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_conditional$_questionToken<Annotation> = NGexpression_conditional$_questionToken$<Annotation>
-export type VGexpression_conditional$_questionToken<Annotation> = VTGexpression_conditional$_questionToken<Annotation>
-export type VTGexpression_conditional$_ifExpression<Annotation> = Gexpression<Annotation>
-export type VGexpression_conditional$_ifExpression<Annotation> = VTGexpression_conditional$_ifExpression<Annotation>
+export type TVTGexpression_binary$_operator_plusEquals<Annotation> = TNGexpression_binary$_operator_plusEquals$<Annotation>
+export type TVGexpression_binary$_operator_plusEquals<Annotation> = TVTGexpression_binary$_operator_plusEquals<Annotation>
+export type TVTGexpression_binary$_operator<Annotation> =
+    | [ "ampersandAmpersand", TVGexpression_binary$_operator_ampersandAmpersand<Annotation>]
+    | [ "barBar", TVGexpression_binary$_operator_barBar<Annotation>]
+    | [ "equals", TVGexpression_binary$_operator_equals<Annotation>]
+    | [ "equalsEqualsEquals", TVGexpression_binary$_operator_equalsEqualsEquals<Annotation>]
+    | [ "exclamationEqualsEquals", TVGexpression_binary$_operator_exclamationEqualsEquals<Annotation>]
+    | [ "greaterThan", TVGexpression_binary$_operator_greaterThan<Annotation>]
+    | [ "lessThan", TVGexpression_binary$_operator_lessThan<Annotation>]
+    | [ "minus", TVGexpression_binary$_operator_minus<Annotation>]
+    | [ "minusEquals", TVGexpression_binary$_operator_minusEquals<Annotation>]
+    | [ "plus", TVGexpression_binary$_operator_plus<Annotation>]
+    | [ "plusEquals", TVGexpression_binary$_operator_plusEquals<Annotation>]
+export type TVGexpression_binary$_operator<Annotation> = TVTGexpression_binary$_operator<Annotation>
+export type TVTGexpression_binary$_rightHandSide<Annotation> = TGexpression<Annotation>
+export type TVGexpression_binary$_rightHandSide<Annotation> = TVTGexpression_binary$_rightHandSide<Annotation>
+export type TVTGexpression_binary$<Annotation> = {
+    readonly "leftHandSide":  TVGexpression_binary$_leftHandSide<Annotation>
+    readonly "operator":  TVGexpression_binary$_operator<Annotation>
+    readonly "rightHandSide":  TVGexpression_binary$_rightHandSide<Annotation>
+}
+export type TVGexpression_binary$<Annotation> = TVTGexpression_binary$<Annotation>
 
-export type NGexpression_conditional$_colonToken$<Annotation> = {
+export type TNGexpression_binary$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGexpression_binary$<Annotation>,
+}
+export type TVTGexpression_binary<Annotation> = TNGexpression_binary$<Annotation>
+export type TVGexpression_binary<Annotation> = TVTGexpression_binary<Annotation>
+export type TVTGexpression_call$_function<Annotation> = TGexpression<Annotation>
+export type TVGexpression_call$_function<Annotation> = TVTGexpression_call$_function<Annotation>
+export type TVTGexpression_call$_typeParameters<Annotation> = TGtype<Annotation>
+export type TVGexpression_call$_typeParameters<Annotation> = TVTGexpression_call$_typeParameters<Annotation>[]
+export type TVTGexpression_call$_parameters<Annotation> = TGexpression<Annotation>
+export type TVGexpression_call$_parameters<Annotation> = TVTGexpression_call$_parameters<Annotation>[]
+export type TVTGexpression_call$<Annotation> = {
+    readonly "function":  TVGexpression_call$_function<Annotation>
+    readonly "typeParameters":  TVGexpression_call$_typeParameters<Annotation>
+    readonly "parameters":  TVGexpression_call$_parameters<Annotation>
+}
+export type TVGexpression_call$<Annotation> = TVTGexpression_call$<Annotation>
+
+export type TNGexpression_call$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGexpression_call$<Annotation>,
+}
+export type TVTGexpression_call<Annotation> = TNGexpression_call$<Annotation>
+export type TVGexpression_call<Annotation> = TVTGexpression_call<Annotation>
+export type TVTGexpression_conditional$_test<Annotation> = TGexpression<Annotation>
+export type TVGexpression_conditional$_test<Annotation> = TVTGexpression_conditional$_test<Annotation>
+
+export type TNGexpression_conditional$_questionToken$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_conditional$_colonToken<Annotation> = NGexpression_conditional$_colonToken$<Annotation>
-export type VGexpression_conditional$_colonToken<Annotation> = VTGexpression_conditional$_colonToken<Annotation>
-export type VTGexpression_conditional$_elseExpression<Annotation> = Gexpression<Annotation>
-export type VGexpression_conditional$_elseExpression<Annotation> = VTGexpression_conditional$_elseExpression<Annotation>
-export type VTGexpression_conditional$<Annotation> = {
-    readonly "test":  VGexpression_conditional$_test<Annotation>
-    readonly "questionToken":  VGexpression_conditional$_questionToken<Annotation>
-    readonly "ifExpression":  VGexpression_conditional$_ifExpression<Annotation>
-    readonly "colonToken":  VGexpression_conditional$_colonToken<Annotation>
-    readonly "elseExpression":  VGexpression_conditional$_elseExpression<Annotation>
-}
-export type VGexpression_conditional$<Annotation> = VTGexpression_conditional$<Annotation>
+export type TVTGexpression_conditional$_questionToken<Annotation> = TNGexpression_conditional$_questionToken$<Annotation>
+export type TVGexpression_conditional$_questionToken<Annotation> = TVTGexpression_conditional$_questionToken<Annotation>
+export type TVTGexpression_conditional$_ifExpression<Annotation> = TGexpression<Annotation>
+export type TVGexpression_conditional$_ifExpression<Annotation> = TVTGexpression_conditional$_ifExpression<Annotation>
 
-export type NGexpression_conditional$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGexpression_conditional$<Annotation>,
-}
-export type VTGexpression_conditional<Annotation> = NGexpression_conditional$<Annotation>
-export type VGexpression_conditional<Annotation> = VTGexpression_conditional<Annotation>
-export type VTGexpression_elementAccess$_array<Annotation> = Gexpression<Annotation>
-export type VGexpression_elementAccess$_array<Annotation> = VTGexpression_elementAccess$_array<Annotation>
-export type VTGexpression_elementAccess$_element<Annotation> = Gexpression<Annotation>
-export type VGexpression_elementAccess$_element<Annotation> = VTGexpression_elementAccess$_element<Annotation>
-export type VTGexpression_elementAccess$<Annotation> = {
-    readonly "array":  VGexpression_elementAccess$_array<Annotation>
-    readonly "element":  VGexpression_elementAccess$_element<Annotation>
-}
-export type VGexpression_elementAccess$<Annotation> = VTGexpression_elementAccess$<Annotation>
-
-export type NGexpression_elementAccess$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGexpression_elementAccess$<Annotation>,
-}
-export type VTGexpression_elementAccess<Annotation> = NGexpression_elementAccess$<Annotation>
-export type VGexpression_elementAccess<Annotation> = VTGexpression_elementAccess<Annotation>
-
-export type NGexpression_false$<Annotation> = {
+export type TNGexpression_conditional$_colonToken$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_false<Annotation> = NGexpression_false$<Annotation>
-export type VGexpression_false<Annotation> = VTGexpression_false<Annotation>
-export type VTGexpression_identifier<Annotation> = Gidentifier<Annotation>
-export type VGexpression_identifier<Annotation> = VTGexpression_identifier<Annotation>
-export type VTGexpression_new$_class<Annotation> = Gidentifier<Annotation>
-export type VGexpression_new$_class<Annotation> = VTGexpression_new$_class<Annotation>
-export type VTGexpression_new$_parameters<Annotation> = Gexpression<Annotation>
-export type VGexpression_new$_parameters<Annotation> = VTGexpression_new$_parameters<Annotation>[]
-export type VTGexpression_new$<Annotation> = {
-    readonly "class":  VGexpression_new$_class<Annotation>
-    readonly "parameters":  VGexpression_new$_parameters<Annotation>
+export type TVTGexpression_conditional$_colonToken<Annotation> = TNGexpression_conditional$_colonToken$<Annotation>
+export type TVGexpression_conditional$_colonToken<Annotation> = TVTGexpression_conditional$_colonToken<Annotation>
+export type TVTGexpression_conditional$_elseExpression<Annotation> = TGexpression<Annotation>
+export type TVGexpression_conditional$_elseExpression<Annotation> = TVTGexpression_conditional$_elseExpression<Annotation>
+export type TVTGexpression_conditional$<Annotation> = {
+    readonly "test":  TVGexpression_conditional$_test<Annotation>
+    readonly "questionToken":  TVGexpression_conditional$_questionToken<Annotation>
+    readonly "ifExpression":  TVGexpression_conditional$_ifExpression<Annotation>
+    readonly "colonToken":  TVGexpression_conditional$_colonToken<Annotation>
+    readonly "elseExpression":  TVGexpression_conditional$_elseExpression<Annotation>
 }
-export type VGexpression_new$<Annotation> = VTGexpression_new$<Annotation>
+export type TVGexpression_conditional$<Annotation> = TVTGexpression_conditional$<Annotation>
 
-export type NGexpression_new$<Annotation> = {
+export type TNGexpression_conditional$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_new$<Annotation>,
+    readonly "content": TVGexpression_conditional$<Annotation>,
 }
-export type VTGexpression_new<Annotation> = NGexpression_new$<Annotation>
-export type VGexpression_new<Annotation> = VTGexpression_new<Annotation>
+export type TVTGexpression_conditional<Annotation> = TNGexpression_conditional$<Annotation>
+export type TVGexpression_conditional<Annotation> = TVTGexpression_conditional<Annotation>
+export type TVTGexpression_elementAccess$_array<Annotation> = TGexpression<Annotation>
+export type TVGexpression_elementAccess$_array<Annotation> = TVTGexpression_elementAccess$_array<Annotation>
+export type TVTGexpression_elementAccess$_element<Annotation> = TGexpression<Annotation>
+export type TVGexpression_elementAccess$_element<Annotation> = TVTGexpression_elementAccess$_element<Annotation>
+export type TVTGexpression_elementAccess$<Annotation> = {
+    readonly "array":  TVGexpression_elementAccess$_array<Annotation>
+    readonly "element":  TVGexpression_elementAccess$_element<Annotation>
+}
+export type TVGexpression_elementAccess$<Annotation> = TVTGexpression_elementAccess$<Annotation>
 
-export type NGexpression_noSubstitutionTemplateLiteral$<Annotation> = {
+export type TNGexpression_elementAccess$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGexpression_elementAccess$<Annotation>,
+}
+export type TVTGexpression_elementAccess<Annotation> = TNGexpression_elementAccess$<Annotation>
+export type TVGexpression_elementAccess<Annotation> = TVTGexpression_elementAccess<Annotation>
+
+export type TNGexpression_false$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_noSubstitutionTemplateLiteral<Annotation> = NGexpression_noSubstitutionTemplateLiteral$<Annotation>
-export type VGexpression_noSubstitutionTemplateLiteral<Annotation> = VTGexpression_noSubstitutionTemplateLiteral<Annotation>
-export type VTGexpression_numericLiteral<Annotation> = GnumericLiteral<Annotation>
-export type VGexpression_numericLiteral<Annotation> = VTGexpression_numericLiteral<Annotation>
+export type TVTGexpression_false<Annotation> = TNGexpression_false$<Annotation>
+export type TVGexpression_false<Annotation> = TVTGexpression_false<Annotation>
+export type TVTGexpression_identifier<Annotation> = TGidentifier<Annotation>
+export type TVGexpression_identifier<Annotation> = TVTGexpression_identifier<Annotation>
+export type TVTGexpression_new$_class<Annotation> = TGidentifier<Annotation>
+export type TVGexpression_new$_class<Annotation> = TVTGexpression_new$_class<Annotation>
+export type TVTGexpression_new$_parameters<Annotation> = TGexpression<Annotation>
+export type TVGexpression_new$_parameters<Annotation> = TVTGexpression_new$_parameters<Annotation>[]
+export type TVTGexpression_new$<Annotation> = {
+    readonly "class":  TVGexpression_new$_class<Annotation>
+    readonly "parameters":  TVGexpression_new$_parameters<Annotation>
+}
+export type TVGexpression_new$<Annotation> = TVTGexpression_new$<Annotation>
 
-export type NGexpression_nullKeyword$<Annotation> = {
+export type TNGexpression_new$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGexpression_new$<Annotation>,
+}
+export type TVTGexpression_new<Annotation> = TNGexpression_new$<Annotation>
+export type TVGexpression_new<Annotation> = TVTGexpression_new<Annotation>
+
+export type TNGexpression_noSubstitutionTemplateLiteral$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGexpression_nullKeyword<Annotation> = NGexpression_nullKeyword$<Annotation>
-export type VGexpression_nullKeyword<Annotation> = VTGexpression_nullKeyword<Annotation>
-export type VTGexpression_objectLiteral$$_name_identifier<Annotation> = Gidentifier<Annotation>
-export type VGexpression_objectLiteral$$_name_identifier<Annotation> = VTGexpression_objectLiteral$$_name_identifier<Annotation>
-export type VTGexpression_objectLiteral$$_name_numericLiteral<Annotation> = GnumericLiteral<Annotation>
-export type VGexpression_objectLiteral$$_name_numericLiteral<Annotation> = VTGexpression_objectLiteral$$_name_numericLiteral<Annotation>
-export type VTGexpression_objectLiteral$$_name_stringLiteral<Annotation> = GstringLiteral<Annotation>
-export type VGexpression_objectLiteral$$_name_stringLiteral<Annotation> = VTGexpression_objectLiteral$$_name_stringLiteral<Annotation>
-export type VTGexpression_objectLiteral$$_name<Annotation> =
-    | [ "identifier", VGexpression_objectLiteral$$_name_identifier<Annotation>]
-    | [ "numericLiteral", VGexpression_objectLiteral$$_name_numericLiteral<Annotation>]
-    | [ "stringLiteral", VGexpression_objectLiteral$$_name_stringLiteral<Annotation>]
-export type VGexpression_objectLiteral$$_name<Annotation> = VTGexpression_objectLiteral$$_name<Annotation>
-export type VTGexpression_objectLiteral$$_expression<Annotation> = Gexpression<Annotation>
-export type VGexpression_objectLiteral$$_expression<Annotation> = VTGexpression_objectLiteral$$_expression<Annotation>
-export type VTGexpression_objectLiteral$$<Annotation> = {
-    readonly "name":  VGexpression_objectLiteral$$_name<Annotation>
-    readonly "expression":  VGexpression_objectLiteral$$_expression<Annotation>
-}
-export type VGexpression_objectLiteral$$<Annotation> = VTGexpression_objectLiteral$$<Annotation>
+export type TVTGexpression_noSubstitutionTemplateLiteral<Annotation> = TNGexpression_noSubstitutionTemplateLiteral$<Annotation>
+export type TVGexpression_noSubstitutionTemplateLiteral<Annotation> = TVTGexpression_noSubstitutionTemplateLiteral<Annotation>
+export type TVTGexpression_numericLiteral<Annotation> = TGnumericLiteral<Annotation>
+export type TVGexpression_numericLiteral<Annotation> = TVTGexpression_numericLiteral<Annotation>
 
-export type NGexpression_objectLiteral$$<Annotation> = {
+export type TNGexpression_nullKeyword$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_objectLiteral$$<Annotation>,
 }
-export type VTGexpression_objectLiteral$<Annotation> = NGexpression_objectLiteral$$<Annotation>
-export type VGexpression_objectLiteral$<Annotation> = VTGexpression_objectLiteral$<Annotation>[]
+export type TVTGexpression_nullKeyword<Annotation> = TNGexpression_nullKeyword$<Annotation>
+export type TVGexpression_nullKeyword<Annotation> = TVTGexpression_nullKeyword<Annotation>
+export type TVTGexpression_objectLiteral$$_name_identifier<Annotation> = TGidentifier<Annotation>
+export type TVGexpression_objectLiteral$$_name_identifier<Annotation> = TVTGexpression_objectLiteral$$_name_identifier<Annotation>
+export type TVTGexpression_objectLiteral$$_name_numericLiteral<Annotation> = TGnumericLiteral<Annotation>
+export type TVGexpression_objectLiteral$$_name_numericLiteral<Annotation> = TVTGexpression_objectLiteral$$_name_numericLiteral<Annotation>
+export type TVTGexpression_objectLiteral$$_name_stringLiteral<Annotation> = TGstringLiteral<Annotation>
+export type TVGexpression_objectLiteral$$_name_stringLiteral<Annotation> = TVTGexpression_objectLiteral$$_name_stringLiteral<Annotation>
+export type TVTGexpression_objectLiteral$$_name<Annotation> =
+    | [ "identifier", TVGexpression_objectLiteral$$_name_identifier<Annotation>]
+    | [ "numericLiteral", TVGexpression_objectLiteral$$_name_numericLiteral<Annotation>]
+    | [ "stringLiteral", TVGexpression_objectLiteral$$_name_stringLiteral<Annotation>]
+export type TVGexpression_objectLiteral$$_name<Annotation> = TVTGexpression_objectLiteral$$_name<Annotation>
+export type TVTGexpression_objectLiteral$$_expression<Annotation> = TGexpression<Annotation>
+export type TVGexpression_objectLiteral$$_expression<Annotation> = TVTGexpression_objectLiteral$$_expression<Annotation>
+export type TVTGexpression_objectLiteral$$<Annotation> = {
+    readonly "name":  TVGexpression_objectLiteral$$_name<Annotation>
+    readonly "expression":  TVGexpression_objectLiteral$$_expression<Annotation>
+}
+export type TVGexpression_objectLiteral$$<Annotation> = TVTGexpression_objectLiteral$$<Annotation>
 
-export type NGexpression_objectLiteral$<Annotation> = {
+export type TNGexpression_objectLiteral$$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_objectLiteral$<Annotation>,
+    readonly "content": TVGexpression_objectLiteral$$<Annotation>,
 }
-export type VTGexpression_objectLiteral<Annotation> = NGexpression_objectLiteral$<Annotation>
-export type VGexpression_objectLiteral<Annotation> = VTGexpression_objectLiteral<Annotation>
-export type VTGexpression_parenthesizedExpression$<Annotation> = Gexpression<Annotation>
-export type VGexpression_parenthesizedExpression$<Annotation> = VTGexpression_parenthesizedExpression$<Annotation>
+export type TVTGexpression_objectLiteral$<Annotation> = TNGexpression_objectLiteral$$<Annotation>
+export type TVGexpression_objectLiteral$<Annotation> = TVTGexpression_objectLiteral$<Annotation>[]
 
-export type NGexpression_parenthesizedExpression$<Annotation> = {
+export type TNGexpression_objectLiteral$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_parenthesizedExpression$<Annotation>,
+    readonly "content": TVGexpression_objectLiteral$<Annotation>,
 }
-export type VTGexpression_parenthesizedExpression<Annotation> = NGexpression_parenthesizedExpression$<Annotation>
-export type VGexpression_parenthesizedExpression<Annotation> = VTGexpression_parenthesizedExpression<Annotation>
-export type VTGexpression_postfixUnary$<Annotation> = Gexpression<Annotation>
-export type VGexpression_postfixUnary$<Annotation> = VTGexpression_postfixUnary$<Annotation>
+export type TVTGexpression_objectLiteral<Annotation> = TNGexpression_objectLiteral$<Annotation>
+export type TVGexpression_objectLiteral<Annotation> = TVTGexpression_objectLiteral<Annotation>
+export type TVTGexpression_parenthesizedExpression$<Annotation> = TGexpression<Annotation>
+export type TVGexpression_parenthesizedExpression$<Annotation> = TVTGexpression_parenthesizedExpression$<Annotation>
 
-export type NGexpression_postfixUnary$<Annotation> = {
+export type TNGexpression_parenthesizedExpression$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_postfixUnary$<Annotation>,
+    readonly "content": TVGexpression_parenthesizedExpression$<Annotation>,
 }
-export type VTGexpression_postfixUnary<Annotation> = NGexpression_postfixUnary$<Annotation>
-export type VGexpression_postfixUnary<Annotation> = VTGexpression_postfixUnary<Annotation>
-export type VTGexpression_prefixUnary$<Annotation> = Gexpression<Annotation>
-export type VGexpression_prefixUnary$<Annotation> = VTGexpression_prefixUnary$<Annotation>
+export type TVTGexpression_parenthesizedExpression<Annotation> = TNGexpression_parenthesizedExpression$<Annotation>
+export type TVGexpression_parenthesizedExpression<Annotation> = TVTGexpression_parenthesizedExpression<Annotation>
+export type TVTGexpression_postfixUnary$<Annotation> = TGexpression<Annotation>
+export type TVGexpression_postfixUnary$<Annotation> = TVTGexpression_postfixUnary$<Annotation>
 
-export type NGexpression_prefixUnary$<Annotation> = {
+export type TNGexpression_postfixUnary$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_prefixUnary$<Annotation>,
+    readonly "content": TVGexpression_postfixUnary$<Annotation>,
 }
-export type VTGexpression_prefixUnary<Annotation> = NGexpression_prefixUnary$<Annotation>
-export type VGexpression_prefixUnary<Annotation> = VTGexpression_prefixUnary<Annotation>
-export type VTGexpression_propertyAccess$_object<Annotation> = Gexpression<Annotation>
-export type VGexpression_propertyAccess$_object<Annotation> = VTGexpression_propertyAccess$_object<Annotation>
-export type VTGexpression_propertyAccess$_property<Annotation> = Gexpression<Annotation>
-export type VGexpression_propertyAccess$_property<Annotation> = VTGexpression_propertyAccess$_property<Annotation>
-export type VTGexpression_propertyAccess$<Annotation> = {
-    readonly "object":  VGexpression_propertyAccess$_object<Annotation>
-    readonly "property":  VGexpression_propertyAccess$_property<Annotation>
-}
-export type VGexpression_propertyAccess$<Annotation> = VTGexpression_propertyAccess$<Annotation>
+export type TVTGexpression_postfixUnary<Annotation> = TNGexpression_postfixUnary$<Annotation>
+export type TVGexpression_postfixUnary<Annotation> = TVTGexpression_postfixUnary<Annotation>
+export type TVTGexpression_prefixUnary$<Annotation> = TGexpression<Annotation>
+export type TVGexpression_prefixUnary$<Annotation> = TVTGexpression_prefixUnary$<Annotation>
 
-export type NGexpression_propertyAccess$<Annotation> = {
+export type TNGexpression_prefixUnary$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGexpression_propertyAccess$<Annotation>,
+    readonly "content": TVGexpression_prefixUnary$<Annotation>,
 }
-export type VTGexpression_propertyAccess<Annotation> = NGexpression_propertyAccess$<Annotation>
-export type VGexpression_propertyAccess<Annotation> = VTGexpression_propertyAccess<Annotation>
-export type VTGexpression_stringLiteral<Annotation> = GstringLiteral<Annotation>
-export type VGexpression_stringLiteral<Annotation> = VTGexpression_stringLiteral<Annotation>
+export type TVTGexpression_prefixUnary<Annotation> = TNGexpression_prefixUnary$<Annotation>
+export type TVGexpression_prefixUnary<Annotation> = TVTGexpression_prefixUnary<Annotation>
+export type TVTGexpression_propertyAccess$_object<Annotation> = TGexpression<Annotation>
+export type TVGexpression_propertyAccess$_object<Annotation> = TVTGexpression_propertyAccess$_object<Annotation>
+export type TVTGexpression_propertyAccess$_property<Annotation> = TGexpression<Annotation>
+export type TVGexpression_propertyAccess$_property<Annotation> = TVTGexpression_propertyAccess$_property<Annotation>
+export type TVTGexpression_propertyAccess$<Annotation> = {
+    readonly "object":  TVGexpression_propertyAccess$_object<Annotation>
+    readonly "property":  TVGexpression_propertyAccess$_property<Annotation>
+}
+export type TVGexpression_propertyAccess$<Annotation> = TVTGexpression_propertyAccess$<Annotation>
 
-export type NGexpression_template$_head$<Annotation> = {
+export type TNGexpression_propertyAccess$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": string,
+    readonly "content": TVGexpression_propertyAccess$<Annotation>,
 }
-export type VTGexpression_template$_head<Annotation> = NGexpression_template$_head$<Annotation>
-export type VGexpression_template$_head<Annotation> = VTGexpression_template$_head<Annotation>
-export type VTGexpression_template$_spans$_expression<Annotation> = Gexpression<Annotation>
-export type VGexpression_template$_spans$_expression<Annotation> = VTGexpression_template$_spans$_expression<Annotation>
+export type TVTGexpression_propertyAccess<Annotation> = TNGexpression_propertyAccess$<Annotation>
+export type TVGexpression_propertyAccess<Annotation> = TVTGexpression_propertyAccess<Annotation>
+export type TVTGexpression_stringLiteral<Annotation> = TGstringLiteral<Annotation>
+export type TVGexpression_stringLiteral<Annotation> = TVTGexpression_stringLiteral<Annotation>
 
-export type NGexpression_template$_spans$_x_middle$<Annotation> = {
+export type TNGexpression_template$_head$<Annotation> = {
     readonly "annotation": Annotation,
     readonly "content": string,
 }
-export type VTGexpression_template$_spans$_x_middle<Annotation> = NGexpression_template$_spans$_x_middle$<Annotation>
-export type VGexpression_template$_spans$_x_middle<Annotation> = VTGexpression_template$_spans$_x_middle<Annotation>
+export type TVTGexpression_template$_head<Annotation> = TNGexpression_template$_head$<Annotation>
+export type TVGexpression_template$_head<Annotation> = TVTGexpression_template$_head<Annotation>
+export type TVTGexpression_template$_spans$_expression<Annotation> = TGexpression<Annotation>
+export type TVGexpression_template$_spans$_expression<Annotation> = TVTGexpression_template$_spans$_expression<Annotation>
 
-export type NGexpression_template$_spans$_x_tail$<Annotation> = {
+export type TNGexpression_template$_spans$_x_middle$<Annotation> = {
     readonly "annotation": Annotation,
     readonly "content": string,
 }
-export type VTGexpression_template$_spans$_x_tail<Annotation> = NGexpression_template$_spans$_x_tail$<Annotation>
-export type VGexpression_template$_spans$_x_tail<Annotation> = VTGexpression_template$_spans$_x_tail<Annotation>
-export type VTGexpression_template$_spans$_x<Annotation> =
-    | [ "middle", VGexpression_template$_spans$_x_middle<Annotation>]
-    | [ "tail", VGexpression_template$_spans$_x_tail<Annotation>]
-export type VGexpression_template$_spans$_x<Annotation> = VTGexpression_template$_spans$_x<Annotation>
-export type VTGexpression_template$_spans$<Annotation> = {
-    readonly "expression":  VGexpression_template$_spans$_expression<Annotation>
-    readonly "x":  VGexpression_template$_spans$_x<Annotation>
-}
-export type VGexpression_template$_spans$<Annotation> = VTGexpression_template$_spans$<Annotation>
+export type TVTGexpression_template$_spans$_x_middle<Annotation> = TNGexpression_template$_spans$_x_middle$<Annotation>
+export type TVGexpression_template$_spans$_x_middle<Annotation> = TVTGexpression_template$_spans$_x_middle<Annotation>
 
-export type NGexpression_template$_spans$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGexpression_template$_spans$<Annotation>,
-}
-export type VTGexpression_template$_spans<Annotation> = NGexpression_template$_spans$<Annotation>
-export type VGexpression_template$_spans<Annotation> = VTGexpression_template$_spans<Annotation>[]
-export type VTGexpression_template$<Annotation> = {
-    readonly "head":  VGexpression_template$_head<Annotation>
-    readonly "spans":  VGexpression_template$_spans<Annotation>
-}
-export type VGexpression_template$<Annotation> = VTGexpression_template$<Annotation>
-
-export type NGexpression_template$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGexpression_template$<Annotation>,
-}
-export type VTGexpression_template<Annotation> = NGexpression_template$<Annotation>
-export type VGexpression_template<Annotation> = VTGexpression_template<Annotation>
-
-export type NGexpression_true$<Annotation> = {
-    readonly "annotation": Annotation,
-}
-export type VTGexpression_true<Annotation> = NGexpression_true$<Annotation>
-export type VGexpression_true<Annotation> = VTGexpression_true<Annotation>
-export type VTGexpression<Annotation> =
-    | [ "arrayLiteral", VGexpression_arrayLiteral<Annotation>]
-    | [ "arrowFunction", VGexpression_arrowFunction<Annotation>]
-    | [ "binary", VGexpression_binary<Annotation>]
-    | [ "call", VGexpression_call<Annotation>]
-    | [ "conditional", VGexpression_conditional<Annotation>]
-    | [ "elementAccess", VGexpression_elementAccess<Annotation>]
-    | [ "false", VGexpression_false<Annotation>]
-    | [ "identifier", VGexpression_identifier<Annotation>]
-    | [ "new", VGexpression_new<Annotation>]
-    | [ "noSubstitutionTemplateLiteral", VGexpression_noSubstitutionTemplateLiteral<Annotation>]
-    | [ "numericLiteral", VGexpression_numericLiteral<Annotation>]
-    | [ "nullKeyword", VGexpression_nullKeyword<Annotation>]
-    | [ "objectLiteral", VGexpression_objectLiteral<Annotation>]
-    | [ "parenthesizedExpression", VGexpression_parenthesizedExpression<Annotation>]
-    | [ "postfixUnary", VGexpression_postfixUnary<Annotation>]
-    | [ "prefixUnary", VGexpression_prefixUnary<Annotation>]
-    | [ "propertyAccess", VGexpression_propertyAccess<Annotation>]
-    | [ "stringLiteral", VGexpression_stringLiteral<Annotation>]
-    | [ "template", VGexpression_template<Annotation>]
-    | [ "true", VGexpression_true<Annotation>]
-export type Gexpression<Annotation> =  VTGexpression<Annotation>
-export type VTGfunctionDefinition_typeParameters<Annotation> = GtypeParameter<Annotation>
-export type VGfunctionDefinition_typeParameters<Annotation> = VTGfunctionDefinition_typeParameters<Annotation>[]
-export type VTGfunctionDefinition_parameters<Annotation> = Gparameter<Annotation>
-export type VGfunctionDefinition_parameters<Annotation> = VTGfunctionDefinition_parameters<Annotation>[]
-export type VTGfunctionDefinition_returnType<Annotation> = Gtype<Annotation>
-export type VGfunctionDefinition_returnType<Annotation> = pr.optional<VTGfunctionDefinition_returnType<Annotation>>
-export type VTGfunctionDefinition<Annotation> = {
-    readonly "typeParameters":  VGfunctionDefinition_typeParameters<Annotation>
-    readonly "parameters":  VGfunctionDefinition_parameters<Annotation>
-    readonly "returnType":  VGfunctionDefinition_returnType<Annotation>
-}
-export type GfunctionDefinition<Annotation> =  VTGfunctionDefinition<Annotation>
-
-export type NGidentifier$<Annotation> = {
+export type TNGexpression_template$_spans$_x_tail$<Annotation> = {
     readonly "annotation": Annotation,
     readonly "content": string,
 }
-export type VTGidentifier<Annotation> = NGidentifier$<Annotation>
-export type Gidentifier<Annotation> =  VTGidentifier<Annotation>
-export type VTGidentifierOrStringLiteral_identifier<Annotation> = Gidentifier<Annotation>
-export type VGidentifierOrStringLiteral_identifier<Annotation> = VTGidentifierOrStringLiteral_identifier<Annotation>
-export type VTGidentifierOrStringLiteral_stringLiteral<Annotation> = GstringLiteral<Annotation>
-export type VGidentifierOrStringLiteral_stringLiteral<Annotation> = VTGidentifierOrStringLiteral_stringLiteral<Annotation>
-export type VTGidentifierOrStringLiteral<Annotation> =
-    | [ "identifier", VGidentifierOrStringLiteral_identifier<Annotation>]
-    | [ "stringLiteral", VGidentifierOrStringLiteral_stringLiteral<Annotation>]
-export type GidentifierOrStringLiteral<Annotation> =  VTGidentifierOrStringLiteral<Annotation>
+export type TVTGexpression_template$_spans$_x_tail<Annotation> = TNGexpression_template$_spans$_x_tail$<Annotation>
+export type TVGexpression_template$_spans$_x_tail<Annotation> = TVTGexpression_template$_spans$_x_tail<Annotation>
+export type TVTGexpression_template$_spans$_x<Annotation> =
+    | [ "middle", TVGexpression_template$_spans$_x_middle<Annotation>]
+    | [ "tail", TVGexpression_template$_spans$_x_tail<Annotation>]
+export type TVGexpression_template$_spans$_x<Annotation> = TVTGexpression_template$_spans$_x<Annotation>
+export type TVTGexpression_template$_spans$<Annotation> = {
+    readonly "expression":  TVGexpression_template$_spans$_expression<Annotation>
+    readonly "x":  TVGexpression_template$_spans$_x<Annotation>
+}
+export type TVGexpression_template$_spans$<Annotation> = TVTGexpression_template$_spans$<Annotation>
 
-export type NGmodifier_declare$<Annotation> = {
+export type TNGexpression_template$_spans$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGexpression_template$_spans$<Annotation>,
+}
+export type TVTGexpression_template$_spans<Annotation> = TNGexpression_template$_spans$<Annotation>
+export type TVGexpression_template$_spans<Annotation> = TVTGexpression_template$_spans<Annotation>[]
+export type TVTGexpression_template$<Annotation> = {
+    readonly "head":  TVGexpression_template$_head<Annotation>
+    readonly "spans":  TVGexpression_template$_spans<Annotation>
+}
+export type TVGexpression_template$<Annotation> = TVTGexpression_template$<Annotation>
+
+export type TNGexpression_template$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGexpression_template$<Annotation>,
+}
+export type TVTGexpression_template<Annotation> = TNGexpression_template$<Annotation>
+export type TVGexpression_template<Annotation> = TVTGexpression_template<Annotation>
+
+export type TNGexpression_true$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGmodifier_declare<Annotation> = NGmodifier_declare$<Annotation>
-export type VGmodifier_declare<Annotation> = VTGmodifier_declare<Annotation>
+export type TVTGexpression_true<Annotation> = TNGexpression_true$<Annotation>
+export type TVGexpression_true<Annotation> = TVTGexpression_true<Annotation>
+export type TVTGexpression<Annotation> =
+    | [ "arrayLiteral", TVGexpression_arrayLiteral<Annotation>]
+    | [ "arrowFunction", TVGexpression_arrowFunction<Annotation>]
+    | [ "binary", TVGexpression_binary<Annotation>]
+    | [ "call", TVGexpression_call<Annotation>]
+    | [ "conditional", TVGexpression_conditional<Annotation>]
+    | [ "elementAccess", TVGexpression_elementAccess<Annotation>]
+    | [ "false", TVGexpression_false<Annotation>]
+    | [ "identifier", TVGexpression_identifier<Annotation>]
+    | [ "new", TVGexpression_new<Annotation>]
+    | [ "noSubstitutionTemplateLiteral", TVGexpression_noSubstitutionTemplateLiteral<Annotation>]
+    | [ "numericLiteral", TVGexpression_numericLiteral<Annotation>]
+    | [ "nullKeyword", TVGexpression_nullKeyword<Annotation>]
+    | [ "objectLiteral", TVGexpression_objectLiteral<Annotation>]
+    | [ "parenthesizedExpression", TVGexpression_parenthesizedExpression<Annotation>]
+    | [ "postfixUnary", TVGexpression_postfixUnary<Annotation>]
+    | [ "prefixUnary", TVGexpression_prefixUnary<Annotation>]
+    | [ "propertyAccess", TVGexpression_propertyAccess<Annotation>]
+    | [ "stringLiteral", TVGexpression_stringLiteral<Annotation>]
+    | [ "template", TVGexpression_template<Annotation>]
+    | [ "true", TVGexpression_true<Annotation>]
+export type TGexpression<Annotation> =  TVTGexpression<Annotation>
+export type TVTGfunctionDefinition_typeParameters<Annotation> = TGtypeParameter<Annotation>
+export type TVGfunctionDefinition_typeParameters<Annotation> = TVTGfunctionDefinition_typeParameters<Annotation>[]
+export type TVTGfunctionDefinition_parameters<Annotation> = TGparameter<Annotation>
+export type TVGfunctionDefinition_parameters<Annotation> = TVTGfunctionDefinition_parameters<Annotation>[]
+export type TVTGfunctionDefinition_returnType<Annotation> = TGtype<Annotation>
+export type TVGfunctionDefinition_returnType<Annotation> = pr.optional<TVTGfunctionDefinition_returnType<Annotation>>
+export type TVTGfunctionDefinition<Annotation> = {
+    readonly "typeParameters":  TVGfunctionDefinition_typeParameters<Annotation>
+    readonly "parameters":  TVGfunctionDefinition_parameters<Annotation>
+    readonly "returnType":  TVGfunctionDefinition_returnType<Annotation>
+}
+export type TGfunctionDefinition<Annotation> =  TVTGfunctionDefinition<Annotation>
 
-export type NGmodifier_export$<Annotation> = {
-    readonly "annotation": Annotation,
-}
-export type VTGmodifier_export<Annotation> = NGmodifier_export$<Annotation>
-export type VGmodifier_export<Annotation> = VTGmodifier_export<Annotation>
-
-export type NGmodifier_readonly$<Annotation> = {
-    readonly "annotation": Annotation,
-}
-export type VTGmodifier_readonly<Annotation> = NGmodifier_readonly$<Annotation>
-export type VGmodifier_readonly<Annotation> = VTGmodifier_readonly<Annotation>
-export type VTGmodifier<Annotation> =
-    | [ "declare", VGmodifier_declare<Annotation>]
-    | [ "export", VGmodifier_export<Annotation>]
-    | [ "readonly", VGmodifier_readonly<Annotation>]
-export type Gmodifier<Annotation> =  VTGmodifier<Annotation>
-
-export type NGnumericLiteral$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": string,
-}
-export type VTGnumericLiteral<Annotation> = NGnumericLiteral$<Annotation>
-export type GnumericLiteral<Annotation> =  VTGnumericLiteral<Annotation>
-export type VTGparameter$_name<Annotation> = Gidentifier<Annotation>
-export type VGparameter$_name<Annotation> = VTGparameter$_name<Annotation>
-
-export type NGparameter$_questionToken$<Annotation> = {
-    readonly "annotation": Annotation,
-}
-export type VTGparameter$_questionToken<Annotation> = NGparameter$_questionToken$<Annotation>
-export type VGparameter$_questionToken<Annotation> = pr.optional<VTGparameter$_questionToken<Annotation>>
-export type VTGparameter$_type<Annotation> = Gtype<Annotation>
-export type VGparameter$_type<Annotation> = pr.optional<VTGparameter$_type<Annotation>>
-export type VTGparameter$<Annotation> = {
-    readonly "name":  VGparameter$_name<Annotation>
-    readonly "questionToken":  VGparameter$_questionToken<Annotation>
-    readonly "type":  VGparameter$_type<Annotation>
-}
-export type VGparameter$<Annotation> = VTGparameter$<Annotation>
-
-export type NGparameter$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGparameter$<Annotation>,
-}
-export type VTGparameter<Annotation> = NGparameter$<Annotation>
-export type Gparameter<Annotation> =  VTGparameter<Annotation>
-export type VTGstatement_block<Annotation> = Gblock<Annotation>
-export type VGstatement_block<Annotation> = VTGstatement_block<Annotation>
-export type VTGstatement_break$<Annotation> = Gidentifier<Annotation>
-export type VGstatement_break$<Annotation> = pr.optional<VTGstatement_break$<Annotation>>
-
-export type NGstatement_break$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_break$<Annotation>,
-}
-export type VTGstatement_break<Annotation> = NGstatement_break$<Annotation>
-export type VGstatement_break<Annotation> = VTGstatement_break<Annotation>
-export type VTGstatement_export$<Annotation> = GstringLiteral<Annotation>
-export type VGstatement_export$<Annotation> = VTGstatement_export$<Annotation>
-
-export type NGstatement_export$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_export$<Annotation>,
-}
-export type VTGstatement_export<Annotation> = NGstatement_export$<Annotation>
-export type VGstatement_export<Annotation> = VTGstatement_export<Annotation>
-export type VTGstatement_expression$<Annotation> = Gexpression<Annotation>
-export type VGstatement_expression$<Annotation> = VTGstatement_expression$<Annotation>
-
-export type NGstatement_expression$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_expression$<Annotation>,
-}
-export type VTGstatement_expression<Annotation> = NGstatement_expression$<Annotation>
-export type VGstatement_expression<Annotation> = VTGstatement_expression<Annotation>
-export type VTGstatement_for$_initializer<Annotation> = GvariableDeclarationList<Annotation>
-export type VGstatement_for$_initializer<Annotation> = VTGstatement_for$_initializer<Annotation>
-export type VTGstatement_for$_condition<Annotation> = Gexpression<Annotation>
-export type VGstatement_for$_condition<Annotation> = VTGstatement_for$_condition<Annotation>
-export type VTGstatement_for$_incrementer<Annotation> = Gexpression<Annotation>
-export type VGstatement_for$_incrementer<Annotation> = VTGstatement_for$_incrementer<Annotation>
-export type VTGstatement_for$_block<Annotation> = Gblock<Annotation>
-export type VGstatement_for$_block<Annotation> = VTGstatement_for$_block<Annotation>
-export type VTGstatement_for$<Annotation> = {
-    readonly "initializer":  VGstatement_for$_initializer<Annotation>
-    readonly "condition":  VGstatement_for$_condition<Annotation>
-    readonly "incrementer":  VGstatement_for$_incrementer<Annotation>
-    readonly "block":  VGstatement_for$_block<Annotation>
-}
-export type VGstatement_for$<Annotation> = VTGstatement_for$<Annotation>
-
-export type NGstatement_for$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_for$<Annotation>,
-}
-export type VTGstatement_for<Annotation> = NGstatement_for$<Annotation>
-export type VGstatement_for<Annotation> = VTGstatement_for<Annotation>
-export type VTGstatement_function$_modifiers<Annotation> = Gmodifier<Annotation>
-export type VGstatement_function$_modifiers<Annotation> = VTGstatement_function$_modifiers<Annotation>[]
-export type VTGstatement_function$_name<Annotation> = Gidentifier<Annotation>
-export type VGstatement_function$_name<Annotation> = VTGstatement_function$_name<Annotation>
-export type VTGstatement_function$_definition<Annotation> = GfunctionDefinition<Annotation>
-export type VGstatement_function$_definition<Annotation> = VTGstatement_function$_definition<Annotation>
-export type VTGstatement_function$_block<Annotation> = Gblock<Annotation>
-export type VGstatement_function$_block<Annotation> = pr.optional<VTGstatement_function$_block<Annotation>>
-export type VTGstatement_function$<Annotation> = {
-    readonly "modifiers":  VGstatement_function$_modifiers<Annotation>
-    readonly "name":  VGstatement_function$_name<Annotation>
-    readonly "definition":  VGstatement_function$_definition<Annotation>
-    readonly "block":  VGstatement_function$_block<Annotation>
-}
-export type VGstatement_function$<Annotation> = VTGstatement_function$<Annotation>
-
-export type NGstatement_function$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_function$<Annotation>,
-}
-export type VTGstatement_function<Annotation> = NGstatement_function$<Annotation>
-export type VGstatement_function<Annotation> = VTGstatement_function<Annotation>
-export type VTGstatement_if$_expression<Annotation> = Gexpression<Annotation>
-export type VGstatement_if$_expression<Annotation> = VTGstatement_if$_expression<Annotation>
-export type VTGstatement_if$_thenStatement<Annotation> = Gstatement<Annotation>
-export type VGstatement_if$_thenStatement<Annotation> = VTGstatement_if$_thenStatement<Annotation>
-export type VTGstatement_if$_elseStatement<Annotation> = Gstatement<Annotation>
-export type VGstatement_if$_elseStatement<Annotation> = pr.optional<VTGstatement_if$_elseStatement<Annotation>>
-export type VTGstatement_if$<Annotation> = {
-    readonly "expression":  VGstatement_if$_expression<Annotation>
-    readonly "thenStatement":  VGstatement_if$_thenStatement<Annotation>
-    readonly "elseStatement":  VGstatement_if$_elseStatement<Annotation>
-}
-export type VGstatement_if$<Annotation> = VTGstatement_if$<Annotation>
-
-export type NGstatement_if$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_if$<Annotation>,
-}
-export type VTGstatement_if<Annotation> = NGstatement_if$<Annotation>
-export type VGstatement_if<Annotation> = VTGstatement_if<Annotation>
-export type VTGstatement_import$_clause$_namespace$<Annotation> = Gidentifier<Annotation>
-export type VGstatement_import$_clause$_namespace$<Annotation> = VTGstatement_import$_clause$_namespace$<Annotation>
-
-export type NGstatement_import$_clause$_namespace$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_import$_clause$_namespace$<Annotation>,
-}
-export type VTGstatement_import$_clause$_namespace<Annotation> = NGstatement_import$_clause$_namespace$<Annotation>
-export type VGstatement_import$_clause$_namespace<Annotation> = VTGstatement_import$_clause$_namespace<Annotation>
-export type VTGstatement_import$_clause$_named$$_name<Annotation> = Gidentifier<Annotation>
-export type VGstatement_import$_clause$_named$$_name<Annotation> = VTGstatement_import$_clause$_named$$_name<Annotation>
-export type VTGstatement_import$_clause$_named$$_as<Annotation> = Gidentifier<Annotation>
-export type VGstatement_import$_clause$_named$$_as<Annotation> = pr.optional<VTGstatement_import$_clause$_named$$_as<Annotation>>
-export type VTGstatement_import$_clause$_named$$<Annotation> = {
-    readonly "name":  VGstatement_import$_clause$_named$$_name<Annotation>
-    readonly "as":  VGstatement_import$_clause$_named$$_as<Annotation>
-}
-export type VGstatement_import$_clause$_named$$<Annotation> = VTGstatement_import$_clause$_named$$<Annotation>
-
-export type NGstatement_import$_clause$_named$$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_import$_clause$_named$$<Annotation>,
-}
-export type VTGstatement_import$_clause$_named$<Annotation> = NGstatement_import$_clause$_named$$<Annotation>
-export type VGstatement_import$_clause$_named$<Annotation> = VTGstatement_import$_clause$_named$<Annotation>[]
-
-export type NGstatement_import$_clause$_named$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_import$_clause$_named$<Annotation>,
-}
-export type VTGstatement_import$_clause$_named<Annotation> = NGstatement_import$_clause$_named$<Annotation>
-export type VGstatement_import$_clause$_named<Annotation> = VTGstatement_import$_clause$_named<Annotation>
-export type VTGstatement_import$_clause$<Annotation> =
-    | [ "namespace", VGstatement_import$_clause$_namespace<Annotation>]
-    | [ "named", VGstatement_import$_clause$_named<Annotation>]
-export type VGstatement_import$_clause$<Annotation> = VTGstatement_import$_clause$<Annotation>
-
-export type NGstatement_import$_clause$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_import$_clause$<Annotation>,
-}
-export type VTGstatement_import$_clause<Annotation> = NGstatement_import$_clause$<Annotation>
-export type VGstatement_import$_clause<Annotation> = VTGstatement_import$_clause<Annotation>
-export type VTGstatement_import$_file<Annotation> = GstringLiteral<Annotation>
-export type VGstatement_import$_file<Annotation> = VTGstatement_import$_file<Annotation>
-export type VTGstatement_import$<Annotation> = {
-    readonly "clause":  VGstatement_import$_clause<Annotation>
-    readonly "file":  VGstatement_import$_file<Annotation>
-}
-export type VGstatement_import$<Annotation> = VTGstatement_import$<Annotation>
-
-export type NGstatement_import$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_import$<Annotation>,
-}
-export type VTGstatement_import<Annotation> = NGstatement_import$<Annotation>
-export type VGstatement_import<Annotation> = VTGstatement_import<Annotation>
-export type VTGstatement_interface$_modifiers<Annotation> = Gmodifier<Annotation>
-export type VGstatement_interface$_modifiers<Annotation> = VTGstatement_interface$_modifiers<Annotation>[]
-export type VTGstatement_interface$_name<Annotation> = Gidentifier<Annotation>
-export type VGstatement_interface$_name<Annotation> = VTGstatement_interface$_name<Annotation>
-export type VTGstatement_interface$_typeParameters<Annotation> = GtypeParameter<Annotation>
-export type VGstatement_interface$_typeParameters<Annotation> = VTGstatement_interface$_typeParameters<Annotation>[]
-export type VTGstatement_interface$_signature<Annotation> = GtypeSignature<Annotation>
-export type VGstatement_interface$_signature<Annotation> = VTGstatement_interface$_signature<Annotation>[]
-export type VTGstatement_interface$<Annotation> = {
-    readonly "modifiers":  VGstatement_interface$_modifiers<Annotation>
-    readonly "name":  VGstatement_interface$_name<Annotation>
-    readonly "typeParameters":  VGstatement_interface$_typeParameters<Annotation>
-    readonly "signature":  VGstatement_interface$_signature<Annotation>
-}
-export type VGstatement_interface$<Annotation> = VTGstatement_interface$<Annotation>
-
-export type NGstatement_interface$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_interface$<Annotation>,
-}
-export type VTGstatement_interface<Annotation> = NGstatement_interface$<Annotation>
-export type VGstatement_interface<Annotation> = VTGstatement_interface<Annotation>
-export type VTGstatement_labeled$_label<Annotation> = Gidentifier<Annotation>
-export type VGstatement_labeled$_label<Annotation> = VTGstatement_labeled$_label<Annotation>
-export type VTGstatement_labeled$_statement<Annotation> = Gstatement<Annotation>
-export type VGstatement_labeled$_statement<Annotation> = VTGstatement_labeled$_statement<Annotation>
-export type VTGstatement_labeled$<Annotation> = {
-    readonly "label":  VGstatement_labeled$_label<Annotation>
-    readonly "statement":  VGstatement_labeled$_statement<Annotation>
-}
-export type VGstatement_labeled$<Annotation> = VTGstatement_labeled$<Annotation>
-
-export type NGstatement_labeled$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_labeled$<Annotation>,
-}
-export type VTGstatement_labeled<Annotation> = NGstatement_labeled$<Annotation>
-export type VGstatement_labeled<Annotation> = VTGstatement_labeled<Annotation>
-export type VTGstatement_return$<Annotation> = Gexpression<Annotation>
-export type VGstatement_return$<Annotation> = pr.optional<VTGstatement_return$<Annotation>>
-
-export type NGstatement_return$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_return$<Annotation>,
-}
-export type VTGstatement_return<Annotation> = NGstatement_return$<Annotation>
-export type VGstatement_return<Annotation> = VTGstatement_return<Annotation>
-export type VTGstatement_switch$_expression<Annotation> = Gexpression<Annotation>
-export type VGstatement_switch$_expression<Annotation> = VTGstatement_switch$_expression<Annotation>
-export type VTGstatement_switch$_caseBlock$_case$_case<Annotation> = Gexpression<Annotation>
-export type VGstatement_switch$_caseBlock$_case$_case<Annotation> = VTGstatement_switch$_caseBlock$_case$_case<Annotation>
-export type VTGstatement_switch$_caseBlock$_case$_statements<Annotation> = Gstatement<Annotation>
-export type VGstatement_switch$_caseBlock$_case$_statements<Annotation> = VTGstatement_switch$_caseBlock$_case$_statements<Annotation>[]
-export type VTGstatement_switch$_caseBlock$_case$<Annotation> = {
-    readonly "case":  VGstatement_switch$_caseBlock$_case$_case<Annotation>
-    readonly "statements":  VGstatement_switch$_caseBlock$_case$_statements<Annotation>
-}
-export type VGstatement_switch$_caseBlock$_case$<Annotation> = VTGstatement_switch$_caseBlock$_case$<Annotation>
-
-export type NGstatement_switch$_caseBlock$_case$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_switch$_caseBlock$_case$<Annotation>,
-}
-export type VTGstatement_switch$_caseBlock$_case<Annotation> = NGstatement_switch$_caseBlock$_case$<Annotation>
-export type VGstatement_switch$_caseBlock$_case<Annotation> = VTGstatement_switch$_caseBlock$_case<Annotation>
-export type VTGstatement_switch$_caseBlock$_default$<Annotation> = Gstatement<Annotation>
-export type VGstatement_switch$_caseBlock$_default$<Annotation> = VTGstatement_switch$_caseBlock$_default$<Annotation>[]
-
-export type NGstatement_switch$_caseBlock$_default$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_switch$_caseBlock$_default$<Annotation>,
-}
-export type VTGstatement_switch$_caseBlock$_default<Annotation> = NGstatement_switch$_caseBlock$_default$<Annotation>
-export type VGstatement_switch$_caseBlock$_default<Annotation> = VTGstatement_switch$_caseBlock$_default<Annotation>
-export type VTGstatement_switch$_caseBlock$<Annotation> =
-    | [ "case", VGstatement_switch$_caseBlock$_case<Annotation>]
-    | [ "default", VGstatement_switch$_caseBlock$_default<Annotation>]
-export type VGstatement_switch$_caseBlock$<Annotation> = VTGstatement_switch$_caseBlock$<Annotation>[]
-
-export type NGstatement_switch$_caseBlock$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_switch$_caseBlock$<Annotation>,
-}
-export type VTGstatement_switch$_caseBlock<Annotation> = NGstatement_switch$_caseBlock$<Annotation>
-export type VGstatement_switch$_caseBlock<Annotation> = VTGstatement_switch$_caseBlock<Annotation>
-export type VTGstatement_switch$<Annotation> = {
-    readonly "expression":  VGstatement_switch$_expression<Annotation>
-    readonly "caseBlock":  VGstatement_switch$_caseBlock<Annotation>
-}
-export type VGstatement_switch$<Annotation> = VTGstatement_switch$<Annotation>
-
-export type NGstatement_switch$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_switch$<Annotation>,
-}
-export type VTGstatement_switch<Annotation> = NGstatement_switch$<Annotation>
-export type VGstatement_switch<Annotation> = VTGstatement_switch<Annotation>
-export type VTGstatement_throw$<Annotation> = Gexpression<Annotation>
-export type VGstatement_throw$<Annotation> = VTGstatement_throw$<Annotation>
-
-export type NGstatement_throw$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_throw$<Annotation>,
-}
-export type VTGstatement_throw<Annotation> = NGstatement_throw$<Annotation>
-export type VGstatement_throw<Annotation> = VTGstatement_throw<Annotation>
-export type VTGstatement_try$_block<Annotation> = Gblock<Annotation>
-export type VGstatement_try$_block<Annotation> = VTGstatement_try$_block<Annotation>
-export type VTGstatement_try$_catchClause$_variable<Annotation> = GvariableDeclaration<Annotation>
-export type VGstatement_try$_catchClause$_variable<Annotation> = VTGstatement_try$_catchClause$_variable<Annotation>
-export type VTGstatement_try$_catchClause$_block<Annotation> = Gblock<Annotation>
-export type VGstatement_try$_catchClause$_block<Annotation> = VTGstatement_try$_catchClause$_block<Annotation>
-export type VTGstatement_try$_catchClause$<Annotation> = {
-    readonly "variable":  VGstatement_try$_catchClause$_variable<Annotation>
-    readonly "block":  VGstatement_try$_catchClause$_block<Annotation>
-}
-export type VGstatement_try$_catchClause$<Annotation> = VTGstatement_try$_catchClause$<Annotation>
-
-export type NGstatement_try$_catchClause$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_try$_catchClause$<Annotation>,
-}
-export type VTGstatement_try$_catchClause<Annotation> = NGstatement_try$_catchClause$<Annotation>
-export type VGstatement_try$_catchClause<Annotation> = VTGstatement_try$_catchClause<Annotation>
-export type VTGstatement_try$<Annotation> = {
-    readonly "block":  VGstatement_try$_block<Annotation>
-    readonly "catchClause":  VGstatement_try$_catchClause<Annotation>
-}
-export type VGstatement_try$<Annotation> = VTGstatement_try$<Annotation>
-
-export type NGstatement_try$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_try$<Annotation>,
-}
-export type VTGstatement_try<Annotation> = NGstatement_try$<Annotation>
-export type VGstatement_try<Annotation> = VTGstatement_try<Annotation>
-export type VTGstatement_typeAlias$_modifiers<Annotation> = Gmodifier<Annotation>
-export type VGstatement_typeAlias$_modifiers<Annotation> = VTGstatement_typeAlias$_modifiers<Annotation>[]
-export type VTGstatement_typeAlias$_name<Annotation> = Gidentifier<Annotation>
-export type VGstatement_typeAlias$_name<Annotation> = VTGstatement_typeAlias$_name<Annotation>
-export type VTGstatement_typeAlias$_typeParameters<Annotation> = GtypeParameter<Annotation>
-export type VGstatement_typeAlias$_typeParameters<Annotation> = VTGstatement_typeAlias$_typeParameters<Annotation>[]
-export type VTGstatement_typeAlias$_type<Annotation> = Gtype<Annotation>
-export type VGstatement_typeAlias$_type<Annotation> = VTGstatement_typeAlias$_type<Annotation>
-export type VTGstatement_typeAlias$<Annotation> = {
-    readonly "modifiers":  VGstatement_typeAlias$_modifiers<Annotation>
-    readonly "name":  VGstatement_typeAlias$_name<Annotation>
-    readonly "typeParameters":  VGstatement_typeAlias$_typeParameters<Annotation>
-    readonly "type":  VGstatement_typeAlias$_type<Annotation>
-}
-export type VGstatement_typeAlias$<Annotation> = VTGstatement_typeAlias$<Annotation>
-
-export type NGstatement_typeAlias$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_typeAlias$<Annotation>,
-}
-export type VTGstatement_typeAlias<Annotation> = NGstatement_typeAlias$<Annotation>
-export type VGstatement_typeAlias<Annotation> = VTGstatement_typeAlias<Annotation>
-export type VTGstatement_variable$_modifiers<Annotation> = Gmodifier<Annotation>
-export type VGstatement_variable$_modifiers<Annotation> = VTGstatement_variable$_modifiers<Annotation>[]
-export type VTGstatement_variable$_variableDeclarationList<Annotation> = GvariableDeclarationList<Annotation>
-export type VGstatement_variable$_variableDeclarationList<Annotation> = VTGstatement_variable$_variableDeclarationList<Annotation>
-export type VTGstatement_variable$<Annotation> = {
-    readonly "modifiers":  VGstatement_variable$_modifiers<Annotation>
-    readonly "variableDeclarationList":  VGstatement_variable$_variableDeclarationList<Annotation>
-}
-export type VGstatement_variable$<Annotation> = VTGstatement_variable$<Annotation>
-
-export type NGstatement_variable$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_variable$<Annotation>,
-}
-export type VTGstatement_variable<Annotation> = NGstatement_variable$<Annotation>
-export type VGstatement_variable<Annotation> = VTGstatement_variable<Annotation>
-export type VTGstatement_while$_condition<Annotation> = Gexpression<Annotation>
-export type VGstatement_while$_condition<Annotation> = VTGstatement_while$_condition<Annotation>
-export type VTGstatement_while$_block<Annotation> = Gblock<Annotation>
-export type VGstatement_while$_block<Annotation> = VTGstatement_while$_block<Annotation>
-export type VTGstatement_while$<Annotation> = {
-    readonly "condition":  VGstatement_while$_condition<Annotation>
-    readonly "block":  VGstatement_while$_block<Annotation>
-}
-export type VGstatement_while$<Annotation> = VTGstatement_while$<Annotation>
-
-export type NGstatement_while$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGstatement_while$<Annotation>,
-}
-export type VTGstatement_while<Annotation> = NGstatement_while$<Annotation>
-export type VGstatement_while<Annotation> = VTGstatement_while<Annotation>
-export type VTGstatement<Annotation> =
-    | [ "block", VGstatement_block<Annotation>]
-    | [ "break", VGstatement_break<Annotation>]
-    | [ "export", VGstatement_export<Annotation>]
-    | [ "expression", VGstatement_expression<Annotation>]
-    | [ "for", VGstatement_for<Annotation>]
-    | [ "function", VGstatement_function<Annotation>]
-    | [ "if", VGstatement_if<Annotation>]
-    | [ "import", VGstatement_import<Annotation>]
-    | [ "interface", VGstatement_interface<Annotation>]
-    | [ "labeled", VGstatement_labeled<Annotation>]
-    | [ "return", VGstatement_return<Annotation>]
-    | [ "switch", VGstatement_switch<Annotation>]
-    | [ "throw", VGstatement_throw<Annotation>]
-    | [ "try", VGstatement_try<Annotation>]
-    | [ "typeAlias", VGstatement_typeAlias<Annotation>]
-    | [ "variable", VGstatement_variable<Annotation>]
-    | [ "while", VGstatement_while<Annotation>]
-export type Gstatement<Annotation> =  VTGstatement<Annotation>
-
-export type NGstringLiteral$<Annotation> = {
+export type TNGidentifier$<Annotation> = {
     readonly "annotation": Annotation,
     readonly "content": string,
 }
-export type VTGstringLiteral<Annotation> = NGstringLiteral$<Annotation>
-export type GstringLiteral<Annotation> =  VTGstringLiteral<Annotation>
+export type TVTGidentifier<Annotation> = TNGidentifier$<Annotation>
+export type TGidentifier<Annotation> =  TVTGidentifier<Annotation>
+export type TVTGidentifierOrStringLiteral_identifier<Annotation> = TGidentifier<Annotation>
+export type TVGidentifierOrStringLiteral_identifier<Annotation> = TVTGidentifierOrStringLiteral_identifier<Annotation>
+export type TVTGidentifierOrStringLiteral_stringLiteral<Annotation> = TGstringLiteral<Annotation>
+export type TVGidentifierOrStringLiteral_stringLiteral<Annotation> = TVTGidentifierOrStringLiteral_stringLiteral<Annotation>
+export type TVTGidentifierOrStringLiteral<Annotation> =
+    | [ "identifier", TVGidentifierOrStringLiteral_identifier<Annotation>]
+    | [ "stringLiteral", TVGidentifierOrStringLiteral_stringLiteral<Annotation>]
+export type TGidentifierOrStringLiteral<Annotation> =  TVTGidentifierOrStringLiteral<Annotation>
 
-export type NGtype_any$<Annotation> = {
+export type TNGmodifier_declare$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtype_any<Annotation> = NGtype_any$<Annotation>
-export type VGtype_any<Annotation> = VTGtype_any<Annotation>
-export type VTGtype_array$<Annotation> = Gtype<Annotation>
-export type VGtype_array$<Annotation> = VTGtype_array$<Annotation>
+export type TVTGmodifier_declare<Annotation> = TNGmodifier_declare$<Annotation>
+export type TVGmodifier_declare<Annotation> = TVTGmodifier_declare<Annotation>
 
-export type NGtype_array$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtype_array$<Annotation>,
-}
-export type VTGtype_array<Annotation> = NGtype_array$<Annotation>
-export type VGtype_array<Annotation> = VTGtype_array<Annotation>
-
-export type NGtype_boolean$<Annotation> = {
+export type TNGmodifier_export$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtype_boolean<Annotation> = NGtype_boolean$<Annotation>
-export type VGtype_boolean<Annotation> = VTGtype_boolean<Annotation>
-export type VTGtype_function$_parameters<Annotation> = Gparameter<Annotation>
-export type VGtype_function$_parameters<Annotation> = VTGtype_function$_parameters<Annotation>[]
-export type VTGtype_function$_returnType<Annotation> = Gtype<Annotation>
-export type VGtype_function$_returnType<Annotation> = pr.optional<VTGtype_function$_returnType<Annotation>>
-export type VTGtype_function$<Annotation> = {
-    readonly "parameters":  VGtype_function$_parameters<Annotation>
-    readonly "returnType":  VGtype_function$_returnType<Annotation>
-}
-export type VGtype_function$<Annotation> = VTGtype_function$<Annotation>
+export type TVTGmodifier_export<Annotation> = TNGmodifier_export$<Annotation>
+export type TVGmodifier_export<Annotation> = TVTGmodifier_export<Annotation>
 
-export type NGtype_function$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtype_function$<Annotation>,
-}
-export type VTGtype_function<Annotation> = NGtype_function$<Annotation>
-export type VGtype_function<Annotation> = VTGtype_function<Annotation>
-
-export type NGtype_literal$_null$<Annotation> = {
+export type TNGmodifier_readonly$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtype_literal$_null<Annotation> = NGtype_literal$_null$<Annotation>
-export type VGtype_literal$_null<Annotation> = VTGtype_literal$_null<Annotation>
-export type VTGtype_literal$_string<Annotation> = GstringLiteral<Annotation>
-export type VGtype_literal$_string<Annotation> = VTGtype_literal$_string<Annotation>
-export type VTGtype_literal$<Annotation> =
-    | [ "null", VGtype_literal$_null<Annotation>]
-    | [ "string", VGtype_literal$_string<Annotation>]
-export type VGtype_literal$<Annotation> = VTGtype_literal$<Annotation>
+export type TVTGmodifier_readonly<Annotation> = TNGmodifier_readonly$<Annotation>
+export type TVGmodifier_readonly<Annotation> = TVTGmodifier_readonly<Annotation>
+export type TVTGmodifier<Annotation> =
+    | [ "declare", TVGmodifier_declare<Annotation>]
+    | [ "export", TVGmodifier_export<Annotation>]
+    | [ "readonly", TVGmodifier_readonly<Annotation>]
+export type TGmodifier<Annotation> =  TVTGmodifier<Annotation>
 
-export type NGtype_literal$<Annotation> = {
+export type TNGnumericLiteral$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGtype_literal$<Annotation>,
+    readonly "content": string,
 }
-export type VTGtype_literal<Annotation> = NGtype_literal$<Annotation>
-export type VGtype_literal<Annotation> = VTGtype_literal<Annotation>
-export type VTGtype_parenthesized$<Annotation> = Gtype<Annotation>
-export type VGtype_parenthesized$<Annotation> = VTGtype_parenthesized$<Annotation>
+export type TVTGnumericLiteral<Annotation> = TNGnumericLiteral$<Annotation>
+export type TGnumericLiteral<Annotation> =  TVTGnumericLiteral<Annotation>
+export type TVTGparameter$_name<Annotation> = TGidentifier<Annotation>
+export type TVGparameter$_name<Annotation> = TVTGparameter$_name<Annotation>
 
-export type NGtype_parenthesized$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtype_parenthesized$<Annotation>,
-}
-export type VTGtype_parenthesized<Annotation> = NGtype_parenthesized$<Annotation>
-export type VGtype_parenthesized<Annotation> = VTGtype_parenthesized<Annotation>
-
-export type NGtype_never$<Annotation> = {
+export type TNGparameter$_questionToken$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtype_never<Annotation> = NGtype_never$<Annotation>
-export type VGtype_never<Annotation> = VTGtype_never<Annotation>
+export type TVTGparameter$_questionToken<Annotation> = TNGparameter$_questionToken$<Annotation>
+export type TVGparameter$_questionToken<Annotation> = pr.optional<TVTGparameter$_questionToken<Annotation>>
+export type TVTGparameter$_type<Annotation> = TGtype<Annotation>
+export type TVGparameter$_type<Annotation> = pr.optional<TVTGparameter$_type<Annotation>>
+export type TVTGparameter$<Annotation> = {
+    readonly "name":  TVGparameter$_name<Annotation>
+    readonly "questionToken":  TVGparameter$_questionToken<Annotation>
+    readonly "type":  TVGparameter$_type<Annotation>
+}
+export type TVGparameter$<Annotation> = TVTGparameter$<Annotation>
 
-export type NGtype_number$<Annotation> = {
+export type TNGparameter$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGparameter$<Annotation>,
+}
+export type TVTGparameter<Annotation> = TNGparameter$<Annotation>
+export type TGparameter<Annotation> =  TVTGparameter<Annotation>
+export type TVTGstatement_block<Annotation> = TGblock<Annotation>
+export type TVGstatement_block<Annotation> = TVTGstatement_block<Annotation>
+export type TVTGstatement_break$<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_break$<Annotation> = pr.optional<TVTGstatement_break$<Annotation>>
+
+export type TNGstatement_break$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_break$<Annotation>,
+}
+export type TVTGstatement_break<Annotation> = TNGstatement_break$<Annotation>
+export type TVGstatement_break<Annotation> = TVTGstatement_break<Annotation>
+export type TVTGstatement_export$<Annotation> = TGstringLiteral<Annotation>
+export type TVGstatement_export$<Annotation> = TVTGstatement_export$<Annotation>
+
+export type TNGstatement_export$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_export$<Annotation>,
+}
+export type TVTGstatement_export<Annotation> = TNGstatement_export$<Annotation>
+export type TVGstatement_export<Annotation> = TVTGstatement_export<Annotation>
+export type TVTGstatement_expression$<Annotation> = TGexpression<Annotation>
+export type TVGstatement_expression$<Annotation> = TVTGstatement_expression$<Annotation>
+
+export type TNGstatement_expression$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_expression$<Annotation>,
+}
+export type TVTGstatement_expression<Annotation> = TNGstatement_expression$<Annotation>
+export type TVGstatement_expression<Annotation> = TVTGstatement_expression<Annotation>
+export type TVTGstatement_for$_initializer<Annotation> = TGvariableDeclarationList<Annotation>
+export type TVGstatement_for$_initializer<Annotation> = TVTGstatement_for$_initializer<Annotation>
+export type TVTGstatement_for$_condition<Annotation> = TGexpression<Annotation>
+export type TVGstatement_for$_condition<Annotation> = TVTGstatement_for$_condition<Annotation>
+export type TVTGstatement_for$_incrementer<Annotation> = TGexpression<Annotation>
+export type TVGstatement_for$_incrementer<Annotation> = TVTGstatement_for$_incrementer<Annotation>
+export type TVTGstatement_for$_block<Annotation> = TGblock<Annotation>
+export type TVGstatement_for$_block<Annotation> = TVTGstatement_for$_block<Annotation>
+export type TVTGstatement_for$<Annotation> = {
+    readonly "initializer":  TVGstatement_for$_initializer<Annotation>
+    readonly "condition":  TVGstatement_for$_condition<Annotation>
+    readonly "incrementer":  TVGstatement_for$_incrementer<Annotation>
+    readonly "block":  TVGstatement_for$_block<Annotation>
+}
+export type TVGstatement_for$<Annotation> = TVTGstatement_for$<Annotation>
+
+export type TNGstatement_for$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_for$<Annotation>,
+}
+export type TVTGstatement_for<Annotation> = TNGstatement_for$<Annotation>
+export type TVGstatement_for<Annotation> = TVTGstatement_for<Annotation>
+export type TVTGstatement_function$_modifiers<Annotation> = TGmodifier<Annotation>
+export type TVGstatement_function$_modifiers<Annotation> = TVTGstatement_function$_modifiers<Annotation>[]
+export type TVTGstatement_function$_name<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_function$_name<Annotation> = TVTGstatement_function$_name<Annotation>
+export type TVTGstatement_function$_definition<Annotation> = TGfunctionDefinition<Annotation>
+export type TVGstatement_function$_definition<Annotation> = TVTGstatement_function$_definition<Annotation>
+export type TVTGstatement_function$_block<Annotation> = TGblock<Annotation>
+export type TVGstatement_function$_block<Annotation> = pr.optional<TVTGstatement_function$_block<Annotation>>
+export type TVTGstatement_function$<Annotation> = {
+    readonly "modifiers":  TVGstatement_function$_modifiers<Annotation>
+    readonly "name":  TVGstatement_function$_name<Annotation>
+    readonly "definition":  TVGstatement_function$_definition<Annotation>
+    readonly "block":  TVGstatement_function$_block<Annotation>
+}
+export type TVGstatement_function$<Annotation> = TVTGstatement_function$<Annotation>
+
+export type TNGstatement_function$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_function$<Annotation>,
+}
+export type TVTGstatement_function<Annotation> = TNGstatement_function$<Annotation>
+export type TVGstatement_function<Annotation> = TVTGstatement_function<Annotation>
+export type TVTGstatement_if$_expression<Annotation> = TGexpression<Annotation>
+export type TVGstatement_if$_expression<Annotation> = TVTGstatement_if$_expression<Annotation>
+export type TVTGstatement_if$_thenStatement<Annotation> = TGstatement<Annotation>
+export type TVGstatement_if$_thenStatement<Annotation> = TVTGstatement_if$_thenStatement<Annotation>
+export type TVTGstatement_if$_elseStatement<Annotation> = TGstatement<Annotation>
+export type TVGstatement_if$_elseStatement<Annotation> = pr.optional<TVTGstatement_if$_elseStatement<Annotation>>
+export type TVTGstatement_if$<Annotation> = {
+    readonly "expression":  TVGstatement_if$_expression<Annotation>
+    readonly "thenStatement":  TVGstatement_if$_thenStatement<Annotation>
+    readonly "elseStatement":  TVGstatement_if$_elseStatement<Annotation>
+}
+export type TVGstatement_if$<Annotation> = TVTGstatement_if$<Annotation>
+
+export type TNGstatement_if$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_if$<Annotation>,
+}
+export type TVTGstatement_if<Annotation> = TNGstatement_if$<Annotation>
+export type TVGstatement_if<Annotation> = TVTGstatement_if<Annotation>
+export type TVTGstatement_import$_clause$_namespace$<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_import$_clause$_namespace$<Annotation> = TVTGstatement_import$_clause$_namespace$<Annotation>
+
+export type TNGstatement_import$_clause$_namespace$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_import$_clause$_namespace$<Annotation>,
+}
+export type TVTGstatement_import$_clause$_namespace<Annotation> = TNGstatement_import$_clause$_namespace$<Annotation>
+export type TVGstatement_import$_clause$_namespace<Annotation> = TVTGstatement_import$_clause$_namespace<Annotation>
+export type TVTGstatement_import$_clause$_named$$_name<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_import$_clause$_named$$_name<Annotation> = TVTGstatement_import$_clause$_named$$_name<Annotation>
+export type TVTGstatement_import$_clause$_named$$_as<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_import$_clause$_named$$_as<Annotation> = pr.optional<TVTGstatement_import$_clause$_named$$_as<Annotation>>
+export type TVTGstatement_import$_clause$_named$$<Annotation> = {
+    readonly "name":  TVGstatement_import$_clause$_named$$_name<Annotation>
+    readonly "as":  TVGstatement_import$_clause$_named$$_as<Annotation>
+}
+export type TVGstatement_import$_clause$_named$$<Annotation> = TVTGstatement_import$_clause$_named$$<Annotation>
+
+export type TNGstatement_import$_clause$_named$$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_import$_clause$_named$$<Annotation>,
+}
+export type TVTGstatement_import$_clause$_named$<Annotation> = TNGstatement_import$_clause$_named$$<Annotation>
+export type TVGstatement_import$_clause$_named$<Annotation> = TVTGstatement_import$_clause$_named$<Annotation>[]
+
+export type TNGstatement_import$_clause$_named$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_import$_clause$_named$<Annotation>,
+}
+export type TVTGstatement_import$_clause$_named<Annotation> = TNGstatement_import$_clause$_named$<Annotation>
+export type TVGstatement_import$_clause$_named<Annotation> = TVTGstatement_import$_clause$_named<Annotation>
+export type TVTGstatement_import$_clause$<Annotation> =
+    | [ "namespace", TVGstatement_import$_clause$_namespace<Annotation>]
+    | [ "named", TVGstatement_import$_clause$_named<Annotation>]
+export type TVGstatement_import$_clause$<Annotation> = TVTGstatement_import$_clause$<Annotation>
+
+export type TNGstatement_import$_clause$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_import$_clause$<Annotation>,
+}
+export type TVTGstatement_import$_clause<Annotation> = TNGstatement_import$_clause$<Annotation>
+export type TVGstatement_import$_clause<Annotation> = TVTGstatement_import$_clause<Annotation>
+export type TVTGstatement_import$_file<Annotation> = TGstringLiteral<Annotation>
+export type TVGstatement_import$_file<Annotation> = TVTGstatement_import$_file<Annotation>
+export type TVTGstatement_import$<Annotation> = {
+    readonly "clause":  TVGstatement_import$_clause<Annotation>
+    readonly "file":  TVGstatement_import$_file<Annotation>
+}
+export type TVGstatement_import$<Annotation> = TVTGstatement_import$<Annotation>
+
+export type TNGstatement_import$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_import$<Annotation>,
+}
+export type TVTGstatement_import<Annotation> = TNGstatement_import$<Annotation>
+export type TVGstatement_import<Annotation> = TVTGstatement_import<Annotation>
+export type TVTGstatement_interface$_modifiers<Annotation> = TGmodifier<Annotation>
+export type TVGstatement_interface$_modifiers<Annotation> = TVTGstatement_interface$_modifiers<Annotation>[]
+export type TVTGstatement_interface$_name<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_interface$_name<Annotation> = TVTGstatement_interface$_name<Annotation>
+export type TVTGstatement_interface$_typeParameters<Annotation> = TGtypeParameter<Annotation>
+export type TVGstatement_interface$_typeParameters<Annotation> = TVTGstatement_interface$_typeParameters<Annotation>[]
+export type TVTGstatement_interface$_signature<Annotation> = TGtypeSignature<Annotation>
+export type TVGstatement_interface$_signature<Annotation> = TVTGstatement_interface$_signature<Annotation>[]
+export type TVTGstatement_interface$<Annotation> = {
+    readonly "modifiers":  TVGstatement_interface$_modifiers<Annotation>
+    readonly "name":  TVGstatement_interface$_name<Annotation>
+    readonly "typeParameters":  TVGstatement_interface$_typeParameters<Annotation>
+    readonly "signature":  TVGstatement_interface$_signature<Annotation>
+}
+export type TVGstatement_interface$<Annotation> = TVTGstatement_interface$<Annotation>
+
+export type TNGstatement_interface$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_interface$<Annotation>,
+}
+export type TVTGstatement_interface<Annotation> = TNGstatement_interface$<Annotation>
+export type TVGstatement_interface<Annotation> = TVTGstatement_interface<Annotation>
+export type TVTGstatement_labeled$_label<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_labeled$_label<Annotation> = TVTGstatement_labeled$_label<Annotation>
+export type TVTGstatement_labeled$_statement<Annotation> = TGstatement<Annotation>
+export type TVGstatement_labeled$_statement<Annotation> = TVTGstatement_labeled$_statement<Annotation>
+export type TVTGstatement_labeled$<Annotation> = {
+    readonly "label":  TVGstatement_labeled$_label<Annotation>
+    readonly "statement":  TVGstatement_labeled$_statement<Annotation>
+}
+export type TVGstatement_labeled$<Annotation> = TVTGstatement_labeled$<Annotation>
+
+export type TNGstatement_labeled$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_labeled$<Annotation>,
+}
+export type TVTGstatement_labeled<Annotation> = TNGstatement_labeled$<Annotation>
+export type TVGstatement_labeled<Annotation> = TVTGstatement_labeled<Annotation>
+export type TVTGstatement_return$<Annotation> = TGexpression<Annotation>
+export type TVGstatement_return$<Annotation> = pr.optional<TVTGstatement_return$<Annotation>>
+
+export type TNGstatement_return$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_return$<Annotation>,
+}
+export type TVTGstatement_return<Annotation> = TNGstatement_return$<Annotation>
+export type TVGstatement_return<Annotation> = TVTGstatement_return<Annotation>
+export type TVTGstatement_switch$_expression<Annotation> = TGexpression<Annotation>
+export type TVGstatement_switch$_expression<Annotation> = TVTGstatement_switch$_expression<Annotation>
+export type TVTGstatement_switch$_caseBlock$_case$_case<Annotation> = TGexpression<Annotation>
+export type TVGstatement_switch$_caseBlock$_case$_case<Annotation> = TVTGstatement_switch$_caseBlock$_case$_case<Annotation>
+export type TVTGstatement_switch$_caseBlock$_case$_statements<Annotation> = TGstatement<Annotation>
+export type TVGstatement_switch$_caseBlock$_case$_statements<Annotation> = TVTGstatement_switch$_caseBlock$_case$_statements<Annotation>[]
+export type TVTGstatement_switch$_caseBlock$_case$<Annotation> = {
+    readonly "case":  TVGstatement_switch$_caseBlock$_case$_case<Annotation>
+    readonly "statements":  TVGstatement_switch$_caseBlock$_case$_statements<Annotation>
+}
+export type TVGstatement_switch$_caseBlock$_case$<Annotation> = TVTGstatement_switch$_caseBlock$_case$<Annotation>
+
+export type TNGstatement_switch$_caseBlock$_case$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_switch$_caseBlock$_case$<Annotation>,
+}
+export type TVTGstatement_switch$_caseBlock$_case<Annotation> = TNGstatement_switch$_caseBlock$_case$<Annotation>
+export type TVGstatement_switch$_caseBlock$_case<Annotation> = TVTGstatement_switch$_caseBlock$_case<Annotation>
+export type TVTGstatement_switch$_caseBlock$_default$<Annotation> = TGstatement<Annotation>
+export type TVGstatement_switch$_caseBlock$_default$<Annotation> = TVTGstatement_switch$_caseBlock$_default$<Annotation>[]
+
+export type TNGstatement_switch$_caseBlock$_default$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_switch$_caseBlock$_default$<Annotation>,
+}
+export type TVTGstatement_switch$_caseBlock$_default<Annotation> = TNGstatement_switch$_caseBlock$_default$<Annotation>
+export type TVGstatement_switch$_caseBlock$_default<Annotation> = TVTGstatement_switch$_caseBlock$_default<Annotation>
+export type TVTGstatement_switch$_caseBlock$<Annotation> =
+    | [ "case", TVGstatement_switch$_caseBlock$_case<Annotation>]
+    | [ "default", TVGstatement_switch$_caseBlock$_default<Annotation>]
+export type TVGstatement_switch$_caseBlock$<Annotation> = TVTGstatement_switch$_caseBlock$<Annotation>[]
+
+export type TNGstatement_switch$_caseBlock$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_switch$_caseBlock$<Annotation>,
+}
+export type TVTGstatement_switch$_caseBlock<Annotation> = TNGstatement_switch$_caseBlock$<Annotation>
+export type TVGstatement_switch$_caseBlock<Annotation> = TVTGstatement_switch$_caseBlock<Annotation>
+export type TVTGstatement_switch$<Annotation> = {
+    readonly "expression":  TVGstatement_switch$_expression<Annotation>
+    readonly "caseBlock":  TVGstatement_switch$_caseBlock<Annotation>
+}
+export type TVGstatement_switch$<Annotation> = TVTGstatement_switch$<Annotation>
+
+export type TNGstatement_switch$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_switch$<Annotation>,
+}
+export type TVTGstatement_switch<Annotation> = TNGstatement_switch$<Annotation>
+export type TVGstatement_switch<Annotation> = TVTGstatement_switch<Annotation>
+export type TVTGstatement_throw$<Annotation> = TGexpression<Annotation>
+export type TVGstatement_throw$<Annotation> = TVTGstatement_throw$<Annotation>
+
+export type TNGstatement_throw$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_throw$<Annotation>,
+}
+export type TVTGstatement_throw<Annotation> = TNGstatement_throw$<Annotation>
+export type TVGstatement_throw<Annotation> = TVTGstatement_throw<Annotation>
+export type TVTGstatement_try$_block<Annotation> = TGblock<Annotation>
+export type TVGstatement_try$_block<Annotation> = TVTGstatement_try$_block<Annotation>
+export type TVTGstatement_try$_catchClause$_variable<Annotation> = TGvariableDeclaration<Annotation>
+export type TVGstatement_try$_catchClause$_variable<Annotation> = TVTGstatement_try$_catchClause$_variable<Annotation>
+export type TVTGstatement_try$_catchClause$_block<Annotation> = TGblock<Annotation>
+export type TVGstatement_try$_catchClause$_block<Annotation> = TVTGstatement_try$_catchClause$_block<Annotation>
+export type TVTGstatement_try$_catchClause$<Annotation> = {
+    readonly "variable":  TVGstatement_try$_catchClause$_variable<Annotation>
+    readonly "block":  TVGstatement_try$_catchClause$_block<Annotation>
+}
+export type TVGstatement_try$_catchClause$<Annotation> = TVTGstatement_try$_catchClause$<Annotation>
+
+export type TNGstatement_try$_catchClause$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_try$_catchClause$<Annotation>,
+}
+export type TVTGstatement_try$_catchClause<Annotation> = TNGstatement_try$_catchClause$<Annotation>
+export type TVGstatement_try$_catchClause<Annotation> = TVTGstatement_try$_catchClause<Annotation>
+export type TVTGstatement_try$<Annotation> = {
+    readonly "block":  TVGstatement_try$_block<Annotation>
+    readonly "catchClause":  TVGstatement_try$_catchClause<Annotation>
+}
+export type TVGstatement_try$<Annotation> = TVTGstatement_try$<Annotation>
+
+export type TNGstatement_try$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_try$<Annotation>,
+}
+export type TVTGstatement_try<Annotation> = TNGstatement_try$<Annotation>
+export type TVGstatement_try<Annotation> = TVTGstatement_try<Annotation>
+export type TVTGstatement_typeAlias$_modifiers<Annotation> = TGmodifier<Annotation>
+export type TVGstatement_typeAlias$_modifiers<Annotation> = TVTGstatement_typeAlias$_modifiers<Annotation>[]
+export type TVTGstatement_typeAlias$_name<Annotation> = TGidentifier<Annotation>
+export type TVGstatement_typeAlias$_name<Annotation> = TVTGstatement_typeAlias$_name<Annotation>
+export type TVTGstatement_typeAlias$_typeParameters<Annotation> = TGtypeParameter<Annotation>
+export type TVGstatement_typeAlias$_typeParameters<Annotation> = TVTGstatement_typeAlias$_typeParameters<Annotation>[]
+export type TVTGstatement_typeAlias$_type<Annotation> = TGtype<Annotation>
+export type TVGstatement_typeAlias$_type<Annotation> = TVTGstatement_typeAlias$_type<Annotation>
+export type TVTGstatement_typeAlias$<Annotation> = {
+    readonly "modifiers":  TVGstatement_typeAlias$_modifiers<Annotation>
+    readonly "name":  TVGstatement_typeAlias$_name<Annotation>
+    readonly "typeParameters":  TVGstatement_typeAlias$_typeParameters<Annotation>
+    readonly "type":  TVGstatement_typeAlias$_type<Annotation>
+}
+export type TVGstatement_typeAlias$<Annotation> = TVTGstatement_typeAlias$<Annotation>
+
+export type TNGstatement_typeAlias$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_typeAlias$<Annotation>,
+}
+export type TVTGstatement_typeAlias<Annotation> = TNGstatement_typeAlias$<Annotation>
+export type TVGstatement_typeAlias<Annotation> = TVTGstatement_typeAlias<Annotation>
+export type TVTGstatement_variable$_modifiers<Annotation> = TGmodifier<Annotation>
+export type TVGstatement_variable$_modifiers<Annotation> = TVTGstatement_variable$_modifiers<Annotation>[]
+export type TVTGstatement_variable$_variableDeclarationList<Annotation> = TGvariableDeclarationList<Annotation>
+export type TVGstatement_variable$_variableDeclarationList<Annotation> = TVTGstatement_variable$_variableDeclarationList<Annotation>
+export type TVTGstatement_variable$<Annotation> = {
+    readonly "modifiers":  TVGstatement_variable$_modifiers<Annotation>
+    readonly "variableDeclarationList":  TVGstatement_variable$_variableDeclarationList<Annotation>
+}
+export type TVGstatement_variable$<Annotation> = TVTGstatement_variable$<Annotation>
+
+export type TNGstatement_variable$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_variable$<Annotation>,
+}
+export type TVTGstatement_variable<Annotation> = TNGstatement_variable$<Annotation>
+export type TVGstatement_variable<Annotation> = TVTGstatement_variable<Annotation>
+export type TVTGstatement_while$_condition<Annotation> = TGexpression<Annotation>
+export type TVGstatement_while$_condition<Annotation> = TVTGstatement_while$_condition<Annotation>
+export type TVTGstatement_while$_block<Annotation> = TGblock<Annotation>
+export type TVGstatement_while$_block<Annotation> = TVTGstatement_while$_block<Annotation>
+export type TVTGstatement_while$<Annotation> = {
+    readonly "condition":  TVGstatement_while$_condition<Annotation>
+    readonly "block":  TVGstatement_while$_block<Annotation>
+}
+export type TVGstatement_while$<Annotation> = TVTGstatement_while$<Annotation>
+
+export type TNGstatement_while$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGstatement_while$<Annotation>,
+}
+export type TVTGstatement_while<Annotation> = TNGstatement_while$<Annotation>
+export type TVGstatement_while<Annotation> = TVTGstatement_while<Annotation>
+export type TVTGstatement<Annotation> =
+    | [ "block", TVGstatement_block<Annotation>]
+    | [ "break", TVGstatement_break<Annotation>]
+    | [ "export", TVGstatement_export<Annotation>]
+    | [ "expression", TVGstatement_expression<Annotation>]
+    | [ "for", TVGstatement_for<Annotation>]
+    | [ "function", TVGstatement_function<Annotation>]
+    | [ "if", TVGstatement_if<Annotation>]
+    | [ "import", TVGstatement_import<Annotation>]
+    | [ "interface", TVGstatement_interface<Annotation>]
+    | [ "labeled", TVGstatement_labeled<Annotation>]
+    | [ "return", TVGstatement_return<Annotation>]
+    | [ "switch", TVGstatement_switch<Annotation>]
+    | [ "throw", TVGstatement_throw<Annotation>]
+    | [ "try", TVGstatement_try<Annotation>]
+    | [ "typeAlias", TVGstatement_typeAlias<Annotation>]
+    | [ "variable", TVGstatement_variable<Annotation>]
+    | [ "while", TVGstatement_while<Annotation>]
+export type TGstatement<Annotation> =  TVTGstatement<Annotation>
+
+export type TNGstringLiteral$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": string,
+}
+export type TVTGstringLiteral<Annotation> = TNGstringLiteral$<Annotation>
+export type TGstringLiteral<Annotation> =  TVTGstringLiteral<Annotation>
+
+export type TNGtype_any$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtype_number<Annotation> = NGtype_number$<Annotation>
-export type VGtype_number<Annotation> = VTGtype_number<Annotation>
-export type VTGtype_optional$<Annotation> = Gtype<Annotation>
-export type VGtype_optional$<Annotation> = VTGtype_optional$<Annotation>
+export type TVTGtype_any<Annotation> = TNGtype_any$<Annotation>
+export type TVGtype_any<Annotation> = TVTGtype_any<Annotation>
+export type TVTGtype_array$<Annotation> = TGtype<Annotation>
+export type TVGtype_array$<Annotation> = TVTGtype_array$<Annotation>
 
-export type NGtype_optional$<Annotation> = {
+export type TNGtype_array$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGtype_optional$<Annotation>,
+    readonly "content": TVGtype_array$<Annotation>,
 }
-export type VTGtype_optional<Annotation> = NGtype_optional$<Annotation>
-export type VGtype_optional<Annotation> = VTGtype_optional<Annotation>
-export type VTGtype_tuple$<Annotation> = Gtype<Annotation>
-export type VGtype_tuple$<Annotation> = VTGtype_tuple$<Annotation>[]
+export type TVTGtype_array<Annotation> = TNGtype_array$<Annotation>
+export type TVGtype_array<Annotation> = TVTGtype_array<Annotation>
 
-export type NGtype_tuple$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtype_tuple$<Annotation>,
-}
-export type VTGtype_tuple<Annotation> = NGtype_tuple$<Annotation>
-export type VGtype_tuple<Annotation> = VTGtype_tuple<Annotation>
-export type VTGtype_typeLiteral$<Annotation> = GtypeSignature<Annotation>
-export type VGtype_typeLiteral$<Annotation> = VTGtype_typeLiteral$<Annotation>[]
-
-export type NGtype_typeLiteral$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtype_typeLiteral$<Annotation>,
-}
-export type VTGtype_typeLiteral<Annotation> = NGtype_typeLiteral$<Annotation>
-export type VGtype_typeLiteral<Annotation> = VTGtype_typeLiteral<Annotation>
-
-export type NGtype_string$<Annotation> = {
+export type TNGtype_boolean$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtype_string<Annotation> = NGtype_string$<Annotation>
-export type VGtype_string<Annotation> = VTGtype_string<Annotation>
-export type VTGtype_typeReference$_x_identifier<Annotation> = Gidentifier<Annotation>
-export type VGtype_typeReference$_x_identifier<Annotation> = VTGtype_typeReference$_x_identifier<Annotation>
-export type VTGtype_typeReference$_x_qualifiedName$_context<Annotation> = Gidentifier<Annotation>
-export type VGtype_typeReference$_x_qualifiedName$_context<Annotation> = VTGtype_typeReference$_x_qualifiedName$_context<Annotation>
-export type VTGtype_typeReference$_x_qualifiedName$_type<Annotation> = Gidentifier<Annotation>
-export type VGtype_typeReference$_x_qualifiedName$_type<Annotation> = VTGtype_typeReference$_x_qualifiedName$_type<Annotation>
-export type VTGtype_typeReference$_x_qualifiedName$<Annotation> = {
-    readonly "context":  VGtype_typeReference$_x_qualifiedName$_context<Annotation>
-    readonly "type":  VGtype_typeReference$_x_qualifiedName$_type<Annotation>
+export type TVTGtype_boolean<Annotation> = TNGtype_boolean$<Annotation>
+export type TVGtype_boolean<Annotation> = TVTGtype_boolean<Annotation>
+export type TVTGtype_function$_parameters<Annotation> = TGparameter<Annotation>
+export type TVGtype_function$_parameters<Annotation> = TVTGtype_function$_parameters<Annotation>[]
+export type TVTGtype_function$_returnType<Annotation> = TGtype<Annotation>
+export type TVGtype_function$_returnType<Annotation> = pr.optional<TVTGtype_function$_returnType<Annotation>>
+export type TVTGtype_function$<Annotation> = {
+    readonly "parameters":  TVGtype_function$_parameters<Annotation>
+    readonly "returnType":  TVGtype_function$_returnType<Annotation>
 }
-export type VGtype_typeReference$_x_qualifiedName$<Annotation> = VTGtype_typeReference$_x_qualifiedName$<Annotation>
+export type TVGtype_function$<Annotation> = TVTGtype_function$<Annotation>
 
-export type NGtype_typeReference$_x_qualifiedName$<Annotation> = {
+export type TNGtype_function$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGtype_typeReference$_x_qualifiedName$<Annotation>,
+    readonly "content": TVGtype_function$<Annotation>,
 }
-export type VTGtype_typeReference$_x_qualifiedName<Annotation> = NGtype_typeReference$_x_qualifiedName$<Annotation>
-export type VGtype_typeReference$_x_qualifiedName<Annotation> = VTGtype_typeReference$_x_qualifiedName<Annotation>
-export type VTGtype_typeReference$_x<Annotation> =
-    | [ "identifier", VGtype_typeReference$_x_identifier<Annotation>]
-    | [ "qualifiedName", VGtype_typeReference$_x_qualifiedName<Annotation>]
-export type VGtype_typeReference$_x<Annotation> = VTGtype_typeReference$_x<Annotation>
-export type VTGtype_typeReference$_parameters<Annotation> = Gtype<Annotation>
-export type VGtype_typeReference$_parameters<Annotation> = VTGtype_typeReference$_parameters<Annotation>[]
-export type VTGtype_typeReference$<Annotation> = {
-    readonly "x":  VGtype_typeReference$_x<Annotation>
-    readonly "parameters":  VGtype_typeReference$_parameters<Annotation>
-}
-export type VGtype_typeReference$<Annotation> = VTGtype_typeReference$<Annotation>
+export type TVTGtype_function<Annotation> = TNGtype_function$<Annotation>
+export type TVGtype_function<Annotation> = TVTGtype_function<Annotation>
 
-export type NGtype_typeReference$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtype_typeReference$<Annotation>,
-}
-export type VTGtype_typeReference<Annotation> = NGtype_typeReference$<Annotation>
-export type VGtype_typeReference<Annotation> = VTGtype_typeReference<Annotation>
-
-export type NGtype_undefined$<Annotation> = {
+export type TNGtype_literal$_null$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtype_undefined<Annotation> = NGtype_undefined$<Annotation>
-export type VGtype_undefined<Annotation> = VTGtype_undefined<Annotation>
-export type VTGtype_union$<Annotation> = Gtype<Annotation>
-export type VGtype_union$<Annotation> = VTGtype_union$<Annotation>[]
+export type TVTGtype_literal$_null<Annotation> = TNGtype_literal$_null$<Annotation>
+export type TVGtype_literal$_null<Annotation> = TVTGtype_literal$_null<Annotation>
+export type TVTGtype_literal$_string<Annotation> = TGstringLiteral<Annotation>
+export type TVGtype_literal$_string<Annotation> = TVTGtype_literal$_string<Annotation>
+export type TVTGtype_literal$<Annotation> =
+    | [ "null", TVGtype_literal$_null<Annotation>]
+    | [ "string", TVGtype_literal$_string<Annotation>]
+export type TVGtype_literal$<Annotation> = TVTGtype_literal$<Annotation>
 
-export type NGtype_union$<Annotation> = {
+export type TNGtype_literal$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": VGtype_union$<Annotation>,
+    readonly "content": TVGtype_literal$<Annotation>,
 }
-export type VTGtype_union<Annotation> = NGtype_union$<Annotation>
-export type VGtype_union<Annotation> = VTGtype_union<Annotation>
+export type TVTGtype_literal<Annotation> = TNGtype_literal$<Annotation>
+export type TVGtype_literal<Annotation> = TVTGtype_literal<Annotation>
+export type TVTGtype_parenthesized$<Annotation> = TGtype<Annotation>
+export type TVGtype_parenthesized$<Annotation> = TVTGtype_parenthesized$<Annotation>
 
-export type NGtype_void$<Annotation> = {
+export type TNGtype_parenthesized$<Annotation> = {
     readonly "annotation": Annotation,
+    readonly "content": TVGtype_parenthesized$<Annotation>,
 }
-export type VTGtype_void<Annotation> = NGtype_void$<Annotation>
-export type VGtype_void<Annotation> = VTGtype_void<Annotation>
-export type VTGtype<Annotation> =
-    | [ "any", VGtype_any<Annotation>]
-    | [ "array", VGtype_array<Annotation>]
-    | [ "boolean", VGtype_boolean<Annotation>]
-    | [ "function", VGtype_function<Annotation>]
-    | [ "literal", VGtype_literal<Annotation>]
-    | [ "parenthesized", VGtype_parenthesized<Annotation>]
-    | [ "never", VGtype_never<Annotation>]
-    | [ "number", VGtype_number<Annotation>]
-    | [ "optional", VGtype_optional<Annotation>]
-    | [ "tuple", VGtype_tuple<Annotation>]
-    | [ "typeLiteral", VGtype_typeLiteral<Annotation>]
-    | [ "string", VGtype_string<Annotation>]
-    | [ "typeReference", VGtype_typeReference<Annotation>]
-    | [ "undefined", VGtype_undefined<Annotation>]
-    | [ "union", VGtype_union<Annotation>]
-    | [ "void", VGtype_void<Annotation>]
-export type Gtype<Annotation> =  VTGtype<Annotation>
-export type VTGtypeParameter$<Annotation> = Gidentifier<Annotation>
-export type VGtypeParameter$<Annotation> = VTGtypeParameter$<Annotation>
+export type TVTGtype_parenthesized<Annotation> = TNGtype_parenthesized$<Annotation>
+export type TVGtype_parenthesized<Annotation> = TVTGtype_parenthesized<Annotation>
 
-export type NGtypeParameter$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtypeParameter$<Annotation>,
-}
-export type VTGtypeParameter<Annotation> = NGtypeParameter$<Annotation>
-export type GtypeParameter<Annotation> =  VTGtypeParameter<Annotation>
-export type VTGtypeSignature_construct$_parameters<Annotation> = Gparameter<Annotation>
-export type VGtypeSignature_construct$_parameters<Annotation> = VTGtypeSignature_construct$_parameters<Annotation>[]
-export type VTGtypeSignature_construct$_returnType<Annotation> = Gtype<Annotation>
-export type VGtypeSignature_construct$_returnType<Annotation> = VTGtypeSignature_construct$_returnType<Annotation>
-export type VTGtypeSignature_construct$<Annotation> = {
-    readonly "parameters":  VGtypeSignature_construct$_parameters<Annotation>
-    readonly "returnType":  VGtypeSignature_construct$_returnType<Annotation>
-}
-export type VGtypeSignature_construct$<Annotation> = VTGtypeSignature_construct$<Annotation>
-
-export type NGtypeSignature_construct$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtypeSignature_construct$<Annotation>,
-}
-export type VTGtypeSignature_construct<Annotation> = NGtypeSignature_construct$<Annotation>
-export type VGtypeSignature_construct<Annotation> = VTGtypeSignature_construct<Annotation>
-export type VTGtypeSignature_index$_modifiers<Annotation> = Gmodifier<Annotation>
-export type VGtypeSignature_index$_modifiers<Annotation> = VTGtypeSignature_index$_modifiers<Annotation>[]
-export type VTGtypeSignature_index$_parameter<Annotation> = Gparameter<Annotation>
-export type VGtypeSignature_index$_parameter<Annotation> = VTGtypeSignature_index$_parameter<Annotation>
-export type VTGtypeSignature_index$_type<Annotation> = Gtype<Annotation>
-export type VGtypeSignature_index$_type<Annotation> = pr.optional<VTGtypeSignature_index$_type<Annotation>>
-export type VTGtypeSignature_index$<Annotation> = {
-    readonly "modifiers":  VGtypeSignature_index$_modifiers<Annotation>
-    readonly "parameter":  VGtypeSignature_index$_parameter<Annotation>
-    readonly "type":  VGtypeSignature_index$_type<Annotation>
-}
-export type VGtypeSignature_index$<Annotation> = VTGtypeSignature_index$<Annotation>
-
-export type NGtypeSignature_index$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtypeSignature_index$<Annotation>,
-}
-export type VTGtypeSignature_index<Annotation> = NGtypeSignature_index$<Annotation>
-export type VGtypeSignature_index<Annotation> = VTGtypeSignature_index<Annotation>
-export type VTGtypeSignature_method$_name<Annotation> = Gidentifier<Annotation>
-export type VGtypeSignature_method$_name<Annotation> = VTGtypeSignature_method$_name<Annotation>
-export type VTGtypeSignature_method$_definition<Annotation> = GfunctionDefinition<Annotation>
-export type VGtypeSignature_method$_definition<Annotation> = VTGtypeSignature_method$_definition<Annotation>
-export type VTGtypeSignature_method$<Annotation> = {
-    readonly "name":  VGtypeSignature_method$_name<Annotation>
-    readonly "definition":  VGtypeSignature_method$_definition<Annotation>
-}
-export type VGtypeSignature_method$<Annotation> = VTGtypeSignature_method$<Annotation>
-
-export type NGtypeSignature_method$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtypeSignature_method$<Annotation>,
-}
-export type VTGtypeSignature_method<Annotation> = NGtypeSignature_method$<Annotation>
-export type VGtypeSignature_method<Annotation> = VTGtypeSignature_method<Annotation>
-export type VTGtypeSignature_property$_modifiers<Annotation> = Gmodifier<Annotation>
-export type VGtypeSignature_property$_modifiers<Annotation> = VTGtypeSignature_property$_modifiers<Annotation>[]
-export type VTGtypeSignature_property$_name<Annotation> = GidentifierOrStringLiteral<Annotation>
-export type VGtypeSignature_property$_name<Annotation> = VTGtypeSignature_property$_name<Annotation>
-
-export type NGtypeSignature_property$_quesionToken$<Annotation> = {
+export type TNGtype_never$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTGtypeSignature_property$_quesionToken<Annotation> = NGtypeSignature_property$_quesionToken$<Annotation>
-export type VGtypeSignature_property$_quesionToken<Annotation> = pr.optional<VTGtypeSignature_property$_quesionToken<Annotation>>
-export type VTGtypeSignature_property$_type<Annotation> = Gtype<Annotation>
-export type VGtypeSignature_property$_type<Annotation> = pr.optional<VTGtypeSignature_property$_type<Annotation>>
-export type VTGtypeSignature_property$<Annotation> = {
-    readonly "modifiers":  VGtypeSignature_property$_modifiers<Annotation>
-    readonly "name":  VGtypeSignature_property$_name<Annotation>
-    readonly "quesionToken":  VGtypeSignature_property$_quesionToken<Annotation>
-    readonly "type":  VGtypeSignature_property$_type<Annotation>
-}
-export type VGtypeSignature_property$<Annotation> = VTGtypeSignature_property$<Annotation>
+export type TVTGtype_never<Annotation> = TNGtype_never$<Annotation>
+export type TVGtype_never<Annotation> = TVTGtype_never<Annotation>
 
-export type NGtypeSignature_property$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGtypeSignature_property$<Annotation>,
-}
-export type VTGtypeSignature_property<Annotation> = NGtypeSignature_property$<Annotation>
-export type VGtypeSignature_property<Annotation> = VTGtypeSignature_property<Annotation>
-export type VTGtypeSignature<Annotation> =
-    | [ "construct", VGtypeSignature_construct<Annotation>]
-    | [ "index", VGtypeSignature_index<Annotation>]
-    | [ "method", VGtypeSignature_method<Annotation>]
-    | [ "property", VGtypeSignature_property<Annotation>]
-export type GtypeSignature<Annotation> =  VTGtypeSignature<Annotation>
-export type VTGvariableDeclaration$_name<Annotation> = Gidentifier<Annotation>
-export type VGvariableDeclaration$_name<Annotation> = VTGvariableDeclaration$_name<Annotation>
-export type VTGvariableDeclaration$_type<Annotation> = Gtype<Annotation>
-export type VGvariableDeclaration$_type<Annotation> = pr.optional<VTGvariableDeclaration$_type<Annotation>>
-export type VTGvariableDeclaration$_expression<Annotation> = Gexpression<Annotation>
-export type VGvariableDeclaration$_expression<Annotation> = pr.optional<VTGvariableDeclaration$_expression<Annotation>>
-export type VTGvariableDeclaration$<Annotation> = {
-    readonly "name":  VGvariableDeclaration$_name<Annotation>
-    readonly "type":  VGvariableDeclaration$_type<Annotation>
-    readonly "expression":  VGvariableDeclaration$_expression<Annotation>
-}
-export type VGvariableDeclaration$<Annotation> = VTGvariableDeclaration$<Annotation>
-
-export type NGvariableDeclaration$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGvariableDeclaration$<Annotation>,
-}
-export type VTGvariableDeclaration<Annotation> = NGvariableDeclaration$<Annotation>
-export type GvariableDeclaration<Annotation> =  VTGvariableDeclaration<Annotation>
-export type VTGvariableDeclarationList$<Annotation> = GvariableDeclaration<Annotation>
-export type VGvariableDeclarationList$<Annotation> = VTGvariableDeclarationList$<Annotation>[]
-
-export type NGvariableDeclarationList$<Annotation> = {
-    readonly "annotation": Annotation,
-    readonly "content": VGvariableDeclarationList$<Annotation>,
-}
-export type VTGvariableDeclarationList<Annotation> = NGvariableDeclarationList$<Annotation>
-export type GvariableDeclarationList<Annotation> =  VTGvariableDeclarationList<Annotation>
-export type VTroot_statements<Annotation> = Gstatement<Annotation>
-export type Vroot_statements<Annotation> = VTroot_statements<Annotation>[]
-
-export type Nroot_endOfFile$<Annotation> = {
+export type TNGtype_number$<Annotation> = {
     readonly "annotation": Annotation,
 }
-export type VTroot_endOfFile<Annotation> = Nroot_endOfFile$<Annotation>
-export type Vroot_endOfFile<Annotation> = VTroot_endOfFile<Annotation>
-export type VTroot<Annotation> = {
-    readonly "statements":  Vroot_statements<Annotation>
-    readonly "endOfFile":  Vroot_endOfFile<Annotation>
-}
-export type Vroot<Annotation> = VTroot<Annotation>
+export type TVTGtype_number<Annotation> = TNGtype_number$<Annotation>
+export type TVGtype_number<Annotation> = TVTGtype_number<Annotation>
+export type TVTGtype_optional$<Annotation> = TGtype<Annotation>
+export type TVGtype_optional$<Annotation> = TVTGtype_optional$<Annotation>
 
-export type Nroot<Annotation> = {
+export type TNGtype_optional$<Annotation> = {
     readonly "annotation": Annotation,
-    readonly "content": Vroot<Annotation>,
+    readonly "content": TVGtype_optional$<Annotation>,
 }
-export type Root<Annotation> = Nroot<Annotation>
+export type TVTGtype_optional<Annotation> = TNGtype_optional$<Annotation>
+export type TVGtype_optional<Annotation> = TVTGtype_optional<Annotation>
+export type TVTGtype_tuple$<Annotation> = TGtype<Annotation>
+export type TVGtype_tuple$<Annotation> = TVTGtype_tuple$<Annotation>[]
+
+export type TNGtype_tuple$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtype_tuple$<Annotation>,
+}
+export type TVTGtype_tuple<Annotation> = TNGtype_tuple$<Annotation>
+export type TVGtype_tuple<Annotation> = TVTGtype_tuple<Annotation>
+export type TVTGtype_typeLiteral$<Annotation> = TGtypeSignature<Annotation>
+export type TVGtype_typeLiteral$<Annotation> = TVTGtype_typeLiteral$<Annotation>[]
+
+export type TNGtype_typeLiteral$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtype_typeLiteral$<Annotation>,
+}
+export type TVTGtype_typeLiteral<Annotation> = TNGtype_typeLiteral$<Annotation>
+export type TVGtype_typeLiteral<Annotation> = TVTGtype_typeLiteral<Annotation>
+
+export type TNGtype_string$<Annotation> = {
+    readonly "annotation": Annotation,
+}
+export type TVTGtype_string<Annotation> = TNGtype_string$<Annotation>
+export type TVGtype_string<Annotation> = TVTGtype_string<Annotation>
+export type TVTGtype_typeReference$_x_identifier<Annotation> = TGidentifier<Annotation>
+export type TVGtype_typeReference$_x_identifier<Annotation> = TVTGtype_typeReference$_x_identifier<Annotation>
+export type TVTGtype_typeReference$_x_qualifiedName$_context<Annotation> = TGidentifier<Annotation>
+export type TVGtype_typeReference$_x_qualifiedName$_context<Annotation> = TVTGtype_typeReference$_x_qualifiedName$_context<Annotation>
+export type TVTGtype_typeReference$_x_qualifiedName$_type<Annotation> = TGidentifier<Annotation>
+export type TVGtype_typeReference$_x_qualifiedName$_type<Annotation> = TVTGtype_typeReference$_x_qualifiedName$_type<Annotation>
+export type TVTGtype_typeReference$_x_qualifiedName$<Annotation> = {
+    readonly "context":  TVGtype_typeReference$_x_qualifiedName$_context<Annotation>
+    readonly "type":  TVGtype_typeReference$_x_qualifiedName$_type<Annotation>
+}
+export type TVGtype_typeReference$_x_qualifiedName$<Annotation> = TVTGtype_typeReference$_x_qualifiedName$<Annotation>
+
+export type TNGtype_typeReference$_x_qualifiedName$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtype_typeReference$_x_qualifiedName$<Annotation>,
+}
+export type TVTGtype_typeReference$_x_qualifiedName<Annotation> = TNGtype_typeReference$_x_qualifiedName$<Annotation>
+export type TVGtype_typeReference$_x_qualifiedName<Annotation> = TVTGtype_typeReference$_x_qualifiedName<Annotation>
+export type TVTGtype_typeReference$_x<Annotation> =
+    | [ "identifier", TVGtype_typeReference$_x_identifier<Annotation>]
+    | [ "qualifiedName", TVGtype_typeReference$_x_qualifiedName<Annotation>]
+export type TVGtype_typeReference$_x<Annotation> = TVTGtype_typeReference$_x<Annotation>
+export type TVTGtype_typeReference$_parameters<Annotation> = TGtype<Annotation>
+export type TVGtype_typeReference$_parameters<Annotation> = TVTGtype_typeReference$_parameters<Annotation>[]
+export type TVTGtype_typeReference$<Annotation> = {
+    readonly "x":  TVGtype_typeReference$_x<Annotation>
+    readonly "parameters":  TVGtype_typeReference$_parameters<Annotation>
+}
+export type TVGtype_typeReference$<Annotation> = TVTGtype_typeReference$<Annotation>
+
+export type TNGtype_typeReference$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtype_typeReference$<Annotation>,
+}
+export type TVTGtype_typeReference<Annotation> = TNGtype_typeReference$<Annotation>
+export type TVGtype_typeReference<Annotation> = TVTGtype_typeReference<Annotation>
+
+export type TNGtype_undefined$<Annotation> = {
+    readonly "annotation": Annotation,
+}
+export type TVTGtype_undefined<Annotation> = TNGtype_undefined$<Annotation>
+export type TVGtype_undefined<Annotation> = TVTGtype_undefined<Annotation>
+export type TVTGtype_union$<Annotation> = TGtype<Annotation>
+export type TVGtype_union$<Annotation> = TVTGtype_union$<Annotation>[]
+
+export type TNGtype_union$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtype_union$<Annotation>,
+}
+export type TVTGtype_union<Annotation> = TNGtype_union$<Annotation>
+export type TVGtype_union<Annotation> = TVTGtype_union<Annotation>
+
+export type TNGtype_void$<Annotation> = {
+    readonly "annotation": Annotation,
+}
+export type TVTGtype_void<Annotation> = TNGtype_void$<Annotation>
+export type TVGtype_void<Annotation> = TVTGtype_void<Annotation>
+export type TVTGtype<Annotation> =
+    | [ "any", TVGtype_any<Annotation>]
+    | [ "array", TVGtype_array<Annotation>]
+    | [ "boolean", TVGtype_boolean<Annotation>]
+    | [ "function", TVGtype_function<Annotation>]
+    | [ "literal", TVGtype_literal<Annotation>]
+    | [ "parenthesized", TVGtype_parenthesized<Annotation>]
+    | [ "never", TVGtype_never<Annotation>]
+    | [ "number", TVGtype_number<Annotation>]
+    | [ "optional", TVGtype_optional<Annotation>]
+    | [ "tuple", TVGtype_tuple<Annotation>]
+    | [ "typeLiteral", TVGtype_typeLiteral<Annotation>]
+    | [ "string", TVGtype_string<Annotation>]
+    | [ "typeReference", TVGtype_typeReference<Annotation>]
+    | [ "undefined", TVGtype_undefined<Annotation>]
+    | [ "union", TVGtype_union<Annotation>]
+    | [ "void", TVGtype_void<Annotation>]
+export type TGtype<Annotation> =  TVTGtype<Annotation>
+export type TVTGtypeParameter$<Annotation> = TGidentifier<Annotation>
+export type TVGtypeParameter$<Annotation> = TVTGtypeParameter$<Annotation>
+
+export type TNGtypeParameter$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtypeParameter$<Annotation>,
+}
+export type TVTGtypeParameter<Annotation> = TNGtypeParameter$<Annotation>
+export type TGtypeParameter<Annotation> =  TVTGtypeParameter<Annotation>
+export type TVTGtypeSignature_construct$_parameters<Annotation> = TGparameter<Annotation>
+export type TVGtypeSignature_construct$_parameters<Annotation> = TVTGtypeSignature_construct$_parameters<Annotation>[]
+export type TVTGtypeSignature_construct$_returnType<Annotation> = TGtype<Annotation>
+export type TVGtypeSignature_construct$_returnType<Annotation> = TVTGtypeSignature_construct$_returnType<Annotation>
+export type TVTGtypeSignature_construct$<Annotation> = {
+    readonly "parameters":  TVGtypeSignature_construct$_parameters<Annotation>
+    readonly "returnType":  TVGtypeSignature_construct$_returnType<Annotation>
+}
+export type TVGtypeSignature_construct$<Annotation> = TVTGtypeSignature_construct$<Annotation>
+
+export type TNGtypeSignature_construct$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtypeSignature_construct$<Annotation>,
+}
+export type TVTGtypeSignature_construct<Annotation> = TNGtypeSignature_construct$<Annotation>
+export type TVGtypeSignature_construct<Annotation> = TVTGtypeSignature_construct<Annotation>
+export type TVTGtypeSignature_index$_modifiers<Annotation> = TGmodifier<Annotation>
+export type TVGtypeSignature_index$_modifiers<Annotation> = TVTGtypeSignature_index$_modifiers<Annotation>[]
+export type TVTGtypeSignature_index$_parameter<Annotation> = TGparameter<Annotation>
+export type TVGtypeSignature_index$_parameter<Annotation> = TVTGtypeSignature_index$_parameter<Annotation>
+export type TVTGtypeSignature_index$_type<Annotation> = TGtype<Annotation>
+export type TVGtypeSignature_index$_type<Annotation> = pr.optional<TVTGtypeSignature_index$_type<Annotation>>
+export type TVTGtypeSignature_index$<Annotation> = {
+    readonly "modifiers":  TVGtypeSignature_index$_modifiers<Annotation>
+    readonly "parameter":  TVGtypeSignature_index$_parameter<Annotation>
+    readonly "type":  TVGtypeSignature_index$_type<Annotation>
+}
+export type TVGtypeSignature_index$<Annotation> = TVTGtypeSignature_index$<Annotation>
+
+export type TNGtypeSignature_index$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtypeSignature_index$<Annotation>,
+}
+export type TVTGtypeSignature_index<Annotation> = TNGtypeSignature_index$<Annotation>
+export type TVGtypeSignature_index<Annotation> = TVTGtypeSignature_index<Annotation>
+export type TVTGtypeSignature_method$_name<Annotation> = TGidentifier<Annotation>
+export type TVGtypeSignature_method$_name<Annotation> = TVTGtypeSignature_method$_name<Annotation>
+export type TVTGtypeSignature_method$_definition<Annotation> = TGfunctionDefinition<Annotation>
+export type TVGtypeSignature_method$_definition<Annotation> = TVTGtypeSignature_method$_definition<Annotation>
+export type TVTGtypeSignature_method$<Annotation> = {
+    readonly "name":  TVGtypeSignature_method$_name<Annotation>
+    readonly "definition":  TVGtypeSignature_method$_definition<Annotation>
+}
+export type TVGtypeSignature_method$<Annotation> = TVTGtypeSignature_method$<Annotation>
+
+export type TNGtypeSignature_method$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtypeSignature_method$<Annotation>,
+}
+export type TVTGtypeSignature_method<Annotation> = TNGtypeSignature_method$<Annotation>
+export type TVGtypeSignature_method<Annotation> = TVTGtypeSignature_method<Annotation>
+export type TVTGtypeSignature_property$_modifiers<Annotation> = TGmodifier<Annotation>
+export type TVGtypeSignature_property$_modifiers<Annotation> = TVTGtypeSignature_property$_modifiers<Annotation>[]
+export type TVTGtypeSignature_property$_name<Annotation> = TGidentifierOrStringLiteral<Annotation>
+export type TVGtypeSignature_property$_name<Annotation> = TVTGtypeSignature_property$_name<Annotation>
+
+export type TNGtypeSignature_property$_quesionToken$<Annotation> = {
+    readonly "annotation": Annotation,
+}
+export type TVTGtypeSignature_property$_quesionToken<Annotation> = TNGtypeSignature_property$_quesionToken$<Annotation>
+export type TVGtypeSignature_property$_quesionToken<Annotation> = pr.optional<TVTGtypeSignature_property$_quesionToken<Annotation>>
+export type TVTGtypeSignature_property$_type<Annotation> = TGtype<Annotation>
+export type TVGtypeSignature_property$_type<Annotation> = pr.optional<TVTGtypeSignature_property$_type<Annotation>>
+export type TVTGtypeSignature_property$<Annotation> = {
+    readonly "modifiers":  TVGtypeSignature_property$_modifiers<Annotation>
+    readonly "name":  TVGtypeSignature_property$_name<Annotation>
+    readonly "quesionToken":  TVGtypeSignature_property$_quesionToken<Annotation>
+    readonly "type":  TVGtypeSignature_property$_type<Annotation>
+}
+export type TVGtypeSignature_property$<Annotation> = TVTGtypeSignature_property$<Annotation>
+
+export type TNGtypeSignature_property$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGtypeSignature_property$<Annotation>,
+}
+export type TVTGtypeSignature_property<Annotation> = TNGtypeSignature_property$<Annotation>
+export type TVGtypeSignature_property<Annotation> = TVTGtypeSignature_property<Annotation>
+export type TVTGtypeSignature<Annotation> =
+    | [ "construct", TVGtypeSignature_construct<Annotation>]
+    | [ "index", TVGtypeSignature_index<Annotation>]
+    | [ "method", TVGtypeSignature_method<Annotation>]
+    | [ "property", TVGtypeSignature_property<Annotation>]
+export type TGtypeSignature<Annotation> =  TVTGtypeSignature<Annotation>
+export type TVTGvariableDeclaration$_name<Annotation> = TGidentifier<Annotation>
+export type TVGvariableDeclaration$_name<Annotation> = TVTGvariableDeclaration$_name<Annotation>
+export type TVTGvariableDeclaration$_type<Annotation> = TGtype<Annotation>
+export type TVGvariableDeclaration$_type<Annotation> = pr.optional<TVTGvariableDeclaration$_type<Annotation>>
+export type TVTGvariableDeclaration$_expression<Annotation> = TGexpression<Annotation>
+export type TVGvariableDeclaration$_expression<Annotation> = pr.optional<TVTGvariableDeclaration$_expression<Annotation>>
+export type TVTGvariableDeclaration$<Annotation> = {
+    readonly "name":  TVGvariableDeclaration$_name<Annotation>
+    readonly "type":  TVGvariableDeclaration$_type<Annotation>
+    readonly "expression":  TVGvariableDeclaration$_expression<Annotation>
+}
+export type TVGvariableDeclaration$<Annotation> = TVTGvariableDeclaration$<Annotation>
+
+export type TNGvariableDeclaration$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGvariableDeclaration$<Annotation>,
+}
+export type TVTGvariableDeclaration<Annotation> = TNGvariableDeclaration$<Annotation>
+export type TGvariableDeclaration<Annotation> =  TVTGvariableDeclaration<Annotation>
+export type TVTGvariableDeclarationList$<Annotation> = TGvariableDeclaration<Annotation>
+export type TVGvariableDeclarationList$<Annotation> = TVTGvariableDeclarationList$<Annotation>[]
+
+export type TNGvariableDeclarationList$<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVGvariableDeclarationList$<Annotation>,
+}
+export type TVTGvariableDeclarationList<Annotation> = TNGvariableDeclarationList$<Annotation>
+export type TGvariableDeclarationList<Annotation> =  TVTGvariableDeclarationList<Annotation>
+export type TVTroot_statements<Annotation> = TGstatement<Annotation>
+export type TVroot_statements<Annotation> = TVTroot_statements<Annotation>[]
+
+export type TNroot_endOfFile$<Annotation> = {
+    readonly "annotation": Annotation,
+}
+export type TVTroot_endOfFile<Annotation> = TNroot_endOfFile$<Annotation>
+export type TVroot_endOfFile<Annotation> = TVTroot_endOfFile<Annotation>
+export type TVTroot<Annotation> = {
+    readonly "statements":  TVroot_statements<Annotation>
+    readonly "endOfFile":  TVroot_endOfFile<Annotation>
+}
+export type TVroot<Annotation> = TVTroot<Annotation>
+
+export type TNroot<Annotation> = {
+    readonly "annotation": Annotation,
+    readonly "content": TVroot<Annotation>,
+}
+export type TRoot<Annotation> = TNroot<Annotation>

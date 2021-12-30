@@ -4,7 +4,7 @@ import * as uast from "../../interface/types/uast.generated"
 
 export function parse<Annotation>(
     $: uast.Node<Annotation>,
-    callback: ($: tast.Nroot<Annotation>) => void,
+    callback: ($: tast.TRoot<Annotation>) => void,
     reportUnexpectedRoot: ($: { root: uast.Node<Annotation>, }) => void,
     reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, expected: pr.optional<string[]> }) => void,
     reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,
@@ -12,7 +12,7 @@ export function parse<Annotation>(
     function Gblock(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.Gblock<Annotation>) => void,
+        callback: ($: tast.TGblock<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -35,7 +35,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGblock$<Annotation>) => void,
+            callback: ($: tast.TNGblock$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -43,7 +43,7 @@ export function parse<Annotation>(
             children.reverse()
             let currentChild: uast.Node<Annotation> | undefined
             let nextChild: uast.Node<Annotation> | undefined
-            const elements: tast.VGblock$<Annotation> = []
+            const elements: tast.TVGblock$<Annotation> = []
             const processElement = () => {
                 Gstatement(node, children, ($) => {
                     elements.push($)
@@ -134,11 +134,11 @@ export function parse<Annotation>(
     function Gexpression(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.Gexpression<Annotation>) => void,
+        callback: ($: tast.TGexpression<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
-        const choiceEnd_Gexpression = ($: tast.VTGexpression<Annotation>) => {
+        const choiceEnd_Gexpression = ($: tast.TVTGexpression<Annotation>) => {
             callback($)
         }
         if (children.length === 0) {
@@ -170,7 +170,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_arrayLiteral$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_arrayLiteral$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -178,7 +178,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const elements: tast.VGexpression_arrayLiteral$<Annotation> = []
+                    const elements: tast.TVGexpression_arrayLiteral$<Annotation> = []
                     const processElement = () => {
                         Gexpression(node, children, ($) => {
                             elements.push($)
@@ -295,7 +295,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_arrowFunction$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_arrowFunction$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -303,13 +303,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_arrowFunction$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_arrowFunction$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGexpression_arrowFunction$_parameters<Annotation> = []
+                    const elements: tast.TVGexpression_arrowFunction$_parameters<Annotation> = []
                     const processElement = () => {
                         Gparameter(node, children, ($) => {
                             elements.push($)
@@ -330,7 +330,7 @@ export function parse<Annotation>(
                     }
                     pr.cc(elements, ($) => {
                         const _parameters = $
-                        let optional: tast.VGexpression_arrowFunction$_returnType<Annotation> = null
+                        let optional: tast.TVGexpression_arrowFunction$_returnType<Annotation> = null
                         const setOptional = () => {
                             Gtype(node, children, ($) => {
                                 optional = $
@@ -410,7 +410,7 @@ export function parse<Annotation>(
                             }
                             ((
                                 $: uast.Node<Annotation>,
-                                callback: ($: tast.NGexpression_arrowFunction$_equalsGreaterThan$<Annotation>) => void,
+                                callback: ($: tast.TNGexpression_arrowFunction$_equalsGreaterThan$<Annotation>) => void,
                             ): void => {
                                 const node = $
                                 const children: uast.Node<Annotation>[] = []
@@ -431,7 +431,7 @@ export function parse<Annotation>(
                                 currentChild,
                                 ($) => {
                                     const _equalsGreaterThan = $
-                                    const choiceEnd_Gexpression_arrowFunction$_implementation = ($: tast.VTGexpression_arrowFunction$_implementation<Annotation>) => {
+                                    const choiceEnd_Gexpression_arrowFunction$_implementation = ($: tast.TVTGexpression_arrowFunction$_implementation<Annotation>) => {
                                         const _implementation = $
                                         sequenceEnd({
                                             "parameters": _parameters,
@@ -592,7 +592,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_binary$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_binary$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -600,7 +600,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_binary$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_binary$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -608,7 +608,7 @@ export function parse<Annotation>(
                     }
                     Gexpression(node, children, ($) => {
                         const _leftHandSide = $
-                        const choiceEnd_Gexpression_binary$_operator = ($: tast.VTGexpression_binary$_operator<Annotation>) => {
+                        const choiceEnd_Gexpression_binary$_operator = ($: tast.TVTGexpression_binary$_operator<Annotation>) => {
                             const _operator = $
                             Gexpression(node, children, ($) => {
                                 const _rightHandSide = $
@@ -648,7 +648,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_ampersandAmpersand$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_ampersandAmpersand$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -692,7 +692,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_barBar$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_barBar$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -736,7 +736,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_equals$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_equals$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -780,7 +780,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_equalsEqualsEquals$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_equalsEqualsEquals$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -824,7 +824,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -868,7 +868,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_greaterThan$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_greaterThan$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -912,7 +912,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_lessThan$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_lessThan$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -956,7 +956,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_minus$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_minus$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -1000,7 +1000,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_minusEquals$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_minusEquals$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -1044,7 +1044,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_plus$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_plus$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -1088,7 +1088,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_binary$_operator_plusEquals$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_binary$_operator_plusEquals$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -1202,7 +1202,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_call$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_call$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1210,7 +1210,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_call$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_call$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -1218,7 +1218,7 @@ export function parse<Annotation>(
                     }
                     Gexpression(node, children, ($) => {
                         const _function = $
-                        const elements: tast.VGexpression_call$_typeParameters<Annotation> = []
+                        const elements: tast.TVGexpression_call$_typeParameters<Annotation> = []
                         const processElement = () => {
                             Gtype(node, children, ($) => {
                                 elements.push($)
@@ -1284,7 +1284,7 @@ export function parse<Annotation>(
                         }
                         pr.cc(elements, ($) => {
                             const _typeParameters = $
-                            const elements: tast.VGexpression_call$_parameters<Annotation> = []
+                            const elements: tast.TVGexpression_call$_parameters<Annotation> = []
                             const processElement = () => {
                                 Gexpression(node, children, ($) => {
                                     elements.push($)
@@ -1405,7 +1405,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_conditional$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_conditional$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1413,7 +1413,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_conditional$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_conditional$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -1440,7 +1440,7 @@ export function parse<Annotation>(
                         }
                         ((
                             $: uast.Node<Annotation>,
-                            callback: ($: tast.NGexpression_conditional$_questionToken$<Annotation>) => void,
+                            callback: ($: tast.TNGexpression_conditional$_questionToken$<Annotation>) => void,
                         ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
@@ -1482,7 +1482,7 @@ export function parse<Annotation>(
                                     }
                                     ((
                                         $: uast.Node<Annotation>,
-                                        callback: ($: tast.NGexpression_conditional$_colonToken$<Annotation>) => void,
+                                        callback: ($: tast.TNGexpression_conditional$_colonToken$<Annotation>) => void,
                                     ): void => {
                                         const node = $
                                         const children: uast.Node<Annotation>[] = []
@@ -1554,7 +1554,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_elementAccess$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_elementAccess$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1562,7 +1562,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_elementAccess$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_elementAccess$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -1613,7 +1613,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_false$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_false$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1662,7 +1662,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_new$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_new$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1670,7 +1670,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_new$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_new$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -1678,7 +1678,7 @@ export function parse<Annotation>(
                     }
                     Gidentifier(node, children, ($) => {
                         const _class = $
-                        const elements: tast.VGexpression_new$_parameters<Annotation> = []
+                        const elements: tast.TVGexpression_new$_parameters<Annotation> = []
                         const processElement = () => {
                             Gexpression(node, children, ($) => {
                                 elements.push($)
@@ -1797,7 +1797,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_noSubstitutionTemplateLiteral$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_noSubstitutionTemplateLiteral$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1846,7 +1846,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_nullKeyword$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_nullKeyword$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1890,7 +1890,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_objectLiteral$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_objectLiteral$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -1898,7 +1898,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const elements: tast.VGexpression_objectLiteral$<Annotation> = []
+                    const elements: tast.TVGexpression_objectLiteral$<Annotation> = []
                     const processElement = () => {
                         currentChild = children.pop()
                         if (currentChild === undefined) {
@@ -1919,7 +1919,7 @@ export function parse<Annotation>(
                         }
                         ((
                             $: uast.Node<Annotation>,
-                            callback: ($: tast.NGexpression_objectLiteral$$<Annotation>) => void,
+                            callback: ($: tast.TNGexpression_objectLiteral$$<Annotation>) => void,
                         ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
@@ -1927,13 +1927,13 @@ export function parse<Annotation>(
                             children.reverse()
                             let currentChild: uast.Node<Annotation> | undefined
                             let nextChild: uast.Node<Annotation> | undefined
-                            const sequenceEnd = ($: tast.VTGexpression_objectLiteral$$<Annotation>) => {
+                            const sequenceEnd = ($: tast.TVTGexpression_objectLiteral$$<Annotation>) => {
                                 callback({
                                     annotation: node.annotation,
                                     content: $,
                                 })
                             }
-                            const choiceEnd_Gexpression_objectLiteral$$_name = ($: tast.VTGexpression_objectLiteral$$_name<Annotation>) => {
+                            const choiceEnd_Gexpression_objectLiteral$$_name = ($: tast.TVTGexpression_objectLiteral$$_name<Annotation>) => {
                                 const _name = $
                                 Gexpression(node, children, ($) => {
                                     const _expression = $
@@ -2058,7 +2058,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_parenthesizedExpression$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_parenthesizedExpression$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -2107,7 +2107,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_postfixUnary$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_postfixUnary$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -2156,7 +2156,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_prefixUnary$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_prefixUnary$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -2205,7 +2205,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_propertyAccess$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_propertyAccess$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -2213,7 +2213,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_propertyAccess$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_propertyAccess$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -2269,7 +2269,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_template$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_template$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -2277,7 +2277,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGexpression_template$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGexpression_template$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -2302,7 +2302,7 @@ export function parse<Annotation>(
                     }
                     ((
                         $: uast.Node<Annotation>,
-                        callback: ($: tast.NGexpression_template$_head$<Annotation>) => void,
+                        callback: ($: tast.TNGexpression_template$_head$<Annotation>) => void,
                     ): void => {
                         const node = $
                         const children: uast.Node<Annotation>[] = []
@@ -2324,7 +2324,7 @@ export function parse<Annotation>(
                         currentChild,
                         ($) => {
                             const _head = $
-                            const elements: tast.VGexpression_template$_spans<Annotation> = []
+                            const elements: tast.TVGexpression_template$_spans<Annotation> = []
                             const processElement = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
@@ -2345,7 +2345,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGexpression_template$_spans$<Annotation>) => void,
+                                    callback: ($: tast.TNGexpression_template$_spans$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -2353,7 +2353,7 @@ export function parse<Annotation>(
                                     children.reverse()
                                     let currentChild: uast.Node<Annotation> | undefined
                                     let nextChild: uast.Node<Annotation> | undefined
-                                    const sequenceEnd = ($: tast.VTGexpression_template$_spans$<Annotation>) => {
+                                    const sequenceEnd = ($: tast.TVTGexpression_template$_spans$<Annotation>) => {
                                         callback({
                                             annotation: node.annotation,
                                             content: $,
@@ -2361,7 +2361,7 @@ export function parse<Annotation>(
                                     }
                                     Gexpression(node, children, ($) => {
                                         const _expression = $
-                                        const choiceEnd_Gexpression_template$_spans$_x = ($: tast.VTGexpression_template$_spans$_x<Annotation>) => {
+                                        const choiceEnd_Gexpression_template$_spans$_x = ($: tast.TVTGexpression_template$_spans$_x<Annotation>) => {
                                             const _x = $
                                             sequenceEnd({
                                                 "expression": _expression,
@@ -2397,7 +2397,7 @@ export function parse<Annotation>(
                                                 }
                                                 ((
                                                     $: uast.Node<Annotation>,
-                                                    callback: ($: tast.NGexpression_template$_spans$_x_middle$<Annotation>) => void,
+                                                    callback: ($: tast.TNGexpression_template$_spans$_x_middle$<Annotation>) => void,
                                                 ): void => {
                                                     const node = $
                                                     const children: uast.Node<Annotation>[] = []
@@ -2442,7 +2442,7 @@ export function parse<Annotation>(
                                                 }
                                                 ((
                                                     $: uast.Node<Annotation>,
-                                                    callback: ($: tast.NGexpression_template$_spans$_x_tail$<Annotation>) => void,
+                                                    callback: ($: tast.TNGexpression_template$_spans$_x_tail$<Annotation>) => void,
                                                 ): void => {
                                                     const node = $
                                                     const children: uast.Node<Annotation>[] = []
@@ -2558,7 +2558,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGexpression_true$<Annotation>) => void,
+                    callback: ($: tast.TNGexpression_true$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -2676,14 +2676,14 @@ export function parse<Annotation>(
     function GfunctionDefinition(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GfunctionDefinition<Annotation>) => void,
+        callback: ($: tast.TGfunctionDefinition<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
-        const sequenceEnd = ($: tast.VTGfunctionDefinition<Annotation>) => {
+        const sequenceEnd = ($: tast.TVTGfunctionDefinition<Annotation>) => {
             callback($)
         }
-        const elements: tast.VGfunctionDefinition_typeParameters<Annotation> = []
+        const elements: tast.TVGfunctionDefinition_typeParameters<Annotation> = []
         const processElement = () => {
             GtypeParameter(node, children, ($) => {
                 elements.push($)
@@ -2704,7 +2704,7 @@ export function parse<Annotation>(
         }
         pr.cc(elements, ($) => {
             const _typeParameters = $
-            const elements: tast.VGfunctionDefinition_parameters<Annotation> = []
+            const elements: tast.TVGfunctionDefinition_parameters<Annotation> = []
             const processElement = () => {
                 Gparameter(node, children, ($) => {
                     elements.push($)
@@ -2725,7 +2725,7 @@ export function parse<Annotation>(
             }
             pr.cc(elements, ($) => {
                 const _parameters = $
-                let optional: tast.VGfunctionDefinition_returnType<Annotation> = null
+                let optional: tast.TVGfunctionDefinition_returnType<Annotation> = null
                 const setOptional = () => {
                     Gtype(node, children, ($) => {
                         optional = $
@@ -2798,7 +2798,7 @@ export function parse<Annotation>(
     function Gidentifier(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.Gidentifier<Annotation>) => void,
+        callback: ($: tast.TGidentifier<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -2821,7 +2821,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGidentifier$<Annotation>) => void,
+            callback: ($: tast.TNGidentifier$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -2849,11 +2849,11 @@ export function parse<Annotation>(
     function GidentifierOrStringLiteral(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GidentifierOrStringLiteral<Annotation>) => void,
+        callback: ($: tast.TGidentifierOrStringLiteral<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
-        const choiceEnd_GidentifierOrStringLiteral = ($: tast.VTGidentifierOrStringLiteral<Annotation>) => {
+        const choiceEnd_GidentifierOrStringLiteral = ($: tast.TVTGidentifierOrStringLiteral<Annotation>) => {
             callback($)
         }
         if (children.length === 0) {
@@ -2897,11 +2897,11 @@ export function parse<Annotation>(
     function Gmodifier(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.Gmodifier<Annotation>) => void,
+        callback: ($: tast.TGmodifier<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
-        const choiceEnd_Gmodifier = ($: tast.VTGmodifier<Annotation>) => {
+        const choiceEnd_Gmodifier = ($: tast.TVTGmodifier<Annotation>) => {
             callback($)
         }
         if (children.length === 0) {
@@ -2933,7 +2933,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGmodifier_declare$<Annotation>) => void,
+                    callback: ($: tast.TNGmodifier_declare$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -2977,7 +2977,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGmodifier_export$<Annotation>) => void,
+                    callback: ($: tast.TNGmodifier_export$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3021,7 +3021,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGmodifier_readonly$<Annotation>) => void,
+                    callback: ($: tast.TNGmodifier_readonly$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3071,7 +3071,7 @@ export function parse<Annotation>(
     function GnumericLiteral(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GnumericLiteral<Annotation>) => void,
+        callback: ($: tast.TGnumericLiteral<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -3094,7 +3094,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGnumericLiteral$<Annotation>) => void,
+            callback: ($: tast.TNGnumericLiteral$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -3122,7 +3122,7 @@ export function parse<Annotation>(
     function Gparameter(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.Gparameter<Annotation>) => void,
+        callback: ($: tast.TGparameter<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -3145,7 +3145,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGparameter$<Annotation>) => void,
+            callback: ($: tast.TNGparameter$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -3153,7 +3153,7 @@ export function parse<Annotation>(
             children.reverse()
             let currentChild: uast.Node<Annotation> | undefined
             let nextChild: uast.Node<Annotation> | undefined
-            const sequenceEnd = ($: tast.VTGparameter$<Annotation>) => {
+            const sequenceEnd = ($: tast.TVTGparameter$<Annotation>) => {
                 callback({
                     annotation: node.annotation,
                     content: $,
@@ -3161,7 +3161,7 @@ export function parse<Annotation>(
             }
             Gidentifier(node, children, ($) => {
                 const _name = $
-                let optional: tast.VGparameter$_questionToken<Annotation> = null
+                let optional: tast.TVGparameter$_questionToken<Annotation> = null
                 const setOptional = () => {
                     currentChild = children.pop()
                     if (currentChild === undefined) {
@@ -3182,7 +3182,7 @@ export function parse<Annotation>(
                     }
                     ((
                         $: uast.Node<Annotation>,
-                        callback: ($: tast.NGparameter$_questionToken$<Annotation>) => void,
+                        callback: ($: tast.TNGparameter$_questionToken$<Annotation>) => void,
                     ): void => {
                         const node = $
                         const children: uast.Node<Annotation>[] = []
@@ -3216,7 +3216,7 @@ export function parse<Annotation>(
                 }
                 pr.cc(optional, ($) => {
                     const _questionToken = $
-                    let optional: tast.VGparameter$_type<Annotation> = null
+                    let optional: tast.TVGparameter$_type<Annotation> = null
                     const setOptional = () => {
                         Gtype(node, children, ($) => {
                             optional = $
@@ -3303,11 +3303,11 @@ export function parse<Annotation>(
     function Gstatement(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.Gstatement<Annotation>) => void,
+        callback: ($: tast.TGstatement<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
-        const choiceEnd_Gstatement = ($: tast.VTGstatement<Annotation>) => {
+        const choiceEnd_Gstatement = ($: tast.TVTGstatement<Annotation>) => {
             callback($)
         }
         if (children.length === 0) {
@@ -3344,7 +3344,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_break$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_break$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3352,7 +3352,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    let optional: tast.VGstatement_break$<Annotation> = null
+                    let optional: tast.TVGstatement_break$<Annotation> = null
                     const setOptional = () => {
                         Gidentifier(node, children, ($) => {
                             optional = $
@@ -3407,7 +3407,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_export$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_export$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3456,7 +3456,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_expression$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_expression$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3505,7 +3505,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_for$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_for$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3513,7 +3513,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_for$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_for$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -3572,7 +3572,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_function$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_function$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3580,13 +3580,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_function$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_function$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGstatement_function$_modifiers<Annotation> = []
+                    const elements: tast.TVGstatement_function$_modifiers<Annotation> = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -3617,7 +3617,7 @@ export function parse<Annotation>(
                             const _name = $
                             GfunctionDefinition(node, children, ($) => {
                                 const _definition = $
-                                let optional: tast.VGstatement_function$_block<Annotation> = null
+                                let optional: tast.TVGstatement_function$_block<Annotation> = null
                                 const setOptional = () => {
                                     Gblock(node, children, ($) => {
                                         optional = $
@@ -3678,7 +3678,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_if$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_if$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3686,7 +3686,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_if$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_if$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -3696,7 +3696,7 @@ export function parse<Annotation>(
                         const _expression = $
                         Gstatement(node, children, ($) => {
                             const _thenStatement = $
-                            let optional: tast.VGstatement_if$_elseStatement<Annotation> = null
+                            let optional: tast.TVGstatement_if$_elseStatement<Annotation> = null
                             const setOptional = () => {
                                 Gstatement(node, children, ($) => {
                                     optional = $
@@ -3803,7 +3803,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_import$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_import$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -3811,7 +3811,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_import$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_import$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -3836,7 +3836,7 @@ export function parse<Annotation>(
                     }
                     ((
                         $: uast.Node<Annotation>,
-                        callback: ($: tast.NGstatement_import$_clause$<Annotation>) => void,
+                        callback: ($: tast.TNGstatement_import$_clause$<Annotation>) => void,
                     ): void => {
                         const node = $
                         const children: uast.Node<Annotation>[] = []
@@ -3844,7 +3844,7 @@ export function parse<Annotation>(
                         children.reverse()
                         let currentChild: uast.Node<Annotation> | undefined
                         let nextChild: uast.Node<Annotation> | undefined
-                        const choiceEnd_Gstatement_import$_clause$ = ($: tast.VTGstatement_import$_clause$<Annotation>) => {
+                        const choiceEnd_Gstatement_import$_clause$ = ($: tast.TVTGstatement_import$_clause$<Annotation>) => {
                             callback({
                                 annotation: node.annotation,
                                 content: $,
@@ -3879,7 +3879,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGstatement_import$_clause$_namespace$<Annotation>) => void,
+                                    callback: ($: tast.TNGstatement_import$_clause$_namespace$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -3928,7 +3928,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGstatement_import$_clause$_named$<Annotation>) => void,
+                                    callback: ($: tast.TNGstatement_import$_clause$_named$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -3936,7 +3936,7 @@ export function parse<Annotation>(
                                     children.reverse()
                                     let currentChild: uast.Node<Annotation> | undefined
                                     let nextChild: uast.Node<Annotation> | undefined
-                                    const elements: tast.VGstatement_import$_clause$_named$<Annotation> = []
+                                    const elements: tast.TVGstatement_import$_clause$_named$<Annotation> = []
                                     const processElement = () => {
                                         currentChild = children.pop()
                                         if (currentChild === undefined) {
@@ -3957,7 +3957,7 @@ export function parse<Annotation>(
                                         }
                                         ((
                                             $: uast.Node<Annotation>,
-                                            callback: ($: tast.NGstatement_import$_clause$_named$$<Annotation>) => void,
+                                            callback: ($: tast.TNGstatement_import$_clause$_named$$<Annotation>) => void,
                                         ): void => {
                                             const node = $
                                             const children: uast.Node<Annotation>[] = []
@@ -3965,7 +3965,7 @@ export function parse<Annotation>(
                                             children.reverse()
                                             let currentChild: uast.Node<Annotation> | undefined
                                             let nextChild: uast.Node<Annotation> | undefined
-                                            const sequenceEnd = ($: tast.VTGstatement_import$_clause$_named$$<Annotation>) => {
+                                            const sequenceEnd = ($: tast.TVTGstatement_import$_clause$_named$$<Annotation>) => {
                                                 callback({
                                                     annotation: node.annotation,
                                                     content: $,
@@ -3973,7 +3973,7 @@ export function parse<Annotation>(
                                             }
                                             Gidentifier(node, children, ($) => {
                                                 const _name = $
-                                                let optional: tast.VGstatement_import$_clause$_named$$_as<Annotation> = null
+                                                let optional: tast.TVGstatement_import$_clause$_named$$_as<Annotation> = null
                                                 const setOptional = () => {
                                                     Gidentifier(node, children, ($) => {
                                                         optional = $
@@ -4118,7 +4118,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_interface$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_interface$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -4126,13 +4126,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_interface$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_interface$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGstatement_interface$_modifiers<Annotation> = []
+                    const elements: tast.TVGstatement_interface$_modifiers<Annotation> = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -4161,7 +4161,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         Gidentifier(node, children, ($) => {
                             const _name = $
-                            const elements: tast.VGstatement_interface$_typeParameters<Annotation> = []
+                            const elements: tast.TVGstatement_interface$_typeParameters<Annotation> = []
                             const processElement = () => {
                                 GtypeParameter(node, children, ($) => {
                                     elements.push($)
@@ -4182,7 +4182,7 @@ export function parse<Annotation>(
                             }
                             pr.cc(elements, ($) => {
                                 const _typeParameters = $
-                                const elements: tast.VGstatement_interface$_signature<Annotation> = []
+                                const elements: tast.TVGstatement_interface$_signature<Annotation> = []
                                 const processElement = () => {
                                     GtypeSignature(node, children, ($) => {
                                         elements.push($)
@@ -4257,7 +4257,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_labeled$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_labeled$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -4265,7 +4265,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_labeled$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_labeled$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -4316,7 +4316,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_return$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_return$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -4324,7 +4324,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    let optional: tast.VGstatement_return$<Annotation> = null
+                    let optional: tast.TVGstatement_return$<Annotation> = null
                     const setOptional = () => {
                         Gexpression(node, children, ($) => {
                             optional = $
@@ -4436,7 +4436,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_switch$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_switch$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -4444,7 +4444,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_switch$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_switch$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -4471,7 +4471,7 @@ export function parse<Annotation>(
                         }
                         ((
                             $: uast.Node<Annotation>,
-                            callback: ($: tast.NGstatement_switch$_caseBlock$<Annotation>) => void,
+                            callback: ($: tast.TNGstatement_switch$_caseBlock$<Annotation>) => void,
                         ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
@@ -4479,9 +4479,9 @@ export function parse<Annotation>(
                             children.reverse()
                             let currentChild: uast.Node<Annotation> | undefined
                             let nextChild: uast.Node<Annotation> | undefined
-                            const elements: tast.VGstatement_switch$_caseBlock$<Annotation> = []
+                            const elements: tast.TVGstatement_switch$_caseBlock$<Annotation> = []
                             const processElement = () => {
-                                const choiceEnd_Gstatement_switch$_caseBlock$ = ($: tast.VTGstatement_switch$_caseBlock$<Annotation>) => {
+                                const choiceEnd_Gstatement_switch$_caseBlock$ = ($: tast.TVTGstatement_switch$_caseBlock$<Annotation>) => {
                                     elements.push($)
                                 }
                                 if (children.length === 0) {
@@ -4513,7 +4513,7 @@ export function parse<Annotation>(
                                         }
                                         ((
                                             $: uast.Node<Annotation>,
-                                            callback: ($: tast.NGstatement_switch$_caseBlock$_case$<Annotation>) => void,
+                                            callback: ($: tast.TNGstatement_switch$_caseBlock$_case$<Annotation>) => void,
                                         ): void => {
                                             const node = $
                                             const children: uast.Node<Annotation>[] = []
@@ -4521,7 +4521,7 @@ export function parse<Annotation>(
                                             children.reverse()
                                             let currentChild: uast.Node<Annotation> | undefined
                                             let nextChild: uast.Node<Annotation> | undefined
-                                            const sequenceEnd = ($: tast.VTGstatement_switch$_caseBlock$_case$<Annotation>) => {
+                                            const sequenceEnd = ($: tast.TVTGstatement_switch$_caseBlock$_case$<Annotation>) => {
                                                 callback({
                                                     annotation: node.annotation,
                                                     content: $,
@@ -4529,7 +4529,7 @@ export function parse<Annotation>(
                                             }
                                             Gexpression(node, children, ($) => {
                                                 const _case = $
-                                                const elements: tast.VGstatement_switch$_caseBlock$_case$_statements<Annotation> = []
+                                                const elements: tast.TVGstatement_switch$_caseBlock$_case$_statements<Annotation> = []
                                                 const processElement = () => {
                                                     Gstatement(node, children, ($) => {
                                                         elements.push($)
@@ -4639,7 +4639,7 @@ export function parse<Annotation>(
                                         }
                                         ((
                                             $: uast.Node<Annotation>,
-                                            callback: ($: tast.NGstatement_switch$_caseBlock$_default$<Annotation>) => void,
+                                            callback: ($: tast.TNGstatement_switch$_caseBlock$_default$<Annotation>) => void,
                                         ): void => {
                                             const node = $
                                             const children: uast.Node<Annotation>[] = []
@@ -4647,7 +4647,7 @@ export function parse<Annotation>(
                                             children.reverse()
                                             let currentChild: uast.Node<Annotation> | undefined
                                             let nextChild: uast.Node<Annotation> | undefined
-                                            const elements: tast.VGstatement_switch$_caseBlock$_default$<Annotation> = []
+                                            const elements: tast.TVGstatement_switch$_caseBlock$_default$<Annotation> = []
                                             const processElement = () => {
                                                 Gstatement(node, children, ($) => {
                                                     elements.push($)
@@ -4830,7 +4830,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_throw$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_throw$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -4879,7 +4879,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_try$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_try$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -4887,7 +4887,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_try$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_try$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -4914,7 +4914,7 @@ export function parse<Annotation>(
                         }
                         ((
                             $: uast.Node<Annotation>,
-                            callback: ($: tast.NGstatement_try$_catchClause$<Annotation>) => void,
+                            callback: ($: tast.TNGstatement_try$_catchClause$<Annotation>) => void,
                         ): void => {
                             const node = $
                             const children: uast.Node<Annotation>[] = []
@@ -4922,7 +4922,7 @@ export function parse<Annotation>(
                             children.reverse()
                             let currentChild: uast.Node<Annotation> | undefined
                             let nextChild: uast.Node<Annotation> | undefined
-                            const sequenceEnd = ($: tast.VTGstatement_try$_catchClause$<Annotation>) => {
+                            const sequenceEnd = ($: tast.TVTGstatement_try$_catchClause$<Annotation>) => {
                                 callback({
                                     annotation: node.annotation,
                                     content: $,
@@ -4992,7 +4992,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_typeAlias$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_typeAlias$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5000,13 +5000,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_typeAlias$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_typeAlias$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGstatement_typeAlias$_modifiers<Annotation> = []
+                    const elements: tast.TVGstatement_typeAlias$_modifiers<Annotation> = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -5035,7 +5035,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         Gidentifier(node, children, ($) => {
                             const _name = $
-                            const elements: tast.VGstatement_typeAlias$_typeParameters<Annotation> = []
+                            const elements: tast.TVGstatement_typeAlias$_typeParameters<Annotation> = []
                             const processElement = () => {
                                 GtypeParameter(node, children, ($) => {
                                     elements.push($)
@@ -5103,7 +5103,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_variable$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_variable$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5111,13 +5111,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_variable$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_variable$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGstatement_variable$_modifiers<Annotation> = []
+                    const elements: tast.TVGstatement_variable$_modifiers<Annotation> = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -5187,7 +5187,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGstatement_while$<Annotation>) => void,
+                    callback: ($: tast.TNGstatement_while$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5195,7 +5195,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGstatement_while$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGstatement_while$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -5308,7 +5308,7 @@ export function parse<Annotation>(
     function GstringLiteral(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GstringLiteral<Annotation>) => void,
+        callback: ($: tast.TGstringLiteral<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -5331,7 +5331,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGstringLiteral$<Annotation>) => void,
+            callback: ($: tast.TNGstringLiteral$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -5359,11 +5359,11 @@ export function parse<Annotation>(
     function Gtype(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.Gtype<Annotation>) => void,
+        callback: ($: tast.TGtype<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
-        const choiceEnd_Gtype = ($: tast.VTGtype<Annotation>) => {
+        const choiceEnd_Gtype = ($: tast.TVTGtype<Annotation>) => {
             callback($)
         }
         if (children.length === 0) {
@@ -5395,7 +5395,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_any$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_any$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5439,7 +5439,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_array$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_array$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5488,7 +5488,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_boolean$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_boolean$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5532,7 +5532,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_function$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_function$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5540,13 +5540,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGtype_function$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGtype_function$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGtype_function$_parameters<Annotation> = []
+                    const elements: tast.TVGtype_function$_parameters<Annotation> = []
                     const processElement = () => {
                         Gparameter(node, children, ($) => {
                             elements.push($)
@@ -5567,7 +5567,7 @@ export function parse<Annotation>(
                     }
                     pr.cc(elements, ($) => {
                         const _parameters = $
-                        let optional: tast.VGtype_function$_returnType<Annotation> = null
+                        let optional: tast.TVGtype_function$_returnType<Annotation> = null
                         const setOptional = () => {
                             Gtype(node, children, ($) => {
                                 optional = $
@@ -5669,7 +5669,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_literal$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_literal$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5677,7 +5677,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const choiceEnd_Gtype_literal$ = ($: tast.VTGtype_literal$<Annotation>) => {
+                    const choiceEnd_Gtype_literal$ = ($: tast.TVTGtype_literal$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -5712,7 +5712,7 @@ export function parse<Annotation>(
                             }
                             ((
                                 $: uast.Node<Annotation>,
-                                callback: ($: tast.NGtype_literal$_null$<Annotation>) => void,
+                                callback: ($: tast.TNGtype_literal$_null$<Annotation>) => void,
                             ): void => {
                                 const node = $
                                 const children: uast.Node<Annotation>[] = []
@@ -5794,7 +5794,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_parenthesized$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_parenthesized$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5843,7 +5843,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_never$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_never$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5887,7 +5887,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_number$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_number$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5931,7 +5931,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_optional$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_optional$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5980,7 +5980,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_tuple$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_tuple$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -5988,7 +5988,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const elements: tast.VGtype_tuple$<Annotation> = []
+                    const elements: tast.TVGtype_tuple$<Annotation> = []
                     const processElement = () => {
                         Gtype(node, children, ($) => {
                             elements.push($)
@@ -6093,7 +6093,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_typeLiteral$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_typeLiteral$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6101,7 +6101,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const elements: tast.VGtype_typeLiteral$<Annotation> = []
+                    const elements: tast.TVGtype_typeLiteral$<Annotation> = []
                     const processElement = () => {
                         GtypeSignature(node, children, ($) => {
                             elements.push($)
@@ -6170,7 +6170,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_string$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_string$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6214,7 +6214,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_typeReference$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_typeReference$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6222,15 +6222,15 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGtype_typeReference$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGtype_typeReference$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const choiceEnd_Gtype_typeReference$_x = ($: tast.VTGtype_typeReference$_x<Annotation>) => {
+                    const choiceEnd_Gtype_typeReference$_x = ($: tast.TVTGtype_typeReference$_x<Annotation>) => {
                         const _x = $
-                        const elements: tast.VGtype_typeReference$_parameters<Annotation> = []
+                        const elements: tast.TVGtype_typeReference$_parameters<Annotation> = []
                         const processElement = () => {
                             Gtype(node, children, ($) => {
                                 elements.push($)
@@ -6336,7 +6336,7 @@ export function parse<Annotation>(
                             }
                             ((
                                 $: uast.Node<Annotation>,
-                                callback: ($: tast.NGtype_typeReference$_x_qualifiedName$<Annotation>) => void,
+                                callback: ($: tast.TNGtype_typeReference$_x_qualifiedName$<Annotation>) => void,
                             ): void => {
                                 const node = $
                                 const children: uast.Node<Annotation>[] = []
@@ -6344,7 +6344,7 @@ export function parse<Annotation>(
                                 children.reverse()
                                 let currentChild: uast.Node<Annotation> | undefined
                                 let nextChild: uast.Node<Annotation> | undefined
-                                const sequenceEnd = ($: tast.VTGtype_typeReference$_x_qualifiedName$<Annotation>) => {
+                                const sequenceEnd = ($: tast.TVTGtype_typeReference$_x_qualifiedName$<Annotation>) => {
                                     callback({
                                         annotation: node.annotation,
                                         content: $,
@@ -6428,7 +6428,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_undefined$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_undefined$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6472,7 +6472,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_union$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_union$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6480,7 +6480,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const elements: tast.VGtype_union$<Annotation> = []
+                    const elements: tast.TVGtype_union$<Annotation> = []
                     const processElement = () => {
                         Gtype(node, children, ($) => {
                             elements.push($)
@@ -6585,7 +6585,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtype_void$<Annotation>) => void,
+                    callback: ($: tast.TNGtype_void$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6687,7 +6687,7 @@ export function parse<Annotation>(
     function GtypeParameter(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GtypeParameter<Annotation>) => void,
+        callback: ($: tast.TGtypeParameter<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -6710,7 +6710,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGtypeParameter$<Annotation>) => void,
+            callback: ($: tast.TNGtypeParameter$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -6742,11 +6742,11 @@ export function parse<Annotation>(
     function GtypeSignature(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GtypeSignature<Annotation>) => void,
+        callback: ($: tast.TGtypeSignature<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
-        const choiceEnd_GtypeSignature = ($: tast.VTGtypeSignature<Annotation>) => {
+        const choiceEnd_GtypeSignature = ($: tast.TVTGtypeSignature<Annotation>) => {
             callback($)
         }
         if (children.length === 0) {
@@ -6778,7 +6778,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtypeSignature_construct$<Annotation>) => void,
+                    callback: ($: tast.TNGtypeSignature_construct$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6786,13 +6786,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGtypeSignature_construct$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGtypeSignature_construct$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGtypeSignature_construct$_parameters<Annotation> = []
+                    const elements: tast.TVGtypeSignature_construct$_parameters<Annotation> = []
                     const processElement = () => {
                         Gparameter(node, children, ($) => {
                             elements.push($)
@@ -6856,7 +6856,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtypeSignature_index$<Annotation>) => void,
+                    callback: ($: tast.TNGtypeSignature_index$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -6864,13 +6864,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGtypeSignature_index$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGtypeSignature_index$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGtypeSignature_index$_modifiers<Annotation> = []
+                    const elements: tast.TVGtypeSignature_index$_modifiers<Annotation> = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -6899,7 +6899,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         Gparameter(node, children, ($) => {
                             const _parameter = $
-                            let optional: tast.VGtypeSignature_index$_type<Annotation> = null
+                            let optional: tast.TVGtypeSignature_index$_type<Annotation> = null
                             const setOptional = () => {
                                 Gtype(node, children, ($) => {
                                     optional = $
@@ -7003,7 +7003,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtypeSignature_method$<Annotation>) => void,
+                    callback: ($: tast.TNGtypeSignature_method$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -7011,7 +7011,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGtypeSignature_method$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGtypeSignature_method$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
@@ -7062,7 +7062,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.NGtypeSignature_property$<Annotation>) => void,
+                    callback: ($: tast.TNGtypeSignature_property$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []
@@ -7070,13 +7070,13 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.Node<Annotation> | undefined
                     let nextChild: uast.Node<Annotation> | undefined
-                    const sequenceEnd = ($: tast.VTGtypeSignature_property$<Annotation>) => {
+                    const sequenceEnd = ($: tast.TVTGtypeSignature_property$<Annotation>) => {
                         callback({
                             annotation: node.annotation,
                             content: $,
                         })
                     }
-                    const elements: tast.VGtypeSignature_property$_modifiers<Annotation> = []
+                    const elements: tast.TVGtypeSignature_property$_modifiers<Annotation> = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -7105,7 +7105,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         GidentifierOrStringLiteral(node, children, ($) => {
                             const _name = $
-                            let optional: tast.VGtypeSignature_property$_quesionToken<Annotation> = null
+                            let optional: tast.TVGtypeSignature_property$_quesionToken<Annotation> = null
                             const setOptional = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
@@ -7126,7 +7126,7 @@ export function parse<Annotation>(
                                 }
                                 ((
                                     $: uast.Node<Annotation>,
-                                    callback: ($: tast.NGtypeSignature_property$_quesionToken$<Annotation>) => void,
+                                    callback: ($: tast.TNGtypeSignature_property$_quesionToken$<Annotation>) => void,
                                 ): void => {
                                     const node = $
                                     const children: uast.Node<Annotation>[] = []
@@ -7160,7 +7160,7 @@ export function parse<Annotation>(
                             }
                             pr.cc(optional, ($) => {
                                 const _quesionToken = $
-                                let optional: tast.VGtypeSignature_property$_type<Annotation> = null
+                                let optional: tast.TVGtypeSignature_property$_type<Annotation> = null
                                 const setOptional = () => {
                                     Gtype(node, children, ($) => {
                                         optional = $
@@ -7276,7 +7276,7 @@ export function parse<Annotation>(
     function GvariableDeclaration(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GvariableDeclaration<Annotation>) => void,
+        callback: ($: tast.TGvariableDeclaration<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -7299,7 +7299,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGvariableDeclaration$<Annotation>) => void,
+            callback: ($: tast.TNGvariableDeclaration$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -7307,7 +7307,7 @@ export function parse<Annotation>(
             children.reverse()
             let currentChild: uast.Node<Annotation> | undefined
             let nextChild: uast.Node<Annotation> | undefined
-            const sequenceEnd = ($: tast.VTGvariableDeclaration$<Annotation>) => {
+            const sequenceEnd = ($: tast.TVTGvariableDeclaration$<Annotation>) => {
                 callback({
                     annotation: node.annotation,
                     content: $,
@@ -7315,7 +7315,7 @@ export function parse<Annotation>(
             }
             Gidentifier(node, children, ($) => {
                 const _name = $
-                let optional: tast.VGvariableDeclaration$_type<Annotation> = null
+                let optional: tast.TVGvariableDeclaration$_type<Annotation> = null
                 const setOptional = () => {
                     Gtype(node, children, ($) => {
                         optional = $
@@ -7376,7 +7376,7 @@ export function parse<Annotation>(
                 }
                 pr.cc(optional, ($) => {
                     const _type = $
-                    let optional: tast.VGvariableDeclaration$_expression<Annotation> = null
+                    let optional: tast.TVGvariableDeclaration$_expression<Annotation> = null
                     const setOptional = () => {
                         Gexpression(node, children, ($) => {
                             optional = $
@@ -7475,7 +7475,7 @@ export function parse<Annotation>(
     function GvariableDeclarationList(
         node: uast.Node<Annotation>,
         children: uast.Node<Annotation>[],
-        callback: ($: tast.GvariableDeclarationList<Annotation>) => void,
+        callback: ($: tast.TGvariableDeclarationList<Annotation>) => void,
     ): void {
         let currentChild: uast.Node<Annotation> | undefined
         let nextChild: uast.Node<Annotation> | undefined
@@ -7498,7 +7498,7 @@ export function parse<Annotation>(
         }
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.NGvariableDeclarationList$<Annotation>) => void,
+            callback: ($: tast.TNGvariableDeclarationList$<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -7506,7 +7506,7 @@ export function parse<Annotation>(
             children.reverse()
             let currentChild: uast.Node<Annotation> | undefined
             let nextChild: uast.Node<Annotation> | undefined
-            const elements: tast.VGvariableDeclarationList$<Annotation> = []
+            const elements: tast.TVGvariableDeclarationList$<Annotation> = []
             const processElement = () => {
                 GvariableDeclaration(node, children, ($) => {
                     elements.push($)
@@ -7554,7 +7554,7 @@ export function parse<Annotation>(
     } else {
         ((
             $: uast.Node<Annotation>,
-            callback: ($: tast.Nroot<Annotation>) => void,
+            callback: ($: tast.TNroot<Annotation>) => void,
         ): void => {
             const node = $
             const children: uast.Node<Annotation>[] = []
@@ -7562,13 +7562,13 @@ export function parse<Annotation>(
             children.reverse()
             let currentChild: uast.Node<Annotation> | undefined
             let nextChild: uast.Node<Annotation> | undefined
-            const sequenceEnd = ($: tast.VTroot<Annotation>) => {
+            const sequenceEnd = ($: tast.TVTroot<Annotation>) => {
                 callback({
                     annotation: node.annotation,
                     content: $,
                 })
             }
-            const elements: tast.Vroot_statements<Annotation> = []
+            const elements: tast.TVroot_statements<Annotation> = []
             const processElement = () => {
                 Gstatement(node, children, ($) => {
                     elements.push($)
@@ -7656,7 +7656,7 @@ export function parse<Annotation>(
                 }
                 ((
                     $: uast.Node<Annotation>,
-                    callback: ($: tast.Nroot_endOfFile$<Annotation>) => void,
+                    callback: ($: tast.TNroot_endOfFile$<Annotation>) => void,
                 ): void => {
                     const node = $
                     const children: uast.Node<Annotation>[] = []

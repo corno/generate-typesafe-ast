@@ -4,7 +4,7 @@ import * as g from "../../interface/types"
 import * as wapi from "fountain-pen"
 
 export function generateUntypedAPI(
-    grammar: g.Grammar,
+    grammar: g.TGrammar,
     $w: wapi.Block,
     log: (str: string) => void,
 ) {

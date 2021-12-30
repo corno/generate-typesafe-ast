@@ -11,10 +11,18 @@
     "typesafe"
   ],
   "license": "ISC",
-  "main": ".",
-  "name": "generate-typesafe-ast",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/corno/generate-typesafe-ast.git"
-  }
+  },
+  "dependencies": {
+    "fountain-pen": "^4.2.0",
+    "pareto-runtime": "^0.15.0"
+  },
+  
+  "name": "generate-typesafe-ast",
+  "version": "0.0.16",
+
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js"
 }

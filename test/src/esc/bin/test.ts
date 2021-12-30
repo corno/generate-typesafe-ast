@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as pr from "pareto-runtime"
 import * as tsg from "../../data/typescriptGrammar"
-import * as gta from "../../../pub/esc/implementations"
+import * as gta from "../../../../pub"
 import * as wapi from "fountain-pen"
 
 
@@ -23,9 +23,16 @@ wapi.createContext(
     ($i) => {
 
         gta.generateCode(
-            $i,
-            tsg.typescriptGrammar,
-            targetDirPath
+            {
+                grammar: tsg.typescriptGrammar,
+                targetDirPath: targetDirPath,
+            },
+            {
+                writeContext: $i,
+                onError: ($) => {
+
+                },
+            }
         )
     }
 )

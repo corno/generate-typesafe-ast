@@ -4,12 +4,12 @@ import * as g from "../../interface/types"
 import * as wapi from "fountain-pen"
 
 export function generateAPI(
-    grammar: g.Grammar,
+    grammar: g.TGrammar,
     $w: wapi.Block,
     log: (str: string) => void,
 ) {
     function generateTypesForNode(
-        $: g.Node2,
+        $: g.TNode2,
         $w: wapi.Block,
         path: string
     ) {
@@ -35,7 +35,7 @@ export function generateAPI(
             $w.snippet(``)
         })
         $w.line(($w) => {
-            $w.snippet(`export type N${path}<Annotation> = {`)
+            $w.snippet(`export type TN${path}<Annotation> = {`)
             $w.indent(($w) => {
                 $w.line(($w) => {
                     $w.snippet(`readonly "annotation": Annotation,`)
@@ -44,7 +44,7 @@ export function generateAPI(
                     case "composite":
                         pr.cc($.type[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`readonly "content": V${path}<Annotation>`)
+                                $w.snippet(`readonly "content": TV${path}<Annotation>`)
                                 $w.snippet(`,`)
                             })
                         })
@@ -68,7 +68,7 @@ export function generateAPI(
 
     }
     function generateTypesForValueType(
-        $: g.ValueType,
+        $: g.TValueType,
         $w: wapi.Block,
         path: string,
     ) {
@@ -114,7 +114,7 @@ export function generateAPI(
                 pr.au($[0])
         }
         $w.line(($w) => {
-            $w.snippet(`export type VT${path}<Annotation> = `)
+            $w.snippet(`export type TVT${path}<Annotation> = `)
 
             switch ($[0]) {
                 case "choice":
@@ -124,7 +124,7 @@ export function generateAPI(
                             pr.Objectkeys($.options).forEach((key) => {
                                 const option = $.options[key]
                                 $w.line(($w) => {
-                                    $w.snippet(`| [ "${key}", V${path}_${key}<Annotation>]`)
+                                    $w.snippet(`| [ "${key}", TV${path}_${key}<Annotation>]`)
                                 })
                             })
                         })
@@ -132,7 +132,7 @@ export function generateAPI(
                     break
                 case "reference":
                     pr.cc($[1], ($) => {
-                        $w.snippet(`G${$.name}<Annotation>`)
+                        $w.snippet(`TG${$.name}<Annotation>`)
                     })
                     break
                 case "sequence":
@@ -141,7 +141,7 @@ export function generateAPI(
                         $w.indent(($w) => {
                             $.elements.forEach(($) => {
                                 $w.line(($w) => {
-                                    $w.snippet(`readonly "${$.name}":  V${path}_${$.name}<Annotation>`)
+                                    $w.snippet(`readonly "${$.name}":  TV${path}_${$.name}<Annotation>`)
                                 })
                             })
                         })
@@ -150,7 +150,7 @@ export function generateAPI(
                     break
                 case "node":
                     pr.cc($[1], ($) => {
-                        $w.snippet(`N${path}$<Annotation>`)
+                        $w.snippet(`TN${path}$<Annotation>`)
                     })
                     break
                 default:
@@ -159,7 +159,7 @@ export function generateAPI(
         })
     }
     function generateTypesForValue(
-        $: g.Value,
+        $: g.TValue,
         $w: wapi.Block,
         path: string,
     ) {
@@ -169,21 +169,21 @@ export function generateAPI(
             path,
         )
         $w.line(($w) => {
-            $w.snippet(`export type V${path}<Annotation> = `)
+            $w.snippet(`export type TV${path}<Annotation> = `)
             switch ($.cardinality[0]) {
                 case "array":
                     pr.cc($.cardinality[1], ($) => {
-                        $w.snippet(`VT${path}<Annotation>[]`)
+                        $w.snippet(`TVT${path}<Annotation>[]`)
                     })
                     break
                 case "one":
                     pr.cc($.cardinality[1], ($) => {
-                        $w.snippet(`VT${path}<Annotation>`)
+                        $w.snippet(`TVT${path}<Annotation>`)
                     })
                     break
                 case "optional":
                     pr.cc($.cardinality[1], ($) => {
-                        $w.snippet(`pr.optional<VT${path}<Annotation>>`)
+                        $w.snippet(`pr.optional<TVT${path}<Annotation>>`)
                     })
                     break
                 default:
@@ -201,61 +201,9 @@ export function generateAPI(
             `G${key}`,
         )
         $w.line(($w) => {
-            $w.snippet(`export type G${key}<Annotation> =  VTG${key}<Annotation>`)
+            $w.snippet(`export type TG${key}<Annotation> =  TVTG${key}<Annotation>`)
         })
     })
-    // g.forEachEntry(grammar.nodes, ($, key) => {
-    //     switch ($.type[0]) {
-    //         case "composite":
-    //             pr.cc($.type[1], ($) => {
-    //                 generateSymbolTypesForSymbol(
-    //                     $,
-    //                     $w,
-    //                     `T${key}`,
-    //                 )
-    //             })
-    //             break
-    //         case "leaf":
-    //             break
-    //         default:
-    //             pr.au($.type[0])
-    //     }
-    //     $w.line(($w) => {
-    //         $w.snippet(``)
-    //     })
-    //     $w.line(($w) => {
-    //         $w.snippet(`export type T${key}<Annotation> = {`)
-    //         $w.indent(($w) => {
-    //             $w.line(($w) => {
-    //                 $w.snippet(`annotation: Annotation,`)
-    //             })
-    //             $w.line(($w) => {
-    //                 $w.snippet(`content: `)
-    //                 switch ($.type[0]) {
-    //                     case "composite":
-    //                         pr.cc($.type[1], ($) => {
-    //                             $w.snippet(`ST${key}<Annotation>`)
-    //                         })
-    //                         break
-    //                     case "leaf":
-    //                         pr.cc($.type[1], ($) => {
-    //                             if ($.hasTextContent) {
-    //                                 $w.snippet(`string`)
-    //                             } else {
-    //                                 $w.snippet(`null`)
-    //                             }
-    //                         })
-    //                         break
-    //                     default:
-    //                         pr.au($.type[0])
-    //                 }
-    //                 $w.snippet(`,`)
-    //             })
-    //         })
-    //         $w.snippet(`}`)
-    //     })
-    // })
-
     generateTypesForNode(
         grammar.root,
         $w,
@@ -263,7 +211,7 @@ export function generateAPI(
     )
 
     $w.line(($w) => {
-        $w.snippet(`export type Root<Annotation> = Nroot<Annotation>`)
+        $w.snippet(`export type TRoot<Annotation> = TNroot<Annotation>`)
     })
 
 }

@@ -4,12 +4,12 @@ import * as g from "../../interface/types"
 import * as wapi from "fountain-pen"
 
 export function generateParser(
-    grammar: g.Grammar,
+    grammar: g.TGrammar,
     $w: wapi.Block,
     log: (str: string) => void,
 ) {
     function findNextPossibleTokensInSymbolType(
-        $: g.ValueType,
+        $: g.TValueType,
         onToken: (token: string) => void,
         onEnd: () => void,
     ) {
@@ -86,7 +86,7 @@ export function generateParser(
                 $w.snippet(`$: uast.Node<Annotation>,`)
             })
             $w.line(($w) => {
-                $w.snippet(`callback: ($: tast.Nroot<Annotation>) => void,`)
+                $w.snippet(`callback: ($: tast.TRoot<Annotation>) => void,`)
             })
             $w.line(($w) => {
                 $w.snippet(`reportUnexpectedRoot: ($: { root: uast.Node<Annotation>, }) => void,`)
@@ -126,7 +126,7 @@ export function generateParser(
                 })
             }
             function generateNode(
-                $: g.Node2,
+                $: g.TNode2,
                 path: string,
                 $w: wapi.Block,
                 call: ($w: wapi.Line) => void
@@ -140,7 +140,7 @@ export function generateParser(
                             $w.snippet(`$: uast.Node<Annotation>,`)
                         })
                         $w.line(($w) => {
-                            $w.snippet(`callback: ($: tast.N${path}<Annotation>) => void,`)
+                            $w.snippet(`callback: ($: tast.TN${path}<Annotation>) => void,`)
                         })
                     })
                     $w.snippet(`): void => {`)
@@ -239,7 +239,7 @@ export function generateParser(
 
             }
             function generateValue(
-                $: g.Value,
+                $: g.TValue,
                 path: string,
                 $w: wapi.Block,
                 endCallback: (
@@ -251,7 +251,7 @@ export function generateParser(
                     case "array":
                         pr.cc($.cardinality[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`const elements: tast.V${path}<Annotation> = []`)
+                                $w.snippet(`const elements: tast.TV${path}<Annotation> = []`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`const processElement = () => {`)
@@ -346,7 +346,7 @@ export function generateParser(
                     case "optional":
                         pr.cc($.cardinality[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`let optional: tast.V${path}<Annotation> = null`)
+                                $w.snippet(`let optional: tast.TV${path}<Annotation> = null`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`const setOptional = () => {`)
@@ -442,7 +442,7 @@ export function generateParser(
                 }
             }
             function generateValueType(
-                $: g.ValueType,
+                $: g.TValueType,
                 path: string,
                 $w: wapi.Block,
                 endCallback: (
@@ -470,7 +470,7 @@ export function generateParser(
                                 )
                             })
                             $w.line(($w) => {
-                                $w.snippet(`const choiceEnd_${path} = ($: tast.VT${path}<Annotation>) => {`)
+                                $w.snippet(`const choiceEnd_${path} = ($: tast.TVT${path}<Annotation>) => {`)
                                 $w.indent(($w) => {
                                     endCallback(
                                         $w,
@@ -602,7 +602,7 @@ export function generateParser(
                     case "sequence":
                         pr.cc($[1], ($) => {
                             $w.line(($w) => {
-                                $w.snippet(`const sequenceEnd = ($: tast.VT${path}<Annotation>) => {`)
+                                $w.snippet(`const sequenceEnd = ($: tast.TVT${path}<Annotation>) => {`)
                                 $w.indent(($w) => {
                                     endCallback(
                                         $w,
@@ -611,7 +611,7 @@ export function generateParser(
                                 $w.snippet(`}`)
                             })
                             function generateElements(
-                                elements: g.SequenceElement[],
+                                elements: g.TSequenceElement[],
                                 $w: wapi.Block,
                             ) {
                                 const element = elements.pop()
@@ -743,7 +743,7 @@ export function generateParser(
                             $w.snippet(`children: uast.Node<Annotation>[],`)
                         })
                         $w.line(($w) => {
-                            $w.snippet(`callback: ($: tast.G${key}<Annotation>) => void,`)
+                            $w.snippet(`callback: ($: tast.TG${key}<Annotation>) => void,`)
                         })
                     })
                     $w.snippet(`): void {`)

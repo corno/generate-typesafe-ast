@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "fountain-pen": "^4.2.0",
+        "pareto-runtime": "^0.15.0",
+        "pareto-test": "^0.0.4"
+    }
+}

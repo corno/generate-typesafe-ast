@@ -2,102 +2,34 @@ import * as pr from "pareto-runtime"
 
 import * as g from "../../interface/types"
 import * as wapi from "fountain-pen"
+import * as dir from "../../modules/dir"
 
 import { generateAPI } from "./generateAPI"
 import { generateParser } from "./generateParser"
 import { generateVisitorTemplate } from "./generateVisitorTemplate"
 import { generateUntypedAPI } from "./generateUntypedAPI"
-
-export type Directory = {
-    createFile(
-        name: string,
-        callback: ($: wapi.Block) => void,
-    ): void
-    createDirectory(
-        name: string,
-        callback: ($: Directory) => void,
-    ): void
-}
-
-function wrapDirectory(
-    writeContext: wapi.ConfiguredContext,
-    mkDir: (
-        name: string,
-        x: () => void,
-    ) => void,
-    writeFile: (
-        name: string,
-        data: string,
-    ) => void
-): Directory {
-    return {
-        createDirectory(
-            dirName,
-            callback,
-        ) {
-            mkDir(
-                dirName,
-                () => {
-
-                    callback(
-                        wrapDirectory(
-                            writeContext,
-                            (
-                                subDirName,
-                                x
-                            ) => {
-                                mkDir(pr.join([dirName, subDirName]), x)
-                            },
-                            (
-                                fileName,
-                                data,
-                            ) => {
-                                writeFile(pr.join([dirName, fileName]), data)
-                            }
-                        )
-                    )
-                }
-            )
-
-
-        },
-        createFile(
-            name,
-            callback,
-        ) {
-            let out = ""
-            writeContext.processBlock(
-                ($i) => {
-                    callback($i)
-                },
-                {
-                    onData: ($) => {
-                        out += $
-                    },
-                    onEnd: ($) => {
-                        writeFile(name, out)
-                    },
-                }
-            )
-        }
-    }
-}
+import { generateVisitorTemplate2 } from "./generateVisitorTemplate2"
 
 export function generateCode(
-    writeContext: wapi.ConfiguredContext,
-    grammar: g.Grammar,
-    targetDirPath: string,
+    $: {
+        grammar: g.TGrammar,
+        targetDirPath: string,
+    },
+    $i: {
+        writeContext: wapi.ConfiguredContext,
+        onError: (str: string) => void
+    }
 ) {
     function generate(
         block: wapi.Block,
         func: (
-            grammar: g.Grammar,
+            grammar: g.TGrammar,
             $w: wapi.Block,
             log: (str: string) => void,
         ) => void,
     ) {
         func(
-            grammar,
+            $.grammar,
             block,
             ($) => {
                 console.log($)
@@ -105,7 +37,7 @@ export function generateCode(
         )
     }
 
-    function x($: Directory) {
+    function x($: dir.Directory) {
 
         $.createDirectory("interface", ($) => {
             $.createDirectory("types", ($) => {
@@ -140,25 +72,32 @@ export function generateCode(
                         generateVisitorTemplate,
                     )
                 })
+                $.createFile("visitor_template.generated.ts", ($) => {
+                    generate(
+                        $,
+                        generateVisitorTemplate2,
+                    )
+                })
             })
 
         })
     }
 
-    const targetDir = wrapDirectory(
-        writeContext,
+    const targetDir = dir.wrapDirectory(
+        $i.writeContext,
         (
             dirName,
             x
         ) => {
-            pr.mkdir(pr.join([targetDirPath, dirName]), ($) => {
+            const dirPath = pr.join([$.targetDirPath, dirName])
+            pr.mkdir(dirPath, ($) => {
                 switch ($[0]) {
                     case "error":
                         pr.cc($[1], ($) => {
                             switch ($.type[0]) {
                                 case "other":
                                     pr.cc($.type[1], ($) => {
-                                        throw new Error("IMPLEMENT ME")
+                                        $i.onError(`could not create directory (${$.message}): ${dirPath}`)
                                     })
                                     break
                                 default:
@@ -180,23 +119,23 @@ export function generateCode(
             fileName,
             data,
         ) => {
+            const fp = pr.join([$.targetDirPath, fileName])
             pr.writeFile(
-                pr.join([targetDirPath, fileName]),
+                fp,
                 data,
                 ($) => {
                     switch ($[0]) {
                         case "error":
                             pr.cc($[1], ($) => {
-                                console.error(`error while writing`, pr.join([targetDirPath, fileName]))
                                 switch ($.type[0]) {
                                     case "no entity":
                                         pr.cc($.type[1], ($) => {
-                                            console.error(`no entity`)
-
+                                            $i.onError(`error while writing, no entity: ${fp}`)
                                         })
                                         break
                                     case "other":
                                         pr.cc($.type[1], ($) => {
+                                            $i.onError(`error while writing, no entity: ${fp}`)
                                         })
                                         break
                                     default:

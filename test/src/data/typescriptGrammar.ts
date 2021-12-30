@@ -1,6 +1,6 @@
-import * as gr from "../../pub/interface/types"
+import * as gr from "../../../pub"
 
-export const typescriptGrammar: gr.Grammar = {
+export const typescriptGrammar: gr.TGrammar = {
     globalValueTypes: {
         block: ["node", {
             name: "Block",
