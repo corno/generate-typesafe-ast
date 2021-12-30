@@ -20,7 +20,7 @@
     "pareto-runtime": "^0.15.0"
   },
   "name": "generate-typesafe-ast",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "files": [
