@@ -5,8 +5,10 @@ import * as wapi from "fountain-pen"
 
 export function generateAPI(
     grammar: g.TGrammar,
-    $w: wapi.Block,
-    log: (str: string) => void,
+    $i: {
+        $w: wapi.Block,
+        log: (str: string) => void,
+    }
 ) {
     function generateTypesForNode(
         $: g.TNode2,
@@ -25,7 +27,7 @@ export function generateAPI(
                 break
             case "leaf":
                 pr.cc($.type[1], ($) => {
-                    
+
                 })
                 break
             default:
@@ -191,27 +193,31 @@ export function generateAPI(
             }
         })
     }
-    $w.line(($w) => {
-        $w.snippet(`import * as pr from "pareto-runtime"`)
-    })
-    pr.forEachEntry(grammar.globalValueTypes, ($, key) => {
-        generateTypesForValueType(
-            $,
-            $w,
-            `G${key}`,
-        )
-        $w.line(($w) => {
-            $w.snippet(`export type TG${key}<Annotation> =  TVTG${key}<Annotation>`)
-        })
-    })
-    generateTypesForNode(
-        grammar.root,
-        $w,
-        "root",
-    )
+    pr.cc($i.$w, ($w) => {
 
-    $w.line(($w) => {
-        $w.snippet(`export type TRoot<Annotation> = TNroot<Annotation>`)
+        $w.line(($w) => {
+            $w.snippet(`import * as pr from "pareto-runtime"`)
+        })
+        pr.forEachEntry(grammar.globalValueTypes, ($, key) => {
+            generateTypesForValueType(
+                $,
+                $w,
+                `G${key}`,
+            )
+            $w.line(($w) => {
+                $w.snippet(`export type TG${key}<Annotation> =  TVTG${key}<Annotation>`)
+            })
+        })
+        generateTypesForNode(
+            grammar.root,
+            $w,
+            "root",
+        )
+
+        $w.line(($w) => {
+            $w.snippet(`export type TRoot<Annotation> = TNroot<Annotation>`)
+        })
+
     })
 
 }

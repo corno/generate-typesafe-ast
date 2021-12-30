@@ -24,15 +24,20 @@ export function generateCode(
         block: wapi.Block,
         func: (
             grammar: g.TGrammar,
-            $w: wapi.Block,
-            log: (str: string) => void,
+            $i: {
+                $w: wapi.Block,
+                log: (str: string) => void,
+            },
         ) => void,
+
     ) {
         func(
             $.grammar,
-            block,
-            ($) => {
-                console.log($)
+            {
+                $w: block,
+                log: ($) => {
+                    console.log($)
+                }
             }
         )
     }
