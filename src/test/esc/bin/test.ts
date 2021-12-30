@@ -2,7 +2,7 @@
 import * as pr from "pareto-runtime"
 import * as tsg from "../../data/typescriptGrammar"
 import * as gta from "../../../pub/esc/implementations"
-import * as wapi from "fountain-pen/esc/implementations/fountain-pen"
+import * as wapi from "fountain-pen"
 
 
 const [, , targetDirPath] = pr.getProcessArguments()

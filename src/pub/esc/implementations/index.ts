@@ -1,7 +1,7 @@
 import * as pr from "pareto-runtime"
 
 import * as g from "../../interface/types"
-import * as wapi from "fountain-pen/esc/interfaces/fountain-pen"
+import * as wapi from "fountain-pen"
 
 import { generateAPI } from "./generateAPI"
 import { generateParser } from "./generateParser"
