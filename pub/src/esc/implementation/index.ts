@@ -72,7 +72,7 @@ export function generateCode(
                         generateVisitorTemplate,
                     )
                 })
-                $.createFile("visitor_template.generated.ts", ($) => {
+                $.createFile("visitor_template2.generated.ts", ($) => {
                     generate(
                         $,
                         generateVisitorTemplate2,

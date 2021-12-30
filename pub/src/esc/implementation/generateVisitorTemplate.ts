@@ -16,7 +16,7 @@ export function generateVisitorTemplate(
         $w.snippet(`import * as api from "../../interface/types/ts_api.generated"`)
     })
     $w.line(($w) => {
-        $w.snippet(`import * as api from "./visitor_template2.generated"`)
+        $w.snippet(`import * as foox from "./visitor_template2.generated"`)
     })
 
     $w.line(($w) => { })
@@ -27,7 +27,7 @@ export function generateVisitorTemplate(
                 $w.snippet(`$: api.TNroot<Annotation>,`)
             })
             $w.line(($w) => {
-                $w.snippet(`foo: FOO<Annotation>,`)
+                $w.snippet(`foo: foox.FOO<Annotation>,`)
             })
         })
         $w.snippet(`): void {`)
