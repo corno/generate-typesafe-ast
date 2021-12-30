@@ -4,7 +4,6 @@
     "pareto-runtime": "^0.15.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.5"
   },
   "name": "generate-typesafe-ast",
   "scripts": {
