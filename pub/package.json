@@ -16,8 +16,8 @@
     "url": "git+https://github.com/corno/generate-typesafe-ast.git"
   },
   "dependencies": {
-    "fountain-pen": "^4.2.4",
-    "pareto-runtime": "^0.16.0"
+    "fountain-pen": "^4.2.5",
+    "pareto-runtime": "^0.16.1"
   },
   "name": "generate-typesafe-ast",
   "version": "0.1.0",
