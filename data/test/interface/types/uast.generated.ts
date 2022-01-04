@@ -1,6 +1,6 @@
 import * as pr from "pareto-runtime"
 
-export type Node<Annotation> = {
+export type TUntypedNode<Annotation> = {
     readonly "kindName": string
     readonly "value": string
     readonly "annotation": Annotation

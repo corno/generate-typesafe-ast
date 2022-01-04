@@ -59,11 +59,11 @@ export function wrapDirectory(
             callback,
         ) {
             let out = ""
-            writeContext.processBlock(
-                ($i) => {
+            writeContext.processBlock({
+                onBlock: ($i) => {
                     callback($i)
                 },
-                {
+                consumer: {
                     onData: ($) => {
                         out += $
                     },
@@ -71,7 +71,7 @@ export function wrapDirectory(
                         writeFile(name, out)
                     },
                 }
-            )
+            })
         }
     }
 }

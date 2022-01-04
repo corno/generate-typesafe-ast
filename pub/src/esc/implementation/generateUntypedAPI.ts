@@ -18,7 +18,7 @@ export function generateUntypedAPI(
         $w.line(($w) => {
         })
         $w.line(($w) => {
-            $w.snippet(`export type Node<Annotation> = {`)
+            $w.snippet(`export type TUntypedNode<Annotation> = {`)
             $w.indent(($w) => {
                 $w.line(($w) => {
                     $w.snippet(`readonly "kindName": string`)

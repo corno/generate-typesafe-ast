@@ -10,18 +10,29 @@ import { generateVisitorTemplate } from "./generateVisitorTemplate"
 import { generateUntypedAPI } from "./generateUntypedAPI"
 import { generateVisitorTemplate2 } from "./generateVisitorTemplate2"
 
+export type FileWriter = {
+    write: (str: string) => void
+    end: () => void
+}
+
 export function generateCode(
     $: {
         grammar: g.TGrammar,
-        targetDirPath: string,
     },
     $i: {
         writeContext: wapi.ConfiguredContext,
-        onError: (str: string) => void
+        onError: (str: string) => void,
+        createFile: (
+            $: string,
+            $i: ($i: pr.IStreamConsumer<string, null>) => void,
+        ) => void,
     }
 ) {
-    function generate(
-        block: wapi.Block,
+    const grammar = $.grammar
+    const wc = $i.writeContext
+
+    function doIt(
+        filePath: string,
         func: (
             grammar: g.TGrammar,
             $i: {
@@ -29,137 +40,135 @@ export function generateCode(
                 log: (str: string) => void,
             },
         ) => void,
-
     ) {
-        func(
-            $.grammar,
-            {
-                $w: block,
-                log: ($) => {
-                    console.log($)
-                }
+
+        $i.createFile(
+            filePath,
+            ($i) => {
+                wc.processBlock({
+                    onBlock: ($i) => {
+                        function generate(
+                            block: wapi.Block,
+                        ) {
+                            func(
+                                grammar,
+                                {
+                                    $w: block,
+                                    log: ($) => {
+                                        console.log($)
+                                    }
+                                }
+                            )
+                        }
+                        generate(
+                            $i,
+                        )
+
+                    },
+                    consumer: $i
+                })
             }
         )
     }
-
-    function x($: dir.Directory) {
-
-        $.createDirectory("interface", ($) => {
-            $.createDirectory("types", ($) => {
-                $.createFile("ts_api.generated.ts", ($) => {
-                    generate(
-                        $,
-                        generateAPI,
-                    )
-                })
-                $.createFile("uast.generated.ts", ($) => {
-                    generate(
-                        $,
-                        generateUntypedAPI,
-                    )
-                })
-
-            })
-
-        })
-        $.createDirectory("esc", ($) => {
-            $.createDirectory("implementation", ($) => {
-
-                $.createFile("parser.generated.ts", ($) => {
-                    generate(
-                        $,
-                        generateParser,
-                    )
-                })
-                $.createFile("visitor_template.generated.ts", ($) => {
-                    generate(
-                        $,
-                        generateVisitorTemplate,
-                    )
-                })
-                $.createFile("visitor_template2.generated.ts", ($) => {
-                    generate(
-                        $,
-                        generateVisitorTemplate2,
-                    )
-                })
-            })
-
-        })
-    }
-
-    const targetDir = dir.wrapDirectory(
-        $i.writeContext,
-        (
-            dirName,
-            x
-        ) => {
-            const dirPath = pr.join([$.targetDirPath, dirName])
-            pr.mkdir(dirPath, ($) => {
-                switch ($[0]) {
-                    case "error":
-                        pr.cc($[1], ($) => {
-                            switch ($.type[0]) {
-                                case "other":
-                                    pr.cc($.type[1], ($) => {
-                                        $i.onError(`could not create directory (${$.message}): ${dirPath}`)
-                                    })
-                                    break
-                                default:
-                                    pr.au($.type[0])
-                            }
-                        })
-                        break
-                    case "success":
-                        pr.cc($[1], ($) => {
-                            x()
-                        })
-                        break
-                    default:
-                        pr.au($[0])
-                }
-            })
-        },
-        (
-            fileName,
-            data,
-        ) => {
-            const fp = pr.join([$.targetDirPath, fileName])
-            pr.writeFile(
-                fp,
-                data,
-                ($) => {
-                    switch ($[0]) {
-                        case "error":
-                            pr.cc($[1], ($) => {
-                                switch ($.type[0]) {
-                                    case "no entity":
-                                        pr.cc($.type[1], ($) => {
-                                            $i.onError(`error while writing, no entity: ${fp}`)
-                                        })
-                                        break
-                                    case "other":
-                                        pr.cc($.type[1], ($) => {
-                                            $i.onError(`error while writing, no entity: ${fp}`)
-                                        })
-                                        break
-                                    default:
-                                        pr.au($.type[0])
-                                }
-                            })
-                            break
-                        case "success":
-                            pr.cc($[1], ($) => {
-                            })
-                            break
-                        default:
-                            pr.au($[0])
-                    }
-                },
-            )
-        }
+    doIt(
+        'interface/types/ts_api.generated.ts',
+        generateAPI,
     )
-    x(targetDir)
+    doIt(
+        'interface/types/uast.generated.ts',
+        generateUntypedAPI,
+    )
+    doIt(
+        'esc/implementation/parser.generated.ts',
+        generateParser,
+    )
+    doIt(
+        'esc/implementation/visitor_template.generated.ts',
+        generateVisitorTemplate,
+    )
+    doIt(
+        'esc/implementation/visitor_template2.generated.ts',
+        generateVisitorTemplate2,
+    )
+
+
+    // const targetDir = dir.wrapDirectory(
+    //     $i.writeContext,
+    //     (
+    //         dirName,
+    //         x
+    //     ) => {
+    //         const dirPath = pr.join([$.targetDirPath, dirName])
+    //         pr.mkdir(dirPath, ($) => {
+    //             switch ($[0]) {
+    //                 case "error":
+    //                     pr.cc($[1], ($) => {
+    //                         switch ($.type[0]) {
+    //                             case "no entity":
+    //                                 pr.cc($.type[1], ($) => {
+    //                                     $i.onError(`could not create directory (no entity): ${dirPath}`)
+    //                                 })
+    //                                 break
+    //                             case "other":
+    //                                 pr.cc($.type[1], ($) => {
+    //                                     $i.onError(`could not create directory (${$.message}): ${dirPath}`)
+    //                                 })
+    //                                 break
+    //                             default:
+    //                                 pr.au($.type[0])
+    //                         }
+    //                     })
+    //                     break
+    //                 case "success":
+    //                     pr.cc($[1], ($) => {
+    //                         x()
+    //                     })
+    //                     break
+    //                 default:
+    //                     pr.au($[0])
+    //             }
+    //         })
+    //     },
+    //     (
+    //         fileName,
+    //         data,
+    //     ) => {
+    //         const fp = pr.join([$.targetDirPath, fileName])
+    //         pr.writeFile(
+    //             fp,
+    //             data,
+    //             ($) => {
+    //                 switch ($[0]) {
+    //                     case "error":
+    //                         pr.cc($[1], ($) => {
+    //                             switch ($.type[0]) {
+    //                                 case "no entity":
+    //                                     pr.cc($.type[1], ($) => {
+    //                                         $i.onError(`error while writing, no entity: ${fp}`)
+    //                                     })
+    //                                     break
+    //                                 case "other":
+    //                                     pr.cc($.type[1], ($) => {
+    //                                         $i.onError(`error while writing, no entity: ${fp}`)
+    //                                     })
+    //                                     break
+    //                                 default:
+    //                                     pr.au($.type[0])
+    //                             }
+    //                         })
+    //                         break
+    //                     case "success":
+    //                         pr.cc($[1], ($) => {
+    //                         })
+    //                         break
+    //                     default:
+    //                         pr.au($[0])
+    //                 }
+    //             },
+    //         )
+    //     }
+    // )
+    // x(targetDir)
 
 
 }
