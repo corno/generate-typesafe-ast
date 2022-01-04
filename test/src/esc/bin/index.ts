@@ -22,7 +22,7 @@ pt.createTestContext(
             $.testset(
                 "test generated code",
                 ($i) => {
-                    const targetDirPath = "./data/test"
+                    const targetDirPath = "./test/data"
                     const testSet = $i
 
                     wapi.createContext(
