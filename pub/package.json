@@ -16,11 +16,11 @@
     "url": "git+https://github.com/corno/generate-typesafe-ast.git"
   },
   "dependencies": {
-    "fountain-pen": "^4.2.5",
-    "pareto-runtime": "^0.16.1"
+    "fountain-pen": "^4.2.6",
+    "pareto-runtime": "^0.16.2"
   },
   "name": "generate-typesafe-ast",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "files": [
