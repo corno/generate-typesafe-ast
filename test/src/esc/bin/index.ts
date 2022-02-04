@@ -4,7 +4,7 @@ import * as pt from "pareto-test"
 import * as pf from "pareto-filesystem"
 import * as tsg from "../../data/typescriptGrammar"
 import * as gta from "../../../../pub/dist"
-import * as wapi from "fountain-pen"
+import * as fp from "fountain-pen"
 
 
 const [, , dataDir] = pr.getProcessArguments()
@@ -33,8 +33,8 @@ pt.runTests(
                                 callback: ($i) => {
 
                                     const targetDir = $i
-    
-                                    wapi.createContext(
+
+                                    fp.createContext(
                                         pr.trimRight,
                                     ).configure(
                                         {
@@ -43,76 +43,56 @@ pt.runTests(
                                             trimLines: true,
                                         },
                                         ($i) => {
+                                            const wc = $i
                                             gta.generateCode(
                                                 {
                                                     grammar: tsg.typescriptGrammar,
                                                 },
                                                 {
-                                                    writeContext: $i,
                                                     onError: ($) => {
-    
+
                                                     },
-                                                    createFile: (
+                                                    createWriteStream: (
                                                         $,
                                                         $i,
                                                     ) => {
-                                                        const filePath = $
-    
-                                                        let data = ""
-                                                        $i({
-                                                            onData: ($) => {
-                                                                data += $
-                                                            },
-                                                            onEnd: () => {
-                                                                targetDir.readFile(
-                                                                    filePath,
-                                                                    ($) => {
-                                                                        testSet.testString({
-                                                                            testName: pr.join([dataDir, filePath]),
-                                                                            expected: $,
-                                                                            actual: data,
-                                                                            fileLocation: filePath,
-                                                                        })
-                                                                    }
-                                                                )
+                                                        const filePath = $.path
+                                                        const blockCallback = $i
 
+                                                        let data = ""
+
+                                                        wc.processBlock({
+                                                            onBlock: ($i) => {
+                                                                blockCallback($i)
+                                                            },
+                                                            consumer: {
+                                                                onData: ($) => {
+                                                                    data += $
+                                                                },
+                                                                onEnd: () => {
+                                                                    targetDir.readFile(
+                                                                        filePath,
+                                                                        {
+                                                                            callback: ($) => {
+                                                                                testSet.testString({
+                                                                                    testName: pr.join([dataDir, filePath]),
+                                                                                    expected: $,
+                                                                                    actual: data,
+                                                                                    fileLocation: filePath,
+                                                                                })
+                                                                            }
+                                                                        }
+                                                                    )
+    
+                                                                }
                                                             }
                                                         })
-                                                        // pr.mkdir(
-                                                        //     pr.dirname($),
-                                                        //     ($) => {
-                                                        //         switch ($[0]) {
-                                                        //             case "error":
-                                                        //                 pr.cc($, ($) => {
-                                                        //                     throw new Error("IMPLEMENT ME")
-                                                        //                 })
-                                                        //                 break
-                                                        //             case "success":
-                                                        //                 pr.cc($, ($) => {
-                                                        //                     let data = ""
-                                                        //                     $i({
-                                                        //                         onData: ($) => {
-                                                        //                             data += $
-                                                        //                         },
-                                                        //                         onEnd: () => {
-                                                        //                             pr.writeFile(filePath, data, ($) => {
-                                                        //                                 //FIX?
-                                                        //                             })
-    
-                                                        //                         }
-                                                        //                     })
-                                                        //                 })
-                                                        //                 break
-                                                        //             default: pr.au($[0])
-                                                        //         }
-                                                        //     }
-                                                        // )
                                                     }
                                                 }
                                             )
                                         }
                                     )
-    
+
                                 },
                                 onError: ($) => {
                                     $i.testSet.assert({

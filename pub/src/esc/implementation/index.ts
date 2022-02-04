@@ -1,8 +1,7 @@
 import * as pr from "pareto-runtime"
 
 import * as g from "../../interface/types"
-import * as wapi from "fountain-pen"
-import * as dir from "../../modules/dir"
+import * as fp from "fountain-pen"
 
 import { generateAPI } from "./generateAPI"
 import { generateParser } from "./generateParser"
@@ -20,53 +19,42 @@ export function generateCode(
         grammar: g.TGrammar,
     },
     $i: {
-        writeContext: wapi.ConfiguredContext,
         onError: (str: string) => void,
-        createFile: (
-            $: string,
-            $i: ($i: pr.IStreamConsumer<string, null>) => void,
+        createWriteStream: (
+            $: {
+                path: string,
+            },
+            $i: ($i: fp.Block) => void,
         ) => void,
     }
 ) {
     const grammar = $.grammar
-    const wc = $i.writeContext
 
     function doIt(
         filePath: string,
         func: (
             grammar: g.TGrammar,
             $i: {
-                $w: wapi.Block,
+                $w: fp.Block,
                 log: (str: string) => void,
             },
         ) => void,
     ) {
 
-        $i.createFile(
-            filePath,
+        $i.createWriteStream(
+            {
+                path: filePath
+            },
             ($i) => {
-                wc.processBlock({
-                    onBlock: ($i) => {
-                        function generate(
-                            block: wapi.Block,
-                        ) {
-                            func(
-                                grammar,
-                                {
-                                    $w: block,
-                                    log: ($) => {
-                                        console.log($)
-                                    }
-                                }
-                            )
+                func(
+                    grammar,
+                    {
+                        $w: $i,
+                        log: ($) => {
+                            console.log($)
                         }
-                        generate(
-                            $i,
-                        )
-
-                    },
-                    consumer: $i
-                })
+                    }
+                )
             }
         )
     }
