@@ -6,120 +6,121 @@ import * as tsg from "../../data/typescriptGrammar"
 import * as gta from "../../../../pub/dist"
 import * as fp from "fountain-pen"
 
+pr.runProgram(
+    (dataDir) => {
 
-const [, , dataDir] = pr.getProcessArguments()
+        if (dataDir === undefined) {
+            pr.logError("missing data directory path")
+            pr.processExit(1)
+        }
 
-if (dataDir === undefined) {
-    pr.logError("missing data directory path")
-    pr.processExit(1)
-}
+        pt.runTests(
+            {
+                callback: ($i) => {
+                    $i.asyncSubset(
+                        {
+                            name: "test generated code",
+                        },
+                        {
+                            registerListener: ($i) => {
+                                const testSet = $i.testSet
 
-pt.runTests(
-    {
-        callback: ($i) => {
-            $i.asyncSubset(
-                {
-                    name: "test generated code",
-                },
-                {
-                    registerListener: ($i) => {
-                        const testSet = $i.testSet
+                                pf.wrapDirectory(
+                                    {
+                                        rootDirectory: pr.join([dataDir, "src"]),
+                                    },
+                                    {
+                                        callback: ($i) => {
 
-                        pf.wrapDirectory(
-                            {
-                                rootDirectory: pr.join([dataDir, "src"]),
-                            },
-                            {
-                                callback: ($i) => {
+                                            const targetDir = $i
 
-                                    const targetDir = $i
-
-                                    fp.createContext(
-                                        pr.trimRight,
-                                    ).configure(
-                                        {
-                                            indentation: "    ",
-                                            newline: "\r\n",
-                                            trimLines: true,
-                                        },
-                                        ($i) => {
-                                            const wc = $i
-                                            gta.generateCode(
+                                            fp.createContext(
+                                                pr.trimRight,
+                                            ).configure(
                                                 {
-                                                    grammar: tsg.typescriptGrammar,
+                                                    indentation: "    ",
+                                                    newline: "\r\n",
+                                                    trimLines: true,
                                                 },
-                                                {
-                                                    onError: ($) => {
+                                                ($i) => {
+                                                    const wc = $i
+                                                    gta.generateCode(
+                                                        {
+                                                            grammar: tsg.typescriptGrammar,
+                                                        },
+                                                        {
+                                                            onError: ($) => {
 
-                                                    },
-                                                    createWriteStream: (
-                                                        $,
-                                                        $i,
-                                                    ) => {
-                                                        const filePath = $.path
-                                                        const blockCallback = $i
-
-                                                        let data = ""
-
-                                                        wc.processBlock({
-                                                            onBlock: ($i) => {
-                                                                blockCallback($i)
                                                             },
-                                                            consumer: {
-                                                                onData: ($) => {
-                                                                    data += $
-                                                                },
-                                                                onEnd: () => {
-                                                                    targetDir.readFile(
-                                                                        filePath,
-                                                                        {
-                                                                            callback: ($) => {
-                                                                                if ($ !== data) {
-                                                                                    targetDir.writeFile(
-                                                                                        {
-                                                                                            path: filePath + ".actual",
-                                                                                            data: data,
-                                                                                            createMissingDirectories: false,
-                                                                                        },
-                                                                                        {}
-                                                                                    )
+                                                            createWriteStream: (
+                                                                $,
+                                                                $i,
+                                                            ) => {
+                                                                const filePath = $.path
+                                                                const blockCallback = $i
+
+                                                                let data = ""
+
+                                                                wc.processBlock({
+                                                                    onBlock: ($i) => {
+                                                                        blockCallback($i)
+                                                                    },
+                                                                    consumer: {
+                                                                        onData: ($) => {
+                                                                            data += $
+                                                                        },
+                                                                        onEnd: () => {
+                                                                            targetDir.readFile(
+                                                                                filePath,
+                                                                                {
+                                                                                    callback: ($) => {
+                                                                                        if ($ !== data) {
+                                                                                            targetDir.writeFile(
+                                                                                                {
+                                                                                                    path: filePath + ".actual",
+                                                                                                    data: data,
+                                                                                                    createMissingDirectories: false,
+                                                                                                },
+                                                                                                {}
+                                                                                            )
+                                                                                        }
+                                                                                        testSet.testString({
+                                                                                            testName: pr.join([dataDir, filePath]),
+                                                                                            expected: $,
+                                                                                            actual: data,
+                                                                                            fileLocation: filePath,
+                                                                                        })
+                                                                                    }
                                                                                 }
-                                                                                testSet.testString({
-                                                                                    testName: pr.join([dataDir, filePath]),
-                                                                                    expected: $,
-                                                                                    actual: data,
-                                                                                    fileLocation: filePath,
-                                                                                })
-                                                                            }
+                                                                            )
+
                                                                         }
-                                                                    )
-    
-                                                                }
+                                                                    }
+                                                                })
                                                             }
-                                                        })
-                                                    }
+                                                        }
+                                                    )
                                                 }
                                             )
-                                        }
-                                    )
 
-                                },
-                                onError: ($) => {
-                                    $i.testSet.assert({
-                                        testName: `filesystem error: ${pf.printFSError($)}`,
-                                        condition: false,
-                                    })
-                                },
-                                onEnd: () => {
-                                    $i.done()
-                                }
-                            }
-                        )
-                    },
-                }
-            )
-        },
-        log: pr.log,
+                                        },
+                                        onError: ($) => {
+                                            $i.testSet.assert({
+                                                testName: `filesystem error: ${pf.printFSError($)}`,
+                                                condition: false,
+                                            })
+                                        },
+                                        onEnd: () => {
+                                            $i.done()
+                                        }
+                                    }
+                                )
+                            },
+                        }
+                    )
+                },
+                log: pr.log,
+            }
+        )
     }
 )
-

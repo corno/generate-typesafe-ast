@@ -89,22 +89,32 @@ export function generateParser(
                 $w.line(($w) => {
                     $w.snippet(`$: uast.TUntypedNode<Annotation>,`)
                 })
+                
                 $w.line(($w) => {
-                    $w.snippet(`callback: ($: tast.TRoot<Annotation>) => void,`)
-                })
-                $w.line(($w) => {
-                    $w.snippet(`reportUnexpectedRoot: ($: { root: uast.TUntypedNode<Annotation>, }) => void,`)
-                })
-                $w.line(($w) => {
-                    $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.TUntypedNode<Annotation>, expected: pr.optional<string[]> }) => void,`)
-                })
-                $w.line(($w) => {
-                    $w.snippet(`reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,`)
+                    $w.snippet(`$i: {`)
+                    $w.indent(($w) => {
+                        $w.line(($w) => {
+                            $w.snippet(`callback: ($: tast.TRoot<Annotation>) => void,`)
+                        })
+                        $w.line(($w) => {
+                            $w.snippet(`reportUnexpectedRoot: ($: { root: uast.TUntypedNode<Annotation>, }) => void,`)
+                        })
+                        $w.line(($w) => {
+                            $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.TUntypedNode<Annotation>, expected: pr.optional<string[]> }) => void,`)
+                        })
+                        $w.line(($w) => {
+                            $w.snippet(`reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,`)
+                        })
+                    })
+                    $w.snippet(`},`)
                 })
             })
             $w.snippet(`): void {`)
             $w.indent(($w) => {
 
+                $w.line(($w) => {
+                    $w.snippet(`const $x = $i`)
+                })
                 function nextChild(
                     $w: wapi.Block,
                     onNoChild: (
@@ -216,7 +226,7 @@ export function generateParser(
                                 $w.snippet(`if (children.length > 0) {`)
                                 $w.indent(($w) => {
                                     $w.line(($w) => {
-                                        $w.snippet(`reportUnexpectedChild({`)
+                                        $w.snippet(`$x.reportUnexpectedChild({`)
                                         $w.indent(($w) => {
                                             $w.line(($w) => {
                                                 $w.snippet(`path: "${path}",`)
@@ -486,7 +496,7 @@ export function generateParser(
                                     $w,
                                     ($w) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`reportMissingToken({`)
+                                            $w.snippet(`$x.reportMissingToken({`)
                                             $w.indent(($w) => {
                                                 $w.line(($w) => {
                                                     $w.snippet(`parentAnnotation: node.annotation,`)
@@ -565,7 +575,7 @@ export function generateParser(
                                                     $w.snippet(`default: {`)
                                                     $w.indent(($w) => {
                                                         $w.line(($w) => {
-                                                            $w.snippet(`reportUnexpectedChild({`)
+                                                            $w.snippet(`$x.reportUnexpectedChild({`)
                                                             $w.indent(($w) => {
                                                                 $w.line(($w) => {
                                                                     $w.snippet(`path: "${path}",`)
@@ -663,7 +673,7 @@ export function generateParser(
                                     $w.snippet(`if (currentChild === undefined) {`)
                                     $w.indent(($w) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`reportMissingToken({`)
+                                            $w.snippet(`$x.reportMissingToken({`)
                                             $w.indent(($w) => {
                                                 $w.line(($w) => {
                                                     $w.snippet(`parentAnnotation: node.annotation,`)
@@ -687,7 +697,7 @@ export function generateParser(
                                     $w.snippet(`if (currentChild.kindName !== "${$.name}") {`)
                                     $w.indent(($w) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`reportUnexpectedChild({`)
+                                            $w.snippet(`$x.reportUnexpectedChild({`)
                                             $w.indent(($w) => {
                                                 $w.line(($w) => {
                                                     $w.snippet(`path: "${path}",`)
@@ -777,7 +787,7 @@ export function generateParser(
                     $w.snippet(`if ($.kindName !== "${grammar.root.name}") {`)
                     $w.indent(($w) => {
                         $w.line(($w) => {
-                            $w.snippet(`reportUnexpectedRoot({`)
+                            $w.snippet(`$x.reportUnexpectedRoot({`)
                             $w.indent(($w) => {
                                 $w.line(($w) => {
                                     $w.snippet(`root: $,`)
@@ -806,7 +816,7 @@ export function generateParser(
                                         $w.snippet(`($) => {`)
                                         $w.indent(($w) => {
                                             $w.line(($w) => {
-                                                $w.snippet(`callback($)`)
+                                                $w.snippet(`$x.callback($)`)
                                             })
                                         })
                                         $w.snippet(`},`)

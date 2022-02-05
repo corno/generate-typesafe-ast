@@ -4,11 +4,14 @@ import * as uast from "../../interface/types/uast"
 
 export function parse<Annotation>(
     $: uast.TUntypedNode<Annotation>,
-    callback: ($: tast.TRoot<Annotation>) => void,
-    reportUnexpectedRoot: ($: { root: uast.TUntypedNode<Annotation>, }) => void,
-    reportUnexpectedChild: ($: { path: string, child: uast.TUntypedNode<Annotation>, expected: pr.optional<string[]> }) => void,
-    reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,
+    $i: {
+        callback: ($: tast.TRoot<Annotation>) => void,
+        reportUnexpectedRoot: ($: { root: uast.TUntypedNode<Annotation>, }) => void,
+        reportUnexpectedChild: ($: { path: string, child: uast.TUntypedNode<Annotation>, expected: pr.optional<string[]> }) => void,
+        reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,
+    },
 ): void {
+    const $x = $i
     function Gblock(
         node: uast.TUntypedNode<Annotation>,
         children: uast.TUntypedNode<Annotation>[],
@@ -18,7 +21,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "Gblock",
                 kindNameOptions: [ "Block"],
@@ -26,7 +29,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "Block") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "Gblock",
                 child: currentChild,
                 expected: ["Block"],
@@ -117,7 +120,7 @@ export function parse<Annotation>(
                 })
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "Gblock$",
                     child: children[children.length - 1],
                     expected: null,
@@ -142,7 +145,7 @@ export function parse<Annotation>(
             callback($)
         }
         if (children.length === 0) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "Gexpression",
                 kindNameOptions: ["ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword"],
@@ -153,7 +156,7 @@ export function parse<Annotation>(
             const choose_arrayLiteral = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_arrayLiteral",
                         kindNameOptions: [ "ArrayLiteralExpression"],
@@ -161,7 +164,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ArrayLiteralExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_arrayLiteral",
                         child: currentChild,
                         expected: ["ArrayLiteralExpression"],
@@ -261,7 +264,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_arrayLiteral$",
                             child: children[children.length - 1],
                             expected: null,
@@ -278,7 +281,7 @@ export function parse<Annotation>(
             const choose_arrowFunction = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_arrowFunction",
                         kindNameOptions: [ "ArrowFunction"],
@@ -286,7 +289,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ArrowFunction") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_arrowFunction",
                         child: currentChild,
                         expected: ["ArrowFunction"],
@@ -393,7 +396,7 @@ export function parse<Annotation>(
                             const _returnType = $
                             currentChild = children.pop()
                             if (currentChild === undefined) {
-                                reportMissingToken({
+                                $x.reportMissingToken({
                                     parentAnnotation: node.annotation,
                                     path: "Gexpression_arrowFunction$_equalsGreaterThan",
                                     kindNameOptions: [ "EqualsGreaterThanToken"],
@@ -401,7 +404,7 @@ export function parse<Annotation>(
                                 return
                             }
                             if (currentChild.kindName !== "EqualsGreaterThanToken") {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gexpression_arrowFunction$_equalsGreaterThan",
                                     child: currentChild,
                                     expected: ["EqualsGreaterThanToken"],
@@ -420,7 +423,7 @@ export function parse<Annotation>(
                                     annotation: $.annotation,
                                 })
                                 if (children.length > 0) {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_arrowFunction$_equalsGreaterThan$",
                                         child: children[children.length - 1],
                                         expected: null,
@@ -441,7 +444,7 @@ export function parse<Annotation>(
                                         })
                                     }
                                     if (children.length === 0) {
-                                        reportMissingToken({
+                                        $x.reportMissingToken({
                                             parentAnnotation: node.annotation,
                                             path: "Gexpression_arrowFunction$_implementation",
                                             kindNameOptions: ["Block", "ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword"],
@@ -545,7 +548,7 @@ export function parse<Annotation>(
                                                 break
                                             }
                                             default: {
-                                                reportUnexpectedChild({
+                                                $x.reportUnexpectedChild({
                                                     path: "Gexpression_arrowFunction$_implementation",
                                                     child: nextChild,
                                                     expected: ["Block", "ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword"],
@@ -558,7 +561,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_arrowFunction$",
                             child: children[children.length - 1],
                             expected: null,
@@ -575,7 +578,7 @@ export function parse<Annotation>(
             const choose_binary = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_binary",
                         kindNameOptions: [ "BinaryExpression"],
@@ -583,7 +586,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "BinaryExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_binary",
                         child: currentChild,
                         expected: ["BinaryExpression"],
@@ -620,7 +623,7 @@ export function parse<Annotation>(
                             })
                         }
                         if (children.length === 0) {
-                            reportMissingToken({
+                            $x.reportMissingToken({
                                 parentAnnotation: node.annotation,
                                 path: "Gexpression_binary$_operator",
                                 kindNameOptions: ["AmpersandAmpersandToken", "BarBarToken", "EqualsToken", "EqualsEqualsEqualsToken", "ExclamationEqualsEqualsToken", "GreaterThanToken", "LessThanToken", "MinusToken", "MinusEqualsToken", "PlusToken", "PlusEqualsToken"],
@@ -631,7 +634,7 @@ export function parse<Annotation>(
                             const choose_ampersandAmpersand = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_ampersandAmpersand",
                                         kindNameOptions: [ "AmpersandAmpersandToken"],
@@ -639,7 +642,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "AmpersandAmpersandToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_ampersandAmpersand",
                                         child: currentChild,
                                         expected: ["AmpersandAmpersandToken"],
@@ -658,7 +661,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_ampersandAmpersand$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -675,7 +678,7 @@ export function parse<Annotation>(
                             const choose_barBar = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_barBar",
                                         kindNameOptions: [ "BarBarToken"],
@@ -683,7 +686,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "BarBarToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_barBar",
                                         child: currentChild,
                                         expected: ["BarBarToken"],
@@ -702,7 +705,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_barBar$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -719,7 +722,7 @@ export function parse<Annotation>(
                             const choose_equals = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_equals",
                                         kindNameOptions: [ "EqualsToken"],
@@ -727,7 +730,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "EqualsToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_equals",
                                         child: currentChild,
                                         expected: ["EqualsToken"],
@@ -746,7 +749,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_equals$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -763,7 +766,7 @@ export function parse<Annotation>(
                             const choose_equalsEqualsEquals = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_equalsEqualsEquals",
                                         kindNameOptions: [ "EqualsEqualsEqualsToken"],
@@ -771,7 +774,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "EqualsEqualsEqualsToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_equalsEqualsEquals",
                                         child: currentChild,
                                         expected: ["EqualsEqualsEqualsToken"],
@@ -790,7 +793,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_equalsEqualsEquals$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -807,7 +810,7 @@ export function parse<Annotation>(
                             const choose_exclamationEqualsEquals = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_exclamationEqualsEquals",
                                         kindNameOptions: [ "ExclamationEqualsEqualsToken"],
@@ -815,7 +818,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "ExclamationEqualsEqualsToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_exclamationEqualsEquals",
                                         child: currentChild,
                                         expected: ["ExclamationEqualsEqualsToken"],
@@ -834,7 +837,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_exclamationEqualsEquals$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -851,7 +854,7 @@ export function parse<Annotation>(
                             const choose_greaterThan = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_greaterThan",
                                         kindNameOptions: [ "GreaterThanToken"],
@@ -859,7 +862,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "GreaterThanToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_greaterThan",
                                         child: currentChild,
                                         expected: ["GreaterThanToken"],
@@ -878,7 +881,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_greaterThan$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -895,7 +898,7 @@ export function parse<Annotation>(
                             const choose_lessThan = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_lessThan",
                                         kindNameOptions: [ "LessThanToken"],
@@ -903,7 +906,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "LessThanToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_lessThan",
                                         child: currentChild,
                                         expected: ["LessThanToken"],
@@ -922,7 +925,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_lessThan$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -939,7 +942,7 @@ export function parse<Annotation>(
                             const choose_minus = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_minus",
                                         kindNameOptions: [ "MinusToken"],
@@ -947,7 +950,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "MinusToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_minus",
                                         child: currentChild,
                                         expected: ["MinusToken"],
@@ -966,7 +969,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_minus$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -983,7 +986,7 @@ export function parse<Annotation>(
                             const choose_minusEquals = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_minusEquals",
                                         kindNameOptions: [ "MinusEqualsToken"],
@@ -991,7 +994,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "MinusEqualsToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_minusEquals",
                                         child: currentChild,
                                         expected: ["MinusEqualsToken"],
@@ -1010,7 +1013,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_minusEquals$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -1027,7 +1030,7 @@ export function parse<Annotation>(
                             const choose_plus = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_plus",
                                         kindNameOptions: [ "PlusToken"],
@@ -1035,7 +1038,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "PlusToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_plus",
                                         child: currentChild,
                                         expected: ["PlusToken"],
@@ -1054,7 +1057,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_plus$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -1071,7 +1074,7 @@ export function parse<Annotation>(
                             const choose_plusEquals = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_binary$_operator_plusEquals",
                                         kindNameOptions: [ "PlusEqualsToken"],
@@ -1079,7 +1082,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "PlusEqualsToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator_plusEquals",
                                         child: currentChild,
                                         expected: ["PlusEqualsToken"],
@@ -1098,7 +1101,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_plusEquals$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -1158,7 +1161,7 @@ export function parse<Annotation>(
                                     break
                                 }
                                 default: {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_binary$_operator",
                                         child: nextChild,
                                         expected: ["AmpersandAmpersandToken", "BarBarToken", "EqualsToken", "EqualsEqualsEqualsToken", "ExclamationEqualsEqualsToken", "GreaterThanToken", "LessThanToken", "MinusToken", "MinusEqualsToken", "PlusToken", "PlusEqualsToken"],
@@ -1168,7 +1171,7 @@ export function parse<Annotation>(
                         }
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_binary$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1185,7 +1188,7 @@ export function parse<Annotation>(
             const choose_call = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_call",
                         kindNameOptions: [ "CallExpression"],
@@ -1193,7 +1196,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "CallExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_call",
                         child: currentChild,
                         expected: ["CallExpression"],
@@ -1371,7 +1374,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_call$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1388,7 +1391,7 @@ export function parse<Annotation>(
             const choose_conditional = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_conditional",
                         kindNameOptions: [ "ConditionalExpression"],
@@ -1396,7 +1399,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ConditionalExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_conditional",
                         child: currentChild,
                         expected: ["ConditionalExpression"],
@@ -1423,7 +1426,7 @@ export function parse<Annotation>(
                         const _test = $
                         currentChild = children.pop()
                         if (currentChild === undefined) {
-                            reportMissingToken({
+                            $x.reportMissingToken({
                                 parentAnnotation: node.annotation,
                                 path: "Gexpression_conditional$_questionToken",
                                 kindNameOptions: [ "QuestionToken"],
@@ -1431,7 +1434,7 @@ export function parse<Annotation>(
                             return
                         }
                         if (currentChild.kindName !== "QuestionToken") {
-                            reportUnexpectedChild({
+                            $x.reportUnexpectedChild({
                                 path: "Gexpression_conditional$_questionToken",
                                 child: currentChild,
                                 expected: ["QuestionToken"],
@@ -1450,7 +1453,7 @@ export function parse<Annotation>(
                                 annotation: $.annotation,
                             })
                             if (children.length > 0) {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gexpression_conditional$_questionToken$",
                                     child: children[children.length - 1],
                                     expected: null,
@@ -1465,7 +1468,7 @@ export function parse<Annotation>(
                                     const _ifExpression = $
                                     currentChild = children.pop()
                                     if (currentChild === undefined) {
-                                        reportMissingToken({
+                                        $x.reportMissingToken({
                                             parentAnnotation: node.annotation,
                                             path: "Gexpression_conditional$_colonToken",
                                             kindNameOptions: [ "ColonToken"],
@@ -1473,7 +1476,7 @@ export function parse<Annotation>(
                                         return
                                     }
                                     if (currentChild.kindName !== "ColonToken") {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_conditional$_colonToken",
                                             child: currentChild,
                                             expected: ["ColonToken"],
@@ -1492,7 +1495,7 @@ export function parse<Annotation>(
                                             annotation: $.annotation,
                                         })
                                         if (children.length > 0) {
-                                            reportUnexpectedChild({
+                                            $x.reportUnexpectedChild({
                                                 path: "Gexpression_conditional$_colonToken$",
                                                 child: children[children.length - 1],
                                                 expected: null,
@@ -1520,7 +1523,7 @@ export function parse<Annotation>(
                         )
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_conditional$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1537,7 +1540,7 @@ export function parse<Annotation>(
             const choose_elementAccess = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_elementAccess",
                         kindNameOptions: [ "ElementAccessExpression"],
@@ -1545,7 +1548,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ElementAccessExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_elementAccess",
                         child: currentChild,
                         expected: ["ElementAccessExpression"],
@@ -1579,7 +1582,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_elementAccess$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1596,7 +1599,7 @@ export function parse<Annotation>(
             const choose_false = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_false",
                         kindNameOptions: [ "FalseKeyword"],
@@ -1604,7 +1607,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "FalseKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_false",
                         child: currentChild,
                         expected: ["FalseKeyword"],
@@ -1623,7 +1626,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_false$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1645,7 +1648,7 @@ export function parse<Annotation>(
             const choose_new = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_new",
                         kindNameOptions: [ "NewExpression"],
@@ -1653,7 +1656,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "NewExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_new",
                         child: currentChild,
                         expected: ["NewExpression"],
@@ -1763,7 +1766,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_new$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1780,7 +1783,7 @@ export function parse<Annotation>(
             const choose_noSubstitutionTemplateLiteral = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_noSubstitutionTemplateLiteral",
                         kindNameOptions: [ "NoSubstitutionTemplateLiteral"],
@@ -1788,7 +1791,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "NoSubstitutionTemplateLiteral") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_noSubstitutionTemplateLiteral",
                         child: currentChild,
                         expected: ["NoSubstitutionTemplateLiteral"],
@@ -1807,7 +1810,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_noSubstitutionTemplateLiteral$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1829,7 +1832,7 @@ export function parse<Annotation>(
             const choose_nullKeyword = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_nullKeyword",
                         kindNameOptions: [ "NullKeyword"],
@@ -1837,7 +1840,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "NullKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_nullKeyword",
                         child: currentChild,
                         expected: ["NullKeyword"],
@@ -1856,7 +1859,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_nullKeyword$",
                             child: children[children.length - 1],
                             expected: null,
@@ -1873,7 +1876,7 @@ export function parse<Annotation>(
             const choose_objectLiteral = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_objectLiteral",
                         kindNameOptions: [ "ObjectLiteralExpression"],
@@ -1881,7 +1884,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ObjectLiteralExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_objectLiteral",
                         child: currentChild,
                         expected: ["ObjectLiteralExpression"],
@@ -1902,7 +1905,7 @@ export function parse<Annotation>(
                     const processElement = () => {
                         currentChild = children.pop()
                         if (currentChild === undefined) {
-                            reportMissingToken({
+                            $x.reportMissingToken({
                                 parentAnnotation: node.annotation,
                                 path: "Gexpression_objectLiteral$",
                                 kindNameOptions: [ "PropertyAssignment"],
@@ -1910,7 +1913,7 @@ export function parse<Annotation>(
                             return
                         }
                         if (currentChild.kindName !== "PropertyAssignment") {
-                            reportUnexpectedChild({
+                            $x.reportUnexpectedChild({
                                 path: "Gexpression_objectLiteral$",
                                 child: currentChild,
                                 expected: ["PropertyAssignment"],
@@ -1944,7 +1947,7 @@ export function parse<Annotation>(
                                 })
                             }
                             if (children.length === 0) {
-                                reportMissingToken({
+                                $x.reportMissingToken({
                                     parentAnnotation: node.annotation,
                                     path: "Gexpression_objectLiteral$$_name",
                                     kindNameOptions: ["Identifier", "NumericLiteral", "StringLiteral"],
@@ -1981,7 +1984,7 @@ export function parse<Annotation>(
                                         break
                                     }
                                     default: {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_objectLiteral$$_name",
                                             child: nextChild,
                                             expected: ["Identifier", "NumericLiteral", "StringLiteral"],
@@ -1990,7 +1993,7 @@ export function parse<Annotation>(
                                 }
                             }
                             if (children.length > 0) {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gexpression_objectLiteral$$",
                                     child: children[children.length - 1],
                                     expected: null,
@@ -2024,7 +2027,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_objectLiteral$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2041,7 +2044,7 @@ export function parse<Annotation>(
             const choose_parenthesizedExpression = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_parenthesizedExpression",
                         kindNameOptions: [ "ParenthesizedExpression"],
@@ -2049,7 +2052,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ParenthesizedExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_parenthesizedExpression",
                         child: currentChild,
                         expected: ["ParenthesizedExpression"],
@@ -2073,7 +2076,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_parenthesizedExpression$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2090,7 +2093,7 @@ export function parse<Annotation>(
             const choose_postfixUnary = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_postfixUnary",
                         kindNameOptions: [ "PostfixUnaryExpression"],
@@ -2098,7 +2101,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "PostfixUnaryExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_postfixUnary",
                         child: currentChild,
                         expected: ["PostfixUnaryExpression"],
@@ -2122,7 +2125,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_postfixUnary$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2139,7 +2142,7 @@ export function parse<Annotation>(
             const choose_prefixUnary = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_prefixUnary",
                         kindNameOptions: [ "PrefixUnaryExpression"],
@@ -2147,7 +2150,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "PrefixUnaryExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_prefixUnary",
                         child: currentChild,
                         expected: ["PrefixUnaryExpression"],
@@ -2171,7 +2174,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_prefixUnary$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2188,7 +2191,7 @@ export function parse<Annotation>(
             const choose_propertyAccess = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_propertyAccess",
                         kindNameOptions: [ "PropertyAccessExpression"],
@@ -2196,7 +2199,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "PropertyAccessExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_propertyAccess",
                         child: currentChild,
                         expected: ["PropertyAccessExpression"],
@@ -2230,7 +2233,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_propertyAccess$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2252,7 +2255,7 @@ export function parse<Annotation>(
             const choose_template = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_template",
                         kindNameOptions: [ "TemplateExpression"],
@@ -2260,7 +2263,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "TemplateExpression") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_template",
                         child: currentChild,
                         expected: ["TemplateExpression"],
@@ -2285,7 +2288,7 @@ export function parse<Annotation>(
                     }
                     currentChild = children.pop()
                     if (currentChild === undefined) {
-                        reportMissingToken({
+                        $x.reportMissingToken({
                             parentAnnotation: node.annotation,
                             path: "Gexpression_template$_head",
                             kindNameOptions: [ "TemplateHead"],
@@ -2293,7 +2296,7 @@ export function parse<Annotation>(
                         return
                     }
                     if (currentChild.kindName !== "TemplateHead") {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_template$_head",
                             child: currentChild,
                             expected: ["TemplateHead"],
@@ -2313,7 +2316,7 @@ export function parse<Annotation>(
                             content: $.value
                         })
                         if (children.length > 0) {
-                            reportUnexpectedChild({
+                            $x.reportUnexpectedChild({
                                 path: "Gexpression_template$_head$",
                                 child: children[children.length - 1],
                                 expected: null,
@@ -2328,7 +2331,7 @@ export function parse<Annotation>(
                             const processElement = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gexpression_template$_spans",
                                         kindNameOptions: [ "TemplateSpan"],
@@ -2336,7 +2339,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "TemplateSpan") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gexpression_template$_spans",
                                         child: currentChild,
                                         expected: ["TemplateSpan"],
@@ -2369,7 +2372,7 @@ export function parse<Annotation>(
                                             })
                                         }
                                         if (children.length === 0) {
-                                            reportMissingToken({
+                                            $x.reportMissingToken({
                                                 parentAnnotation: node.annotation,
                                                 path: "Gexpression_template$_spans$_x",
                                                 kindNameOptions: ["TemplateMiddle", "TemplateTail"],
@@ -2380,7 +2383,7 @@ export function parse<Annotation>(
                                             const choose_middle = () => {
                                                 currentChild = children.pop()
                                                 if (currentChild === undefined) {
-                                                    reportMissingToken({
+                                                    $x.reportMissingToken({
                                                         parentAnnotation: node.annotation,
                                                         path: "Gexpression_template$_spans$_x_middle",
                                                         kindNameOptions: [ "TemplateMiddle"],
@@ -2388,7 +2391,7 @@ export function parse<Annotation>(
                                                     return
                                                 }
                                                 if (currentChild.kindName !== "TemplateMiddle") {
-                                                    reportUnexpectedChild({
+                                                    $x.reportUnexpectedChild({
                                                         path: "Gexpression_template$_spans$_x_middle",
                                                         child: currentChild,
                                                         expected: ["TemplateMiddle"],
@@ -2408,7 +2411,7 @@ export function parse<Annotation>(
                                                         content: $.value
                                                     })
                                                     if (children.length > 0) {
-                                                        reportUnexpectedChild({
+                                                        $x.reportUnexpectedChild({
                                                             path: "Gexpression_template$_spans$_x_middle$",
                                                             child: children[children.length - 1],
                                                             expected: null,
@@ -2425,7 +2428,7 @@ export function parse<Annotation>(
                                             const choose_tail = () => {
                                                 currentChild = children.pop()
                                                 if (currentChild === undefined) {
-                                                    reportMissingToken({
+                                                    $x.reportMissingToken({
                                                         parentAnnotation: node.annotation,
                                                         path: "Gexpression_template$_spans$_x_tail",
                                                         kindNameOptions: [ "TemplateTail"],
@@ -2433,7 +2436,7 @@ export function parse<Annotation>(
                                                     return
                                                 }
                                                 if (currentChild.kindName !== "TemplateTail") {
-                                                    reportUnexpectedChild({
+                                                    $x.reportUnexpectedChild({
                                                         path: "Gexpression_template$_spans$_x_tail",
                                                         child: currentChild,
                                                         expected: ["TemplateTail"],
@@ -2453,7 +2456,7 @@ export function parse<Annotation>(
                                                         content: $.value
                                                     })
                                                     if (children.length > 0) {
-                                                        reportUnexpectedChild({
+                                                        $x.reportUnexpectedChild({
                                                             path: "Gexpression_template$_spans$_x_tail$",
                                                             child: children[children.length - 1],
                                                             expected: null,
@@ -2477,7 +2480,7 @@ export function parse<Annotation>(
                                                     break
                                                 }
                                                 default: {
-                                                    reportUnexpectedChild({
+                                                    $x.reportUnexpectedChild({
                                                         path: "Gexpression_template$_spans$_x",
                                                         child: nextChild,
                                                         expected: ["TemplateMiddle", "TemplateTail"],
@@ -2487,7 +2490,7 @@ export function parse<Annotation>(
                                         }
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gexpression_template$_spans$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -2524,7 +2527,7 @@ export function parse<Annotation>(
                         }
                     )
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_template$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2541,7 +2544,7 @@ export function parse<Annotation>(
             const choose_true = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gexpression_true",
                         kindNameOptions: [ "TrueKeyword"],
@@ -2549,7 +2552,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "TrueKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression_true",
                         child: currentChild,
                         expected: ["TrueKeyword"],
@@ -2568,7 +2571,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gexpression_true$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2664,7 +2667,7 @@ export function parse<Annotation>(
                     break
                 }
                 default: {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gexpression",
                         child: nextChild,
                         expected: ["ArrayLiteralExpression", "ArrowFunction", "BinaryExpression", "CallExpression", "ConditionalExpression", "ElementAccessExpression", "FalseKeyword", "Identifier", "NewExpression", "NoSubstitutionTemplateLiteral", "NumericLiteral", "NullKeyword", "ObjectLiteralExpression", "ParenthesizedExpression", "PostfixUnaryExpression", "PrefixUnaryExpression", "PropertyAccessExpression", "StringLiteral", "TemplateExpression", "TrueKeyword"],
@@ -2804,7 +2807,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "Gidentifier",
                 kindNameOptions: [ "Identifier"],
@@ -2812,7 +2815,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "Identifier") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "Gidentifier",
                 child: currentChild,
                 expected: ["Identifier"],
@@ -2832,7 +2835,7 @@ export function parse<Annotation>(
                 content: $.value
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "Gidentifier$",
                     child: children[children.length - 1],
                     expected: null,
@@ -2857,7 +2860,7 @@ export function parse<Annotation>(
             callback($)
         }
         if (children.length === 0) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "GidentifierOrStringLiteral",
                 kindNameOptions: ["Identifier", "StringLiteral"],
@@ -2885,7 +2888,7 @@ export function parse<Annotation>(
                     break
                 }
                 default: {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "GidentifierOrStringLiteral",
                         child: nextChild,
                         expected: ["Identifier", "StringLiteral"],
@@ -2905,7 +2908,7 @@ export function parse<Annotation>(
             callback($)
         }
         if (children.length === 0) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "Gmodifier",
                 kindNameOptions: ["DeclareKeyword", "ExportKeyword", "ReadonlyKeyword"],
@@ -2916,7 +2919,7 @@ export function parse<Annotation>(
             const choose_declare = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gmodifier_declare",
                         kindNameOptions: [ "DeclareKeyword"],
@@ -2924,7 +2927,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "DeclareKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gmodifier_declare",
                         child: currentChild,
                         expected: ["DeclareKeyword"],
@@ -2943,7 +2946,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gmodifier_declare$",
                             child: children[children.length - 1],
                             expected: null,
@@ -2960,7 +2963,7 @@ export function parse<Annotation>(
             const choose_export = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gmodifier_export",
                         kindNameOptions: [ "ExportKeyword"],
@@ -2968,7 +2971,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ExportKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gmodifier_export",
                         child: currentChild,
                         expected: ["ExportKeyword"],
@@ -2987,7 +2990,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gmodifier_export$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3004,7 +3007,7 @@ export function parse<Annotation>(
             const choose_readonly = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gmodifier_readonly",
                         kindNameOptions: [ "ReadonlyKeyword"],
@@ -3012,7 +3015,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ReadonlyKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gmodifier_readonly",
                         child: currentChild,
                         expected: ["ReadonlyKeyword"],
@@ -3031,7 +3034,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gmodifier_readonly$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3059,7 +3062,7 @@ export function parse<Annotation>(
                     break
                 }
                 default: {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gmodifier",
                         child: nextChild,
                         expected: ["DeclareKeyword", "ExportKeyword", "ReadonlyKeyword"],
@@ -3077,7 +3080,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "GnumericLiteral",
                 kindNameOptions: [ "NumericLiteral"],
@@ -3085,7 +3088,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "NumericLiteral") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "GnumericLiteral",
                 child: currentChild,
                 expected: ["NumericLiteral"],
@@ -3105,7 +3108,7 @@ export function parse<Annotation>(
                 content: $.value
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "GnumericLiteral$",
                     child: children[children.length - 1],
                     expected: null,
@@ -3128,7 +3131,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "Gparameter",
                 kindNameOptions: [ "Parameter"],
@@ -3136,7 +3139,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "Parameter") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "Gparameter",
                 child: currentChild,
                 expected: ["Parameter"],
@@ -3165,7 +3168,7 @@ export function parse<Annotation>(
                 const setOptional = () => {
                     currentChild = children.pop()
                     if (currentChild === undefined) {
-                        reportMissingToken({
+                        $x.reportMissingToken({
                             parentAnnotation: node.annotation,
                             path: "Gparameter$_questionToken",
                             kindNameOptions: [ "QuestionToken"],
@@ -3173,7 +3176,7 @@ export function parse<Annotation>(
                         return
                     }
                     if (currentChild.kindName !== "QuestionToken") {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gparameter$_questionToken",
                             child: currentChild,
                             expected: ["QuestionToken"],
@@ -3192,7 +3195,7 @@ export function parse<Annotation>(
                             annotation: $.annotation,
                         })
                         if (children.length > 0) {
-                            reportUnexpectedChild({
+                            $x.reportUnexpectedChild({
                                 path: "Gparameter$_questionToken$",
                                 child: children[children.length - 1],
                                 expected: null,
@@ -3286,7 +3289,7 @@ export function parse<Annotation>(
                 })
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "Gparameter$",
                     child: children[children.length - 1],
                     expected: null,
@@ -3311,7 +3314,7 @@ export function parse<Annotation>(
             callback($)
         }
         if (children.length === 0) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "Gstatement",
                 kindNameOptions: ["Block", "BreakStatement", "ExportDeclaration", "ExpressionStatement", "ForStatement", "FunctionDeclaration", "IfStatement", "ImportDeclaration", "InterfaceDeclaration", "LabeledStatement", "ReturnStatement", "SwitchStatement", "ThrowStatement", "TryStatement", "TypeAliasDeclaration", "VariableStatement", "WhileStatement"],
@@ -3327,7 +3330,7 @@ export function parse<Annotation>(
             const choose_break = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_break",
                         kindNameOptions: [ "BreakStatement"],
@@ -3335,7 +3338,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "BreakStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_break",
                         child: currentChild,
                         expected: ["BreakStatement"],
@@ -3373,7 +3376,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_break$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3390,7 +3393,7 @@ export function parse<Annotation>(
             const choose_export = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_export",
                         kindNameOptions: [ "ExportDeclaration"],
@@ -3398,7 +3401,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ExportDeclaration") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_export",
                         child: currentChild,
                         expected: ["ExportDeclaration"],
@@ -3422,7 +3425,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_export$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3439,7 +3442,7 @@ export function parse<Annotation>(
             const choose_expression = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_expression",
                         kindNameOptions: [ "ExpressionStatement"],
@@ -3447,7 +3450,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ExpressionStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_expression",
                         child: currentChild,
                         expected: ["ExpressionStatement"],
@@ -3471,7 +3474,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_expression$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3488,7 +3491,7 @@ export function parse<Annotation>(
             const choose_for = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_for",
                         kindNameOptions: [ "ForStatement"],
@@ -3496,7 +3499,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ForStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_for",
                         child: currentChild,
                         expected: ["ForStatement"],
@@ -3538,7 +3541,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_for$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3555,7 +3558,7 @@ export function parse<Annotation>(
             const choose_function = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_function",
                         kindNameOptions: [ "FunctionDeclaration"],
@@ -3563,7 +3566,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "FunctionDeclaration") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_function",
                         child: currentChild,
                         expected: ["FunctionDeclaration"],
@@ -3644,7 +3647,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_function$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3661,7 +3664,7 @@ export function parse<Annotation>(
             const choose_if = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_if",
                         kindNameOptions: [ "IfStatement"],
@@ -3669,7 +3672,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "IfStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_if",
                         child: currentChild,
                         expected: ["IfStatement"],
@@ -3769,7 +3772,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_if$",
                             child: children[children.length - 1],
                             expected: null,
@@ -3786,7 +3789,7 @@ export function parse<Annotation>(
             const choose_import = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_import",
                         kindNameOptions: [ "ImportDeclaration"],
@@ -3794,7 +3797,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ImportDeclaration") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_import",
                         child: currentChild,
                         expected: ["ImportDeclaration"],
@@ -3819,7 +3822,7 @@ export function parse<Annotation>(
                     }
                     currentChild = children.pop()
                     if (currentChild === undefined) {
-                        reportMissingToken({
+                        $x.reportMissingToken({
                             parentAnnotation: node.annotation,
                             path: "Gstatement_import$_clause",
                             kindNameOptions: [ "ImportClause"],
@@ -3827,7 +3830,7 @@ export function parse<Annotation>(
                         return
                     }
                     if (currentChild.kindName !== "ImportClause") {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_import$_clause",
                             child: currentChild,
                             expected: ["ImportClause"],
@@ -3851,7 +3854,7 @@ export function parse<Annotation>(
                             })
                         }
                         if (children.length === 0) {
-                            reportMissingToken({
+                            $x.reportMissingToken({
                                 parentAnnotation: node.annotation,
                                 path: "Gstatement_import$_clause$",
                                 kindNameOptions: ["NamespaceImport", "NamedImports"],
@@ -3862,7 +3865,7 @@ export function parse<Annotation>(
                             const choose_namespace = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gstatement_import$_clause$_namespace",
                                         kindNameOptions: [ "NamespaceImport"],
@@ -3870,7 +3873,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "NamespaceImport") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gstatement_import$_clause$_namespace",
                                         child: currentChild,
                                         expected: ["NamespaceImport"],
@@ -3894,7 +3897,7 @@ export function parse<Annotation>(
                                         })
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gstatement_import$_clause$_namespace$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -3911,7 +3914,7 @@ export function parse<Annotation>(
                             const choose_named = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gstatement_import$_clause$_named",
                                         kindNameOptions: [ "NamedImports"],
@@ -3919,7 +3922,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "NamedImports") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gstatement_import$_clause$_named",
                                         child: currentChild,
                                         expected: ["NamedImports"],
@@ -3940,7 +3943,7 @@ export function parse<Annotation>(
                                     const processElement = () => {
                                         currentChild = children.pop()
                                         if (currentChild === undefined) {
-                                            reportMissingToken({
+                                            $x.reportMissingToken({
                                                 parentAnnotation: node.annotation,
                                                 path: "Gstatement_import$_clause$_named$",
                                                 kindNameOptions: [ "ImportSpecifier"],
@@ -3948,7 +3951,7 @@ export function parse<Annotation>(
                                             return
                                         }
                                         if (currentChild.kindName !== "ImportSpecifier") {
-                                            reportUnexpectedChild({
+                                            $x.reportUnexpectedChild({
                                                 path: "Gstatement_import$_clause$_named$",
                                                 child: currentChild,
                                                 expected: ["ImportSpecifier"],
@@ -3996,7 +3999,7 @@ export function parse<Annotation>(
                                                 })
                                             })
                                             if (children.length > 0) {
-                                                reportUnexpectedChild({
+                                                $x.reportUnexpectedChild({
                                                     path: "Gstatement_import$_clause$_named$$",
                                                     child: children[children.length - 1],
                                                     expected: null,
@@ -4030,7 +4033,7 @@ export function parse<Annotation>(
                                         })
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "Gstatement_import$_clause$_named$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -4054,7 +4057,7 @@ export function parse<Annotation>(
                                     break
                                 }
                                 default: {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gstatement_import$_clause$",
                                         child: nextChild,
                                         expected: ["NamespaceImport", "NamedImports"],
@@ -4063,7 +4066,7 @@ export function parse<Annotation>(
                             }
                         }
                         if (children.length > 0) {
-                            reportUnexpectedChild({
+                            $x.reportUnexpectedChild({
                                 path: "Gstatement_import$_clause$",
                                 child: children[children.length - 1],
                                 expected: null,
@@ -4084,7 +4087,7 @@ export function parse<Annotation>(
                         }
                     )
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_import$",
                             child: children[children.length - 1],
                             expected: null,
@@ -4101,7 +4104,7 @@ export function parse<Annotation>(
             const choose_interface = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_interface",
                         kindNameOptions: [ "InterfaceDeclaration"],
@@ -4109,7 +4112,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "InterfaceDeclaration") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_interface",
                         child: currentChild,
                         expected: ["InterfaceDeclaration"],
@@ -4223,7 +4226,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_interface$",
                             child: children[children.length - 1],
                             expected: null,
@@ -4240,7 +4243,7 @@ export function parse<Annotation>(
             const choose_labeled = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_labeled",
                         kindNameOptions: [ "LabeledStatement"],
@@ -4248,7 +4251,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "LabeledStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_labeled",
                         child: currentChild,
                         expected: ["LabeledStatement"],
@@ -4282,7 +4285,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_labeled$",
                             child: children[children.length - 1],
                             expected: null,
@@ -4299,7 +4302,7 @@ export function parse<Annotation>(
             const choose_return = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_return",
                         kindNameOptions: [ "ReturnStatement"],
@@ -4307,7 +4310,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ReturnStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_return",
                         child: currentChild,
                         expected: ["ReturnStatement"],
@@ -4402,7 +4405,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_return$",
                             child: children[children.length - 1],
                             expected: null,
@@ -4419,7 +4422,7 @@ export function parse<Annotation>(
             const choose_switch = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_switch",
                         kindNameOptions: [ "SwitchStatement"],
@@ -4427,7 +4430,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "SwitchStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_switch",
                         child: currentChild,
                         expected: ["SwitchStatement"],
@@ -4454,7 +4457,7 @@ export function parse<Annotation>(
                         const _expression = $
                         currentChild = children.pop()
                         if (currentChild === undefined) {
-                            reportMissingToken({
+                            $x.reportMissingToken({
                                 parentAnnotation: node.annotation,
                                 path: "Gstatement_switch$_caseBlock",
                                 kindNameOptions: [ "CaseBlock"],
@@ -4462,7 +4465,7 @@ export function parse<Annotation>(
                             return
                         }
                         if (currentChild.kindName !== "CaseBlock") {
-                            reportUnexpectedChild({
+                            $x.reportUnexpectedChild({
                                 path: "Gstatement_switch$_caseBlock",
                                 child: currentChild,
                                 expected: ["CaseBlock"],
@@ -4485,7 +4488,7 @@ export function parse<Annotation>(
                                     elements.push($)
                                 }
                                 if (children.length === 0) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "Gstatement_switch$_caseBlock$",
                                         kindNameOptions: ["CaseClause", "DefaultClause"],
@@ -4496,7 +4499,7 @@ export function parse<Annotation>(
                                     const choose_case = () => {
                                         currentChild = children.pop()
                                         if (currentChild === undefined) {
-                                            reportMissingToken({
+                                            $x.reportMissingToken({
                                                 parentAnnotation: node.annotation,
                                                 path: "Gstatement_switch$_caseBlock$_case",
                                                 kindNameOptions: [ "CaseClause"],
@@ -4504,7 +4507,7 @@ export function parse<Annotation>(
                                             return
                                         }
                                         if (currentChild.kindName !== "CaseClause") {
-                                            reportUnexpectedChild({
+                                            $x.reportUnexpectedChild({
                                                 path: "Gstatement_switch$_caseBlock$_case",
                                                 child: currentChild,
                                                 expected: ["CaseClause"],
@@ -4605,7 +4608,7 @@ export function parse<Annotation>(
                                                 })
                                             })
                                             if (children.length > 0) {
-                                                reportUnexpectedChild({
+                                                $x.reportUnexpectedChild({
                                                     path: "Gstatement_switch$_caseBlock$_case$",
                                                     child: children[children.length - 1],
                                                     expected: null,
@@ -4622,7 +4625,7 @@ export function parse<Annotation>(
                                     const choose_default = () => {
                                         currentChild = children.pop()
                                         if (currentChild === undefined) {
-                                            reportMissingToken({
+                                            $x.reportMissingToken({
                                                 parentAnnotation: node.annotation,
                                                 path: "Gstatement_switch$_caseBlock$_default",
                                                 kindNameOptions: [ "DefaultClause"],
@@ -4630,7 +4633,7 @@ export function parse<Annotation>(
                                             return
                                         }
                                         if (currentChild.kindName !== "DefaultClause") {
-                                            reportUnexpectedChild({
+                                            $x.reportUnexpectedChild({
                                                 path: "Gstatement_switch$_caseBlock$_default",
                                                 child: currentChild,
                                                 expected: ["DefaultClause"],
@@ -4721,7 +4724,7 @@ export function parse<Annotation>(
                                                 })
                                             })
                                             if (children.length > 0) {
-                                                reportUnexpectedChild({
+                                                $x.reportUnexpectedChild({
                                                     path: "Gstatement_switch$_caseBlock$_default$",
                                                     child: children[children.length - 1],
                                                     expected: null,
@@ -4745,7 +4748,7 @@ export function parse<Annotation>(
                                             break
                                         }
                                         default: {
-                                            reportUnexpectedChild({
+                                            $x.reportUnexpectedChild({
                                                 path: "Gstatement_switch$_caseBlock$",
                                                 child: nextChild,
                                                 expected: ["CaseClause", "DefaultClause"],
@@ -4777,7 +4780,7 @@ export function parse<Annotation>(
                                 })
                             })
                             if (children.length > 0) {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gstatement_switch$_caseBlock$",
                                     child: children[children.length - 1],
                                     expected: null,
@@ -4796,7 +4799,7 @@ export function parse<Annotation>(
                         )
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_switch$",
                             child: children[children.length - 1],
                             expected: null,
@@ -4813,7 +4816,7 @@ export function parse<Annotation>(
             const choose_throw = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_throw",
                         kindNameOptions: [ "ThrowStatement"],
@@ -4821,7 +4824,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ThrowStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_throw",
                         child: currentChild,
                         expected: ["ThrowStatement"],
@@ -4845,7 +4848,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_throw$",
                             child: children[children.length - 1],
                             expected: null,
@@ -4862,7 +4865,7 @@ export function parse<Annotation>(
             const choose_try = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_try",
                         kindNameOptions: [ "TryStatement"],
@@ -4870,7 +4873,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "TryStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_try",
                         child: currentChild,
                         expected: ["TryStatement"],
@@ -4897,7 +4900,7 @@ export function parse<Annotation>(
                         const _block = $
                         currentChild = children.pop()
                         if (currentChild === undefined) {
-                            reportMissingToken({
+                            $x.reportMissingToken({
                                 parentAnnotation: node.annotation,
                                 path: "Gstatement_try$_catchClause",
                                 kindNameOptions: [ "CatchClause"],
@@ -4905,7 +4908,7 @@ export function parse<Annotation>(
                             return
                         }
                         if (currentChild.kindName !== "CatchClause") {
-                            reportUnexpectedChild({
+                            $x.reportUnexpectedChild({
                                 path: "Gstatement_try$_catchClause",
                                 child: currentChild,
                                 expected: ["CatchClause"],
@@ -4939,7 +4942,7 @@ export function parse<Annotation>(
                                 })
                             })
                             if (children.length > 0) {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gstatement_try$_catchClause$",
                                     child: children[children.length - 1],
                                     expected: null,
@@ -4958,7 +4961,7 @@ export function parse<Annotation>(
                         )
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_try$",
                             child: children[children.length - 1],
                             expected: null,
@@ -4975,7 +4978,7 @@ export function parse<Annotation>(
             const choose_typeAlias = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_typeAlias",
                         kindNameOptions: [ "TypeAliasDeclaration"],
@@ -4983,7 +4986,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "TypeAliasDeclaration") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_typeAlias",
                         child: currentChild,
                         expected: ["TypeAliasDeclaration"],
@@ -5069,7 +5072,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_typeAlias$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5086,7 +5089,7 @@ export function parse<Annotation>(
             const choose_variable = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_variable",
                         kindNameOptions: [ "VariableStatement"],
@@ -5094,7 +5097,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "VariableStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_variable",
                         child: currentChild,
                         expected: ["VariableStatement"],
@@ -5153,7 +5156,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_variable$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5170,7 +5173,7 @@ export function parse<Annotation>(
             const choose_while = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gstatement_while",
                         kindNameOptions: [ "WhileStatement"],
@@ -5178,7 +5181,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "WhileStatement") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement_while",
                         child: currentChild,
                         expected: ["WhileStatement"],
@@ -5212,7 +5215,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gstatement_while$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5296,7 +5299,7 @@ export function parse<Annotation>(
                     break
                 }
                 default: {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gstatement",
                         child: nextChild,
                         expected: ["Block", "BreakStatement", "ExportDeclaration", "ExpressionStatement", "ForStatement", "FunctionDeclaration", "IfStatement", "ImportDeclaration", "InterfaceDeclaration", "LabeledStatement", "ReturnStatement", "SwitchStatement", "ThrowStatement", "TryStatement", "TypeAliasDeclaration", "VariableStatement", "WhileStatement"],
@@ -5314,7 +5317,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "GstringLiteral",
                 kindNameOptions: [ "StringLiteral"],
@@ -5322,7 +5325,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "StringLiteral") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "GstringLiteral",
                 child: currentChild,
                 expected: ["StringLiteral"],
@@ -5342,7 +5345,7 @@ export function parse<Annotation>(
                 content: $.value
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "GstringLiteral$",
                     child: children[children.length - 1],
                     expected: null,
@@ -5367,7 +5370,7 @@ export function parse<Annotation>(
             callback($)
         }
         if (children.length === 0) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "Gtype",
                 kindNameOptions: ["AnyKeyword", "ArrayType", "BooleanKeyword", "FunctionType", "LiteralType", "ParenthesizedType", "NeverKeyword", "NumberKeyword", "OptionalType", "TupleType", "TypeLiteral", "StringKeyword", "TypeReference", "UndefinedKeyword", "UnionType", "VoidKeyword"],
@@ -5378,7 +5381,7 @@ export function parse<Annotation>(
             const choose_any = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_any",
                         kindNameOptions: [ "AnyKeyword"],
@@ -5386,7 +5389,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "AnyKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_any",
                         child: currentChild,
                         expected: ["AnyKeyword"],
@@ -5405,7 +5408,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_any$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5422,7 +5425,7 @@ export function parse<Annotation>(
             const choose_array = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_array",
                         kindNameOptions: [ "ArrayType"],
@@ -5430,7 +5433,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ArrayType") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_array",
                         child: currentChild,
                         expected: ["ArrayType"],
@@ -5454,7 +5457,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_array$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5471,7 +5474,7 @@ export function parse<Annotation>(
             const choose_boolean = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_boolean",
                         kindNameOptions: [ "BooleanKeyword"],
@@ -5479,7 +5482,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "BooleanKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_boolean",
                         child: currentChild,
                         expected: ["BooleanKeyword"],
@@ -5498,7 +5501,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_boolean$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5515,7 +5518,7 @@ export function parse<Annotation>(
             const choose_function = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_function",
                         kindNameOptions: [ "FunctionType"],
@@ -5523,7 +5526,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "FunctionType") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_function",
                         child: currentChild,
                         expected: ["FunctionType"],
@@ -5635,7 +5638,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_function$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5652,7 +5655,7 @@ export function parse<Annotation>(
             const choose_literal = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_literal",
                         kindNameOptions: [ "LiteralType"],
@@ -5660,7 +5663,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "LiteralType") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_literal",
                         child: currentChild,
                         expected: ["LiteralType"],
@@ -5684,7 +5687,7 @@ export function parse<Annotation>(
                         })
                     }
                     if (children.length === 0) {
-                        reportMissingToken({
+                        $x.reportMissingToken({
                             parentAnnotation: node.annotation,
                             path: "Gtype_literal$",
                             kindNameOptions: ["NullKeyword", "StringLiteral"],
@@ -5695,7 +5698,7 @@ export function parse<Annotation>(
                         const choose_null = () => {
                             currentChild = children.pop()
                             if (currentChild === undefined) {
-                                reportMissingToken({
+                                $x.reportMissingToken({
                                     parentAnnotation: node.annotation,
                                     path: "Gtype_literal$_null",
                                     kindNameOptions: [ "NullKeyword"],
@@ -5703,7 +5706,7 @@ export function parse<Annotation>(
                                 return
                             }
                             if (currentChild.kindName !== "NullKeyword") {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gtype_literal$_null",
                                     child: currentChild,
                                     expected: ["NullKeyword"],
@@ -5722,7 +5725,7 @@ export function parse<Annotation>(
                                     annotation: $.annotation,
                                 })
                                 if (children.length > 0) {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gtype_literal$_null$",
                                         child: children[children.length - 1],
                                         expected: null,
@@ -5751,7 +5754,7 @@ export function parse<Annotation>(
                                 break
                             }
                             default: {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gtype_literal$",
                                     child: nextChild,
                                     expected: ["NullKeyword", "StringLiteral"],
@@ -5760,7 +5763,7 @@ export function parse<Annotation>(
                         }
                     }
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_literal$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5777,7 +5780,7 @@ export function parse<Annotation>(
             const choose_parenthesized = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_parenthesized",
                         kindNameOptions: [ "ParenthesizedType"],
@@ -5785,7 +5788,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ParenthesizedType") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_parenthesized",
                         child: currentChild,
                         expected: ["ParenthesizedType"],
@@ -5809,7 +5812,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_parenthesized$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5826,7 +5829,7 @@ export function parse<Annotation>(
             const choose_never = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_never",
                         kindNameOptions: [ "NeverKeyword"],
@@ -5834,7 +5837,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "NeverKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_never",
                         child: currentChild,
                         expected: ["NeverKeyword"],
@@ -5853,7 +5856,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_never$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5870,7 +5873,7 @@ export function parse<Annotation>(
             const choose_number = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_number",
                         kindNameOptions: [ "NumberKeyword"],
@@ -5878,7 +5881,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "NumberKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_number",
                         child: currentChild,
                         expected: ["NumberKeyword"],
@@ -5897,7 +5900,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_number$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5914,7 +5917,7 @@ export function parse<Annotation>(
             const choose_optional = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_optional",
                         kindNameOptions: [ "OptionalType"],
@@ -5922,7 +5925,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "OptionalType") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_optional",
                         child: currentChild,
                         expected: ["OptionalType"],
@@ -5946,7 +5949,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_optional$",
                             child: children[children.length - 1],
                             expected: null,
@@ -5963,7 +5966,7 @@ export function parse<Annotation>(
             const choose_tuple = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_tuple",
                         kindNameOptions: [ "TupleType"],
@@ -5971,7 +5974,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "TupleType") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_tuple",
                         child: currentChild,
                         expected: ["TupleType"],
@@ -6059,7 +6062,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_tuple$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6076,7 +6079,7 @@ export function parse<Annotation>(
             const choose_typeLiteral = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_typeLiteral",
                         kindNameOptions: [ "TypeLiteral"],
@@ -6084,7 +6087,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "TypeLiteral") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_typeLiteral",
                         child: currentChild,
                         expected: ["TypeLiteral"],
@@ -6136,7 +6139,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_typeLiteral$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6153,7 +6156,7 @@ export function parse<Annotation>(
             const choose_string = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_string",
                         kindNameOptions: [ "StringKeyword"],
@@ -6161,7 +6164,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "StringKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_string",
                         child: currentChild,
                         expected: ["StringKeyword"],
@@ -6180,7 +6183,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_string$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6197,7 +6200,7 @@ export function parse<Annotation>(
             const choose_typeReference = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_typeReference",
                         kindNameOptions: [ "TypeReference"],
@@ -6205,7 +6208,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "TypeReference") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_typeReference",
                         child: currentChild,
                         expected: ["TypeReference"],
@@ -6303,7 +6306,7 @@ export function parse<Annotation>(
                         })
                     }
                     if (children.length === 0) {
-                        reportMissingToken({
+                        $x.reportMissingToken({
                             parentAnnotation: node.annotation,
                             path: "Gtype_typeReference$_x",
                             kindNameOptions: ["Identifier", "QualifiedName"],
@@ -6319,7 +6322,7 @@ export function parse<Annotation>(
                         const choose_qualifiedName = () => {
                             currentChild = children.pop()
                             if (currentChild === undefined) {
-                                reportMissingToken({
+                                $x.reportMissingToken({
                                     parentAnnotation: node.annotation,
                                     path: "Gtype_typeReference$_x_qualifiedName",
                                     kindNameOptions: [ "QualifiedName"],
@@ -6327,7 +6330,7 @@ export function parse<Annotation>(
                                 return
                             }
                             if (currentChild.kindName !== "QualifiedName") {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gtype_typeReference$_x_qualifiedName",
                                     child: currentChild,
                                     expected: ["QualifiedName"],
@@ -6361,7 +6364,7 @@ export function parse<Annotation>(
                                     })
                                 })
                                 if (children.length > 0) {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "Gtype_typeReference$_x_qualifiedName$",
                                         child: children[children.length - 1],
                                         expected: null,
@@ -6385,7 +6388,7 @@ export function parse<Annotation>(
                                 break
                             }
                             default: {
-                                reportUnexpectedChild({
+                                $x.reportUnexpectedChild({
                                     path: "Gtype_typeReference$_x",
                                     child: nextChild,
                                     expected: ["Identifier", "QualifiedName"],
@@ -6394,7 +6397,7 @@ export function parse<Annotation>(
                         }
                     }
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_typeReference$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6411,7 +6414,7 @@ export function parse<Annotation>(
             const choose_undefined = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_undefined",
                         kindNameOptions: [ "UndefinedKeyword"],
@@ -6419,7 +6422,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "UndefinedKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_undefined",
                         child: currentChild,
                         expected: ["UndefinedKeyword"],
@@ -6438,7 +6441,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_undefined$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6455,7 +6458,7 @@ export function parse<Annotation>(
             const choose_union = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_union",
                         kindNameOptions: [ "UnionType"],
@@ -6463,7 +6466,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "UnionType") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_union",
                         child: currentChild,
                         expected: ["UnionType"],
@@ -6551,7 +6554,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_union$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6568,7 +6571,7 @@ export function parse<Annotation>(
             const choose_void = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "Gtype_void",
                         kindNameOptions: [ "VoidKeyword"],
@@ -6576,7 +6579,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "VoidKeyword") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype_void",
                         child: currentChild,
                         expected: ["VoidKeyword"],
@@ -6595,7 +6598,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "Gtype_void$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6675,7 +6678,7 @@ export function parse<Annotation>(
                     break
                 }
                 default: {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "Gtype",
                         child: nextChild,
                         expected: ["AnyKeyword", "ArrayType", "BooleanKeyword", "FunctionType", "LiteralType", "ParenthesizedType", "NeverKeyword", "NumberKeyword", "OptionalType", "TupleType", "TypeLiteral", "StringKeyword", "TypeReference", "UndefinedKeyword", "UnionType", "VoidKeyword"],
@@ -6693,7 +6696,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "GtypeParameter",
                 kindNameOptions: [ "TypeParameter"],
@@ -6701,7 +6704,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "TypeParameter") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "GtypeParameter",
                 child: currentChild,
                 expected: ["TypeParameter"],
@@ -6725,7 +6728,7 @@ export function parse<Annotation>(
                 })
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "GtypeParameter$",
                     child: children[children.length - 1],
                     expected: null,
@@ -6750,7 +6753,7 @@ export function parse<Annotation>(
             callback($)
         }
         if (children.length === 0) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "GtypeSignature",
                 kindNameOptions: ["ConstructSignature", "IndexSignature", "MethodSignature", "PropertySignature"],
@@ -6761,7 +6764,7 @@ export function parse<Annotation>(
             const choose_construct = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "GtypeSignature_construct",
                         kindNameOptions: [ "ConstructSignature"],
@@ -6769,7 +6772,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "ConstructSignature") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "GtypeSignature_construct",
                         child: currentChild,
                         expected: ["ConstructSignature"],
@@ -6822,7 +6825,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "GtypeSignature_construct$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6839,7 +6842,7 @@ export function parse<Annotation>(
             const choose_index = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "GtypeSignature_index",
                         kindNameOptions: [ "IndexSignature"],
@@ -6847,7 +6850,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "IndexSignature") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "GtypeSignature_index",
                         child: currentChild,
                         expected: ["IndexSignature"],
@@ -6969,7 +6972,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "GtypeSignature_index$",
                             child: children[children.length - 1],
                             expected: null,
@@ -6986,7 +6989,7 @@ export function parse<Annotation>(
             const choose_method = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "GtypeSignature_method",
                         kindNameOptions: [ "MethodSignature"],
@@ -6994,7 +6997,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "MethodSignature") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "GtypeSignature_method",
                         child: currentChild,
                         expected: ["MethodSignature"],
@@ -7028,7 +7031,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "GtypeSignature_method$",
                             child: children[children.length - 1],
                             expected: null,
@@ -7045,7 +7048,7 @@ export function parse<Annotation>(
             const choose_property = () => {
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "GtypeSignature_property",
                         kindNameOptions: [ "PropertySignature"],
@@ -7053,7 +7056,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "PropertySignature") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "GtypeSignature_property",
                         child: currentChild,
                         expected: ["PropertySignature"],
@@ -7109,7 +7112,7 @@ export function parse<Annotation>(
                             const setOptional = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
-                                    reportMissingToken({
+                                    $x.reportMissingToken({
                                         parentAnnotation: node.annotation,
                                         path: "GtypeSignature_property$_quesionToken",
                                         kindNameOptions: [ "QuestionToken"],
@@ -7117,7 +7120,7 @@ export function parse<Annotation>(
                                     return
                                 }
                                 if (currentChild.kindName !== "QuestionToken") {
-                                    reportUnexpectedChild({
+                                    $x.reportUnexpectedChild({
                                         path: "GtypeSignature_property$_quesionToken",
                                         child: currentChild,
                                         expected: ["QuestionToken"],
@@ -7136,7 +7139,7 @@ export function parse<Annotation>(
                                         annotation: $.annotation,
                                     })
                                     if (children.length > 0) {
-                                        reportUnexpectedChild({
+                                        $x.reportUnexpectedChild({
                                             path: "GtypeSignature_property$_quesionToken$",
                                             child: children[children.length - 1],
                                             expected: null,
@@ -7232,7 +7235,7 @@ export function parse<Annotation>(
                         })
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "GtypeSignature_property$",
                             child: children[children.length - 1],
                             expected: null,
@@ -7264,7 +7267,7 @@ export function parse<Annotation>(
                     break
                 }
                 default: {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "GtypeSignature",
                         child: nextChild,
                         expected: ["ConstructSignature", "IndexSignature", "MethodSignature", "PropertySignature"],
@@ -7282,7 +7285,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "GvariableDeclaration",
                 kindNameOptions: [ "VariableDeclaration"],
@@ -7290,7 +7293,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "VariableDeclaration") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "GvariableDeclaration",
                 child: currentChild,
                 expected: ["VariableDeclaration"],
@@ -7458,7 +7461,7 @@ export function parse<Annotation>(
                 })
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "GvariableDeclaration$",
                     child: children[children.length - 1],
                     expected: null,
@@ -7481,7 +7484,7 @@ export function parse<Annotation>(
         let nextChild: uast.TUntypedNode<Annotation> | undefined
         currentChild = children.pop()
         if (currentChild === undefined) {
-            reportMissingToken({
+            $x.reportMissingToken({
                 parentAnnotation: node.annotation,
                 path: "GvariableDeclarationList",
                 kindNameOptions: [ "VariableDeclarationList"],
@@ -7489,7 +7492,7 @@ export function parse<Annotation>(
             return
         }
         if (currentChild.kindName !== "VariableDeclarationList") {
-            reportUnexpectedChild({
+            $x.reportUnexpectedChild({
                 path: "GvariableDeclarationList",
                 child: currentChild,
                 expected: ["VariableDeclarationList"],
@@ -7532,7 +7535,7 @@ export function parse<Annotation>(
                 })
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "GvariableDeclarationList$",
                     child: children[children.length - 1],
                     expected: null,
@@ -7547,7 +7550,7 @@ export function parse<Annotation>(
         )
     }
     if ($.kindName !== "SourceFile") {
-        reportUnexpectedRoot({
+        $x.reportUnexpectedRoot({
             root: $,
         })
         return
@@ -7639,7 +7642,7 @@ export function parse<Annotation>(
                 const _statements = $
                 currentChild = children.pop()
                 if (currentChild === undefined) {
-                    reportMissingToken({
+                    $x.reportMissingToken({
                         parentAnnotation: node.annotation,
                         path: "root_endOfFile",
                         kindNameOptions: [ "EndOfFileToken"],
@@ -7647,7 +7650,7 @@ export function parse<Annotation>(
                     return
                 }
                 if (currentChild.kindName !== "EndOfFileToken") {
-                    reportUnexpectedChild({
+                    $x.reportUnexpectedChild({
                         path: "root_endOfFile",
                         child: currentChild,
                         expected: ["EndOfFileToken"],
@@ -7666,7 +7669,7 @@ export function parse<Annotation>(
                         annotation: $.annotation,
                     })
                     if (children.length > 0) {
-                        reportUnexpectedChild({
+                        $x.reportUnexpectedChild({
                             path: "root_endOfFile$",
                             child: children[children.length - 1],
                             expected: null,
@@ -7685,7 +7688,7 @@ export function parse<Annotation>(
                 )
             })
             if (children.length > 0) {
-                reportUnexpectedChild({
+                $x.reportUnexpectedChild({
                     path: "root",
                     child: children[children.length - 1],
                     expected: null,
@@ -7695,7 +7698,7 @@ export function parse<Annotation>(
         })(
             $,
             ($) => {
-                callback($)
+                $x.callback($)
             },
         )
     }
