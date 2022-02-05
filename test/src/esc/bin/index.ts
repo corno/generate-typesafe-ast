@@ -27,7 +27,7 @@ pt.runTests(
 
                         pf.wrapDirectory(
                             {
-                                rootDirectory: dataDir,
+                                rootDirectory: pr.join([dataDir, "src"]),
                             },
                             {
                                 callback: ($i) => {

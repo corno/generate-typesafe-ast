@@ -87,16 +87,16 @@ export function generateParser(
             $w.snippet(`export function parse<Annotation>(`)
             $w.indent(($w) => {
                 $w.line(($w) => {
-                    $w.snippet(`$: uast.Node<Annotation>,`)
+                    $w.snippet(`$: uast.TUntypedNode<Annotation>,`)
                 })
                 $w.line(($w) => {
                     $w.snippet(`callback: ($: tast.TRoot<Annotation>) => void,`)
                 })
                 $w.line(($w) => {
-                    $w.snippet(`reportUnexpectedRoot: ($: { root: uast.Node<Annotation>, }) => void,`)
+                    $w.snippet(`reportUnexpectedRoot: ($: { root: uast.TUntypedNode<Annotation>, }) => void,`)
                 })
                 $w.line(($w) => {
-                    $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.Node<Annotation>, expected: pr.optional<string[]> }) => void,`)
+                    $w.snippet(`reportUnexpectedChild: ($: { path: string, child: uast.TUntypedNode<Annotation>, expected: pr.optional<string[]> }) => void,`)
                 })
                 $w.line(($w) => {
                     $w.snippet(`reportMissingToken: ($: { parentAnnotation: Annotation, path: string, kindNameOptions: string[], }) => void,`)
@@ -141,7 +141,7 @@ export function generateParser(
                         $w.snippet(`((`)
                         $w.indent(($w) => {
                             $w.line(($w) => {
-                                $w.snippet(`$: uast.Node<Annotation>,`)
+                                $w.snippet(`$: uast.TUntypedNode<Annotation>,`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`callback: ($: tast.TN${path}<Annotation>) => void,`)
@@ -153,7 +153,7 @@ export function generateParser(
                                 $w.snippet(`const node = $`)
                             })
                             $w.line(($w) => {
-                                $w.snippet(`const children: uast.Node<Annotation>[] = []`)
+                                $w.snippet(`const children: uast.TUntypedNode<Annotation>[] = []`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`$.children.forEach(($) => { children.push($) })`)
@@ -165,10 +165,10 @@ export function generateParser(
                                 case "composite":
                                     pr.cc($.type[1], ($) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`let currentChild: uast.Node<Annotation> | undefined`)
+                                            $w.snippet(`let currentChild: uast.TUntypedNode<Annotation> | undefined`)
                                         })
                                         $w.line(($w) => {
-                                            $w.snippet(`let nextChild: uast.Node<Annotation> | undefined`)
+                                            $w.snippet(`let nextChild: uast.TUntypedNode<Annotation> | undefined`)
                                         })
                                         generateValue(
                                             $,
@@ -741,10 +741,10 @@ export function generateParser(
                         $w.snippet(`function G${key}(`)
                         $w.indent(($w) => {
                             $w.line(($w) => {
-                                $w.snippet(`node: uast.Node<Annotation>,`)
+                                $w.snippet(`node: uast.TUntypedNode<Annotation>,`)
                             })
                             $w.line(($w) => {
-                                $w.snippet(`children: uast.Node<Annotation>[],`)
+                                $w.snippet(`children: uast.TUntypedNode<Annotation>[],`)
                             })
                             $w.line(($w) => {
                                 $w.snippet(`callback: ($: tast.TG${key}<Annotation>) => void,`)
@@ -753,10 +753,10 @@ export function generateParser(
                         $w.snippet(`): void {`)
                         $w.indent(($w) => {
                             $w.line(($w) => {
-                                $w.snippet(`let currentChild: uast.Node<Annotation> | undefined`)
+                                $w.snippet(`let currentChild: uast.TUntypedNode<Annotation> | undefined`)
                             })
                             $w.line(($w) => {
-                                $w.snippet(`let nextChild: uast.Node<Annotation> | undefined`)
+                                $w.snippet(`let nextChild: uast.TUntypedNode<Annotation> | undefined`)
                             })
                             generateValueType(
                                 $,

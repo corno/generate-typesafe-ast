@@ -30,7 +30,7 @@ export function generateUntypedAPI(
                     $w.snippet(`readonly "annotation": Annotation`)
                 })
                 $w.line(($w) => {
-                    $w.snippet(`readonly "children": pr.IReadonlyArray<Node<Annotation>>`)
+                    $w.snippet(`readonly "children": pr.IReadonlyArray<TUntypedNode<Annotation>>`)
                 })
             })
             $w.snippet(`}`)
