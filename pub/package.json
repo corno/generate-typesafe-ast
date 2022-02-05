@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "fountain-pen": "^4.2.11",
-    "pareto-runtime": "^0.20.0"
+    "pareto-runtime": "^0.22.0"
   },
   "name": "generate-typesafe-ast",
   "version": "0.4.0",
