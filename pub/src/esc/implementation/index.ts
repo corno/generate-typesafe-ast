@@ -8,6 +8,7 @@ import { generateParser } from "./generateParser"
 import { generateVisitorTemplate } from "./generateVisitorTemplate"
 import { generateUntypedAPI } from "./generateUntypedAPI"
 import { generateVisitorTemplate2 } from "./generateVisitorTemplate2"
+import { generateIndex } from "./generateIndex"
 
 export type FileWriter = {
     write: (str: string) => void
@@ -59,24 +60,28 @@ export function generateCode(
         )
     }
     doIt(
-        'interface/types/ts_api.generated.ts',
+        'interface/types/ts_api.ts',
         generateAPI,
     )
     doIt(
-        'interface/types/uast.generated.ts',
+        'interface/types/uast.ts',
         generateUntypedAPI,
     )
     doIt(
-        'esc/implementation/parser.generated.ts',
+        'esc/implementation/parser.ts',
         generateParser,
     )
     doIt(
-        'esc/implementation/visitor_template.generated.ts',
+        'esc/implementation/visitor_template.ts',
         generateVisitorTemplate,
     )
     doIt(
-        'esc/implementation/visitor_template2.generated.ts',
+        'esc/implementation/visitor_template2.ts',
         generateVisitorTemplate2,
+    )
+    doIt(
+        'index.ts',
+        generateIndex,
     )
 
 

@@ -74,6 +74,16 @@ pt.runTests(
                                                                         filePath,
                                                                         {
                                                                             callback: ($) => {
+                                                                                if ($ !== data) {
+                                                                                    targetDir.writeFile(
+                                                                                        {
+                                                                                            path: filePath + ".actual",
+                                                                                            data: data,
+                                                                                            createMissingDirectories: false,
+                                                                                        },
+                                                                                        {}
+                                                                                    )
+                                                                                }
                                                                                 testSet.testString({
                                                                                     testName: pr.join([dataDir, filePath]),
                                                                                     expected: $,

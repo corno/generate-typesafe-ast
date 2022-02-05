@@ -1,6 +1,6 @@
 import * as pr from "pareto-runtime"
-import * as api from "../../interface/types/ts_api.generated"
-import * as foox from "./visitor_template2.generated"
+import * as api from "../../interface/types/ts_api"
+import * as foox from "./visitor_template2"
 
 export function visit<Annotation>(
     $: api.TNroot<Annotation>,

@@ -1,6 +1,6 @@
 import * as pr from "pareto-runtime"
-import * as tast from "../../interface/types/ts_api.generated"
-import * as uast from "../../interface/types/uast.generated"
+import * as tast from "../../interface/types/ts_api"
+import * as uast from "../../interface/types/uast"
 
 export function parse<Annotation>(
     $: uast.TUntypedNode<Annotation>,

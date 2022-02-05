@@ -16,7 +16,7 @@ export function generateVisitorTemplate2(
             $w.snippet(`import * as pr from "pareto-runtime"`)
         })
         $w.line(($w) => {
-            $w.snippet(`import * as api from "../../interface/types/ts_api.generated"`)
+            $w.snippet(`import * as api from "../../interface/types/ts_api"`)
         })
         $w.line(($w) => { })
         $w.line(($w) => {
