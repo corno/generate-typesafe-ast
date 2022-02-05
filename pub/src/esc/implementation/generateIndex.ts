@@ -19,13 +19,16 @@ export function generateIndex(
             $w.snippet(`export * from "./interface/types/uast"`)
         })
         $w.line(($w) => {
+            $w.snippet(`export * from "./interface/interfaces/visitor"`)
+        })
+        $w.line(($w) => {
             $w.snippet(`export * from "./esc/implementation/parser"`)
         })
         $w.line(($w) => {
-            $w.snippet(`export * from "./esc/implementation/visitor_template"`)
+            $w.snippet(`export * from "./esc/implementation/visit"`)
         })
         $w.line(($w) => {
-            $w.snippet(`export * from "./esc/implementation/visitor_template2"`)
+            $w.snippet(`export * from "./esc/implementation/default_visitor"`)
         })
     })
 }

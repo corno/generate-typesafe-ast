@@ -5,9 +5,10 @@ import * as fp from "fountain-pen"
 
 import { generateAPI } from "./generateAPI"
 import { generateParser } from "./generateParser"
-import { generateVisitorTemplate } from "./generateVisitorTemplate"
+import { generateVisitor } from "./generateVisitor"
 import { generateUntypedAPI } from "./generateUntypedAPI"
-import { generateVisitorTemplate2 } from "./generateVisitorTemplate2"
+import { generateVisitorInterface } from "./generateVisitorInterface"
+import { generateDefaultVisitor } from "./generateDefaultVisitor"
 import { generateIndex } from "./generateIndex"
 
 export type FileWriter = {
@@ -72,96 +73,19 @@ export function generateCode(
         generateParser,
     )
     doIt(
-        'esc/implementation/visitor_template.ts',
-        generateVisitorTemplate,
+        'esc/implementation/visit.ts',
+        generateVisitor,
     )
     doIt(
-        'esc/implementation/visitor_template2.ts',
-        generateVisitorTemplate2,
+        'interface/interfaces/visitor.ts',
+        generateVisitorInterface,
+    )
+    doIt(
+        'esc/implementation/default_visitor.ts',
+        generateDefaultVisitor,
     )
     doIt(
         'index.ts',
         generateIndex,
     )
-
-
-    // const targetDir = dir.wrapDirectory(
-    //     $i.writeContext,
-    //     (
-    //         dirName,
-    //         x
-    //     ) => {
-    //         const dirPath = pr.join([$.targetDirPath, dirName])
-    //         pr.mkdir(dirPath, ($) => {
-    //             switch ($[0]) {
-    //                 case "error":
-    //                     pr.cc($[1], ($) => {
-    //                         switch ($.type[0]) {
-    //                             case "no entity":
-    //                                 pr.cc($.type[1], ($) => {
-    //                                     $i.onError(`could not create directory (no entity): ${dirPath}`)
-    //                                 })
-    //                                 break
-    //                             case "other":
-    //                                 pr.cc($.type[1], ($) => {
-    //                                     $i.onError(`could not create directory (${$.message}): ${dirPath}`)
-    //                                 })
-    //                                 break
-    //                             default:
-    //                                 pr.au($.type[0])
-    //                         }
-    //                     })
-    //                     break
-    //                 case "success":
-    //                     pr.cc($[1], ($) => {
-    //                         x()
-    //                     })
-    //                     break
-    //                 default:
-    //                     pr.au($[0])
-    //             }
-    //         })
-    //     },
-    //     (
-    //         fileName,
-    //         data,
-    //     ) => {
-    //         const fp = pr.join([$.targetDirPath, fileName])
-    //         pr.writeFile(
-    //             fp,
-    //             data,
-    //             ($) => {
-    //                 switch ($[0]) {
-    //                     case "error":
-    //                         pr.cc($[1], ($) => {
-    //                             switch ($.type[0]) {
-    //                                 case "no entity":
-    //                                     pr.cc($.type[1], ($) => {
-    //                                         $i.onError(`error while writing, no entity: ${fp}`)
-    //                                     })
-    //                                     break
-    //                                 case "other":
-    //                                     pr.cc($.type[1], ($) => {
-    //                                         $i.onError(`error while writing, no entity: ${fp}`)
-    //                                     })
-    //                                     break
-    //                                 default:
-    //                                     pr.au($.type[0])
-    //                             }
-    //                         })
-    //                         break
-    //                     case "success":
-    //                         pr.cc($[1], ($) => {
-    //                         })
-    //                         break
-    //                     default:
-    //                         pr.au($[0])
-    //                 }
-    //             },
-    //         )
-    //     }
-    // )
-    // x(targetDir)
-
-
 }

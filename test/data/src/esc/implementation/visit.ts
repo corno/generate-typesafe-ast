@@ -1,10 +1,10 @@
 import * as pr from "pareto-runtime"
 import * as api from "../../interface/types/ts_api"
-import * as foox from "./visitor_template2"
+import * as foox from "../../interface/interfaces/visitor"
 
 export function visit<Annotation>(
     $: api.TNroot<Annotation>,
-    foo: foox.FOO<Annotation>,
+    foo: foox.IVisitor<Annotation>,
 ): void {
     function X_block(
         $: api.TGblock<Annotation>,

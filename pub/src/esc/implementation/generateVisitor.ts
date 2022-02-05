@@ -3,7 +3,7 @@ import * as pr from "pareto-runtime"
 import * as g from "../../interface/types"
 import * as wapi from "fountain-pen"
 
-export function generateVisitorTemplate(
+export function generateVisitor(
     $: g.TGrammar,
     $i: {
         $w: wapi.Block,
@@ -19,7 +19,7 @@ export function generateVisitorTemplate(
             $w.snippet(`import * as api from "../../interface/types/ts_api"`)
         })
         $w.line(($w) => {
-            $w.snippet(`import * as foox from "./visitor_template2"`)
+            $w.snippet(`import * as foox from "../../interface/interfaces/visitor"`)
         })
     
         $w.line(($w) => { })
@@ -30,7 +30,7 @@ export function generateVisitorTemplate(
                     $w.snippet(`$: api.TNroot<Annotation>,`)
                 })
                 $w.line(($w) => {
-                    $w.snippet(`foo: foox.FOO<Annotation>,`)
+                    $w.snippet(`foo: foox.IVisitor<Annotation>,`)
                 })
             })
             $w.snippet(`): void {`)
