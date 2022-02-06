@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
 
 
-if [ -d "../dev" ]
-then
-    npx analyseTypeScriptProject ../dev/tsconfig.json > /dev/null #only want the errors
-fi
-
-npx analyseTypeScriptProject ../pub/tsconfig.json > /dev/null #only want the errors
-npx analyseTypeScriptProject ../test/tsconfig.json > /dev/null #only want the errors
+node ./node_modules/pareto-ts-validator/dist/esc/bin/analyseTypeScriptProject.js $1 > /dev/null #only want the errors
