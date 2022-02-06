@@ -18,7 +18,6 @@ $dir/buildAndTest.sh && \
 
 #analyse
 $dir/analysePackage.sh && \
-$dir/analyseTypeScriptProject.sh && \
 
 #bump version and store in variable
 pushd ../pub && \

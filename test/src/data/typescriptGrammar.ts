@@ -3,10 +3,10 @@ import * as gr from "../../../pub"
 export const typescriptGrammar: gr.TGrammar = {
     globalValueTypes: {
         block: ["node", {
-            name: "Block",
+            name: `Block`,
             type: ["composite", {
                 cardinality: ["array", {}],
-                type: ["reference", { name: "statement" }]
+                type: ["reference", { name: `statement` }]
             }],
         }],
         expression: ["choice", {
@@ -14,49 +14,49 @@ export const typescriptGrammar: gr.TGrammar = {
                 arrayLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ArrayLiteralExpression",
+                        name: `ArrayLiteralExpression`,
                         type: ["composite", {
                             cardinality: ["array", {}],
-                            type: ["reference", { name: "expression" }],
+                            type: ["reference", { name: `expression` }],
                         }],
                     }]
                 },
                 arrowFunction: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ArrowFunction",
+                        name: `ArrowFunction`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "parameters",
+                                        name: `parameters`,
                                         value: {
                                             cardinality: ["array", {}],
                                             type: ["reference", {
-                                                name: "parameter"
+                                                name: `parameter`
                                             }]
                                         }
                                     },
                                     {
-                                        name: "returnType",
+                                        name: `returnType`,
                                         value: {
                                             cardinality: ["optional", {}],
-                                            type: ["reference", { name: "type" }],
+                                            type: ["reference", { name: `type` }],
                                         }
                                     },
                                     {
-                                        name: "equalsGreaterThan",
+                                        name: `equalsGreaterThan`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["node", {
-                                                name: "EqualsGreaterThanToken",
+                                                name: `EqualsGreaterThanToken`,
                                                 type: ["leaf", { hasTextContent: false }],
                                             }]
                                         }
                                     },
                                     {
-                                        name: "implementation",
+                                        name: `implementation`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["choice", {
@@ -64,12 +64,12 @@ export const typescriptGrammar: gr.TGrammar = {
                                                     "block": {
                                                         cardinality: ["one", {}],
                                                         type: ["reference", {
-                                                            name: "block",
+                                                            name: `block`,
                                                         }]
                                                     },
                                                     "expression": {
                                                         cardinality: ["one", {}],
-                                                        type: ["reference", { name: "expression" }],
+                                                        type: ["reference", { name: `expression` }],
                                                     },
                                                 }
                                             }]
@@ -83,20 +83,20 @@ export const typescriptGrammar: gr.TGrammar = {
                 binary: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "BinaryExpression",
+                        name: `BinaryExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "leftHandSide",
+                                        name: `leftHandSide`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                     {
-                                        name: "operator",
+                                        name: `operator`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["choice", {
@@ -104,77 +104,77 @@ export const typescriptGrammar: gr.TGrammar = {
                                                     ampersandAmpersand: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "AmpersandAmpersandToken",
+                                                            name: `AmpersandAmpersandToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     },
                                                     barBar: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "BarBarToken",
+                                                            name: `BarBarToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     },
                                                     equals: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "EqualsToken",
+                                                            name: `EqualsToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     },
                                                     equalsEqualsEquals: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "EqualsEqualsEqualsToken",
+                                                            name: `EqualsEqualsEqualsToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     },
                                                     exclamationEqualsEquals: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "ExclamationEqualsEqualsToken",
+                                                            name: `ExclamationEqualsEqualsToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     },
                                                     greaterThan: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "GreaterThanToken",
+                                                            name: `GreaterThanToken`,
                                                             type: ["leaf", { hasTextContent: false }],
                                                         }]
                                                     },
                                                     lessThan: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "LessThanToken",
+                                                            name: `LessThanToken`,
                                                             type: ["leaf", { hasTextContent: false }],
                                                         }]
                                                     },
                                                     minus: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "MinusToken",
+                                                            name: `MinusToken`,
                                                             type: ["leaf", { hasTextContent: false }],
                                                         }]
                                                     },
                                                     minusEquals: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "MinusEqualsToken",
+                                                            name: `MinusEqualsToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     },
                                                     plus: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "PlusToken",
+                                                            name: `PlusToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     },
                                                     plusEquals: {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "PlusEqualsToken",
+                                                            name: `PlusEqualsToken`,
                                                             type: ["leaf", { hasTextContent: false }]
                                                         }]
                                                     }
@@ -183,10 +183,10 @@ export const typescriptGrammar: gr.TGrammar = {
                                         }
                                     },
                                     {
-                                        name: "rightHandSide",
+                                        name: `rightHandSide`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     }]
                             }]
@@ -196,30 +196,30 @@ export const typescriptGrammar: gr.TGrammar = {
                 call: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "CallExpression",
+                        name: `CallExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "function",
+                                        name: `function`,
                                         value: {
                                             "cardinality": ["one", {}],
-                                            type: ["reference", { name: "expression" }]
+                                            type: ["reference", { name: `expression` }]
                                         }
                                     },
                                     {
-                                        name: "typeParameters",
+                                        name: `typeParameters`,
                                         value: {
                                             "cardinality": ["array", {}],
-                                            type: ["reference", { name: "type" }],
+                                            type: ["reference", { name: `type` }],
                                         }
                                     },
                                     {
-                                        name: "parameters",
+                                        name: `parameters`,
                                         value: {
                                             "cardinality": ["array", {}],
-                                            type: ["reference", { name: "expression" }]
+                                            type: ["reference", { name: `expression` }]
                                         }
                                     },
                                 ]
@@ -230,50 +230,50 @@ export const typescriptGrammar: gr.TGrammar = {
                 conditional: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ConditionalExpression",
+                        name: `ConditionalExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "test",
+                                        name: `test`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                     {
-                                        name: "questionToken",
+                                        name: `questionToken`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["node", {
-                                                name: "QuestionToken",
+                                                name: `QuestionToken`,
                                                 type: ["leaf", { hasTextContent: false }]
                                             }],
                                         }
                                     },
                                     {
-                                        name: "ifExpression",
+                                        name: `ifExpression`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                     {
-                                        name: "colonToken",
+                                        name: `colonToken`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["node", {
-                                                name: "ColonToken",
+                                                name: `ColonToken`,
                                                 type: ["leaf", { hasTextContent: false }],
                                             }],
                                         }
                                     },
                                     {
-                                        name: "elseExpression",
+                                        name: `elseExpression`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                 ]
@@ -284,23 +284,23 @@ export const typescriptGrammar: gr.TGrammar = {
                 elementAccess: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ElementAccessExpression",
+                        name: `ElementAccessExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "array",
+                                        name: `array`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                     {
-                                        name: "element",
+                                        name: `element`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     }]
                             }],
@@ -310,38 +310,38 @@ export const typescriptGrammar: gr.TGrammar = {
                 false: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "FalseKeyword",
+                        name: `FalseKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 identifier: {
                     cardinality: ["one", {}],
                     type: ["reference", {
-                        name: "identifier"
+                        name: `identifier`
                     }],
                 },
                 new: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NewExpression",
+                        name: `NewExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "class",
+                                        name: `class`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "identifier"
+                                                name: `identifier`
                                             }],
                                         }
                                     },
                                     {
-                                        name: "parameters",
+                                        name: `parameters`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                 ]
@@ -352,37 +352,37 @@ export const typescriptGrammar: gr.TGrammar = {
                 noSubstitutionTemplateLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NoSubstitutionTemplateLiteral",
+                        name: `NoSubstitutionTemplateLiteral`,
                         type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 numericLiteral: {
                     cardinality: ["one", {}],
                     type: ["reference", {
-                        name: "numericLiteral",
+                        name: `numericLiteral`,
                     }],
                 },
                 nullKeyword: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NullKeyword",
+                        name: `NullKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 objectLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ObjectLiteralExpression",
+                        name: `ObjectLiteralExpression`,
                         type: ["composite", {
                             cardinality: ["array", {}],
                             type: ["node", {
-                                name: "PropertyAssignment",
+                                name: `PropertyAssignment`,
                                 type: ["composite", {
                                     cardinality: ["one", {}],
                                     type: ["sequence", {
                                         elements: [
                                             {
-                                                name: "name",
+                                                name: `name`,
                                                 value: {
                                                     cardinality: ["one", {}],
                                                     type: ["choice", {
@@ -390,19 +390,19 @@ export const typescriptGrammar: gr.TGrammar = {
                                                             identifier: {
                                                                 cardinality: ["one", {}],
                                                                 type: ["reference", {
-                                                                    name: "identifier"
+                                                                    name: `identifier`
                                                                 }],
                                                             },
                                                             numericLiteral: {
                                                                 cardinality: ["one", {}],
                                                                 type: ["reference", {
-                                                                    name: "numericLiteral",
+                                                                    name: `numericLiteral`,
                                                                 }],
                                                             },
                                                             stringLiteral: {
                                                                 cardinality: ["one", {}],
                                                                 type: ["reference", {
-                                                                    name: "stringLiteral"
+                                                                    name: `stringLiteral`
                                                                 }]
                                                             },
                                                         }
@@ -410,10 +410,10 @@ export const typescriptGrammar: gr.TGrammar = {
                                                 }
                                             },
                                             {
-                                                name: "expression",
+                                                name: `expression`,
                                                 value: {
                                                     cardinality: ["one", {}],
-                                                    type: ["reference", { name: "expression" }],
+                                                    type: ["reference", { name: `expression` }],
                                                 }
                                             },
                                         ]
@@ -426,53 +426,53 @@ export const typescriptGrammar: gr.TGrammar = {
                 parenthesizedExpression: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ParenthesizedExpression",
+                        name: `ParenthesizedExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "expression" }],
+                            type: ["reference", { name: `expression` }],
                         }],
                     }]
                 },
                 postfixUnary: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PostfixUnaryExpression",
+                        name: `PostfixUnaryExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "expression" }],
+                            type: ["reference", { name: `expression` }],
                         }],
                     }]
                 },
                 prefixUnary: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PrefixUnaryExpression",
+                        name: `PrefixUnaryExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "expression" }],
+                            type: ["reference", { name: `expression` }],
                         }],
                     }]
                 },
                 propertyAccess: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PropertyAccessExpression",
+                        name: `PropertyAccessExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "object",
+                                        name: `object`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                     {
-                                        name: "property",
+                                        name: `property`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         }
                                     },
                                 ]
@@ -483,46 +483,46 @@ export const typescriptGrammar: gr.TGrammar = {
                 stringLiteral: {
                     cardinality: ["one", {}],
                     type: ["reference", {
-                        name: "stringLiteral"
+                        name: `stringLiteral`
                     }]
                 },
                 template: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TemplateExpression",
+                        name: `TemplateExpression`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "head",
+                                        name: `head`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["node", {
-                                                name: "TemplateHead",
+                                                name: `TemplateHead`,
                                                 type: ["leaf", { hasTextContent: true }],
                                             }]
                                         }
                                     },
                                     {
-                                        name: "spans",
+                                        name: `spans`,
                                         value: {
                                             cardinality: ["array", {}],
                                             type: ["node", {
-                                                name: "TemplateSpan",
+                                                name: `TemplateSpan`,
                                                 type: ["composite", {
                                                     cardinality: ["one", {}],
                                                     type: ["sequence", {
                                                         elements: [
                                                             {
-                                                                name: "expression",
+                                                                name: `expression`,
                                                                 value: {
                                                                     cardinality: ["one", {}],
-                                                                    type: ["reference", { name: "expression" }],
+                                                                    type: ["reference", { name: `expression` }],
                                                                 }
                                                             },
                                                             {
-                                                                name: "x",
+                                                                name: `x`,
                                                                 value: {
                                                                     cardinality: ["one", {}],
                                                                     type: ["choice", {
@@ -530,14 +530,14 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                             middle: {
                                                                                 cardinality: ["one", {}],
                                                                                 type: ["node", {
-                                                                                    name: "TemplateMiddle",
+                                                                                    name: `TemplateMiddle`,
                                                                                     type: ["leaf", { hasTextContent: true }],
                                                                                 }],
                                                                             },
                                                                             tail: {
                                                                                 cardinality: ["one", {}],
                                                                                 type: ["node", {
-                                                                                    name: "TemplateTail",
+                                                                                    name: `TemplateTail`,
                                                                                     type: ["leaf", { hasTextContent: true }]
                                                                                 }],
                                                                             }
@@ -558,7 +558,7 @@ export const typescriptGrammar: gr.TGrammar = {
                 true: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TrueKeyword",
+                        name: `TrueKeyword`,
                         type: ["leaf", { hasTextContent: false }]
                     }]
                 },
@@ -567,34 +567,34 @@ export const typescriptGrammar: gr.TGrammar = {
         functionDefinition: ["sequence", {
             elements: [
                 {
-                    name: "typeParameters",
+                    name: `typeParameters`,
                     value: {
                         cardinality: ["array", {}],
                         type: ["reference", {
-                            name: "typeParameter"
+                            name: `typeParameter`
                         }]
                     },
                 },
                 {
-                    name: "parameters",
+                    name: `parameters`,
                     value: {
                         cardinality: ["array", {}],
                         type: ["reference", {
-                            name: "parameter"
+                            name: `parameter`
                         }]
                     },
                 },
                 {
-                    name: "returnType",
+                    name: `returnType`,
                     value: {
                         cardinality: ["optional", {}],
-                        type: ["reference", { name: "type" }],
+                        type: ["reference", { name: `type` }],
                     },
                 },
             ]
         }],
         identifier: ["node", {
-            name: "Identifier",
+            name: `Identifier`,
             type: ["leaf", { hasTextContent: true }]
         }],
         identifierOrStringLiteral: ["choice", {
@@ -602,13 +602,13 @@ export const typescriptGrammar: gr.TGrammar = {
                 identifier: {
                     cardinality: ["one", {}],
                     type: ["reference", {
-                        name: "identifier"
+                        name: `identifier`
                     }],
                 },
                 stringLiteral: {
                     cardinality: ["one", {}],
                     type: ["reference", {
-                        name: "stringLiteral"
+                        name: `stringLiteral`
                     }]
                 },
             }
@@ -619,60 +619,60 @@ export const typescriptGrammar: gr.TGrammar = {
                 declare: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "DeclareKeyword",
+                        name: `DeclareKeyword`,
                         type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 export: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ExportKeyword",
+                        name: `ExportKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 readonly: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ReadonlyKeyword",
+                        name: `ReadonlyKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
             }
         }],
         numericLiteral: ["node", {
-            name: "NumericLiteral",
+            name: `NumericLiteral`,
             type: ["leaf", { hasTextContent: true }],
         }],
         parameter: ["node", {
-            name: "Parameter",
+            name: `Parameter`,
             type: ["composite", {
                 cardinality: ["one", {}],
                 type: ["sequence", {
                     elements: [
                         {
-                            name: "name",
+                            name: `name`,
                             value: {
                                 cardinality: ["one", {}],
                                 type: ["reference", {
-                                    name: "identifier"
+                                    name: `identifier`
                                 }],
                             }
                         },
                         {
-                            name: "questionToken",
+                            name: `questionToken`,
                             value: {
                                 cardinality: ["optional", {}],
                                 type: ["node", {
-                                    name: "QuestionToken",
+                                    name: `QuestionToken`,
                                     type: ["leaf", { hasTextContent: false }],
                                 }]
                             }
                         },
                         {
-                            name: "type",
+                            name: `type`,
                             value: {
                                 cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
+                                type: ["reference", { name: `type` }],
                             }
                         }]
                 }]
@@ -683,17 +683,17 @@ export const typescriptGrammar: gr.TGrammar = {
                 block: {
                     cardinality: ["one", {}],
                     type: ["reference", {
-                        name: "block"
+                        name: `block`
                     }]
                 },
                 break: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "BreakStatement",
+                        name: `BreakStatement`,
                         type: ["composite", {
                             cardinality: ["optional", {}],
                             type: ["reference", {
-                                name: "identifier"
+                                name: `identifier`
                             }],
                         }],
                     }]
@@ -701,11 +701,11 @@ export const typescriptGrammar: gr.TGrammar = {
                 export: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ExportDeclaration",
+                        name: `ExportDeclaration`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["reference", {
-                                name: "stringLiteral"
+                                name: `stringLiteral`
                             }],
                         }]
                     }]
@@ -713,50 +713,50 @@ export const typescriptGrammar: gr.TGrammar = {
                 expression: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ExpressionStatement",
+                        name: `ExpressionStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "expression" }]
+                            type: ["reference", { name: `expression` }]
                         }],
                     }]
                 },
                 for: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ForStatement",
+                        name: `ForStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "initializer",
+                                        name: `initializer`,
                                         value: {
                                             "cardinality": ["one", {}],
                                             type: ["reference", {
-                                                name: "variableDeclarationList"
+                                                name: `variableDeclarationList`
                                             }]
                                         }
                                     },
                                     {
-                                        name: "condition",
+                                        name: `condition`,
                                         value: {
                                             "cardinality": ["one", {}],
-                                            type: ["reference", { name: "expression" }]
+                                            type: ["reference", { name: `expression` }]
                                         }
                                     },
                                     {
-                                        name: "incrementer",
+                                        name: `incrementer`,
                                         value: {
                                             "cardinality": ["one", {}],
-                                            type: ["reference", { name: "expression" }]
+                                            type: ["reference", { name: `expression` }]
                                         }
                                     },
                                     {
-                                        name: "block",
+                                        name: `block`,
                                         value: {
                                             "cardinality": ["one", {}],
                                             type: ["reference", {
-                                                name: "block",
+                                                name: `block`,
                                             }]
                                         }
                                     },
@@ -768,42 +768,42 @@ export const typescriptGrammar: gr.TGrammar = {
                 function: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "FunctionDeclaration",
+                        name: `FunctionDeclaration`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "modifiers",
+                                        name: `modifiers`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "modifier" }]
+                                            type: ["reference", { name: `modifier` }]
                                         },
                                     },
                                     {
-                                        name: "name",
+                                        name: `name`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "identifier"
+                                                name: `identifier`
                                             }],
                                         },
                                     },
                                     {
-                                        name: "definition",
+                                        name: `definition`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "functionDefinition"
+                                                name: `functionDefinition`
                                             }]
                                         },
                                     },
                                     {
-                                        name: "block",
+                                        name: `block`,
                                         value: {
                                             cardinality: ["optional", {}],
                                             type: ["reference", {
-                                                name: "block"
+                                                name: `block`
                                             }]
                                         },
                                     },
@@ -815,30 +815,30 @@ export const typescriptGrammar: gr.TGrammar = {
                 if: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "IfStatement",
+                        name: `IfStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "expression",
+                                        name: `expression`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         },
                                     },
                                     {
-                                        name: "thenStatement",
+                                        name: `thenStatement`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "statement" }],
+                                            type: ["reference", { name: `statement` }],
                                         },
                                     },
                                     {
-                                        name: "elseStatement",
+                                        name: `elseStatement`,
                                         value: {
                                             cardinality: ["optional", {}],
-                                            type: ["reference", { name: "statement" }],
+                                            type: ["reference", { name: `statement` }],
                                         },
                                     },
                                 ]
@@ -849,17 +849,17 @@ export const typescriptGrammar: gr.TGrammar = {
                 import: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ImportDeclaration",
+                        name: `ImportDeclaration`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "clause",
+                                        name: `clause`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["node", {
-                                                name: "ImportClause",
+                                                name: `ImportClause`,
                                                 type: ["composite", {
                                                     cardinality: ["one", {}],
                                                     type: ["choice", {
@@ -867,11 +867,11 @@ export const typescriptGrammar: gr.TGrammar = {
                                                             namespace: {
                                                                 cardinality: ["one", {}],
                                                                 type: ["node", {
-                                                                    name: "NamespaceImport",
+                                                                    name: `NamespaceImport`,
                                                                     type: ["composite", {
                                                                         cardinality: ["one", {}],
                                                                         type: ["reference", {
-                                                                            name: "identifier"
+                                                                            name: `identifier`
                                                                         }],
                                                                     }],
                                                                 }]
@@ -879,30 +879,30 @@ export const typescriptGrammar: gr.TGrammar = {
                                                             named: {
                                                                 cardinality: ["one", {}],
                                                                 type: ["node", {
-                                                                    name: "NamedImports",
+                                                                    name: `NamedImports`,
                                                                     type: ["composite", {
                                                                         cardinality: ["array", {}],
                                                                         type: ["node", {
-                                                                            name: "ImportSpecifier",
+                                                                            name: `ImportSpecifier`,
                                                                             type: ["composite", {
                                                                                 cardinality: ["one", {}],
                                                                                 type: ["sequence", {
                                                                                     elements: [
                                                                                         {
-                                                                                            name: "name",
+                                                                                            name: `name`,
                                                                                             value: {
                                                                                                 cardinality: ["one", {}],
                                                                                                 type: ["reference", {
-                                                                                                    name: "identifier"
+                                                                                                    name: `identifier`
                                                                                                 }],
                                                                                             }
                                                                                         },
                                                                                         {
-                                                                                            name: "as",
+                                                                                            name: `as`,
                                                                                             value: {
                                                                                                 cardinality: ["optional", {}],
                                                                                                 type: ["reference", {
-                                                                                                    name: "identifier"
+                                                                                                    name: `identifier`
                                                                                                 }],
                                                                                             }
                                                                                         },
@@ -920,11 +920,11 @@ export const typescriptGrammar: gr.TGrammar = {
                                         }
                                     },
                                     {
-                                        name: "file",
+                                        name: `file`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "stringLiteral"
+                                                name: `stringLiteral`
                                             }],
                                         }
                                     }]
@@ -935,41 +935,41 @@ export const typescriptGrammar: gr.TGrammar = {
                 interface: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "InterfaceDeclaration",
+                        name: `InterfaceDeclaration`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "modifiers",
+                                        name: `modifiers`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "modifier" }]
+                                            type: ["reference", { name: `modifier` }]
                                         },
                                     },
                                     {
-                                        name: "name",
+                                        name: `name`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "identifier"
+                                                name: `identifier`
                                             }],
                                         }
                                     },
                                     {
-                                        name: "typeParameters",
+                                        name: `typeParameters`,
                                         value: {
                                             cardinality: ["array", {}],
                                             type: ["reference", {
-                                                name: "typeParameter"
+                                                name: `typeParameter`
                                             }]
                                         },
                                     },
                                     {
-                                        name: "signature",
+                                        name: `signature`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "typeSignature" }]
+                                            type: ["reference", { name: `typeSignature` }]
                                         },
                                     },
                                 ]
@@ -980,25 +980,25 @@ export const typescriptGrammar: gr.TGrammar = {
                 labeled: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "LabeledStatement",
+                        name: `LabeledStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "label",
+                                        name: `label`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "identifier"
+                                                name: `identifier`
                                             }],
                                         }
                                     },
                                     {
-                                        name: "statement",
+                                        name: `statement`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "statement" }],
+                                            type: ["reference", { name: `statement` }],
                                         }
                                     },
                                 ]
@@ -1009,34 +1009,34 @@ export const typescriptGrammar: gr.TGrammar = {
                 return: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ReturnStatement",
+                        name: `ReturnStatement`,
                         type: ["composite", {
                             cardinality: ["optional", {}],
-                            type: ["reference", { name: "expression" }],
+                            type: ["reference", { name: `expression` }],
                         }],
                     }]
                 },
                 switch: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "SwitchStatement",
+                        name: `SwitchStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "expression",
+                                        name: `expression`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }]
+                                            type: ["reference", { name: `expression` }]
                                         }
                                     },
                                     {
-                                        name: "caseBlock",
+                                        name: `caseBlock`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["node", {
-                                                name: "CaseBlock",
+                                                name: `CaseBlock`,
                                                 type: ["composite", {
                                                     cardinality: ["array", {}],
                                                     type: ["choice", {
@@ -1044,23 +1044,23 @@ export const typescriptGrammar: gr.TGrammar = {
                                                             "case": {
                                                                 cardinality: ["one", {}],
                                                                 type: ["node", {
-                                                                    name: "CaseClause",
+                                                                    name: `CaseClause`,
                                                                     type: ["composite", {
                                                                         cardinality: ["one", {}],
                                                                         type: ["sequence", {
                                                                             elements: [
                                                                                 {
-                                                                                    name: "case",
+                                                                                    name: `case`,
                                                                                     value: {
                                                                                         cardinality: ["one", {}],
-                                                                                        type: ["reference", { name: "expression" }]
+                                                                                        type: ["reference", { name: `expression` }]
                                                                                     }
                                                                                 },
                                                                                 {
-                                                                                    name: "statements",
+                                                                                    name: `statements`,
                                                                                     value: {
                                                                                         cardinality: ["array", {}],
-                                                                                        type: ["reference", { name: "statement" }]
+                                                                                        type: ["reference", { name: `statement` }]
                                                                                     },
                                                                                 }]
                                                                         }]
@@ -1070,10 +1070,10 @@ export const typescriptGrammar: gr.TGrammar = {
                                                             "default": {
                                                                 cardinality: ["one", {}],
                                                                 type: ["node", {
-                                                                    name: "DefaultClause",
+                                                                    name: `DefaultClause`,
                                                                     type: ["composite", {
                                                                         cardinality: ["array", {}],
-                                                                        type: ["reference", { name: "statement" }]
+                                                                        type: ["reference", { name: `statement` }]
                                                                     }]
                                                                 }]
                                                             },
@@ -1091,55 +1091,55 @@ export const typescriptGrammar: gr.TGrammar = {
                 throw: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ThrowStatement",
+                        name: `ThrowStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "expression" }],
+                            type: ["reference", { name: `expression` }],
                         }]
                     }]
                 },
                 try: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TryStatement",
+                        name: `TryStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "block",
+                                        name: `block`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "block"
+                                                name: `block`
                                             }]
                                         },
                                     },
                                     {
-                                        name: "catchClause",
+                                        name: `catchClause`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["node", {
-                                                name: "CatchClause",
+                                                name: `CatchClause`,
                                                 type: ["composite", {
                                                     cardinality: ["one", {}],
                                                     type: ["sequence", {
                                                         elements: [
                                                             {
-                                                                name: "variable",
+                                                                name: `variable`,
                                                                 value: {
                                                                     cardinality: ["one", {}],
                                                                     type: ["reference", {
-                                                                        name: "variableDeclaration"
+                                                                        name: `variableDeclaration`
                                                                     }]
                                                                 }
                                                             },
                                                             {
-                                                                name: "block",
+                                                                name: `block`,
                                                                 value: {
                                                                     cardinality: ["one", {}],
                                                                     type: ["reference", {
-                                                                        name: "block"
+                                                                        name: `block`
                                                                     }]
                                                                 }
                                                             },
@@ -1157,41 +1157,41 @@ export const typescriptGrammar: gr.TGrammar = {
                 typeAlias: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TypeAliasDeclaration",
+                        name: `TypeAliasDeclaration`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "modifiers",
+                                        name: `modifiers`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "modifier" }]
+                                            type: ["reference", { name: `modifier` }]
                                         },
                                     },
                                     {
-                                        name: "name",
+                                        name: `name`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "identifier"
+                                                name: `identifier`
                                             }],
                                         }
                                     },
                                     {
-                                        name: "typeParameters",
+                                        name: `typeParameters`,
                                         value: {
                                             cardinality: ["array", {}],
                                             type: ["reference", {
-                                                name: "typeParameter"
+                                                name: `typeParameter`
                                             }]
                                         },
                                     },
                                     {
-                                        name: "type",
+                                        name: `type`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "type" }],
+                                            type: ["reference", { name: `type` }],
                                         },
                                     }
                                 ]
@@ -1202,24 +1202,24 @@ export const typescriptGrammar: gr.TGrammar = {
                 variable: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "VariableStatement",
+                        name: `VariableStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "modifiers",
+                                        name: `modifiers`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "modifier" }]
+                                            type: ["reference", { name: `modifier` }]
                                         },
                                     },
                                     {
-                                        name: "variableDeclarationList",
+                                        name: `variableDeclarationList`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "variableDeclarationList"
+                                                name: `variableDeclarationList`
                                             }]
                                         },
                                     },
@@ -1231,24 +1231,24 @@ export const typescriptGrammar: gr.TGrammar = {
                 while: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "WhileStatement",
+                        name: `WhileStatement`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "condition",
+                                        name: `condition`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "expression" }],
+                                            type: ["reference", { name: `expression` }],
                                         },
                                     },
                                     {
-                                        name: "block",
+                                        name: `block`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "block"
+                                                name: `block`
                                             }],
                                         },
                                     },
@@ -1260,7 +1260,7 @@ export const typescriptGrammar: gr.TGrammar = {
             }
         }],
         stringLiteral: ["node", {
-            name: "StringLiteral",
+            name: `StringLiteral`,
             type: ["leaf", { hasTextContent: true }]
         }],
         type: ["choice", {
@@ -1268,49 +1268,49 @@ export const typescriptGrammar: gr.TGrammar = {
                 any: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "AnyKeyword",
+                        name: `AnyKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 array: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ArrayType",
+                        name: `ArrayType`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "type" }],
+                            type: ["reference", { name: `type` }],
                         }]
                     }]
                 },
                 boolean: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "BooleanKeyword",
+                        name: `BooleanKeyword`,
                         type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 function: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "FunctionType",
+                        name: `FunctionType`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "parameters",
+                                        name: `parameters`,
                                         value: {
                                             cardinality: ["array", {}],
                                             type: ["reference", {
-                                                name: "parameter"
+                                                name: `parameter`
                                             }]
                                         },
                                     },
                                     {
-                                        name: "returnType",
+                                        name: `returnType`,
                                         value: {
                                             cardinality: ["optional", {}],
-                                            type: ["reference", { name: "type" }],
+                                            type: ["reference", { name: `type` }],
                                         },
                                     }]
                             }]
@@ -1320,7 +1320,7 @@ export const typescriptGrammar: gr.TGrammar = {
                 literal: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "LiteralType",
+                        name: `LiteralType`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["choice", {
@@ -1328,14 +1328,14 @@ export const typescriptGrammar: gr.TGrammar = {
                                     null: {
                                         cardinality: ["one", {}],
                                         type: ["node", {
-                                            name: "NullKeyword",
+                                            name: `NullKeyword`,
                                             type: ["leaf", { hasTextContent: false }],
                                         }]
                                     },
                                     string: {
                                         cardinality: ["one", {}],
                                         type: ["reference", {
-                                            name: "stringLiteral"
+                                            name: `stringLiteral`
                                         }],
                                     },
                                 }
@@ -1346,74 +1346,74 @@ export const typescriptGrammar: gr.TGrammar = {
                 parenthesized: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ParenthesizedType",
+                        name: `ParenthesizedType`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "type" }],
+                            type: ["reference", { name: `type` }],
                         }],
                     }]
                 },
                 never: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NeverKeyword",
+                        name: `NeverKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 number: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "NumberKeyword",
+                        name: `NumberKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 optional: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "OptionalType",
+                        name: `OptionalType`,
                         type: ["composite", {
                             cardinality: ["one", {}],
-                            type: ["reference", { name: "type" }],
+                            type: ["reference", { name: `type` }],
                         }],
                     }]
                 },
                 tuple: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TupleType",
+                        name: `TupleType`,
                         type: ["composite", {
                             cardinality: ["array", {}],
-                            type: ["reference", { name: "type" }],
+                            type: ["reference", { name: `type` }],
                         }],
                     }]
                 },
                 typeLiteral: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TypeLiteral",
+                        name: `TypeLiteral`,
                         type: ["composite", {
                             cardinality: ["array", {}],
-                            type: ["reference", { name: "typeSignature" }],
+                            type: ["reference", { name: `typeSignature` }],
                         }],
                     }]
                 },
                 string: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "StringKeyword",
+                        name: `StringKeyword`,
                         type: ["leaf", { hasTextContent: false }]
                     }]
                 },
                 typeReference: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "TypeReference",
+                        name: `TypeReference`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "x",
+                                        name: `x`,
                                         value: {
                                             "cardinality": ["one", {}],
                                             type: ["choice", {
@@ -1421,32 +1421,32 @@ export const typescriptGrammar: gr.TGrammar = {
                                                     "identifier": {
                                                         cardinality: ["one", {}],
                                                         type: ["reference", {
-                                                            name: "identifier"
+                                                            name: `identifier`
                                                         }],
                                                     },
                                                     "qualifiedName": {
                                                         cardinality: ["one", {}],
                                                         type: ["node", {
-                                                            name: "QualifiedName",
+                                                            name: `QualifiedName`,
                                                             type: ["composite", {
                                                                 cardinality: ["one", {}],
                                                                 type: ["sequence", {
                                                                     elements: [
                                                                         {
-                                                                            name: "context",
+                                                                            name: `context`,
                                                                             value: {
                                                                                 cardinality: ["one", {}],
                                                                                 type: ["reference", {
-                                                                                    name: "identifier"
+                                                                                    name: `identifier`
                                                                                 }],
                                                                             }
                                                                         },
                                                                         {
-                                                                            name: "type",
+                                                                            name: `type`,
                                                                             value: {
                                                                                 cardinality: ["one", {}],
                                                                                 type: ["reference", {
-                                                                                    name: "identifier"
+                                                                                    name: `identifier`
                                                                                 }],
                                                                             }
                                                                         },
@@ -1460,10 +1460,10 @@ export const typescriptGrammar: gr.TGrammar = {
                                         }
                                     },
                                     {
-                                        name: "parameters",
+                                        name: `parameters`,
                                         value: {
                                             "cardinality": ["array", {}],
-                                            type: ["reference", { name: "type" }],
+                                            type: ["reference", { name: `type` }],
                                         }
                                     },
                                 ]
@@ -1474,35 +1474,35 @@ export const typescriptGrammar: gr.TGrammar = {
                 undefined: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "UndefinedKeyword",
+                        name: `UndefinedKeyword`,
                         type: ["leaf", { hasTextContent: false }],
                     }]
                 },
                 union: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "UnionType",
+                        name: `UnionType`,
                         type: ["composite", {
                             cardinality: ["array", {}],
-                            type: ["reference", { name: "type" }],
+                            type: ["reference", { name: `type` }],
                         }],
                     }]
                 },
                 void: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "VoidKeyword",
+                        name: `VoidKeyword`,
                         type: ["leaf", { hasTextContent: false }]
                     }]
                 },
             }
         }],
         typeParameter: ["node", {
-            name: "TypeParameter",
+            name: `TypeParameter`,
             type: ["composite", {
                 cardinality: ["one", {}],
                 type: ["reference", {
-                    name: "identifier"
+                    name: `identifier`
                 }],
             }]
         }],
@@ -1511,26 +1511,26 @@ export const typescriptGrammar: gr.TGrammar = {
                 construct: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "ConstructSignature",
+                        name: `ConstructSignature`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "parameters",
+                                        name: `parameters`,
                                         value: {
                                             cardinality: ["array", {}],
                                             type: ["reference", {
-                                                name: "parameter"
+                                                name: `parameter`
                                             }]
                                         }
                                     },
                                     {
-                                        name: "returnType",
+                                        name: `returnType`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "type"
+                                                name: `type`
                                             }]
                                         }
                                     },
@@ -1542,32 +1542,32 @@ export const typescriptGrammar: gr.TGrammar = {
                 index: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "IndexSignature",
+                        name: `IndexSignature`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "modifiers",
+                                        name: `modifiers`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "modifier" }]
+                                            type: ["reference", { name: `modifier` }]
                                         },
                                     },
                                     {
-                                        name: "parameter",
+                                        name: `parameter`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "parameter"
+                                                name: `parameter`
                                             }],
                                         }
                                     },
                                     {
-                                        name: "type",
+                                        name: `type`,
                                         value: {
                                             cardinality: ["optional", {}],
-                                            type: ["reference", { name: "type" }],
+                                            type: ["reference", { name: `type` }],
                                         },
                                     },
                                 ]
@@ -1578,26 +1578,26 @@ export const typescriptGrammar: gr.TGrammar = {
                 method: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "MethodSignature",
+                        name: `MethodSignature`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "name",
+                                        name: `name`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "identifier"
+                                                name: `identifier`
                                             }],
                                         }
                                     },
                                     {
-                                        name: "definition",
+                                        name: `definition`,
                                         value: {
                                             cardinality: ["one", {}],
                                             type: ["reference", {
-                                                name: "functionDefinition"
+                                                name: `functionDefinition`
                                             }]
                                         }
                                     },
@@ -1609,40 +1609,40 @@ export const typescriptGrammar: gr.TGrammar = {
                 property: {
                     cardinality: ["one", {}],
                     type: ["node", {
-                        name: "PropertySignature",
+                        name: `PropertySignature`,
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
                                 elements: [
                                     {
-                                        name: "modifiers",
+                                        name: `modifiers`,
                                         value: {
                                             cardinality: ["array", {}],
-                                            type: ["reference", { name: "modifier" }]
+                                            type: ["reference", { name: `modifier` }]
                                         },
                                     },
                                     {
-                                        name: "name",
+                                        name: `name`,
                                         value: {
                                             cardinality: ["one", {}],
-                                            type: ["reference", { name: "identifierOrStringLiteral" }],
+                                            type: ["reference", { name: `identifierOrStringLiteral` }],
                                         }
                                     },
                                     {
-                                        name: "quesionToken",
+                                        name: `quesionToken`,
                                         value: {
                                             cardinality: ["optional", {}],
                                             type: ["node", {
-                                                name: "QuestionToken",
+                                                name: `QuestionToken`,
                                                 type: ["leaf", { hasTextContent: false }],
                                             }],
                                         }
                                     },
                                     {
-                                        name: "type",
+                                        name: `type`,
                                         value: {
                                             cardinality: ["optional", {}],
-                                            type: ["reference", { name: "type" }],
+                                            type: ["reference", { name: `type` }],
                                         },
                                     }
                                 ]
@@ -1653,32 +1653,32 @@ export const typescriptGrammar: gr.TGrammar = {
             }
         }],
         variableDeclaration: ["node", {
-            name: "VariableDeclaration",
+            name: `VariableDeclaration`,
             type: ["composite", {
                 cardinality: ["one", {}],
                 type: ["sequence", {
                     elements: [
                         {
-                            name: "name",
+                            name: `name`,
                             value: {
                                 cardinality: ["one", {}],
                                 type: ["reference", {
-                                    name: "identifier"
+                                    name: `identifier`
                                 }],
                             },
                         },
                         {
-                            name: "type",
+                            name: `type`,
                             value: {
                                 cardinality: ["optional", {}],
-                                type: ["reference", { name: "type" }],
+                                type: ["reference", { name: `type` }],
                             },
                         },
                         {
-                            name: "expression",
+                            name: `expression`,
                             value: {
                                 cardinality: ["optional", {}],
-                                type: ["reference", { name: "expression" }],
+                                type: ["reference", { name: `expression` }],
                             },
                         },
                     ]
@@ -1686,34 +1686,34 @@ export const typescriptGrammar: gr.TGrammar = {
             }]
         }],
         variableDeclarationList: ["node", {
-            name: "VariableDeclarationList",
+            name: `VariableDeclarationList`,
             type: ["composite", {
                 cardinality: ["array", {}],
                 type: ["reference", {
-                    name: "variableDeclaration"
+                    name: `variableDeclaration`
                 }]
             }],
         }]
     },
     root: {
-        name: "SourceFile",
+        name: `SourceFile`,
         type: ["composite", {
             cardinality: ["one", {}],
             type: ["sequence", {
                 elements: [
                     {
-                        name: "statements",
+                        name: `statements`,
                         value: {
                             cardinality: ["array", {}],
-                            type: ["reference", { name: "statement" }]
+                            type: ["reference", { name: `statement` }]
                         },
                     },
                     {
-                        name: "endOfFile",
+                        name: `endOfFile`,
                         value: {
                             cardinality: ["one", {}],
                             type: ["node", {
-                                name: "EndOfFileToken",
+                                name: `EndOfFileToken`,
                                 type: ["leaf", { hasTextContent: false }]
                             }]
                         }
