@@ -11,11 +11,6 @@ import { generateVisitorInterface } from "./generateVisitorInterface"
 import { generateDefaultVisitor } from "./generateDefaultVisitor"
 import { generateIndex } from "./generateIndex"
 
-export type FileWriter = {
-    write: (str: string) => void
-    end: () => void
-}
-
 export function generateCode(
     $: {
         grammar: g.TGrammar,
