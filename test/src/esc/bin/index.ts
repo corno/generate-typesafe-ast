@@ -46,7 +46,7 @@ pr.runProgram(
                                                         const wc = $i
                                                         gta.generateCode(
                                                             {
-                                                                grammar: tsg.typescriptGrammar,
+                                                                grammar: tsg._typescriptGrammar,
                                                             },
                                                             {
                                                                 onError: ($) => {

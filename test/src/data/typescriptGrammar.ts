@@ -1,6 +1,6 @@
 import * as gr from "../../../pub"
 
-export const typescriptGrammar: gr.TGrammar = {
+export const _typescriptGrammar: gr.TGrammar = {
     globalValueTypes: {
         block: ["node", {
             name: `Block`,
@@ -28,7 +28,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `parameters`,
                                         value: {
@@ -75,7 +75,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }]
                                         }
                                     },
-                                ],
+                                ]),
                             }],
                         }]
                     }]
@@ -87,7 +87,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `leftHandSide`,
                                         value: {
@@ -188,7 +188,8 @@ export const typescriptGrammar: gr.TGrammar = {
                                             cardinality: ["one", {}],
                                             type: ["reference", { name: `expression` }],
                                         }
-                                    }]
+                                    }
+                                ])
                             }]
                         }]
                     }]
@@ -200,7 +201,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `function`,
                                         value: {
@@ -222,7 +223,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `expression` }]
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -234,7 +235,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `test`,
                                         value: {
@@ -276,7 +277,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `expression` }],
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -288,7 +289,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `array`,
                                         value: {
@@ -302,7 +303,8 @@ export const typescriptGrammar: gr.TGrammar = {
                                             cardinality: ["one", {}],
                                             type: ["reference", { name: `expression` }],
                                         }
-                                    }]
+                                    }
+                                ])
                             }],
                         }]
                     }]
@@ -327,7 +329,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `class`,
                                         value: {
@@ -344,7 +346,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `expression` }],
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -380,7 +382,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                 type: ["composite", {
                                     cardinality: ["one", {}],
                                     type: ["sequence", {
-                                        elements: [
+                                        elements: ([
                                             {
                                                 name: `name`,
                                                 value: {
@@ -416,7 +418,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                     type: ["reference", { name: `expression` }],
                                                 }
                                             },
-                                        ]
+                                        ])
                                     }]
                                 }]
                             }]
@@ -460,7 +462,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `object`,
                                         value: {
@@ -475,7 +477,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `expression` }],
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }],
                     }]
@@ -493,7 +495,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `head`,
                                         value: {
@@ -513,7 +515,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                 type: ["composite", {
                                                     cardinality: ["one", {}],
                                                     type: ["sequence", {
-                                                        elements: [
+                                                        elements: ([
                                                             {
                                                                 name: `expression`,
                                                                 value: {
@@ -545,12 +547,13 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                     }],
                                                                 }
                                                             },
-                                                        ]
+                                                        ])
                                                     }]
                                                 }]
                                             }]
                                         }
-                                    }]
+                                    }
+                                ])
                             }]
                         }]
                     }]
@@ -565,7 +568,7 @@ export const typescriptGrammar: gr.TGrammar = {
             }
         }],
         functionDefinition: ["sequence", {
-            elements: [
+            elements: ([
                 {
                     name: `typeParameters`,
                     value: {
@@ -591,7 +594,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["reference", { name: `type` }],
                     },
                 },
-            ]
+            ])
         }],
         identifier: ["node", {
             name: `Identifier`,
@@ -648,7 +651,7 @@ export const typescriptGrammar: gr.TGrammar = {
             type: ["composite", {
                 cardinality: ["one", {}],
                 type: ["sequence", {
-                    elements: [
+                    elements: ([
                         {
                             name: `name`,
                             value: {
@@ -674,7 +677,8 @@ export const typescriptGrammar: gr.TGrammar = {
                                 cardinality: ["optional", {}],
                                 type: ["reference", { name: `type` }],
                             }
-                        }]
+                        }
+                    ])
                 }]
             }]
         }],
@@ -727,7 +731,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `initializer`,
                                         value: {
@@ -760,7 +764,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }]
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -772,7 +776,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `modifiers`,
                                         value: {
@@ -807,7 +811,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }]
                                         },
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -819,7 +823,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `expression`,
                                         value: {
@@ -841,7 +845,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `statement` }],
                                         },
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -853,7 +857,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `clause`,
                                         value: {
@@ -887,7 +891,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                             type: ["composite", {
                                                                                 cardinality: ["one", {}],
                                                                                 type: ["sequence", {
-                                                                                    elements: [
+                                                                                    elements: ([
                                                                                         {
                                                                                             name: `name`,
                                                                                             value: {
@@ -906,7 +910,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                                                 }],
                                                                                             }
                                                                                         },
-                                                                                    ]
+                                                                                    ])
                                                                                 }]
                                                                             }]
                                                                         }]
@@ -927,7 +931,8 @@ export const typescriptGrammar: gr.TGrammar = {
                                                 name: `stringLiteral`
                                             }],
                                         }
-                                    }]
+                                    }
+                                ])
                             }]
                         }]
                     }]
@@ -939,7 +944,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `modifiers`,
                                         value: {
@@ -972,7 +977,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `typeSignature` }]
                                         },
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -984,7 +989,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `label`,
                                         value: {
@@ -1001,7 +1006,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `statement` }],
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1023,7 +1028,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `expression`,
                                         value: {
@@ -1048,7 +1053,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                     type: ["composite", {
                                                                         cardinality: ["one", {}],
                                                                         type: ["sequence", {
-                                                                            elements: [
+                                                                            elements: ([
                                                                                 {
                                                                                     name: `case`,
                                                                                     value: {
@@ -1062,7 +1067,8 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                                         cardinality: ["array", {}],
                                                                                         type: ["reference", { name: `statement` }]
                                                                                     },
-                                                                                }]
+                                                                                }
+                                                                            ])
                                                                         }]
                                                                     }]
                                                                 }]
@@ -1083,7 +1089,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }]
                                         }
                                     },
-                                ]
+                                ])
                             }],
                         }]
                     }]
@@ -1105,7 +1111,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `block`,
                                         value: {
@@ -1124,7 +1130,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                 type: ["composite", {
                                                     cardinality: ["one", {}],
                                                     type: ["sequence", {
-                                                        elements: [
+                                                        elements: ([
                                                             {
                                                                 name: `variable`,
                                                                 value: {
@@ -1143,13 +1149,13 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                     }]
                                                                 }
                                                             },
-                                                        ]
+                                                        ])
                                                     }]
                                                 }]
                                             }]
                                         },
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1161,7 +1167,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `modifiers`,
                                         value: {
@@ -1194,7 +1200,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `type` }],
                                         },
                                     }
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1206,7 +1212,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `modifiers`,
                                         value: {
@@ -1223,7 +1229,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }]
                                         },
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1235,7 +1241,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `condition`,
                                         value: {
@@ -1252,7 +1258,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }],
                                         },
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1296,7 +1302,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `parameters`,
                                         value: {
@@ -1312,7 +1318,8 @@ export const typescriptGrammar: gr.TGrammar = {
                                             cardinality: ["optional", {}],
                                             type: ["reference", { name: `type` }],
                                         },
-                                    }]
+                                    }
+                                ])
                             }]
                         }]
                     }]
@@ -1411,7 +1418,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `x`,
                                         value: {
@@ -1431,7 +1438,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                             type: ["composite", {
                                                                 cardinality: ["one", {}],
                                                                 type: ["sequence", {
-                                                                    elements: [
+                                                                    elements: ([
                                                                         {
                                                                             name: `context`,
                                                                             value: {
@@ -1450,7 +1457,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                                                                 }],
                                                                             }
                                                                         },
-                                                                    ]
+                                                                    ])
                                                                 }],
                                                             }]
                                                         }]
@@ -1466,7 +1473,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `type` }],
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1515,7 +1522,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `parameters`,
                                         value: {
@@ -1534,7 +1541,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }]
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1546,7 +1553,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `modifiers`,
                                         value: {
@@ -1570,7 +1577,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `type` }],
                                         },
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1582,7 +1589,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `name`,
                                         value: {
@@ -1601,7 +1608,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             }]
                                         }
                                     },
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1613,7 +1620,7 @@ export const typescriptGrammar: gr.TGrammar = {
                         type: ["composite", {
                             cardinality: ["one", {}],
                             type: ["sequence", {
-                                elements: [
+                                elements: ([
                                     {
                                         name: `modifiers`,
                                         value: {
@@ -1645,7 +1652,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                             type: ["reference", { name: `type` }],
                                         },
                                     }
-                                ]
+                                ])
                             }]
                         }]
                     }]
@@ -1657,7 +1664,7 @@ export const typescriptGrammar: gr.TGrammar = {
             type: ["composite", {
                 cardinality: ["one", {}],
                 type: ["sequence", {
-                    elements: [
+                    elements: ([
                         {
                             name: `name`,
                             value: {
@@ -1681,7 +1688,7 @@ export const typescriptGrammar: gr.TGrammar = {
                                 type: ["reference", { name: `expression` }],
                             },
                         },
-                    ]
+                    ])
                 }]
             }]
         }],
@@ -1700,7 +1707,7 @@ export const typescriptGrammar: gr.TGrammar = {
         type: ["composite", {
             cardinality: ["one", {}],
             type: ["sequence", {
-                elements: [
+                elements: ([
                     {
                         name: `statements`,
                         value: {
@@ -1717,7 +1724,8 @@ export const typescriptGrammar: gr.TGrammar = {
                                 type: ["leaf", { hasTextContent: false }]
                             }]
                         }
-                    }]
+                    }
+                ])
             }]
         }]
     }
