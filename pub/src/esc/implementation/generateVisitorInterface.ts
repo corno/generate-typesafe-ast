@@ -47,7 +47,7 @@ export function generateVisitorInterface(
                             pr.au($.type[0])
                     }
                     $w.line(($w) => {
-                        $w.snippet(`"${path}"?: `)
+                        $w.snippet(`readonly "${path}"?: `)
                         switch ($.type[0]) {
                             case "composite":
                                 pr.cc($.type[1], ($) => {
