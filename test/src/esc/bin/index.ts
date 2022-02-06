@@ -7,120 +7,121 @@ import * as gta from "../../../../pub/dist"
 import * as fp from "fountain-pen"
 
 pr.runProgram(
-    (dataDir) => {
-
+    ($) => {
+        const dataDir = $.argument
         if (dataDir === undefined) {
             pr.logError("missing data directory path")
             pr.processExit(1)
-        }
+        } else {
 
-        pt.runTests(
-            {
-                callback: ($i) => {
-                    $i.asyncSubset(
-                        {
-                            name: "test generated code",
-                        },
-                        {
-                            registerListener: ($i) => {
-                                const testSet = $i.testSet
-
-                                pf.wrapDirectory(
-                                    {
-                                        rootDirectory: pr.join([dataDir, "src"]),
-                                    },
-                                    {
-                                        callback: ($i) => {
-
-                                            const targetDir = $i
-
-                                            fp.createContext(
-                                                pr.trimRight,
-                                            ).configure(
-                                                {
-                                                    indentation: "    ",
-                                                    newline: "\r\n",
-                                                    trimLines: true,
-                                                },
-                                                ($i) => {
-                                                    const wc = $i
-                                                    gta.generateCode(
-                                                        {
-                                                            grammar: tsg.typescriptGrammar,
-                                                        },
-                                                        {
-                                                            onError: ($) => {
-
-                                                            },
-                                                            createWriteStream: (
-                                                                $,
-                                                                $i,
-                                                            ) => {
-                                                                const filePath = $.path
-                                                                const blockCallback = $i
-
-                                                                let data = ""
-
-                                                                wc.processBlock({
-                                                                    onBlock: ($i) => {
-                                                                        blockCallback($i)
-                                                                    },
-                                                                    consumer: {
-                                                                        onData: ($) => {
-                                                                            data += $
-                                                                        },
-                                                                        onEnd: () => {
-                                                                            targetDir.readFile(
-                                                                                filePath,
-                                                                                {
-                                                                                    callback: ($) => {
-                                                                                        if ($ !== data) {
-                                                                                            targetDir.writeFile(
-                                                                                                {
-                                                                                                    path: filePath + ".actual",
-                                                                                                    data: data,
-                                                                                                    createMissingDirectories: false,
-                                                                                                },
-                                                                                                {}
-                                                                                            )
-                                                                                        }
-                                                                                        testSet.testString({
-                                                                                            testName: pr.join([dataDir, filePath]),
-                                                                                            expected: $,
-                                                                                            actual: data,
-                                                                                            fileLocation: filePath,
-                                                                                        })
-                                                                                    }
-                                                                                }
-                                                                            )
-
-                                                                        }
-                                                                    }
-                                                                })
-                                                            }
-                                                        }
-                                                    )
-                                                }
-                                            )
-
-                                        },
-                                        onError: ($) => {
-                                            $i.testSet.assert({
-                                                testName: `filesystem error: ${pf.printFSError($)}`,
-                                                condition: false,
-                                            })
-                                        },
-                                        onEnd: () => {
-                                            $i.done()
-                                        }
-                                    }
-                                )
+            pt.runTests(
+                {
+                    callback: ($i) => {
+                        $i.asyncSubset(
+                            {
+                                name: "test generated code",
                             },
-                        }
-                    )
-                },
-                log: pr.log,
-            }
-        )
+                            {
+                                registerListener: ($i) => {
+                                    const testSet = $i.testSet
+
+                                    pf.wrapDirectory(
+                                        {
+                                            rootDirectory: pr.join([dataDir, "src"]),
+                                        },
+                                        {
+                                            callback: ($i) => {
+
+                                                const targetDir = $i
+
+                                                fp.createContext(
+                                                    pr.trimRight,
+                                                ).configure(
+                                                    {
+                                                        indentation: "    ",
+                                                        newline: "\r\n",
+                                                        trimLines: true,
+                                                    },
+                                                    ($i) => {
+                                                        const wc = $i
+                                                        gta.generateCode(
+                                                            {
+                                                                grammar: tsg.typescriptGrammar,
+                                                            },
+                                                            {
+                                                                onError: ($) => {
+
+                                                                },
+                                                                createWriteStream: (
+                                                                    $,
+                                                                    $i,
+                                                                ) => {
+                                                                    const filePath = $.path
+                                                                    const blockCallback = $i
+
+                                                                    let data = ""
+
+                                                                    wc.processBlock({
+                                                                        onBlock: ($i) => {
+                                                                            blockCallback($i)
+                                                                        },
+                                                                        consumer: {
+                                                                            onData: ($) => {
+                                                                                data += $
+                                                                            },
+                                                                            onEnd: () => {
+                                                                                targetDir.readFile(
+                                                                                    filePath,
+                                                                                    {
+                                                                                        callback: ($) => {
+                                                                                            if ($ !== data) {
+                                                                                                targetDir.writeFile(
+                                                                                                    {
+                                                                                                        path: filePath + ".actual",
+                                                                                                        data: data,
+                                                                                                        createMissingDirectories: false,
+                                                                                                    },
+                                                                                                    {}
+                                                                                                )
+                                                                                            }
+                                                                                            testSet.testString({
+                                                                                                testName: pr.join([dataDir, filePath]),
+                                                                                                expected: $,
+                                                                                                actual: data,
+                                                                                                fileLocation: filePath,
+                                                                                            })
+                                                                                        }
+                                                                                    }
+                                                                                )
+
+                                                                            }
+                                                                        }
+                                                                    })
+                                                                }
+                                                            }
+                                                        )
+                                                    }
+                                                )
+
+                                            },
+                                            onError: ($) => {
+                                                $i.testSet.assert({
+                                                    testName: `filesystem error: ${pf.printFSError($)}`,
+                                                    condition: false,
+                                                })
+                                            },
+                                            onEnd: () => {
+                                                $i.done()
+                                            }
+                                        }
+                                    )
+                                },
+                            }
+                        )
+                    },
+                    log: pr.log,
+                }
+            )
+        }
     }
 )
