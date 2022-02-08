@@ -1,8 +1,8 @@
 {
     "dependencies": {
         "fountain-pen": "^4.2.11",
-        "pareto-filesystem": "^0.7.0",
+        "pareto-filesystem": "^0.7.1",
         "pareto-runtime": "^0.22.0",
-        "pareto-test": "^0.10.1"
+        "pareto-test": "^0.11.0"
     }
 }
