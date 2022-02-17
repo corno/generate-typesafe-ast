@@ -182,58 +182,68 @@ export function generateVisitor(
                     pathForReporting: string,
                 ) {
                     const symbol = $
-                    switch ($.cardinality[0]) {
-                        case "array":
-                            pr.cc($.cardinality[1], ($) => {
-                                $w.line(($w) => {
-                                    $w.snippet(`$.forEach(($) => {`)
-                                    $w.indent(($w) => {
-                                        generateValueType(
-                                            symbol.type,
-                                            $w,
-                                            `${pathForCode}`,
-                                            `${pathForReporting}`,
-                                        )
-                                    })
-                                    $w.snippet(`})`)
-                                })
-                            })
-                            break
-                        case "one":
-                            pr.cc($.cardinality[1], ($) => {
-                                generateValueType(
-                                    symbol.type,
-                                    $w,
-                                    `${pathForCode}`,
-                                    `${pathForReporting}`,
-                                )
-    
-                            })
-                            break
-                        case "optional":
-                            pr.cc($.cardinality[1], ($) => {
-                                $w.line(($w) => {
-                                    $w.snippet(`if ($ === null) {`)
-                                    $w.indent(($w) => {
-                                        $w.line(($w) => {
-                                            $w.snippet(`//FIXME??`)
+                    if ($.cardinality === undefined) {
+                        generateValueType(
+                            symbol.type,
+                            $w,
+                            `${pathForCode}`,
+                            `${pathForReporting}`,
+                        )
+                    } else {
+                        switch ($.cardinality[0]) {
+                            case "array":
+                                pr.cc($.cardinality[1], ($) => {
+                                    $w.line(($w) => {
+                                        $w.snippet(`$.forEach(($) => {`)
+                                        $w.indent(($w) => {
+                                            generateValueType(
+                                                symbol.type,
+                                                $w,
+                                                `${pathForCode}`,
+                                                `${pathForReporting}`,
+                                            )
                                         })
+                                        $w.snippet(`})`)
                                     })
-                                    $w.snippet(`} else {`)
-                                    $w.indent(($w) => {
-                                        generateValueType(
-                                            symbol.type,
-                                            $w,
-                                            `${pathForCode}`,
-                                            `${pathForReporting}`,
-                                        )
-                                    })
-                                    $w.snippet(`}`)
                                 })
-                            })
-                            break
-                        default:
-                            pr.au($.cardinality[0])
+                                break
+                            case "one":
+                                pr.cc($.cardinality[1], ($) => {
+                                    generateValueType(
+                                        symbol.type,
+                                        $w,
+                                        `${pathForCode}`,
+                                        `${pathForReporting}`,
+                                    )
+        
+                                })
+                                break
+                            case "optional":
+                                pr.cc($.cardinality[1], ($) => {
+                                    $w.line(($w) => {
+                                        $w.snippet(`if ($ === null) {`)
+                                        $w.indent(($w) => {
+                                            $w.line(($w) => {
+                                                $w.snippet(`//FIXME??`)
+                                            })
+                                        })
+                                        $w.snippet(`} else {`)
+                                        $w.indent(($w) => {
+                                            generateValueType(
+                                                symbol.type,
+                                                $w,
+                                                `${pathForCode}`,
+                                                `${pathForReporting}`,
+                                            )
+                                        })
+                                        $w.snippet(`}`)
+                                    })
+                                })
+                                break
+                            default:
+                                pr.au($.cardinality[0])
+                        }
+
                     }
                 }
                 pr.forEachEntry($.globalValueTypes, ($, key) => {

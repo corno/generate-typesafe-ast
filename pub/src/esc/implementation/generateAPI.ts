@@ -163,24 +163,29 @@ export function generateAPI(
         )
         $w.line(($w) => {
             $w.snippet(`export type TV${path}<Annotation> = `)
-            switch ($.cardinality[0]) {
-                case "array":
-                    pr.cc($.cardinality[1], ($) => {
-                        $w.snippet(`TVT${path}<Annotation>[]`)
-                    })
-                    break
-                case "one":
-                    pr.cc($.cardinality[1], ($) => {
-                        $w.snippet(`TVT${path}<Annotation>`)
-                    })
-                    break
-                case "optional":
-                    pr.cc($.cardinality[1], ($) => {
-                        $w.snippet(`pr.optional<TVT${path}<Annotation>>`)
-                    })
-                    break
-                default:
-                    pr.au($.cardinality[0])
+            if ($.cardinality === undefined) {
+                $w.snippet(`TVT${path}<Annotation>`)
+            } else {
+                switch ($.cardinality[0]) {
+                    case "array":
+                        pr.cc($.cardinality[1], ($) => {
+                            $w.snippet(`TVT${path}<Annotation>[]`)
+                        })
+                        break
+                    case "one":
+                        pr.cc($.cardinality[1], ($) => {
+                            $w.snippet(`TVT${path}<Annotation>`)
+                        })
+                        break
+                    case "optional":
+                        pr.cc($.cardinality[1], ($) => {
+                            $w.snippet(`pr.optional<TVT${path}<Annotation>>`)
+                        })
+                        break
+                    default:
+                        pr.au($.cardinality[0])
+                }
+
             }
         })
     }

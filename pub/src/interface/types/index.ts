@@ -25,7 +25,7 @@ export type TValueType =
     }]
 
 export type TValue = {
-    readonly "cardinality": TCardinality
+    readonly "cardinality"?: TCardinality
     readonly "type": TValueType
 }
 

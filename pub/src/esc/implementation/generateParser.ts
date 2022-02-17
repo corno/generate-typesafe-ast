@@ -265,198 +265,208 @@ export function generateParser(
                     ) => void,
                 ) {
                     const symbol = $
-                    switch ($.cardinality[0]) {
-                        case "array":
-                            pr.cc($.cardinality[1], ($) => {
-                                $w.line(($w) => {
-                                    $w.snippet(`const elements: tast.TV${path}<Annotation> = []`)
-                                })
-                                $w.line(($w) => {
-                                    $w.snippet(`const processElement = () => {`)
-                                    $w.indent(($w) => {
-                                        generateValueType(
-                                            symbol.type,
-                                            path,
-                                            $w,
-                                            ($w) => {
-                                                $w.line(($w) => {
-                                                    $w.snippet(`elements.push($)`)
-                                                })
-                                            },
-                                        )
+                    if ($.cardinality === undefined) {
+                        generateValueType(
+                            symbol.type,
+                            path,
+                            $w,
+                            endCallback,
+                        )
+                    } else {
+                        switch ($.cardinality[0]) {
+                            case "array":
+                                pr.cc($.cardinality[1], ($) => {
+                                    $w.line(($w) => {
+                                        $w.snippet(`const elements: tast.TVT${path}<Annotation>[] = []`)
                                     })
-                                    $w.snippet(`}`)
-                                })
-                                $w.line(($w) => {
-                                    $w.snippet(`arrayLoop: while (true) {`)
-                                    $w.indent(($w) => {
-                                        nextChild(
-                                            $w,
-                                            ($w) => {
-
-                                                $w.line(($w) => {
-                                                    $w.snippet(`break arrayLoop`)
-                                                })
-                                            },
-                                            ($w) => {
-                                                $w.line(($w) => {
-                                                    $w.snippet(`switch (nextChild.kindName) {`)
-                                                    $w.indent(($w) => {
-
-                                                        const possibleTokens: { [key: string]: null } = {}
-                                                        findNextPossibleTokensInSymbolType(
-                                                            symbol.type,
-                                                            ($) => {
-                                                                // if (possibleTokens[$] !== undefined) {
-                                                                //     throw new Error("UNEXPECTED")
-
-                                                                // }
-                                                                possibleTokens[$] = null
-                                                            },
-                                                            () => {
-                                                                throw new Error("IMPLEMENT ME 4")
-                                                            }
-                                                        )
-                                                        pr.Objectkeys(possibleTokens).forEach((key) => {
-                                                            $w.line(($w) => {
-                                                                $w.snippet(`case "${key}":`)
-                                                                $w.indent(($w) => {
-                                                                    $w.line(($w) => {
-                                                                        $w.snippet(`processElement()`)
-                                                                    })
-                                                                    $w.line(($w) => {
-                                                                        $w.snippet(`break`)
+                                    $w.line(($w) => {
+                                        $w.snippet(`const processElement = () => {`)
+                                        $w.indent(($w) => {
+                                            generateValueType(
+                                                symbol.type,
+                                                path,
+                                                $w,
+                                                ($w) => {
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`elements.push($)`)
+                                                    })
+                                                },
+                                            )
+                                        })
+                                        $w.snippet(`}`)
+                                    })
+                                    $w.line(($w) => {
+                                        $w.snippet(`arrayLoop: while (true) {`)
+                                        $w.indent(($w) => {
+                                            nextChild(
+                                                $w,
+                                                ($w) => {
+    
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`break arrayLoop`)
+                                                    })
+                                                },
+                                                ($w) => {
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`switch (nextChild.kindName) {`)
+                                                        $w.indent(($w) => {
+    
+                                                            const possibleTokens: { [key: string]: null } = {}
+                                                            findNextPossibleTokensInSymbolType(
+                                                                symbol.type,
+                                                                ($) => {
+                                                                    // if (possibleTokens[$] !== undefined) {
+                                                                    //     throw new Error("UNEXPECTED")
+    
+                                                                    // }
+                                                                    possibleTokens[$] = null
+                                                                },
+                                                                () => {
+                                                                    throw new Error("IMPLEMENT ME 4")
+                                                                }
+                                                            )
+                                                            pr.Objectkeys(possibleTokens).forEach((key) => {
+                                                                $w.line(($w) => {
+                                                                    $w.snippet(`case "${key}":`)
+                                                                    $w.indent(($w) => {
+                                                                        $w.line(($w) => {
+                                                                            $w.snippet(`processElement()`)
+                                                                        })
+                                                                        $w.line(($w) => {
+                                                                            $w.snippet(`break`)
+                                                                        })
                                                                     })
                                                                 })
                                                             })
-                                                        })
-
-                                                        $w.line(($w) => {
-                                                            $w.snippet(`default: break arrayLoop`)
-                                                        })
-                                                    })
-                                                    $w.snippet(`}`)
-                                                })
-                                            }
-                                        )
-                                    })
-                                    $w.snippet(`}`)
-                                })
-                                $w.line(($w) => {
-                                    $w.snippet(`pr.cc(elements, ($) => {`)
-                                    $w.indent(($w) => {
-                                        endCallback($w)
-                                    })
-                                    $w.snippet(`})`)
-                                })
-                            })
-                            break
-                        case "one":
-                            pr.cc($.cardinality[1], ($) => {
-                                generateValueType(
-                                    symbol.type,
-                                    path,
-                                    $w,
-                                    endCallback,
-                                )
-                            })
-                            break
-                        case "optional":
-                            pr.cc($.cardinality[1], ($) => {
-                                $w.line(($w) => {
-                                    $w.snippet(`let optional: tast.TV${path}<Annotation> = null`)
-                                })
-                                $w.line(($w) => {
-                                    $w.snippet(`const setOptional = () => {`)
-                                    $w.indent(($w) => {
-                                        generateValueType(
-                                            symbol.type,
-                                            path,
-                                            $w,
-                                            ($w) => {
-                                                $w.line(($w) => {
-                                                    $w.snippet(`optional = $`)
-                                                })
-                                            },
-                                        )
-                                    })
-                                    $w.snippet(`}`)
-                                })
-                                // $w.line(($w) => {
-                                //     $w.snippet(`const processNotSet = () => {`)
-                                //     $w.indent(($w) => {
-                                //         $w.line(($w) => {
-                                //             $w.snippet(`pr.cc(null, ($) => {`)
-                                //             $w.indent(($w) => {
-                                //                 generateType(
-                                //                     $w,
-                                //                     ($w) => {
-                                //                         endCallback($w)
-                                //                     },
-                                //                 )
-                                //             })
-                                //             $w.snippet(`})`)
-                                //         })
-                                //     })
-                                //     $w.snippet(`}`)
-                                // })
-                                nextChild(
-                                    $w,
-                                    ($w) => {
-                                        //
-                                    },
-                                    ($w) => {
-                                        $w.line(($w) => {
-                                            $w.snippet(`switch (nextChild.kindName) {`)
-                                            $w.indent(($w) => {
-
-                                                const possibleTokens: { [key: string]: null } = {}
-                                                findNextPossibleTokensInSymbolType(
-                                                    symbol.type,
-                                                    ($) => {
-                                                        // if (possibleTokens[$] !== undefined) {
-                                                        //     throw new Error("UNEXPECTED")
-
-                                                        // }
-                                                        possibleTokens[$] = null
-                                                    },
-                                                    () => {
-                                                        throw new Error("IMPLEMENT ME 5")
-                                                    }
-                                                )
-                                                pr.Objectkeys(possibleTokens).forEach((key) => {
-                                                    $w.line(($w) => {
-                                                        $w.snippet(`case "${key}":`)
-                                                        $w.indent(($w) => {
+    
                                                             $w.line(($w) => {
-                                                                $w.snippet(`setOptional()`)
-                                                            })
-                                                            $w.line(($w) => {
-                                                                $w.snippet(`break`)
+                                                                $w.snippet(`default: break arrayLoop`)
                                                             })
                                                         })
+                                                        $w.snippet(`}`)
                                                     })
-                                                })
-
-                                                // $w.line(($w) => {
-                                                //     $w.snippet(`default: processNotSet()`)
-                                                // })
-                                            })
-                                            $w.snippet(`}`)
+                                                }
+                                            )
                                         })
-                                    }
-                                )
-                                $w.line(($w) => {
-                                    $w.snippet(`pr.cc(optional, ($) => {`)
-                                    $w.indent(($w) => {
-                                        endCallback($w)
+                                        $w.snippet(`}`)
                                     })
-                                    $w.snippet(`})`)
+                                    $w.line(($w) => {
+                                        $w.snippet(`pr.cc(elements, ($) => {`)
+                                        $w.indent(($w) => {
+                                            endCallback($w)
+                                        })
+                                        $w.snippet(`})`)
+                                    })
                                 })
-                            })
-                            break
-                        default:
-                            pr.au($.cardinality[0])
+                                break
+                            case "one":
+                                pr.cc($.cardinality[1], ($) => {
+                                    generateValueType(
+                                        symbol.type,
+                                        path,
+                                        $w,
+                                        endCallback,
+                                    )
+                                })
+                                break
+                            case "optional":
+                                pr.cc($.cardinality[1], ($) => {
+                                    $w.line(($w) => {
+                                        $w.snippet(`let optional: null | tast.TVT${path}<Annotation> = null`)
+                                    })
+                                    $w.line(($w) => {
+                                        $w.snippet(`const setOptional = () => {`)
+                                        $w.indent(($w) => {
+                                            generateValueType(
+                                                symbol.type,
+                                                path,
+                                                $w,
+                                                ($w) => {
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`optional = $`)
+                                                    })
+                                                },
+                                            )
+                                        })
+                                        $w.snippet(`}`)
+                                    })
+                                    // $w.line(($w) => {
+                                    //     $w.snippet(`const processNotSet = () => {`)
+                                    //     $w.indent(($w) => {
+                                    //         $w.line(($w) => {
+                                    //             $w.snippet(`pr.cc(null, ($) => {`)
+                                    //             $w.indent(($w) => {
+                                    //                 generateType(
+                                    //                     $w,
+                                    //                     ($w) => {
+                                    //                         endCallback($w)
+                                    //                     },
+                                    //                 )
+                                    //             })
+                                    //             $w.snippet(`})`)
+                                    //         })
+                                    //     })
+                                    //     $w.snippet(`}`)
+                                    // })
+                                    nextChild(
+                                        $w,
+                                        ($w) => {
+                                            //
+                                        },
+                                        ($w) => {
+                                            $w.line(($w) => {
+                                                $w.snippet(`switch (nextChild.kindName) {`)
+                                                $w.indent(($w) => {
+    
+                                                    const possibleTokens: { [key: string]: null } = {}
+                                                    findNextPossibleTokensInSymbolType(
+                                                        symbol.type,
+                                                        ($) => {
+                                                            // if (possibleTokens[$] !== undefined) {
+                                                            //     throw new Error("UNEXPECTED")
+    
+                                                            // }
+                                                            possibleTokens[$] = null
+                                                        },
+                                                        () => {
+                                                            throw new Error("IMPLEMENT ME 5")
+                                                        }
+                                                    )
+                                                    pr.Objectkeys(possibleTokens).forEach((key) => {
+                                                        $w.line(($w) => {
+                                                            $w.snippet(`case "${key}":`)
+                                                            $w.indent(($w) => {
+                                                                $w.line(($w) => {
+                                                                    $w.snippet(`setOptional()`)
+                                                                })
+                                                                $w.line(($w) => {
+                                                                    $w.snippet(`break`)
+                                                                })
+                                                            })
+                                                        })
+                                                    })
+    
+                                                    // $w.line(($w) => {
+                                                    //     $w.snippet(`default: processNotSet()`)
+                                                    // })
+                                                })
+                                                $w.snippet(`}`)
+                                            })
+                                        }
+                                    )
+                                    $w.line(($w) => {
+                                        $w.snippet(`pr.cc(optional, ($) => {`)
+                                        $w.indent(($w) => {
+                                            endCallback($w)
+                                        })
+                                        $w.snippet(`})`)
+                                    })
+                                })
+                                break
+                            default:
+                                pr.au($.cardinality[0])
+                        }
+
                     }
                 }
                 function generateValueType(

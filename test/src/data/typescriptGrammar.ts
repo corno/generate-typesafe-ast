@@ -1,5 +1,4 @@
 import * as gr from "../../../pub"
-
 export const _typescriptGrammar: gr.TGrammar = {
     'globalValueTypes': {
         'block': ["node", {
@@ -12,7 +11,6 @@ export const _typescriptGrammar: gr.TGrammar = {
         'expression': ["choice", {
             'options': {
                 'arrayLiteral': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ArrayLiteralExpression`,
                         'type': ["composite", {
@@ -22,11 +20,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'arrowFunction': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ArrowFunction`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -48,7 +44,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `equalsGreaterThan`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["node", {
                                                 'name': `EqualsGreaterThanToken`,
                                                 'type': ["leaf", { 'hasTextContent': false }],
@@ -58,17 +53,14 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `implementation`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["choice", {
                                                 'options': {
                                                     "block": {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["reference", {
                                                             'name': `block`,
                                                         }]
                                                     },
                                                     "expression": {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["reference", { 'name': `expression` }],
                                                     },
                                                 }
@@ -81,98 +73,83 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'binary': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `BinaryExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `leftHandSide`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     },
                                     {
                                         'name': `operator`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["choice", {
                                                 'options': {
                                                     'ampersandAmpersand': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `AmpersandAmpersandToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
                                                         }]
                                                     },
                                                     'barBar': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `BarBarToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
                                                         }]
                                                     },
                                                     'equals': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `EqualsToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
                                                         }]
                                                     },
                                                     'equalsEqualsEquals': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `EqualsEqualsEqualsToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
                                                         }]
                                                     },
                                                     'exclamationEqualsEquals': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `ExclamationEqualsEqualsToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
                                                         }]
                                                     },
                                                     'greaterThan': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `GreaterThanToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }],
                                                         }]
                                                     },
                                                     'lessThan': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `LessThanToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }],
                                                         }]
                                                     },
                                                     'minus': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `MinusToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }],
                                                         }]
                                                     },
                                                     'minusEquals': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `MinusEqualsToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
                                                         }]
                                                     },
                                                     'plus': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `PlusToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
                                                         }]
                                                     },
                                                     'plusEquals': {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `PlusEqualsToken`,
                                                             'type': ["leaf", { 'hasTextContent': false }]
@@ -185,7 +162,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `rightHandSide`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     }
@@ -195,11 +171,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'call': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `CallExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -229,24 +203,20 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'conditional': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ConditionalExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `test`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     },
                                     {
                                         'name': `questionToken`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["node", {
                                                 'name': `QuestionToken`,
                                                 'type': ["leaf", { 'hasTextContent': false }]
@@ -256,14 +226,12 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `ifExpression`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     },
                                     {
                                         'name': `colonToken`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["node", {
                                                 'name': `ColonToken`,
                                                 'type': ["leaf", { 'hasTextContent': false }],
@@ -273,7 +241,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `elseExpression`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     },
@@ -283,24 +250,20 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'elementAccess': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ElementAccessExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `array`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     },
                                     {
                                         'name': `element`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     }
@@ -310,30 +273,25 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'false': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `FalseKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
                     }]
                 },
                 'identifier': {
-                    'cardinality': ["one", {}],
                     'type': ["reference", {
                         'name': `identifier`
                     }],
                 },
                 'new': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `NewExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `class`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `identifier`
                                             }],
@@ -352,27 +310,23 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'noSubstitutionTemplateLiteral': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `NoSubstitutionTemplateLiteral`,
                         'type': ["leaf", { 'hasTextContent': false }]
                     }]
                 },
                 'numericLiteral': {
-                    'cardinality': ["one", {}],
                     'type': ["reference", {
                         'name': `numericLiteral`,
                     }],
                 },
                 'nullKeyword': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `NullKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
                     }]
                 },
                 'objectLiteral': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ObjectLiteralExpression`,
                         'type': ["composite", {
@@ -380,29 +334,24 @@ export const _typescriptGrammar: gr.TGrammar = {
                             'type': ["node", {
                                 'name': `PropertyAssignment`,
                                 'type': ["composite", {
-                                    'cardinality': ["one", {}],
                                     'type': ["sequence", {
                                         'elements': ([
                                             {
                                                 'name': `name`,
                                                 'value': {
-                                                    'cardinality': ["one", {}],
                                                     'type': ["choice", {
                                                         'options': {
                                                             'identifier': {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["reference", {
                                                                     'name': `identifier`
                                                                 }],
                                                             },
                                                             'numericLiteral': {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["reference", {
                                                                     'name': `numericLiteral`,
                                                                 }],
                                                             },
                                                             'stringLiteral': {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["reference", {
                                                                     'name': `stringLiteral`
                                                                 }]
@@ -414,7 +363,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                             {
                                                 'name': `expression`,
                                                 'value': {
-                                                    'cardinality': ["one", {}],
                                                     'type': ["reference", { 'name': `expression` }],
                                                 }
                                             },
@@ -426,54 +374,44 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'parenthesizedExpression': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ParenthesizedExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `expression` }],
                         }],
                     }]
                 },
                 'postfixUnary': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `PostfixUnaryExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `expression` }],
                         }],
                     }]
                 },
                 'prefixUnary': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `PrefixUnaryExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `expression` }],
                         }],
                     }]
                 },
                 'propertyAccess': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `PropertyAccessExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `object`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     },
                                     {
                                         'name': `property`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         }
                                     },
@@ -483,23 +421,19 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'stringLiteral': {
-                    'cardinality': ["one", {}],
                     'type': ["reference", {
                         'name': `stringLiteral`
                     }]
                 },
                 'template': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `TemplateExpression`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `head`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["node", {
                                                 'name': `TemplateHead`,
                                                 'type': ["leaf", { 'hasTextContent': true }],
@@ -513,31 +447,26 @@ export const _typescriptGrammar: gr.TGrammar = {
                                             'type': ["node", {
                                                 'name': `TemplateSpan`,
                                                 'type': ["composite", {
-                                                    'cardinality': ["one", {}],
                                                     'type': ["sequence", {
                                                         'elements': ([
                                                             {
                                                                 'name': `expression`,
                                                                 'value': {
-                                                                    'cardinality': ["one", {}],
                                                                     'type': ["reference", { 'name': `expression` }],
                                                                 }
                                                             },
                                                             {
                                                                 'name': `x`,
                                                                 'value': {
-                                                                    'cardinality': ["one", {}],
                                                                     'type': ["choice", {
                                                                         'options': {
                                                                             'middle': {
-                                                                                'cardinality': ["one", {}],
                                                                                 'type': ["node", {
                                                                                     'name': `TemplateMiddle`,
                                                                                     'type': ["leaf", { 'hasTextContent': true }],
                                                                                 }],
                                                                             },
                                                                             'tail': {
-                                                                                'cardinality': ["one", {}],
                                                                                 'type': ["node", {
                                                                                     'name': `TemplateTail`,
                                                                                     'type': ["leaf", { 'hasTextContent': true }]
@@ -559,7 +488,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'true': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `TrueKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }]
@@ -603,13 +531,11 @@ export const _typescriptGrammar: gr.TGrammar = {
         'identifierOrStringLiteral': ["choice", {
             'options': {
                 'identifier': {
-                    'cardinality': ["one", {}],
                     'type': ["reference", {
                         'name': `identifier`
                     }],
                 },
                 'stringLiteral': {
-                    'cardinality': ["one", {}],
                     'type': ["reference", {
                         'name': `stringLiteral`
                     }]
@@ -620,21 +546,18 @@ export const _typescriptGrammar: gr.TGrammar = {
             //AbstractKeyword | AsyncKeyword | ConstKeyword | DeclareKeyword | DefaultKeyword | ExportKeyword | PrivateKeyword | ProtectedKeyword | PublicKeyword | OverrideKeyword | ReadonlyKeyword | StaticKeyword;
             'options': {
                 'declare': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `DeclareKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }]
                     }]
                 },
                 'export': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ExportKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
                     }]
                 },
                 'readonly': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ReadonlyKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
@@ -649,13 +572,11 @@ export const _typescriptGrammar: gr.TGrammar = {
         'parameter': ["node", {
             'name': `Parameter`,
             'type': ["composite", {
-                'cardinality': ["one", {}],
                 'type': ["sequence", {
                     'elements': ([
                         {
                             'name': `name`,
                             'value': {
-                                'cardinality': ["one", {}],
                                 'type': ["reference", {
                                     'name': `identifier`
                                 }],
@@ -685,13 +606,11 @@ export const _typescriptGrammar: gr.TGrammar = {
         'statement': ["choice", {
             'options': {
                 'block': {
-                    'cardinality': ["one", {}],
                     'type': ["reference", {
                         'name': `block`
                     }]
                 },
                 'break': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `BreakStatement`,
                         'type': ["composite", {
@@ -703,11 +622,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'export': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ExportDeclaration`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", {
                                 'name': `stringLiteral`
                             }],
@@ -715,21 +632,17 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'expression': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ExpressionStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `expression` }]
                         }],
                     }]
                 },
                 'for': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ForStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -770,11 +683,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'function': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `FunctionDeclaration`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -787,7 +698,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `name`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `identifier`
                                             }],
@@ -796,7 +706,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `definition`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `functionDefinition`
                                             }]
@@ -817,24 +726,20 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'if': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `IfStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `expression`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         },
                                     },
                                     {
                                         'name': `thenStatement`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `statement` }],
                                         },
                                     },
@@ -851,29 +756,23 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'import': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ImportDeclaration`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `clause`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["node", {
                                                 'name': `ImportClause`,
                                                 'type': ["composite", {
-                                                    'cardinality': ["one", {}],
                                                     'type': ["choice", {
                                                         'options': {
                                                             'namespace': {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["node", {
                                                                     'name': `NamespaceImport`,
                                                                     'type': ["composite", {
-                                                                        'cardinality': ["one", {}],
                                                                         'type': ["reference", {
                                                                             'name': `identifier`
                                                                         }],
@@ -881,7 +780,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                                                 }]
                                                             },
                                                             'named': {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["node", {
                                                                     'name': `NamedImports`,
                                                                     'type': ["composite", {
@@ -889,13 +787,11 @@ export const _typescriptGrammar: gr.TGrammar = {
                                                                         'type': ["node", {
                                                                             'name': `ImportSpecifier`,
                                                                             'type': ["composite", {
-                                                                                'cardinality': ["one", {}],
                                                                                 'type': ["sequence", {
                                                                                     'elements': ([
                                                                                         {
                                                                                             'name': `name`,
                                                                                             'value': {
-                                                                                                'cardinality': ["one", {}],
                                                                                                 'type': ["reference", {
                                                                                                     'name': `identifier`
                                                                                                 }],
@@ -926,7 +822,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `file`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `stringLiteral`
                                             }],
@@ -938,11 +833,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'interface': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `InterfaceDeclaration`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -955,7 +848,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `name`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `identifier`
                                             }],
@@ -983,17 +875,14 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'labeled': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `LabeledStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `label`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `identifier`
                                             }],
@@ -1002,7 +891,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `statement`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `statement` }],
                                         }
                                     },
@@ -1012,7 +900,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'return': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ReturnStatement`,
                         'type': ["composite", {
@@ -1022,24 +909,20 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'switch': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `SwitchStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `expression`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }]
                                         }
                                     },
                                     {
                                         'name': `caseBlock`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["node", {
                                                 'name': `CaseBlock`,
                                                 'type': ["composite", {
@@ -1047,17 +930,14 @@ export const _typescriptGrammar: gr.TGrammar = {
                                                     'type': ["choice", {
                                                         'options': {
                                                             "case": {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["node", {
                                                                     'name': `CaseClause`,
                                                                     'type': ["composite", {
-                                                                        'cardinality': ["one", {}],
                                                                         'type': ["sequence", {
                                                                             'elements': ([
                                                                                 {
                                                                                     'name': `case`,
                                                                                     'value': {
-                                                                                        'cardinality': ["one", {}],
                                                                                         'type': ["reference", { 'name': `expression` }]
                                                                                     }
                                                                                 },
@@ -1074,7 +954,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                                                 }]
                                                             },
                                                             "default": {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["node", {
                                                                     'name': `DefaultClause`,
                                                                     'type': ["composite", {
@@ -1095,27 +974,22 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'throw': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ThrowStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `expression` }],
                         }]
                     }]
                 },
                 'try': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `TryStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `block`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `block`
                                             }]
@@ -1124,17 +998,14 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `catchClause`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["node", {
                                                 'name': `CatchClause`,
                                                 'type': ["composite", {
-                                                    'cardinality': ["one", {}],
                                                     'type': ["sequence", {
                                                         'elements': ([
                                                             {
                                                                 'name': `variable`,
                                                                 'value': {
-                                                                    'cardinality': ["one", {}],
                                                                     'type': ["reference", {
                                                                         'name': `variableDeclaration`
                                                                     }]
@@ -1143,7 +1014,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                                             {
                                                                 'name': `block`,
                                                                 'value': {
-                                                                    'cardinality': ["one", {}],
                                                                     'type': ["reference", {
                                                                         'name': `block`
                                                                     }]
@@ -1161,11 +1031,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'typeAlias': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `TypeAliasDeclaration`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -1178,7 +1046,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `name`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `identifier`
                                             }],
@@ -1196,7 +1063,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `type`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `type` }],
                                         },
                                     }
@@ -1206,11 +1072,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'variable': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `VariableStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -1223,7 +1087,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `variableDeclarationList`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `variableDeclarationList`
                                             }]
@@ -1235,24 +1098,20 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'while': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `WhileStatement`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `condition`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `expression` }],
                                         },
                                     },
                                     {
                                         'name': `block`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `block`
                                             }],
@@ -1272,35 +1131,29 @@ export const _typescriptGrammar: gr.TGrammar = {
         'type': ["choice", {
             'options': {
                 'any': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `AnyKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
                     }]
                 },
                 'array': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ArrayType`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `type` }],
                         }]
                     }]
                 },
                 'boolean': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `BooleanKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }]
                     }]
                 },
                 'function': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `FunctionType`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -1325,22 +1178,18 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'literal': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `LiteralType`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["choice", {
                                 'options': {
                                     'null': {
-                                        'cardinality': ["one", {}],
                                         'type': ["node", {
                                             'name': `NullKeyword`,
                                             'type': ["leaf", { 'hasTextContent': false }],
                                         }]
                                     },
                                     'string': {
-                                        'cardinality': ["one", {}],
                                         'type': ["reference", {
                                             'name': `stringLiteral`
                                         }],
@@ -1351,41 +1200,34 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'parenthesized': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ParenthesizedType`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `type` }],
                         }],
                     }]
                 },
                 'never': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `NeverKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
                     }]
                 },
                 'number': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `NumberKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
                     }]
                 },
                 'optional': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `OptionalType`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["reference", { 'name': `type` }],
                         }],
                     }]
                 },
                 'tuple': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `TupleType`,
                         'type': ["composite", {
@@ -1395,7 +1237,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'typeLiteral': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `TypeLiteral`,
                         'type': ["composite", {
@@ -1405,18 +1246,15 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'string': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `StringKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }]
                     }]
                 },
                 'typeReference': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `TypeReference`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -1426,23 +1264,19 @@ export const _typescriptGrammar: gr.TGrammar = {
                                             'type': ["choice", {
                                                 'options': {
                                                     "identifier": {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["reference", {
                                                             'name': `identifier`
                                                         }],
                                                     },
                                                     "qualifiedName": {
-                                                        'cardinality': ["one", {}],
                                                         'type': ["node", {
                                                             'name': `QualifiedName`,
                                                             'type': ["composite", {
-                                                                'cardinality': ["one", {}],
                                                                 'type': ["sequence", {
                                                                     'elements': ([
                                                                         {
                                                                             'name': `context`,
                                                                             'value': {
-                                                                                'cardinality': ["one", {}],
                                                                                 'type': ["reference", {
                                                                                     'name': `identifier`
                                                                                 }],
@@ -1451,7 +1285,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                                                         {
                                                                             'name': `type`,
                                                                             'value': {
-                                                                                'cardinality': ["one", {}],
                                                                                 'type': ["reference", {
                                                                                     'name': `identifier`
                                                                                 }],
@@ -1479,14 +1312,12 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'undefined': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `UndefinedKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }],
                     }]
                 },
                 'union': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `UnionType`,
                         'type': ["composite", {
@@ -1496,7 +1327,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'void': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `VoidKeyword`,
                         'type': ["leaf", { 'hasTextContent': false }]
@@ -1507,7 +1337,6 @@ export const _typescriptGrammar: gr.TGrammar = {
         'typeParameter': ["node", {
             'name': `TypeParameter`,
             'type': ["composite", {
-                'cardinality': ["one", {}],
                 'type': ["reference", {
                     'name': `identifier`
                 }],
@@ -1516,11 +1345,9 @@ export const _typescriptGrammar: gr.TGrammar = {
         'typeSignature': ["choice", {
             'options': {
                 'construct': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `ConstructSignature`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -1535,7 +1362,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `returnType`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `type`
                                             }]
@@ -1547,11 +1373,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'index': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `IndexSignature`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -1564,7 +1388,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `parameter`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `parameter`
                                             }],
@@ -1583,17 +1406,14 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'method': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `MethodSignature`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
                                         'name': `name`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `identifier`
                                             }],
@@ -1602,7 +1422,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `definition`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", {
                                                 'name': `functionDefinition`
                                             }]
@@ -1614,11 +1433,9 @@ export const _typescriptGrammar: gr.TGrammar = {
                     }]
                 },
                 'property': {
-                    'cardinality': ["one", {}],
                     'type': ["node", {
                         'name': `PropertySignature`,
                         'type': ["composite", {
-                            'cardinality': ["one", {}],
                             'type': ["sequence", {
                                 'elements': ([
                                     {
@@ -1631,7 +1448,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                                     {
                                         'name': `name`,
                                         'value': {
-                                            'cardinality': ["one", {}],
                                             'type': ["reference", { 'name': `identifierOrStringLiteral` }],
                                         }
                                     },
@@ -1662,13 +1478,11 @@ export const _typescriptGrammar: gr.TGrammar = {
         'variableDeclaration': ["node", {
             'name': `VariableDeclaration`,
             'type': ["composite", {
-                'cardinality': ["one", {}],
                 'type': ["sequence", {
                     'elements': ([
                         {
                             'name': `name`,
                             'value': {
-                                'cardinality': ["one", {}],
                                 'type': ["reference", {
                                     'name': `identifier`
                                 }],
@@ -1705,7 +1519,6 @@ export const _typescriptGrammar: gr.TGrammar = {
     'root': {
         'name': `SourceFile`,
         'type': ["composite", {
-            'cardinality': ["one", {}],
             'type': ["sequence", {
                 'elements': ([
                     {
@@ -1718,7 +1531,6 @@ export const _typescriptGrammar: gr.TGrammar = {
                     {
                         'name': `endOfFile`,
                         'value': {
-                            'cardinality': ["one", {}],
                             'type': ["node", {
                                 'name': `EndOfFileToken`,
                                 'type': ["leaf", { 'hasTextContent': false }]

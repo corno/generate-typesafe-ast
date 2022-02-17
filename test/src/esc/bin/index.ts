@@ -69,26 +69,40 @@ pr.runProgram(
                                                                             data += $
                                                                         },
                                                                         onEnd: () => {
-                                                                            targetDir.readFile(
-                                                                                filePath,
+                                                                            targetDir.unlink(
                                                                                 {
-                                                                                    callback: ($) => {
-                                                                                        if ($ !== data) {
-                                                                                            targetDir.writeFile(
-                                                                                                {
-                                                                                                    path: filePath + ".actual",
-                                                                                                    data: data,
-                                                                                                    createMissingDirectories: false,
-                                                                                                },
-                                                                                                {}
-                                                                                            )
-                                                                                        }
-                                                                                        testSet.testString({
-                                                                                            testName: pr.join([dataDir, filePath]),
-                                                                                            expected: $,
-                                                                                            actual: data,
-                                                                                            fileLocation: filePath,
-                                                                                        })
+                                                                                    path: filePath + ".actual",
+
+                                                                                },
+                                                                                {
+                                                                                    onNotExists: () => {
+                                                                                        //no problem
+                                                                                    },
+                                                                                    onDone: ()=> {
+                                                                                        targetDir.readFile(
+                                                                                            filePath,
+                                                                                            {
+                                                                                                callback: ($) => {
+                                                                                                    if ($ !== data) {
+                                                                                                        targetDir.writeFile(
+                                                                                                            {
+                                                                                                                path: filePath + ".actual",
+                                                                                                                data: data,
+                                                                                                                createMissingDirectories: false,
+                                                                                                            },
+                                                                                                            {}
+                                                                                                        )
+                                                                                                    }
+                                                                                                    testSet.testString({
+                                                                                                        testName: pr.join([dataDir, filePath]),
+                                                                                                        expected: $,
+                                                                                                        actual: data,
+                                                                                                        fileLocation: filePath,
+                                                                                                    })
+                                                                                                }
+                                                                                            }
+                                                                                        )
+
                                                                                     }
                                                                                 }
                                                                             )

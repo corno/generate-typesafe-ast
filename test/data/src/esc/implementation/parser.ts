@@ -46,7 +46,7 @@ export function parse<Annotation>(
             children.reverse()
             let currentChild: uast.TUntypedNode<Annotation> | undefined
             let nextChild: uast.TUntypedNode<Annotation> | undefined
-            const elements: tast.TVGblock$<Annotation> = []
+            const elements: tast.TVTGblock$<Annotation>[] = []
             const processElement = () => {
                 Gstatement(node, children, ($) => {
                     elements.push($)
@@ -181,7 +181,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                    const elements: tast.TVGexpression_arrayLiteral$<Annotation> = []
+                    const elements: tast.TVTGexpression_arrayLiteral$<Annotation>[] = []
                     const processElement = () => {
                         Gexpression(node, children, ($) => {
                             elements.push($)
@@ -312,7 +312,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGexpression_arrowFunction$_parameters<Annotation> = []
+                    const elements: tast.TVTGexpression_arrowFunction$_parameters<Annotation>[] = []
                     const processElement = () => {
                         Gparameter(node, children, ($) => {
                             elements.push($)
@@ -333,7 +333,7 @@ export function parse<Annotation>(
                     }
                     pr.cc(elements, ($) => {
                         const _parameters = $
-                        let optional: tast.TVGexpression_arrowFunction$_returnType<Annotation> = null
+                        let optional: null | tast.TVTGexpression_arrowFunction$_returnType<Annotation> = null
                         const setOptional = () => {
                             Gtype(node, children, ($) => {
                                 optional = $
@@ -1197,7 +1197,7 @@ export function parse<Annotation>(
                     }
                     Gexpression(node, children, ($) => {
                         const _function = $
-                        const elements: tast.TVGexpression_call$_typeParameters<Annotation> = []
+                        const elements: tast.TVTGexpression_call$_typeParameters<Annotation>[] = []
                         const processElement = () => {
                             Gtype(node, children, ($) => {
                                 elements.push($)
@@ -1263,7 +1263,7 @@ export function parse<Annotation>(
                         }
                         pr.cc(elements, ($) => {
                             const _typeParameters = $
-                            const elements: tast.TVGexpression_call$_parameters<Annotation> = []
+                            const elements: tast.TVTGexpression_call$_parameters<Annotation>[] = []
                             const processElement = () => {
                                 Gexpression(node, children, ($) => {
                                     elements.push($)
@@ -1651,7 +1651,7 @@ export function parse<Annotation>(
                     }
                     Gidentifier(node, children, ($) => {
                         const _class = $
-                        const elements: tast.TVGexpression_new$_parameters<Annotation> = []
+                        const elements: tast.TVTGexpression_new$_parameters<Annotation>[] = []
                         const processElement = () => {
                             Gexpression(node, children, ($) => {
                                 elements.push($)
@@ -1867,7 +1867,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                    const elements: tast.TVGexpression_objectLiteral$<Annotation> = []
+                    const elements: tast.TVTGexpression_objectLiteral$<Annotation>[] = []
                     const processElement = () => {
                         currentChild = children.pop()
                         if (currentChild === undefined) {
@@ -2293,7 +2293,7 @@ export function parse<Annotation>(
                         currentChild,
                         ($) => {
                             const _head = $
-                            const elements: tast.TVGexpression_template$_spans<Annotation> = []
+                            const elements: tast.TVTGexpression_template$_spans<Annotation>[] = []
                             const processElement = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
@@ -2650,7 +2650,7 @@ export function parse<Annotation>(
         const sequenceEnd = ($: tast.TVTGfunctionDefinition<Annotation>) => {
             callback($)
         }
-        const elements: tast.TVGfunctionDefinition_typeParameters<Annotation> = []
+        const elements: tast.TVTGfunctionDefinition_typeParameters<Annotation>[] = []
         const processElement = () => {
             GtypeParameter(node, children, ($) => {
                 elements.push($)
@@ -2671,7 +2671,7 @@ export function parse<Annotation>(
         }
         pr.cc(elements, ($) => {
             const _typeParameters = $
-            const elements: tast.TVGfunctionDefinition_parameters<Annotation> = []
+            const elements: tast.TVTGfunctionDefinition_parameters<Annotation>[] = []
             const processElement = () => {
                 Gparameter(node, children, ($) => {
                     elements.push($)
@@ -2692,7 +2692,7 @@ export function parse<Annotation>(
             }
             pr.cc(elements, ($) => {
                 const _parameters = $
-                let optional: tast.TVGfunctionDefinition_returnType<Annotation> = null
+                let optional: null | tast.TVTGfunctionDefinition_returnType<Annotation> = null
                 const setOptional = () => {
                     Gtype(node, children, ($) => {
                         optional = $
@@ -3122,7 +3122,7 @@ export function parse<Annotation>(
             }
             Gidentifier(node, children, ($) => {
                 const _name = $
-                let optional: tast.TVGparameter$_questionToken<Annotation> = null
+                let optional: null | tast.TVTGparameter$_questionToken<Annotation> = null
                 const setOptional = () => {
                     currentChild = children.pop()
                     if (currentChild === undefined) {
@@ -3175,7 +3175,7 @@ export function parse<Annotation>(
                 }
                 pr.cc(optional, ($) => {
                     const _questionToken = $
-                    let optional: tast.TVGparameter$_type<Annotation> = null
+                    let optional: null | tast.TVTGparameter$_type<Annotation> = null
                     const setOptional = () => {
                         Gtype(node, children, ($) => {
                             optional = $
@@ -3311,7 +3311,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                    let optional: tast.TVGstatement_break$<Annotation> = null
+                    let optional: null | tast.TVTGstatement_break$<Annotation> = null
                     const setOptional = () => {
                         Gidentifier(node, children, ($) => {
                             optional = $
@@ -3545,7 +3545,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGstatement_function$_modifiers<Annotation> = []
+                    const elements: tast.TVTGstatement_function$_modifiers<Annotation>[] = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -3576,7 +3576,7 @@ export function parse<Annotation>(
                             const _name = $
                             GfunctionDefinition(node, children, ($) => {
                                 const _definition = $
-                                let optional: tast.TVGstatement_function$_block<Annotation> = null
+                                let optional: null | tast.TVTGstatement_function$_block<Annotation> = null
                                 const setOptional = () => {
                                     Gblock(node, children, ($) => {
                                         optional = $
@@ -3655,7 +3655,7 @@ export function parse<Annotation>(
                         const _expression = $
                         Gstatement(node, children, ($) => {
                             const _thenStatement = $
-                            let optional: tast.TVGstatement_if$_elseStatement<Annotation> = null
+                            let optional: null | tast.TVTGstatement_if$_elseStatement<Annotation> = null
                             const setOptional = () => {
                                 Gstatement(node, children, ($) => {
                                     optional = $
@@ -3895,7 +3895,7 @@ export function parse<Annotation>(
                                     children.reverse()
                                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                                    const elements: tast.TVGstatement_import$_clause$_named$<Annotation> = []
+                                    const elements: tast.TVTGstatement_import$_clause$_named$<Annotation>[] = []
                                     const processElement = () => {
                                         currentChild = children.pop()
                                         if (currentChild === undefined) {
@@ -3932,7 +3932,7 @@ export function parse<Annotation>(
                                             }
                                             Gidentifier(node, children, ($) => {
                                                 const _name = $
-                                                let optional: tast.TVGstatement_import$_clause$_named$$_as<Annotation> = null
+                                                let optional: null | tast.TVTGstatement_import$_clause$_named$$_as<Annotation> = null
                                                 const setOptional = () => {
                                                     Gidentifier(node, children, ($) => {
                                                         optional = $
@@ -4091,7 +4091,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGstatement_interface$_modifiers<Annotation> = []
+                    const elements: tast.TVTGstatement_interface$_modifiers<Annotation>[] = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -4120,7 +4120,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         Gidentifier(node, children, ($) => {
                             const _name = $
-                            const elements: tast.TVGstatement_interface$_typeParameters<Annotation> = []
+                            const elements: tast.TVTGstatement_interface$_typeParameters<Annotation>[] = []
                             const processElement = () => {
                                 GtypeParameter(node, children, ($) => {
                                     elements.push($)
@@ -4141,7 +4141,7 @@ export function parse<Annotation>(
                             }
                             pr.cc(elements, ($) => {
                                 const _typeParameters = $
-                                const elements: tast.TVGstatement_interface$_signature<Annotation> = []
+                                const elements: tast.TVTGstatement_interface$_signature<Annotation>[] = []
                                 const processElement = () => {
                                     GtypeSignature(node, children, ($) => {
                                         elements.push($)
@@ -4283,7 +4283,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                    let optional: tast.TVGstatement_return$<Annotation> = null
+                    let optional: null | tast.TVTGstatement_return$<Annotation> = null
                     const setOptional = () => {
                         Gexpression(node, children, ($) => {
                             optional = $
@@ -4438,7 +4438,7 @@ export function parse<Annotation>(
                             children.reverse()
                             let currentChild: uast.TUntypedNode<Annotation> | undefined
                             let nextChild: uast.TUntypedNode<Annotation> | undefined
-                            const elements: tast.TVGstatement_switch$_caseBlock$<Annotation> = []
+                            const elements: tast.TVTGstatement_switch$_caseBlock$<Annotation>[] = []
                             const processElement = () => {
                                 const choiceEnd_Gstatement_switch$_caseBlock$ = ($: tast.TVTGstatement_switch$_caseBlock$<Annotation>) => {
                                     elements.push($)
@@ -4488,7 +4488,7 @@ export function parse<Annotation>(
                                             }
                                             Gexpression(node, children, ($) => {
                                                 const _case = $
-                                                const elements: tast.TVGstatement_switch$_caseBlock$_case$_statements<Annotation> = []
+                                                const elements: tast.TVTGstatement_switch$_caseBlock$_case$_statements<Annotation>[] = []
                                                 const processElement = () => {
                                                     Gstatement(node, children, ($) => {
                                                         elements.push($)
@@ -4606,7 +4606,7 @@ export function parse<Annotation>(
                                             children.reverse()
                                             let currentChild: uast.TUntypedNode<Annotation> | undefined
                                             let nextChild: uast.TUntypedNode<Annotation> | undefined
-                                            const elements: tast.TVGstatement_switch$_caseBlock$_default$<Annotation> = []
+                                            const elements: tast.TVTGstatement_switch$_caseBlock$_default$<Annotation>[] = []
                                             const processElement = () => {
                                                 Gstatement(node, children, ($) => {
                                                     elements.push($)
@@ -4965,7 +4965,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGstatement_typeAlias$_modifiers<Annotation> = []
+                    const elements: tast.TVTGstatement_typeAlias$_modifiers<Annotation>[] = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -4994,7 +4994,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         Gidentifier(node, children, ($) => {
                             const _name = $
-                            const elements: tast.TVGstatement_typeAlias$_typeParameters<Annotation> = []
+                            const elements: tast.TVTGstatement_typeAlias$_typeParameters<Annotation>[] = []
                             const processElement = () => {
                                 GtypeParameter(node, children, ($) => {
                                     elements.push($)
@@ -5076,7 +5076,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGstatement_variable$_modifiers<Annotation> = []
+                    const elements: tast.TVTGstatement_variable$_modifiers<Annotation>[] = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -5501,7 +5501,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGtype_function$_parameters<Annotation> = []
+                    const elements: tast.TVTGtype_function$_parameters<Annotation>[] = []
                     const processElement = () => {
                         Gparameter(node, children, ($) => {
                             elements.push($)
@@ -5522,7 +5522,7 @@ export function parse<Annotation>(
                     }
                     pr.cc(elements, ($) => {
                         const _parameters = $
-                        let optional: tast.TVGtype_function$_returnType<Annotation> = null
+                        let optional: null | tast.TVTGtype_function$_returnType<Annotation> = null
                         const setOptional = () => {
                             Gtype(node, children, ($) => {
                                 optional = $
@@ -5937,7 +5937,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                    const elements: tast.TVGtype_tuple$<Annotation> = []
+                    const elements: tast.TVTGtype_tuple$<Annotation>[] = []
                     const processElement = () => {
                         Gtype(node, children, ($) => {
                             elements.push($)
@@ -6050,7 +6050,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                    const elements: tast.TVGtype_typeLiteral$<Annotation> = []
+                    const elements: tast.TVTGtype_typeLiteral$<Annotation>[] = []
                     const processElement = () => {
                         GtypeSignature(node, children, ($) => {
                             elements.push($)
@@ -6177,7 +6177,7 @@ export function parse<Annotation>(
                     }
                     const choiceEnd_Gtype_typeReference$_x = ($: tast.TVTGtype_typeReference$_x<Annotation>) => {
                         const _x = $
-                        const elements: tast.TVGtype_typeReference$_parameters<Annotation> = []
+                        const elements: tast.TVTGtype_typeReference$_parameters<Annotation>[] = []
                         const processElement = () => {
                             Gtype(node, children, ($) => {
                                 elements.push($)
@@ -6425,7 +6425,7 @@ export function parse<Annotation>(
                     children.reverse()
                     let currentChild: uast.TUntypedNode<Annotation> | undefined
                     let nextChild: uast.TUntypedNode<Annotation> | undefined
-                    const elements: tast.TVGtype_union$<Annotation> = []
+                    const elements: tast.TVTGtype_union$<Annotation>[] = []
                     const processElement = () => {
                         Gtype(node, children, ($) => {
                             elements.push($)
@@ -6735,7 +6735,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGtypeSignature_construct$_parameters<Annotation> = []
+                    const elements: tast.TVTGtypeSignature_construct$_parameters<Annotation>[] = []
                     const processElement = () => {
                         Gparameter(node, children, ($) => {
                             elements.push($)
@@ -6813,7 +6813,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGtypeSignature_index$_modifiers<Annotation> = []
+                    const elements: tast.TVTGtypeSignature_index$_modifiers<Annotation>[] = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -6842,7 +6842,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         Gparameter(node, children, ($) => {
                             const _parameter = $
-                            let optional: tast.TVGtypeSignature_index$_type<Annotation> = null
+                            let optional: null | tast.TVTGtypeSignature_index$_type<Annotation> = null
                             const setOptional = () => {
                                 Gtype(node, children, ($) => {
                                     optional = $
@@ -7019,7 +7019,7 @@ export function parse<Annotation>(
                             content: $,
                         })
                     }
-                    const elements: tast.TVGtypeSignature_property$_modifiers<Annotation> = []
+                    const elements: tast.TVTGtypeSignature_property$_modifiers<Annotation>[] = []
                     const processElement = () => {
                         Gmodifier(node, children, ($) => {
                             elements.push($)
@@ -7048,7 +7048,7 @@ export function parse<Annotation>(
                         const _modifiers = $
                         GidentifierOrStringLiteral(node, children, ($) => {
                             const _name = $
-                            let optional: tast.TVGtypeSignature_property$_quesionToken<Annotation> = null
+                            let optional: null | tast.TVTGtypeSignature_property$_quesionToken<Annotation> = null
                             const setOptional = () => {
                                 currentChild = children.pop()
                                 if (currentChild === undefined) {
@@ -7101,7 +7101,7 @@ export function parse<Annotation>(
                             }
                             pr.cc(optional, ($) => {
                                 const _quesionToken = $
-                                let optional: tast.TVGtypeSignature_property$_type<Annotation> = null
+                                let optional: null | tast.TVTGtypeSignature_property$_type<Annotation> = null
                                 const setOptional = () => {
                                     Gtype(node, children, ($) => {
                                         optional = $
@@ -7256,7 +7256,7 @@ export function parse<Annotation>(
             }
             Gidentifier(node, children, ($) => {
                 const _name = $
-                let optional: tast.TVGvariableDeclaration$_type<Annotation> = null
+                let optional: null | tast.TVTGvariableDeclaration$_type<Annotation> = null
                 const setOptional = () => {
                     Gtype(node, children, ($) => {
                         optional = $
@@ -7317,7 +7317,7 @@ export function parse<Annotation>(
                 }
                 pr.cc(optional, ($) => {
                     const _type = $
-                    let optional: tast.TVGvariableDeclaration$_expression<Annotation> = null
+                    let optional: null | tast.TVTGvariableDeclaration$_expression<Annotation> = null
                     const setOptional = () => {
                         Gexpression(node, children, ($) => {
                             optional = $
@@ -7447,7 +7447,7 @@ export function parse<Annotation>(
             children.reverse()
             let currentChild: uast.TUntypedNode<Annotation> | undefined
             let nextChild: uast.TUntypedNode<Annotation> | undefined
-            const elements: tast.TVGvariableDeclarationList$<Annotation> = []
+            const elements: tast.TVTGvariableDeclarationList$<Annotation>[] = []
             const processElement = () => {
                 GvariableDeclaration(node, children, ($) => {
                     elements.push($)
@@ -7509,7 +7509,7 @@ export function parse<Annotation>(
                     content: $,
                 })
             }
-            const elements: tast.TVroot_statements<Annotation> = []
+            const elements: tast.TVTroot_statements<Annotation>[] = []
             const processElement = () => {
                 Gstatement(node, children, ($) => {
                     elements.push($)
