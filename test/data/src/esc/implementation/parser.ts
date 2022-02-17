@@ -419,9 +419,7 @@ export function parse<Annotation>(
                                 const children: uast.TUntypedNode<Annotation>[] = []
                                 $.children.forEach(($) => { children.push($) })
                                 children.reverse()
-                                callback({
-                                    annotation: $.annotation,
-                                })
+                                callback($.annotation)
                                 if (children.length > 0) {
                                     $x.reportUnexpectedChild({
                                         path: "Gexpression_arrowFunction$_equalsGreaterThan$",
@@ -657,9 +655,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_ampersandAmpersand$",
@@ -701,9 +697,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_barBar$",
@@ -745,9 +739,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_equals$",
@@ -789,9 +781,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_equalsEqualsEquals$",
@@ -833,9 +823,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_exclamationEqualsEquals$",
@@ -877,9 +865,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_greaterThan$",
@@ -921,9 +907,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_lessThan$",
@@ -965,9 +949,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_minus$",
@@ -1009,9 +991,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_minusEquals$",
@@ -1053,9 +1033,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_plus$",
@@ -1097,9 +1075,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "Gexpression_binary$_operator_plusEquals$",
@@ -1449,9 +1425,7 @@ export function parse<Annotation>(
                             const children: uast.TUntypedNode<Annotation>[] = []
                             $.children.forEach(($) => { children.push($) })
                             children.reverse()
-                            callback({
-                                annotation: $.annotation,
-                            })
+                            callback($.annotation)
                             if (children.length > 0) {
                                 $x.reportUnexpectedChild({
                                     path: "Gexpression_conditional$_questionToken$",
@@ -1491,9 +1465,7 @@ export function parse<Annotation>(
                                         const children: uast.TUntypedNode<Annotation>[] = []
                                         $.children.forEach(($) => { children.push($) })
                                         children.reverse()
-                                        callback({
-                                            annotation: $.annotation,
-                                        })
+                                        callback($.annotation)
                                         if (children.length > 0) {
                                             $x.reportUnexpectedChild({
                                                 path: "Gexpression_conditional$_colonToken$",
@@ -1622,9 +1594,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gexpression_false$",
@@ -1806,9 +1776,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gexpression_noSubstitutionTemplateLiteral$",
@@ -1855,9 +1823,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gexpression_nullKeyword$",
@@ -2313,7 +2279,7 @@ export function parse<Annotation>(
                         children.reverse()
                         callback({
                             annotation: $.annotation,
-                            content: $.value
+                            value: $.value
                         })
                         if (children.length > 0) {
                             $x.reportUnexpectedChild({
@@ -2408,7 +2374,7 @@ export function parse<Annotation>(
                                                     children.reverse()
                                                     callback({
                                                         annotation: $.annotation,
-                                                        content: $.value
+                                                        value: $.value
                                                     })
                                                     if (children.length > 0) {
                                                         $x.reportUnexpectedChild({
@@ -2453,7 +2419,7 @@ export function parse<Annotation>(
                                                     children.reverse()
                                                     callback({
                                                         annotation: $.annotation,
-                                                        content: $.value
+                                                        value: $.value
                                                     })
                                                     if (children.length > 0) {
                                                         $x.reportUnexpectedChild({
@@ -2567,9 +2533,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gexpression_true$",
@@ -2832,7 +2796,7 @@ export function parse<Annotation>(
             children.reverse()
             callback({
                 annotation: $.annotation,
-                content: $.value
+                value: $.value
             })
             if (children.length > 0) {
                 $x.reportUnexpectedChild({
@@ -2942,9 +2906,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gmodifier_declare$",
@@ -2986,9 +2948,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gmodifier_export$",
@@ -3030,9 +2990,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gmodifier_readonly$",
@@ -3105,7 +3063,7 @@ export function parse<Annotation>(
             children.reverse()
             callback({
                 annotation: $.annotation,
-                content: $.value
+                value: $.value
             })
             if (children.length > 0) {
                 $x.reportUnexpectedChild({
@@ -3191,9 +3149,7 @@ export function parse<Annotation>(
                         const children: uast.TUntypedNode<Annotation>[] = []
                         $.children.forEach(($) => { children.push($) })
                         children.reverse()
-                        callback({
-                            annotation: $.annotation,
-                        })
+                        callback($.annotation)
                         if (children.length > 0) {
                             $x.reportUnexpectedChild({
                                 path: "Gparameter$_questionToken$",
@@ -5342,7 +5298,7 @@ export function parse<Annotation>(
             children.reverse()
             callback({
                 annotation: $.annotation,
-                content: $.value
+                value: $.value
             })
             if (children.length > 0) {
                 $x.reportUnexpectedChild({
@@ -5404,9 +5360,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gtype_any$",
@@ -5497,9 +5451,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gtype_boolean$",
@@ -5721,9 +5673,7 @@ export function parse<Annotation>(
                                 const children: uast.TUntypedNode<Annotation>[] = []
                                 $.children.forEach(($) => { children.push($) })
                                 children.reverse()
-                                callback({
-                                    annotation: $.annotation,
-                                })
+                                callback($.annotation)
                                 if (children.length > 0) {
                                     $x.reportUnexpectedChild({
                                         path: "Gtype_literal$_null$",
@@ -5852,9 +5802,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gtype_never$",
@@ -5896,9 +5844,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gtype_number$",
@@ -6179,9 +6125,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gtype_string$",
@@ -6437,9 +6381,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gtype_undefined$",
@@ -6594,9 +6536,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "Gtype_void$",
@@ -7135,9 +7075,7 @@ export function parse<Annotation>(
                                     const children: uast.TUntypedNode<Annotation>[] = []
                                     $.children.forEach(($) => { children.push($) })
                                     children.reverse()
-                                    callback({
-                                        annotation: $.annotation,
-                                    })
+                                    callback($.annotation)
                                     if (children.length > 0) {
                                         $x.reportUnexpectedChild({
                                             path: "GtypeSignature_property$_quesionToken$",
@@ -7665,9 +7603,7 @@ export function parse<Annotation>(
                     const children: uast.TUntypedNode<Annotation>[] = []
                     $.children.forEach(($) => { children.push($) })
                     children.reverse()
-                    callback({
-                        annotation: $.annotation,
-                    })
+                    callback($.annotation)
                     if (children.length > 0) {
                         $x.reportUnexpectedChild({
                             path: "root_endOfFile$",

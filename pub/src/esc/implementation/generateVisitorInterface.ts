@@ -26,7 +26,8 @@ export function generateVisitorInterface(
                 function generateNode(
                     $: g.TNode2,
                     $w: wapi.Block,
-                    path: string,
+                    pathForCode: string,
+                    pathForReporting: string,
                 ) {
 
                     switch ($.type[0]) {
@@ -35,7 +36,8 @@ export function generateVisitorInterface(
                                 generateValue(
                                     $,
                                     $w,
-                                    path,
+                                    pathForCode,
+                                    pathForReporting,
                                 )
                             })
                             break
@@ -47,17 +49,17 @@ export function generateVisitorInterface(
                             pr.au($.type[0])
                     }
                     $w.line(($w) => {
-                        $w.snippet(`readonly "${path}"?: `)
+                        $w.snippet(`readonly "${pathForReporting}"?: `)
                         switch ($.type[0]) {
                             case "composite":
                                 pr.cc($.type[1], ($) => {
                                     $w.snippet(`{`)
                                     $w.indent(($w) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`readonly "begin": ($: api.TN${path}<Annotation>) => void,`)
+                                            $w.snippet(`readonly "begin": ($: api.TN${pathForCode}<Annotation>) => void,`)
                                         })
                                         $w.line(($w) => {
-                                            $w.snippet(`readonly "end": ($: api.TN${path}<Annotation>) => void,`)
+                                            $w.snippet(`readonly "end": ($: api.TN${pathForCode}<Annotation>) => void,`)
                                         })
                                     })
                                     $w.snippet(`}`)
@@ -65,7 +67,7 @@ export function generateVisitorInterface(
                                 break
                             case "leaf":
                                 pr.cc($.type[1], ($) => {
-                                    $w.snippet(`($: api.TN${path}<Annotation>) => void`)
+                                    $w.snippet(`($: api.TN${pathForCode}<Annotation>) => void`)
                                 })
                                 break
                             default:
@@ -76,7 +78,8 @@ export function generateVisitorInterface(
                 function generateValueType(
                     $: g.TValueType,
                     $w: wapi.Block,
-                    path: string,
+                    pathForCode: string,
+                    pathForReporting: string,
                 ) {
                     switch ($[0]) {
                         case "choice":
@@ -86,7 +89,8 @@ export function generateVisitorInterface(
                                     generateValue(
                                         option,
                                         $w,
-                                        `${path}_${key}`
+                                        `${pathForCode}_${key}`,
+                                        `${pathForReporting}/?${key}`,
                                     )
                                 })
                             })
@@ -102,7 +106,8 @@ export function generateVisitorInterface(
                                     generateValue(
                                         $.value,
                                         $w,
-                                        `${path}_${$.name}`
+                                        `${pathForCode}_${$.name}`,
+                                        `${pathForReporting}/.${$.name}`,
                                     )
                                 })
                             })
@@ -112,7 +117,8 @@ export function generateVisitorInterface(
                                 generateNode(
                                     $,
                                     $w,
-                                    `${path}$`
+                                    `${pathForCode}$`,
+                                    `${pathForReporting}/*${$.name}`,
                                 )
                             })
                             break
@@ -124,13 +130,15 @@ export function generateVisitorInterface(
                 function generateValue(
                     $: g.TValue,
                     $w: wapi.Block,
-                    path: string,
+                    pathForCode: string,
+                    pathForReporting: string,
                 ) {
                     const symbol = $
                     generateValueType(
                         symbol.type,
                         $w,
-                        path,
+                        pathForCode,
+                        pathForReporting,
                     )
                 }
                 pr.Objectkeys(grammar.globalValueTypes).forEach((key) => {
@@ -139,6 +147,7 @@ export function generateVisitorInterface(
                         $,
                         $w,
                         `G${key}`,
+                        `$${key}`,
                     )
                 })
 
@@ -146,6 +155,7 @@ export function generateVisitorInterface(
                     grammar.root,
                     $w,
                     "root",
+                    "",
                 )
             })
             $w.snippet(`}`)

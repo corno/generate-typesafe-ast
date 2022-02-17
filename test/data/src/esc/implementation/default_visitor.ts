@@ -3,279 +3,279 @@ import * as f from "../../interface/interfaces/visitor"
 
 export function createDefaultVisistor(): f.IVisitor<string> {
     return {
-        "Gblock$": {
-            begin: ($) => { console.log("Gblock$ begin") },
-            end: ($) => { console.log("Gblock$ end") },
+        "$block/*Block": {
+            begin: ($) => { console.log("$block/*Block begin") },
+            end: ($) => { console.log("$block/*Block end") },
         },
-        "Gexpression_arrayLiteral$": {
-            begin: ($) => { console.log("Gexpression_arrayLiteral$ begin") },
-            end: ($) => { console.log("Gexpression_arrayLiteral$ end") },
+        "$expression/?arrayLiteral/*ArrayLiteralExpression": {
+            begin: ($) => { console.log("$expression/?arrayLiteral/*ArrayLiteralExpression begin") },
+            end: ($) => { console.log("$expression/?arrayLiteral/*ArrayLiteralExpression end") },
         },
-        "Gexpression_arrowFunction$_equalsGreaterThan$": ($) => { console.log("Gexpression_arrowFunction$_equalsGreaterThan$") },
-        "Gexpression_arrowFunction$": {
-            begin: ($) => { console.log("Gexpression_arrowFunction$ begin") },
-            end: ($) => { console.log("Gexpression_arrowFunction$ end") },
+        "$expression/?arrowFunction/*ArrowFunction/.equalsGreaterThan/*EqualsGreaterThanToken": ($) => { console.log("$expression/?arrowFunction/*ArrowFunction/.equalsGreaterThan/*EqualsGreaterThanToken") },
+        "$expression/?arrowFunction/*ArrowFunction": {
+            begin: ($) => { console.log("$expression/?arrowFunction/*ArrowFunction begin") },
+            end: ($) => { console.log("$expression/?arrowFunction/*ArrowFunction end") },
         },
-        "Gexpression_binary$_operator_ampersandAmpersand$": ($) => { console.log("Gexpression_binary$_operator_ampersandAmpersand$") },
-        "Gexpression_binary$_operator_barBar$": ($) => { console.log("Gexpression_binary$_operator_barBar$") },
-        "Gexpression_binary$_operator_equals$": ($) => { console.log("Gexpression_binary$_operator_equals$") },
-        "Gexpression_binary$_operator_equalsEqualsEquals$": ($) => { console.log("Gexpression_binary$_operator_equalsEqualsEquals$") },
-        "Gexpression_binary$_operator_exclamationEqualsEquals$": ($) => { console.log("Gexpression_binary$_operator_exclamationEqualsEquals$") },
-        "Gexpression_binary$_operator_greaterThan$": ($) => { console.log("Gexpression_binary$_operator_greaterThan$") },
-        "Gexpression_binary$_operator_lessThan$": ($) => { console.log("Gexpression_binary$_operator_lessThan$") },
-        "Gexpression_binary$_operator_minus$": ($) => { console.log("Gexpression_binary$_operator_minus$") },
-        "Gexpression_binary$_operator_minusEquals$": ($) => { console.log("Gexpression_binary$_operator_minusEquals$") },
-        "Gexpression_binary$_operator_plus$": ($) => { console.log("Gexpression_binary$_operator_plus$") },
-        "Gexpression_binary$_operator_plusEquals$": ($) => { console.log("Gexpression_binary$_operator_plusEquals$") },
-        "Gexpression_binary$": {
-            begin: ($) => { console.log("Gexpression_binary$ begin") },
-            end: ($) => { console.log("Gexpression_binary$ end") },
+        "$expression/?binary/*BinaryExpression/.operator/?ampersandAmpersand/*AmpersandAmpersandToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?ampersandAmpersand/*AmpersandAmpersandToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?barBar/*BarBarToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?barBar/*BarBarToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?equals/*EqualsToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?equals/*EqualsToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?equalsEqualsEquals/*EqualsEqualsEqualsToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?equalsEqualsEquals/*EqualsEqualsEqualsToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?exclamationEqualsEquals/*ExclamationEqualsEqualsToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?exclamationEqualsEquals/*ExclamationEqualsEqualsToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?greaterThan/*GreaterThanToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?greaterThan/*GreaterThanToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?lessThan/*LessThanToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?lessThan/*LessThanToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?minus/*MinusToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?minus/*MinusToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?minusEquals/*MinusEqualsToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?minusEquals/*MinusEqualsToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?plus/*PlusToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?plus/*PlusToken") },
+        "$expression/?binary/*BinaryExpression/.operator/?plusEquals/*PlusEqualsToken": ($) => { console.log("$expression/?binary/*BinaryExpression/.operator/?plusEquals/*PlusEqualsToken") },
+        "$expression/?binary/*BinaryExpression": {
+            begin: ($) => { console.log("$expression/?binary/*BinaryExpression begin") },
+            end: ($) => { console.log("$expression/?binary/*BinaryExpression end") },
         },
-        "Gexpression_call$": {
-            begin: ($) => { console.log("Gexpression_call$ begin") },
-            end: ($) => { console.log("Gexpression_call$ end") },
+        "$expression/?call/*CallExpression": {
+            begin: ($) => { console.log("$expression/?call/*CallExpression begin") },
+            end: ($) => { console.log("$expression/?call/*CallExpression end") },
         },
-        "Gexpression_conditional$_questionToken$": ($) => { console.log("Gexpression_conditional$_questionToken$") },
-        "Gexpression_conditional$_colonToken$": ($) => { console.log("Gexpression_conditional$_colonToken$") },
-        "Gexpression_conditional$": {
-            begin: ($) => { console.log("Gexpression_conditional$ begin") },
-            end: ($) => { console.log("Gexpression_conditional$ end") },
+        "$expression/?conditional/*ConditionalExpression/.questionToken/*QuestionToken": ($) => { console.log("$expression/?conditional/*ConditionalExpression/.questionToken/*QuestionToken") },
+        "$expression/?conditional/*ConditionalExpression/.colonToken/*ColonToken": ($) => { console.log("$expression/?conditional/*ConditionalExpression/.colonToken/*ColonToken") },
+        "$expression/?conditional/*ConditionalExpression": {
+            begin: ($) => { console.log("$expression/?conditional/*ConditionalExpression begin") },
+            end: ($) => { console.log("$expression/?conditional/*ConditionalExpression end") },
         },
-        "Gexpression_elementAccess$": {
-            begin: ($) => { console.log("Gexpression_elementAccess$ begin") },
-            end: ($) => { console.log("Gexpression_elementAccess$ end") },
+        "$expression/?elementAccess/*ElementAccessExpression": {
+            begin: ($) => { console.log("$expression/?elementAccess/*ElementAccessExpression begin") },
+            end: ($) => { console.log("$expression/?elementAccess/*ElementAccessExpression end") },
         },
-        "Gexpression_false$": ($) => { console.log("Gexpression_false$") },
-        "Gexpression_new$": {
-            begin: ($) => { console.log("Gexpression_new$ begin") },
-            end: ($) => { console.log("Gexpression_new$ end") },
+        "$expression/?false/*FalseKeyword": ($) => { console.log("$expression/?false/*FalseKeyword") },
+        "$expression/?new/*NewExpression": {
+            begin: ($) => { console.log("$expression/?new/*NewExpression begin") },
+            end: ($) => { console.log("$expression/?new/*NewExpression end") },
         },
-        "Gexpression_noSubstitutionTemplateLiteral$": ($) => { console.log("Gexpression_noSubstitutionTemplateLiteral$") },
-        "Gexpression_nullKeyword$": ($) => { console.log("Gexpression_nullKeyword$") },
-        "Gexpression_objectLiteral$$": {
-            begin: ($) => { console.log("Gexpression_objectLiteral$$ begin") },
-            end: ($) => { console.log("Gexpression_objectLiteral$$ end") },
+        "$expression/?noSubstitutionTemplateLiteral/*NoSubstitutionTemplateLiteral": ($) => { console.log("$expression/?noSubstitutionTemplateLiteral/*NoSubstitutionTemplateLiteral") },
+        "$expression/?nullKeyword/*NullKeyword": ($) => { console.log("$expression/?nullKeyword/*NullKeyword") },
+        "$expression/?objectLiteral/*ObjectLiteralExpression/*PropertyAssignment": {
+            begin: ($) => { console.log("$expression/?objectLiteral/*ObjectLiteralExpression/*PropertyAssignment begin") },
+            end: ($) => { console.log("$expression/?objectLiteral/*ObjectLiteralExpression/*PropertyAssignment end") },
         },
-        "Gexpression_objectLiteral$": {
-            begin: ($) => { console.log("Gexpression_objectLiteral$ begin") },
-            end: ($) => { console.log("Gexpression_objectLiteral$ end") },
+        "$expression/?objectLiteral/*ObjectLiteralExpression": {
+            begin: ($) => { console.log("$expression/?objectLiteral/*ObjectLiteralExpression begin") },
+            end: ($) => { console.log("$expression/?objectLiteral/*ObjectLiteralExpression end") },
         },
-        "Gexpression_parenthesizedExpression$": {
-            begin: ($) => { console.log("Gexpression_parenthesizedExpression$ begin") },
-            end: ($) => { console.log("Gexpression_parenthesizedExpression$ end") },
+        "$expression/?parenthesizedExpression/*ParenthesizedExpression": {
+            begin: ($) => { console.log("$expression/?parenthesizedExpression/*ParenthesizedExpression begin") },
+            end: ($) => { console.log("$expression/?parenthesizedExpression/*ParenthesizedExpression end") },
         },
-        "Gexpression_postfixUnary$": {
-            begin: ($) => { console.log("Gexpression_postfixUnary$ begin") },
-            end: ($) => { console.log("Gexpression_postfixUnary$ end") },
+        "$expression/?postfixUnary/*PostfixUnaryExpression": {
+            begin: ($) => { console.log("$expression/?postfixUnary/*PostfixUnaryExpression begin") },
+            end: ($) => { console.log("$expression/?postfixUnary/*PostfixUnaryExpression end") },
         },
-        "Gexpression_prefixUnary$": {
-            begin: ($) => { console.log("Gexpression_prefixUnary$ begin") },
-            end: ($) => { console.log("Gexpression_prefixUnary$ end") },
+        "$expression/?prefixUnary/*PrefixUnaryExpression": {
+            begin: ($) => { console.log("$expression/?prefixUnary/*PrefixUnaryExpression begin") },
+            end: ($) => { console.log("$expression/?prefixUnary/*PrefixUnaryExpression end") },
         },
-        "Gexpression_propertyAccess$": {
-            begin: ($) => { console.log("Gexpression_propertyAccess$ begin") },
-            end: ($) => { console.log("Gexpression_propertyAccess$ end") },
+        "$expression/?propertyAccess/*PropertyAccessExpression": {
+            begin: ($) => { console.log("$expression/?propertyAccess/*PropertyAccessExpression begin") },
+            end: ($) => { console.log("$expression/?propertyAccess/*PropertyAccessExpression end") },
         },
-        "Gexpression_template$_head$": ($) => { console.log("Gexpression_template$_head$") },
-        "Gexpression_template$_spans$_x_middle$": ($) => { console.log("Gexpression_template$_spans$_x_middle$") },
-        "Gexpression_template$_spans$_x_tail$": ($) => { console.log("Gexpression_template$_spans$_x_tail$") },
-        "Gexpression_template$_spans$": {
-            begin: ($) => { console.log("Gexpression_template$_spans$ begin") },
-            end: ($) => { console.log("Gexpression_template$_spans$ end") },
+        "$expression/?template/*TemplateExpression/.head/*TemplateHead": ($) => { console.log("$expression/?template/*TemplateExpression/.head/*TemplateHead") },
+        "$expression/?template/*TemplateExpression/.spans/*TemplateSpan/.x/?middle/*TemplateMiddle": ($) => { console.log("$expression/?template/*TemplateExpression/.spans/*TemplateSpan/.x/?middle/*TemplateMiddle") },
+        "$expression/?template/*TemplateExpression/.spans/*TemplateSpan/.x/?tail/*TemplateTail": ($) => { console.log("$expression/?template/*TemplateExpression/.spans/*TemplateSpan/.x/?tail/*TemplateTail") },
+        "$expression/?template/*TemplateExpression/.spans/*TemplateSpan": {
+            begin: ($) => { console.log("$expression/?template/*TemplateExpression/.spans/*TemplateSpan begin") },
+            end: ($) => { console.log("$expression/?template/*TemplateExpression/.spans/*TemplateSpan end") },
         },
-        "Gexpression_template$": {
-            begin: ($) => { console.log("Gexpression_template$ begin") },
-            end: ($) => { console.log("Gexpression_template$ end") },
+        "$expression/?template/*TemplateExpression": {
+            begin: ($) => { console.log("$expression/?template/*TemplateExpression begin") },
+            end: ($) => { console.log("$expression/?template/*TemplateExpression end") },
         },
-        "Gexpression_true$": ($) => { console.log("Gexpression_true$") },
-        "Gidentifier$": ($) => { console.log("Gidentifier$") },
-        "Gmodifier_declare$": ($) => { console.log("Gmodifier_declare$") },
-        "Gmodifier_export$": ($) => { console.log("Gmodifier_export$") },
-        "Gmodifier_readonly$": ($) => { console.log("Gmodifier_readonly$") },
-        "GnumericLiteral$": ($) => { console.log("GnumericLiteral$") },
-        "Gparameter$_questionToken$": ($) => { console.log("Gparameter$_questionToken$") },
-        "Gparameter$": {
-            begin: ($) => { console.log("Gparameter$ begin") },
-            end: ($) => { console.log("Gparameter$ end") },
+        "$expression/?true/*TrueKeyword": ($) => { console.log("$expression/?true/*TrueKeyword") },
+        "$identifier/*Identifier": ($) => { console.log("$identifier/*Identifier") },
+        "$modifier/?declare/*DeclareKeyword": ($) => { console.log("$modifier/?declare/*DeclareKeyword") },
+        "$modifier/?export/*ExportKeyword": ($) => { console.log("$modifier/?export/*ExportKeyword") },
+        "$modifier/?readonly/*ReadonlyKeyword": ($) => { console.log("$modifier/?readonly/*ReadonlyKeyword") },
+        "$numericLiteral/*NumericLiteral": ($) => { console.log("$numericLiteral/*NumericLiteral") },
+        "$parameter/*Parameter/.questionToken/*QuestionToken": ($) => { console.log("$parameter/*Parameter/.questionToken/*QuestionToken") },
+        "$parameter/*Parameter": {
+            begin: ($) => { console.log("$parameter/*Parameter begin") },
+            end: ($) => { console.log("$parameter/*Parameter end") },
         },
-        "Gstatement_break$": {
-            begin: ($) => { console.log("Gstatement_break$ begin") },
-            end: ($) => { console.log("Gstatement_break$ end") },
+        "$statement/?break/*BreakStatement": {
+            begin: ($) => { console.log("$statement/?break/*BreakStatement begin") },
+            end: ($) => { console.log("$statement/?break/*BreakStatement end") },
         },
-        "Gstatement_export$": {
-            begin: ($) => { console.log("Gstatement_export$ begin") },
-            end: ($) => { console.log("Gstatement_export$ end") },
+        "$statement/?export/*ExportDeclaration": {
+            begin: ($) => { console.log("$statement/?export/*ExportDeclaration begin") },
+            end: ($) => { console.log("$statement/?export/*ExportDeclaration end") },
         },
-        "Gstatement_expression$": {
-            begin: ($) => { console.log("Gstatement_expression$ begin") },
-            end: ($) => { console.log("Gstatement_expression$ end") },
+        "$statement/?expression/*ExpressionStatement": {
+            begin: ($) => { console.log("$statement/?expression/*ExpressionStatement begin") },
+            end: ($) => { console.log("$statement/?expression/*ExpressionStatement end") },
         },
-        "Gstatement_for$": {
-            begin: ($) => { console.log("Gstatement_for$ begin") },
-            end: ($) => { console.log("Gstatement_for$ end") },
+        "$statement/?for/*ForStatement": {
+            begin: ($) => { console.log("$statement/?for/*ForStatement begin") },
+            end: ($) => { console.log("$statement/?for/*ForStatement end") },
         },
-        "Gstatement_function$": {
-            begin: ($) => { console.log("Gstatement_function$ begin") },
-            end: ($) => { console.log("Gstatement_function$ end") },
+        "$statement/?function/*FunctionDeclaration": {
+            begin: ($) => { console.log("$statement/?function/*FunctionDeclaration begin") },
+            end: ($) => { console.log("$statement/?function/*FunctionDeclaration end") },
         },
-        "Gstatement_if$": {
-            begin: ($) => { console.log("Gstatement_if$ begin") },
-            end: ($) => { console.log("Gstatement_if$ end") },
+        "$statement/?if/*IfStatement": {
+            begin: ($) => { console.log("$statement/?if/*IfStatement begin") },
+            end: ($) => { console.log("$statement/?if/*IfStatement end") },
         },
-        "Gstatement_import$_clause$_namespace$": {
-            begin: ($) => { console.log("Gstatement_import$_clause$_namespace$ begin") },
-            end: ($) => { console.log("Gstatement_import$_clause$_namespace$ end") },
+        "$statement/?import/*ImportDeclaration/.clause/*ImportClause/?namespace/*NamespaceImport": {
+            begin: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause/?namespace/*NamespaceImport begin") },
+            end: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause/?namespace/*NamespaceImport end") },
         },
-        "Gstatement_import$_clause$_named$$": {
-            begin: ($) => { console.log("Gstatement_import$_clause$_named$$ begin") },
-            end: ($) => { console.log("Gstatement_import$_clause$_named$$ end") },
+        "$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports/*ImportSpecifier": {
+            begin: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports/*ImportSpecifier begin") },
+            end: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports/*ImportSpecifier end") },
         },
-        "Gstatement_import$_clause$_named$": {
-            begin: ($) => { console.log("Gstatement_import$_clause$_named$ begin") },
-            end: ($) => { console.log("Gstatement_import$_clause$_named$ end") },
+        "$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports": {
+            begin: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports begin") },
+            end: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports end") },
         },
-        "Gstatement_import$_clause$": {
-            begin: ($) => { console.log("Gstatement_import$_clause$ begin") },
-            end: ($) => { console.log("Gstatement_import$_clause$ end") },
+        "$statement/?import/*ImportDeclaration/.clause/*ImportClause": {
+            begin: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause begin") },
+            end: ($) => { console.log("$statement/?import/*ImportDeclaration/.clause/*ImportClause end") },
         },
-        "Gstatement_import$": {
-            begin: ($) => { console.log("Gstatement_import$ begin") },
-            end: ($) => { console.log("Gstatement_import$ end") },
+        "$statement/?import/*ImportDeclaration": {
+            begin: ($) => { console.log("$statement/?import/*ImportDeclaration begin") },
+            end: ($) => { console.log("$statement/?import/*ImportDeclaration end") },
         },
-        "Gstatement_interface$": {
-            begin: ($) => { console.log("Gstatement_interface$ begin") },
-            end: ($) => { console.log("Gstatement_interface$ end") },
+        "$statement/?interface/*InterfaceDeclaration": {
+            begin: ($) => { console.log("$statement/?interface/*InterfaceDeclaration begin") },
+            end: ($) => { console.log("$statement/?interface/*InterfaceDeclaration end") },
         },
-        "Gstatement_labeled$": {
-            begin: ($) => { console.log("Gstatement_labeled$ begin") },
-            end: ($) => { console.log("Gstatement_labeled$ end") },
+        "$statement/?labeled/*LabeledStatement": {
+            begin: ($) => { console.log("$statement/?labeled/*LabeledStatement begin") },
+            end: ($) => { console.log("$statement/?labeled/*LabeledStatement end") },
         },
-        "Gstatement_return$": {
-            begin: ($) => { console.log("Gstatement_return$ begin") },
-            end: ($) => { console.log("Gstatement_return$ end") },
+        "$statement/?return/*ReturnStatement": {
+            begin: ($) => { console.log("$statement/?return/*ReturnStatement begin") },
+            end: ($) => { console.log("$statement/?return/*ReturnStatement end") },
         },
-        "Gstatement_switch$_caseBlock$_case$": {
-            begin: ($) => { console.log("Gstatement_switch$_caseBlock$_case$ begin") },
-            end: ($) => { console.log("Gstatement_switch$_caseBlock$_case$ end") },
+        "$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?case/*CaseClause": {
+            begin: ($) => { console.log("$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?case/*CaseClause begin") },
+            end: ($) => { console.log("$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?case/*CaseClause end") },
         },
-        "Gstatement_switch$_caseBlock$_default$": {
-            begin: ($) => { console.log("Gstatement_switch$_caseBlock$_default$ begin") },
-            end: ($) => { console.log("Gstatement_switch$_caseBlock$_default$ end") },
+        "$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?default/*DefaultClause": {
+            begin: ($) => { console.log("$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?default/*DefaultClause begin") },
+            end: ($) => { console.log("$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?default/*DefaultClause end") },
         },
-        "Gstatement_switch$_caseBlock$": {
-            begin: ($) => { console.log("Gstatement_switch$_caseBlock$ begin") },
-            end: ($) => { console.log("Gstatement_switch$_caseBlock$ end") },
+        "$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock": {
+            begin: ($) => { console.log("$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock begin") },
+            end: ($) => { console.log("$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock end") },
         },
-        "Gstatement_switch$": {
-            begin: ($) => { console.log("Gstatement_switch$ begin") },
-            end: ($) => { console.log("Gstatement_switch$ end") },
+        "$statement/?switch/*SwitchStatement": {
+            begin: ($) => { console.log("$statement/?switch/*SwitchStatement begin") },
+            end: ($) => { console.log("$statement/?switch/*SwitchStatement end") },
         },
-        "Gstatement_throw$": {
-            begin: ($) => { console.log("Gstatement_throw$ begin") },
-            end: ($) => { console.log("Gstatement_throw$ end") },
+        "$statement/?throw/*ThrowStatement": {
+            begin: ($) => { console.log("$statement/?throw/*ThrowStatement begin") },
+            end: ($) => { console.log("$statement/?throw/*ThrowStatement end") },
         },
-        "Gstatement_try$_catchClause$": {
-            begin: ($) => { console.log("Gstatement_try$_catchClause$ begin") },
-            end: ($) => { console.log("Gstatement_try$_catchClause$ end") },
+        "$statement/?try/*TryStatement/.catchClause/*CatchClause": {
+            begin: ($) => { console.log("$statement/?try/*TryStatement/.catchClause/*CatchClause begin") },
+            end: ($) => { console.log("$statement/?try/*TryStatement/.catchClause/*CatchClause end") },
         },
-        "Gstatement_try$": {
-            begin: ($) => { console.log("Gstatement_try$ begin") },
-            end: ($) => { console.log("Gstatement_try$ end") },
+        "$statement/?try/*TryStatement": {
+            begin: ($) => { console.log("$statement/?try/*TryStatement begin") },
+            end: ($) => { console.log("$statement/?try/*TryStatement end") },
         },
-        "Gstatement_typeAlias$": {
-            begin: ($) => { console.log("Gstatement_typeAlias$ begin") },
-            end: ($) => { console.log("Gstatement_typeAlias$ end") },
+        "$statement/?typeAlias/*TypeAliasDeclaration": {
+            begin: ($) => { console.log("$statement/?typeAlias/*TypeAliasDeclaration begin") },
+            end: ($) => { console.log("$statement/?typeAlias/*TypeAliasDeclaration end") },
         },
-        "Gstatement_variable$": {
-            begin: ($) => { console.log("Gstatement_variable$ begin") },
-            end: ($) => { console.log("Gstatement_variable$ end") },
+        "$statement/?variable/*VariableStatement": {
+            begin: ($) => { console.log("$statement/?variable/*VariableStatement begin") },
+            end: ($) => { console.log("$statement/?variable/*VariableStatement end") },
         },
-        "Gstatement_while$": {
-            begin: ($) => { console.log("Gstatement_while$ begin") },
-            end: ($) => { console.log("Gstatement_while$ end") },
+        "$statement/?while/*WhileStatement": {
+            begin: ($) => { console.log("$statement/?while/*WhileStatement begin") },
+            end: ($) => { console.log("$statement/?while/*WhileStatement end") },
         },
-        "GstringLiteral$": ($) => { console.log("GstringLiteral$") },
-        "Gtype_any$": ($) => { console.log("Gtype_any$") },
-        "Gtype_array$": {
-            begin: ($) => { console.log("Gtype_array$ begin") },
-            end: ($) => { console.log("Gtype_array$ end") },
+        "$stringLiteral/*StringLiteral": ($) => { console.log("$stringLiteral/*StringLiteral") },
+        "$type/?any/*AnyKeyword": ($) => { console.log("$type/?any/*AnyKeyword") },
+        "$type/?array/*ArrayType": {
+            begin: ($) => { console.log("$type/?array/*ArrayType begin") },
+            end: ($) => { console.log("$type/?array/*ArrayType end") },
         },
-        "Gtype_boolean$": ($) => { console.log("Gtype_boolean$") },
-        "Gtype_function$": {
-            begin: ($) => { console.log("Gtype_function$ begin") },
-            end: ($) => { console.log("Gtype_function$ end") },
+        "$type/?boolean/*BooleanKeyword": ($) => { console.log("$type/?boolean/*BooleanKeyword") },
+        "$type/?function/*FunctionType": {
+            begin: ($) => { console.log("$type/?function/*FunctionType begin") },
+            end: ($) => { console.log("$type/?function/*FunctionType end") },
         },
-        "Gtype_literal$_null$": ($) => { console.log("Gtype_literal$_null$") },
-        "Gtype_literal$": {
-            begin: ($) => { console.log("Gtype_literal$ begin") },
-            end: ($) => { console.log("Gtype_literal$ end") },
+        "$type/?literal/*LiteralType/?null/*NullKeyword": ($) => { console.log("$type/?literal/*LiteralType/?null/*NullKeyword") },
+        "$type/?literal/*LiteralType": {
+            begin: ($) => { console.log("$type/?literal/*LiteralType begin") },
+            end: ($) => { console.log("$type/?literal/*LiteralType end") },
         },
-        "Gtype_parenthesized$": {
-            begin: ($) => { console.log("Gtype_parenthesized$ begin") },
-            end: ($) => { console.log("Gtype_parenthesized$ end") },
+        "$type/?parenthesized/*ParenthesizedType": {
+            begin: ($) => { console.log("$type/?parenthesized/*ParenthesizedType begin") },
+            end: ($) => { console.log("$type/?parenthesized/*ParenthesizedType end") },
         },
-        "Gtype_never$": ($) => { console.log("Gtype_never$") },
-        "Gtype_number$": ($) => { console.log("Gtype_number$") },
-        "Gtype_optional$": {
-            begin: ($) => { console.log("Gtype_optional$ begin") },
-            end: ($) => { console.log("Gtype_optional$ end") },
+        "$type/?never/*NeverKeyword": ($) => { console.log("$type/?never/*NeverKeyword") },
+        "$type/?number/*NumberKeyword": ($) => { console.log("$type/?number/*NumberKeyword") },
+        "$type/?optional/*OptionalType": {
+            begin: ($) => { console.log("$type/?optional/*OptionalType begin") },
+            end: ($) => { console.log("$type/?optional/*OptionalType end") },
         },
-        "Gtype_tuple$": {
-            begin: ($) => { console.log("Gtype_tuple$ begin") },
-            end: ($) => { console.log("Gtype_tuple$ end") },
+        "$type/?tuple/*TupleType": {
+            begin: ($) => { console.log("$type/?tuple/*TupleType begin") },
+            end: ($) => { console.log("$type/?tuple/*TupleType end") },
         },
-        "Gtype_typeLiteral$": {
-            begin: ($) => { console.log("Gtype_typeLiteral$ begin") },
-            end: ($) => { console.log("Gtype_typeLiteral$ end") },
+        "$type/?typeLiteral/*TypeLiteral": {
+            begin: ($) => { console.log("$type/?typeLiteral/*TypeLiteral begin") },
+            end: ($) => { console.log("$type/?typeLiteral/*TypeLiteral end") },
         },
-        "Gtype_string$": ($) => { console.log("Gtype_string$") },
-        "Gtype_typeReference$_x_qualifiedName$": {
-            begin: ($) => { console.log("Gtype_typeReference$_x_qualifiedName$ begin") },
-            end: ($) => { console.log("Gtype_typeReference$_x_qualifiedName$ end") },
+        "$type/?string/*StringKeyword": ($) => { console.log("$type/?string/*StringKeyword") },
+        "$type/?typeReference/*TypeReference/.x/?qualifiedName/*QualifiedName": {
+            begin: ($) => { console.log("$type/?typeReference/*TypeReference/.x/?qualifiedName/*QualifiedName begin") },
+            end: ($) => { console.log("$type/?typeReference/*TypeReference/.x/?qualifiedName/*QualifiedName end") },
         },
-        "Gtype_typeReference$": {
-            begin: ($) => { console.log("Gtype_typeReference$ begin") },
-            end: ($) => { console.log("Gtype_typeReference$ end") },
+        "$type/?typeReference/*TypeReference": {
+            begin: ($) => { console.log("$type/?typeReference/*TypeReference begin") },
+            end: ($) => { console.log("$type/?typeReference/*TypeReference end") },
         },
-        "Gtype_undefined$": ($) => { console.log("Gtype_undefined$") },
-        "Gtype_union$": {
-            begin: ($) => { console.log("Gtype_union$ begin") },
-            end: ($) => { console.log("Gtype_union$ end") },
+        "$type/?undefined/*UndefinedKeyword": ($) => { console.log("$type/?undefined/*UndefinedKeyword") },
+        "$type/?union/*UnionType": {
+            begin: ($) => { console.log("$type/?union/*UnionType begin") },
+            end: ($) => { console.log("$type/?union/*UnionType end") },
         },
-        "Gtype_void$": ($) => { console.log("Gtype_void$") },
-        "GtypeParameter$": {
-            begin: ($) => { console.log("GtypeParameter$ begin") },
-            end: ($) => { console.log("GtypeParameter$ end") },
+        "$type/?void/*VoidKeyword": ($) => { console.log("$type/?void/*VoidKeyword") },
+        "$typeParameter/*TypeParameter": {
+            begin: ($) => { console.log("$typeParameter/*TypeParameter begin") },
+            end: ($) => { console.log("$typeParameter/*TypeParameter end") },
         },
-        "GtypeSignature_construct$": {
-            begin: ($) => { console.log("GtypeSignature_construct$ begin") },
-            end: ($) => { console.log("GtypeSignature_construct$ end") },
+        "$typeSignature/?construct/*ConstructSignature": {
+            begin: ($) => { console.log("$typeSignature/?construct/*ConstructSignature begin") },
+            end: ($) => { console.log("$typeSignature/?construct/*ConstructSignature end") },
         },
-        "GtypeSignature_index$": {
-            begin: ($) => { console.log("GtypeSignature_index$ begin") },
-            end: ($) => { console.log("GtypeSignature_index$ end") },
+        "$typeSignature/?index/*IndexSignature": {
+            begin: ($) => { console.log("$typeSignature/?index/*IndexSignature begin") },
+            end: ($) => { console.log("$typeSignature/?index/*IndexSignature end") },
         },
-        "GtypeSignature_method$": {
-            begin: ($) => { console.log("GtypeSignature_method$ begin") },
-            end: ($) => { console.log("GtypeSignature_method$ end") },
+        "$typeSignature/?method/*MethodSignature": {
+            begin: ($) => { console.log("$typeSignature/?method/*MethodSignature begin") },
+            end: ($) => { console.log("$typeSignature/?method/*MethodSignature end") },
         },
-        "GtypeSignature_property$_quesionToken$": ($) => { console.log("GtypeSignature_property$_quesionToken$") },
-        "GtypeSignature_property$": {
-            begin: ($) => { console.log("GtypeSignature_property$ begin") },
-            end: ($) => { console.log("GtypeSignature_property$ end") },
+        "$typeSignature/?property/*PropertySignature/.quesionToken/*QuestionToken": ($) => { console.log("$typeSignature/?property/*PropertySignature/.quesionToken/*QuestionToken") },
+        "$typeSignature/?property/*PropertySignature": {
+            begin: ($) => { console.log("$typeSignature/?property/*PropertySignature begin") },
+            end: ($) => { console.log("$typeSignature/?property/*PropertySignature end") },
         },
-        "GvariableDeclaration$": {
-            begin: ($) => { console.log("GvariableDeclaration$ begin") },
-            end: ($) => { console.log("GvariableDeclaration$ end") },
+        "$variableDeclaration/*VariableDeclaration": {
+            begin: ($) => { console.log("$variableDeclaration/*VariableDeclaration begin") },
+            end: ($) => { console.log("$variableDeclaration/*VariableDeclaration end") },
         },
-        "GvariableDeclarationList$": {
-            begin: ($) => { console.log("GvariableDeclarationList$ begin") },
-            end: ($) => { console.log("GvariableDeclarationList$ end") },
+        "$variableDeclarationList/*VariableDeclarationList": {
+            begin: ($) => { console.log("$variableDeclarationList/*VariableDeclarationList begin") },
+            end: ($) => { console.log("$variableDeclarationList/*VariableDeclarationList end") },
         },
-        "root_endOfFile$": ($) => { console.log("root_endOfFile$") },
-        "root": {
-            begin: ($) => { console.log("root begin") },
-            end: ($) => { console.log("root end") },
+        "/.endOfFile/*EndOfFileToken": ($) => { console.log("/.endOfFile/*EndOfFileToken") },
+        "": {
+            begin: ($) => { console.log(" begin") },
+            end: ($) => { console.log(" end") },
         },
     }
 }

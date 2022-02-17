@@ -37,35 +37,26 @@ export function generateAPI(
             $w.snippet(``)
         })
         $w.line(($w) => {
-            $w.snippet(`export type TN${path}<Annotation> = {`)
-            $w.indent(($w) => {
-                $w.line(($w) => {
-                    $w.snippet(`readonly "annotation": Annotation,`)
-                })
-                switch ($.type[0]) {
-                    case "composite":
-                        pr.cc($.type[1], ($) => {
-                            $w.line(($w) => {
-                                $w.snippet(`readonly "content": TV${path}<Annotation>`)
-                                $w.snippet(`,`)
-                            })
-                        })
-                        break
-                    case "leaf":
-                        pr.cc($.type[1], ($) => {
-                            if ($.hasTextContent) {
-                                $w.line(($w) => {
-                                    $w.snippet(`readonly "content": string`)
-                                    $w.snippet(`,`)
-                                })
-                            }
-                        })
-                        break
-                    default:
-                        pr.au($.type[0])
-                }
-            })
-            $w.snippet(`}`)
+            $w.snippet(`export type TN${path}<Annotation> = `)
+            switch ($.type[0]) {
+                case "composite":
+                    pr.cc($.type[1], ($) => {
+                        $w.snippet(`AnnotatedType<Annotation, TV${path}<Annotation>>`)
+                    })
+                    break
+                case "leaf":
+                    pr.cc($.type[1], ($) => {
+                        if ($.hasTextContent) {
+                            $w.snippet(`AnnotatedString<Annotation>`)
+                        } else {
+                            $w.snippet(`Annotation`)
+
+                        }
+                    })
+                    break
+                default:
+                    pr.au($.type[0])
+            }
         })
 
     }
@@ -198,6 +189,16 @@ export function generateAPI(
         $w.line(($w) => {
             $w.snippet(`import * as pr from "pareto-runtime"`)
         })
+        $w.line(($w) => {
+        })
+
+        $w.line(($w) => {
+            $w.snippet(`export type AnnotatedString<Annotation> = { readonly "annotation": Annotation; readonly "value": string }`)
+        })
+        $w.line(($w) => {
+            $w.snippet(`export type AnnotatedType<Annotation, Type> = { readonly "annotation": Annotation; readonly "content": Type }`)
+        })
+
         pr.forEachEntry(grammar.globalValueTypes, ($, key) => {
             generateTypesForValueType(
                 $,

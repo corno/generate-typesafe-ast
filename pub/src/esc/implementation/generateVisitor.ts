@@ -39,14 +39,15 @@ export function generateVisitor(
                 function generateNode(
                     $: g.TNode2,
                     $w: wapi.Block,
-                    path: string,
+                    pathForCode: string,
+                    pathForReporting: string,
                 ) {
                     $w.line(($w) => {
     
                         $w.snippet(`((`)
                         $w.indent(($w) => {
                             $w.line(($w) => {
-                                $w.snippet(`$: api.TN${path}<Annotation>,`)
+                                $w.snippet(`$: api.TN${pathForCode}<Annotation>,`)
                             })
                         })
                         $w.snippet(`) => {`)
@@ -55,7 +56,7 @@ export function generateVisitor(
                                 case "composite":
                                     pr.cc($.type[1], ($) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`if (foo["${path}"] !== undefined) { foo["${path}"].begin($) }`)
+                                            $w.snippet(`if (foo["${pathForReporting}"] !== undefined) { foo["${pathForReporting}"].begin($) }`)
                                         })
                                         $w.line(($w) => {
                                             $w.snippet(`pr.cc($.content, ($) => {`)
@@ -63,20 +64,21 @@ export function generateVisitor(
                                                 generateValue(
                                                     $,
                                                     $w,
-                                                    path,
+                                                    pathForCode,
+                                                    pathForReporting,
                                                 )
                                             })
                                             $w.snippet(`})`)
                                         })
                                         $w.line(($w) => {
-                                            $w.snippet(`if (foo["${path}"] !== undefined) { foo["${path}"].end($) }`)
+                                            $w.snippet(`if (foo["${pathForReporting}"] !== undefined) { foo["${pathForReporting}"].end($) }`)
                                         })
                                     })
                                     break
                                 case "leaf":
                                     pr.cc($.type[1], ($) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`if (foo["${path}"] !== undefined) { foo["${path}"]($) }`)
+                                            $w.snippet(`if (foo["${pathForReporting}"] !== undefined) { foo["${pathForReporting}"]($) }`)
                                         })
                                     })
                                     break
@@ -90,7 +92,8 @@ export function generateVisitor(
                 function generateValueType(
                     $: g.TValueType,
                     $w: wapi.Block,
-                    path: string,
+                    pathForCode: string,
+                    pathForReporting: string,
                 ) {
                     switch ($[0]) {
                         case "choice":
@@ -110,7 +113,8 @@ export function generateVisitor(
                                                             generateValue(
                                                                 option,
                                                                 $w,
-                                                                `${path}_${key}`,
+                                                                `${pathForCode}_${key}`,
+                                                                `${pathForReporting}/?${key}`,
                                                             )
                                                         })
                                                         $w.snippet(`})`)
@@ -147,7 +151,8 @@ export function generateVisitor(
                                             generateValue(
                                                 $.value,
                                                 $w,
-                                                `${path}_${$.name}`,
+                                                `${pathForCode}_${$.name}`,
+                                                `${pathForReporting}/.${$.name}`,
                                             )
                                         })
                                         $w.snippet(`})`)
@@ -160,7 +165,8 @@ export function generateVisitor(
                                 generateNode(
                                     $,
                                     $w,
-                                    `${path}$`
+                                    `${pathForCode}$`,
+                                    `${pathForReporting}/*${$.name}`,
                                 )
                             })
                             break
@@ -172,7 +178,8 @@ export function generateVisitor(
                 function generateValue(
                     $: g.TValue,
                     $w: wapi.Block,
-                    path: string,
+                    pathForCode: string,
+                    pathForReporting: string,
                 ) {
                     const symbol = $
                     switch ($.cardinality[0]) {
@@ -184,7 +191,8 @@ export function generateVisitor(
                                         generateValueType(
                                             symbol.type,
                                             $w,
-                                            `${path}`
+                                            `${pathForCode}`,
+                                            `${pathForReporting}`,
                                         )
                                     })
                                     $w.snippet(`})`)
@@ -196,7 +204,8 @@ export function generateVisitor(
                                 generateValueType(
                                     symbol.type,
                                     $w,
-                                    path,
+                                    `${pathForCode}`,
+                                    `${pathForReporting}`,
                                 )
     
                             })
@@ -215,7 +224,8 @@ export function generateVisitor(
                                         generateValueType(
                                             symbol.type,
                                             $w,
-                                            path,
+                                            `${pathForCode}`,
+                                            `${pathForReporting}`,
                                         )
                                     })
                                     $w.snippet(`}`)
@@ -240,7 +250,8 @@ export function generateVisitor(
                             generateValueType(
                                 $,
                                 $w,
-                                `G${key}`
+                                `G${key}`,
+                                `$${key}`,
                             )
                         })
                         $w.snippet(`}`)
@@ -252,6 +263,7 @@ export function generateVisitor(
                     $.root,
                     $w,
                     "root",
+                    "",
                 )
     
             })

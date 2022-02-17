@@ -2,277 +2,277 @@ import * as pr from "pareto-runtime"
 import * as api from "../../interface/types/ts_api"
 
 export type IVisitor<Annotation> = {
-    readonly "Gblock$"?: {
+    readonly "$block/*Block"?: {
         readonly "begin": ($: api.TNGblock$<Annotation>) => void,
         readonly "end": ($: api.TNGblock$<Annotation>) => void,
     }
-    readonly "Gexpression_arrayLiteral$"?: {
+    readonly "$expression/?arrayLiteral/*ArrayLiteralExpression"?: {
         readonly "begin": ($: api.TNGexpression_arrayLiteral$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_arrayLiteral$<Annotation>) => void,
     }
-    readonly "Gexpression_arrowFunction$_equalsGreaterThan$"?: ($: api.TNGexpression_arrowFunction$_equalsGreaterThan$<Annotation>) => void
-    readonly "Gexpression_arrowFunction$"?: {
+    readonly "$expression/?arrowFunction/*ArrowFunction/.equalsGreaterThan/*EqualsGreaterThanToken"?: ($: api.TNGexpression_arrowFunction$_equalsGreaterThan$<Annotation>) => void
+    readonly "$expression/?arrowFunction/*ArrowFunction"?: {
         readonly "begin": ($: api.TNGexpression_arrowFunction$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_arrowFunction$<Annotation>) => void,
     }
-    readonly "Gexpression_binary$_operator_ampersandAmpersand$"?: ($: api.TNGexpression_binary$_operator_ampersandAmpersand$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_barBar$"?: ($: api.TNGexpression_binary$_operator_barBar$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_equals$"?: ($: api.TNGexpression_binary$_operator_equals$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_equalsEqualsEquals$"?: ($: api.TNGexpression_binary$_operator_equalsEqualsEquals$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_exclamationEqualsEquals$"?: ($: api.TNGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_greaterThan$"?: ($: api.TNGexpression_binary$_operator_greaterThan$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_lessThan$"?: ($: api.TNGexpression_binary$_operator_lessThan$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_minus$"?: ($: api.TNGexpression_binary$_operator_minus$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_minusEquals$"?: ($: api.TNGexpression_binary$_operator_minusEquals$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_plus$"?: ($: api.TNGexpression_binary$_operator_plus$<Annotation>) => void
-    readonly "Gexpression_binary$_operator_plusEquals$"?: ($: api.TNGexpression_binary$_operator_plusEquals$<Annotation>) => void
-    readonly "Gexpression_binary$"?: {
+    readonly "$expression/?binary/*BinaryExpression/.operator/?ampersandAmpersand/*AmpersandAmpersandToken"?: ($: api.TNGexpression_binary$_operator_ampersandAmpersand$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?barBar/*BarBarToken"?: ($: api.TNGexpression_binary$_operator_barBar$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?equals/*EqualsToken"?: ($: api.TNGexpression_binary$_operator_equals$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?equalsEqualsEquals/*EqualsEqualsEqualsToken"?: ($: api.TNGexpression_binary$_operator_equalsEqualsEquals$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?exclamationEqualsEquals/*ExclamationEqualsEqualsToken"?: ($: api.TNGexpression_binary$_operator_exclamationEqualsEquals$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?greaterThan/*GreaterThanToken"?: ($: api.TNGexpression_binary$_operator_greaterThan$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?lessThan/*LessThanToken"?: ($: api.TNGexpression_binary$_operator_lessThan$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?minus/*MinusToken"?: ($: api.TNGexpression_binary$_operator_minus$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?minusEquals/*MinusEqualsToken"?: ($: api.TNGexpression_binary$_operator_minusEquals$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?plus/*PlusToken"?: ($: api.TNGexpression_binary$_operator_plus$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression/.operator/?plusEquals/*PlusEqualsToken"?: ($: api.TNGexpression_binary$_operator_plusEquals$<Annotation>) => void
+    readonly "$expression/?binary/*BinaryExpression"?: {
         readonly "begin": ($: api.TNGexpression_binary$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_binary$<Annotation>) => void,
     }
-    readonly "Gexpression_call$"?: {
+    readonly "$expression/?call/*CallExpression"?: {
         readonly "begin": ($: api.TNGexpression_call$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_call$<Annotation>) => void,
     }
-    readonly "Gexpression_conditional$_questionToken$"?: ($: api.TNGexpression_conditional$_questionToken$<Annotation>) => void
-    readonly "Gexpression_conditional$_colonToken$"?: ($: api.TNGexpression_conditional$_colonToken$<Annotation>) => void
-    readonly "Gexpression_conditional$"?: {
+    readonly "$expression/?conditional/*ConditionalExpression/.questionToken/*QuestionToken"?: ($: api.TNGexpression_conditional$_questionToken$<Annotation>) => void
+    readonly "$expression/?conditional/*ConditionalExpression/.colonToken/*ColonToken"?: ($: api.TNGexpression_conditional$_colonToken$<Annotation>) => void
+    readonly "$expression/?conditional/*ConditionalExpression"?: {
         readonly "begin": ($: api.TNGexpression_conditional$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_conditional$<Annotation>) => void,
     }
-    readonly "Gexpression_elementAccess$"?: {
+    readonly "$expression/?elementAccess/*ElementAccessExpression"?: {
         readonly "begin": ($: api.TNGexpression_elementAccess$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_elementAccess$<Annotation>) => void,
     }
-    readonly "Gexpression_false$"?: ($: api.TNGexpression_false$<Annotation>) => void
-    readonly "Gexpression_new$"?: {
+    readonly "$expression/?false/*FalseKeyword"?: ($: api.TNGexpression_false$<Annotation>) => void
+    readonly "$expression/?new/*NewExpression"?: {
         readonly "begin": ($: api.TNGexpression_new$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_new$<Annotation>) => void,
     }
-    readonly "Gexpression_noSubstitutionTemplateLiteral$"?: ($: api.TNGexpression_noSubstitutionTemplateLiteral$<Annotation>) => void
-    readonly "Gexpression_nullKeyword$"?: ($: api.TNGexpression_nullKeyword$<Annotation>) => void
-    readonly "Gexpression_objectLiteral$$"?: {
+    readonly "$expression/?noSubstitutionTemplateLiteral/*NoSubstitutionTemplateLiteral"?: ($: api.TNGexpression_noSubstitutionTemplateLiteral$<Annotation>) => void
+    readonly "$expression/?nullKeyword/*NullKeyword"?: ($: api.TNGexpression_nullKeyword$<Annotation>) => void
+    readonly "$expression/?objectLiteral/*ObjectLiteralExpression/*PropertyAssignment"?: {
         readonly "begin": ($: api.TNGexpression_objectLiteral$$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_objectLiteral$$<Annotation>) => void,
     }
-    readonly "Gexpression_objectLiteral$"?: {
+    readonly "$expression/?objectLiteral/*ObjectLiteralExpression"?: {
         readonly "begin": ($: api.TNGexpression_objectLiteral$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_objectLiteral$<Annotation>) => void,
     }
-    readonly "Gexpression_parenthesizedExpression$"?: {
+    readonly "$expression/?parenthesizedExpression/*ParenthesizedExpression"?: {
         readonly "begin": ($: api.TNGexpression_parenthesizedExpression$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_parenthesizedExpression$<Annotation>) => void,
     }
-    readonly "Gexpression_postfixUnary$"?: {
+    readonly "$expression/?postfixUnary/*PostfixUnaryExpression"?: {
         readonly "begin": ($: api.TNGexpression_postfixUnary$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_postfixUnary$<Annotation>) => void,
     }
-    readonly "Gexpression_prefixUnary$"?: {
+    readonly "$expression/?prefixUnary/*PrefixUnaryExpression"?: {
         readonly "begin": ($: api.TNGexpression_prefixUnary$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_prefixUnary$<Annotation>) => void,
     }
-    readonly "Gexpression_propertyAccess$"?: {
+    readonly "$expression/?propertyAccess/*PropertyAccessExpression"?: {
         readonly "begin": ($: api.TNGexpression_propertyAccess$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_propertyAccess$<Annotation>) => void,
     }
-    readonly "Gexpression_template$_head$"?: ($: api.TNGexpression_template$_head$<Annotation>) => void
-    readonly "Gexpression_template$_spans$_x_middle$"?: ($: api.TNGexpression_template$_spans$_x_middle$<Annotation>) => void
-    readonly "Gexpression_template$_spans$_x_tail$"?: ($: api.TNGexpression_template$_spans$_x_tail$<Annotation>) => void
-    readonly "Gexpression_template$_spans$"?: {
+    readonly "$expression/?template/*TemplateExpression/.head/*TemplateHead"?: ($: api.TNGexpression_template$_head$<Annotation>) => void
+    readonly "$expression/?template/*TemplateExpression/.spans/*TemplateSpan/.x/?middle/*TemplateMiddle"?: ($: api.TNGexpression_template$_spans$_x_middle$<Annotation>) => void
+    readonly "$expression/?template/*TemplateExpression/.spans/*TemplateSpan/.x/?tail/*TemplateTail"?: ($: api.TNGexpression_template$_spans$_x_tail$<Annotation>) => void
+    readonly "$expression/?template/*TemplateExpression/.spans/*TemplateSpan"?: {
         readonly "begin": ($: api.TNGexpression_template$_spans$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_template$_spans$<Annotation>) => void,
     }
-    readonly "Gexpression_template$"?: {
+    readonly "$expression/?template/*TemplateExpression"?: {
         readonly "begin": ($: api.TNGexpression_template$<Annotation>) => void,
         readonly "end": ($: api.TNGexpression_template$<Annotation>) => void,
     }
-    readonly "Gexpression_true$"?: ($: api.TNGexpression_true$<Annotation>) => void
-    readonly "Gidentifier$"?: ($: api.TNGidentifier$<Annotation>) => void
-    readonly "Gmodifier_declare$"?: ($: api.TNGmodifier_declare$<Annotation>) => void
-    readonly "Gmodifier_export$"?: ($: api.TNGmodifier_export$<Annotation>) => void
-    readonly "Gmodifier_readonly$"?: ($: api.TNGmodifier_readonly$<Annotation>) => void
-    readonly "GnumericLiteral$"?: ($: api.TNGnumericLiteral$<Annotation>) => void
-    readonly "Gparameter$_questionToken$"?: ($: api.TNGparameter$_questionToken$<Annotation>) => void
-    readonly "Gparameter$"?: {
+    readonly "$expression/?true/*TrueKeyword"?: ($: api.TNGexpression_true$<Annotation>) => void
+    readonly "$identifier/*Identifier"?: ($: api.TNGidentifier$<Annotation>) => void
+    readonly "$modifier/?declare/*DeclareKeyword"?: ($: api.TNGmodifier_declare$<Annotation>) => void
+    readonly "$modifier/?export/*ExportKeyword"?: ($: api.TNGmodifier_export$<Annotation>) => void
+    readonly "$modifier/?readonly/*ReadonlyKeyword"?: ($: api.TNGmodifier_readonly$<Annotation>) => void
+    readonly "$numericLiteral/*NumericLiteral"?: ($: api.TNGnumericLiteral$<Annotation>) => void
+    readonly "$parameter/*Parameter/.questionToken/*QuestionToken"?: ($: api.TNGparameter$_questionToken$<Annotation>) => void
+    readonly "$parameter/*Parameter"?: {
         readonly "begin": ($: api.TNGparameter$<Annotation>) => void,
         readonly "end": ($: api.TNGparameter$<Annotation>) => void,
     }
-    readonly "Gstatement_break$"?: {
+    readonly "$statement/?break/*BreakStatement"?: {
         readonly "begin": ($: api.TNGstatement_break$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_break$<Annotation>) => void,
     }
-    readonly "Gstatement_export$"?: {
+    readonly "$statement/?export/*ExportDeclaration"?: {
         readonly "begin": ($: api.TNGstatement_export$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_export$<Annotation>) => void,
     }
-    readonly "Gstatement_expression$"?: {
+    readonly "$statement/?expression/*ExpressionStatement"?: {
         readonly "begin": ($: api.TNGstatement_expression$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_expression$<Annotation>) => void,
     }
-    readonly "Gstatement_for$"?: {
+    readonly "$statement/?for/*ForStatement"?: {
         readonly "begin": ($: api.TNGstatement_for$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_for$<Annotation>) => void,
     }
-    readonly "Gstatement_function$"?: {
+    readonly "$statement/?function/*FunctionDeclaration"?: {
         readonly "begin": ($: api.TNGstatement_function$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_function$<Annotation>) => void,
     }
-    readonly "Gstatement_if$"?: {
+    readonly "$statement/?if/*IfStatement"?: {
         readonly "begin": ($: api.TNGstatement_if$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_if$<Annotation>) => void,
     }
-    readonly "Gstatement_import$_clause$_namespace$"?: {
+    readonly "$statement/?import/*ImportDeclaration/.clause/*ImportClause/?namespace/*NamespaceImport"?: {
         readonly "begin": ($: api.TNGstatement_import$_clause$_namespace$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_import$_clause$_namespace$<Annotation>) => void,
     }
-    readonly "Gstatement_import$_clause$_named$$"?: {
+    readonly "$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports/*ImportSpecifier"?: {
         readonly "begin": ($: api.TNGstatement_import$_clause$_named$$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_import$_clause$_named$$<Annotation>) => void,
     }
-    readonly "Gstatement_import$_clause$_named$"?: {
+    readonly "$statement/?import/*ImportDeclaration/.clause/*ImportClause/?named/*NamedImports"?: {
         readonly "begin": ($: api.TNGstatement_import$_clause$_named$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_import$_clause$_named$<Annotation>) => void,
     }
-    readonly "Gstatement_import$_clause$"?: {
+    readonly "$statement/?import/*ImportDeclaration/.clause/*ImportClause"?: {
         readonly "begin": ($: api.TNGstatement_import$_clause$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_import$_clause$<Annotation>) => void,
     }
-    readonly "Gstatement_import$"?: {
+    readonly "$statement/?import/*ImportDeclaration"?: {
         readonly "begin": ($: api.TNGstatement_import$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_import$<Annotation>) => void,
     }
-    readonly "Gstatement_interface$"?: {
+    readonly "$statement/?interface/*InterfaceDeclaration"?: {
         readonly "begin": ($: api.TNGstatement_interface$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_interface$<Annotation>) => void,
     }
-    readonly "Gstatement_labeled$"?: {
+    readonly "$statement/?labeled/*LabeledStatement"?: {
         readonly "begin": ($: api.TNGstatement_labeled$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_labeled$<Annotation>) => void,
     }
-    readonly "Gstatement_return$"?: {
+    readonly "$statement/?return/*ReturnStatement"?: {
         readonly "begin": ($: api.TNGstatement_return$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_return$<Annotation>) => void,
     }
-    readonly "Gstatement_switch$_caseBlock$_case$"?: {
+    readonly "$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?case/*CaseClause"?: {
         readonly "begin": ($: api.TNGstatement_switch$_caseBlock$_case$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_switch$_caseBlock$_case$<Annotation>) => void,
     }
-    readonly "Gstatement_switch$_caseBlock$_default$"?: {
+    readonly "$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock/?default/*DefaultClause"?: {
         readonly "begin": ($: api.TNGstatement_switch$_caseBlock$_default$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_switch$_caseBlock$_default$<Annotation>) => void,
     }
-    readonly "Gstatement_switch$_caseBlock$"?: {
+    readonly "$statement/?switch/*SwitchStatement/.caseBlock/*CaseBlock"?: {
         readonly "begin": ($: api.TNGstatement_switch$_caseBlock$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_switch$_caseBlock$<Annotation>) => void,
     }
-    readonly "Gstatement_switch$"?: {
+    readonly "$statement/?switch/*SwitchStatement"?: {
         readonly "begin": ($: api.TNGstatement_switch$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_switch$<Annotation>) => void,
     }
-    readonly "Gstatement_throw$"?: {
+    readonly "$statement/?throw/*ThrowStatement"?: {
         readonly "begin": ($: api.TNGstatement_throw$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_throw$<Annotation>) => void,
     }
-    readonly "Gstatement_try$_catchClause$"?: {
+    readonly "$statement/?try/*TryStatement/.catchClause/*CatchClause"?: {
         readonly "begin": ($: api.TNGstatement_try$_catchClause$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_try$_catchClause$<Annotation>) => void,
     }
-    readonly "Gstatement_try$"?: {
+    readonly "$statement/?try/*TryStatement"?: {
         readonly "begin": ($: api.TNGstatement_try$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_try$<Annotation>) => void,
     }
-    readonly "Gstatement_typeAlias$"?: {
+    readonly "$statement/?typeAlias/*TypeAliasDeclaration"?: {
         readonly "begin": ($: api.TNGstatement_typeAlias$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_typeAlias$<Annotation>) => void,
     }
-    readonly "Gstatement_variable$"?: {
+    readonly "$statement/?variable/*VariableStatement"?: {
         readonly "begin": ($: api.TNGstatement_variable$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_variable$<Annotation>) => void,
     }
-    readonly "Gstatement_while$"?: {
+    readonly "$statement/?while/*WhileStatement"?: {
         readonly "begin": ($: api.TNGstatement_while$<Annotation>) => void,
         readonly "end": ($: api.TNGstatement_while$<Annotation>) => void,
     }
-    readonly "GstringLiteral$"?: ($: api.TNGstringLiteral$<Annotation>) => void
-    readonly "Gtype_any$"?: ($: api.TNGtype_any$<Annotation>) => void
-    readonly "Gtype_array$"?: {
+    readonly "$stringLiteral/*StringLiteral"?: ($: api.TNGstringLiteral$<Annotation>) => void
+    readonly "$type/?any/*AnyKeyword"?: ($: api.TNGtype_any$<Annotation>) => void
+    readonly "$type/?array/*ArrayType"?: {
         readonly "begin": ($: api.TNGtype_array$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_array$<Annotation>) => void,
     }
-    readonly "Gtype_boolean$"?: ($: api.TNGtype_boolean$<Annotation>) => void
-    readonly "Gtype_function$"?: {
+    readonly "$type/?boolean/*BooleanKeyword"?: ($: api.TNGtype_boolean$<Annotation>) => void
+    readonly "$type/?function/*FunctionType"?: {
         readonly "begin": ($: api.TNGtype_function$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_function$<Annotation>) => void,
     }
-    readonly "Gtype_literal$_null$"?: ($: api.TNGtype_literal$_null$<Annotation>) => void
-    readonly "Gtype_literal$"?: {
+    readonly "$type/?literal/*LiteralType/?null/*NullKeyword"?: ($: api.TNGtype_literal$_null$<Annotation>) => void
+    readonly "$type/?literal/*LiteralType"?: {
         readonly "begin": ($: api.TNGtype_literal$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_literal$<Annotation>) => void,
     }
-    readonly "Gtype_parenthesized$"?: {
+    readonly "$type/?parenthesized/*ParenthesizedType"?: {
         readonly "begin": ($: api.TNGtype_parenthesized$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_parenthesized$<Annotation>) => void,
     }
-    readonly "Gtype_never$"?: ($: api.TNGtype_never$<Annotation>) => void
-    readonly "Gtype_number$"?: ($: api.TNGtype_number$<Annotation>) => void
-    readonly "Gtype_optional$"?: {
+    readonly "$type/?never/*NeverKeyword"?: ($: api.TNGtype_never$<Annotation>) => void
+    readonly "$type/?number/*NumberKeyword"?: ($: api.TNGtype_number$<Annotation>) => void
+    readonly "$type/?optional/*OptionalType"?: {
         readonly "begin": ($: api.TNGtype_optional$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_optional$<Annotation>) => void,
     }
-    readonly "Gtype_tuple$"?: {
+    readonly "$type/?tuple/*TupleType"?: {
         readonly "begin": ($: api.TNGtype_tuple$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_tuple$<Annotation>) => void,
     }
-    readonly "Gtype_typeLiteral$"?: {
+    readonly "$type/?typeLiteral/*TypeLiteral"?: {
         readonly "begin": ($: api.TNGtype_typeLiteral$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_typeLiteral$<Annotation>) => void,
     }
-    readonly "Gtype_string$"?: ($: api.TNGtype_string$<Annotation>) => void
-    readonly "Gtype_typeReference$_x_qualifiedName$"?: {
+    readonly "$type/?string/*StringKeyword"?: ($: api.TNGtype_string$<Annotation>) => void
+    readonly "$type/?typeReference/*TypeReference/.x/?qualifiedName/*QualifiedName"?: {
         readonly "begin": ($: api.TNGtype_typeReference$_x_qualifiedName$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_typeReference$_x_qualifiedName$<Annotation>) => void,
     }
-    readonly "Gtype_typeReference$"?: {
+    readonly "$type/?typeReference/*TypeReference"?: {
         readonly "begin": ($: api.TNGtype_typeReference$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_typeReference$<Annotation>) => void,
     }
-    readonly "Gtype_undefined$"?: ($: api.TNGtype_undefined$<Annotation>) => void
-    readonly "Gtype_union$"?: {
+    readonly "$type/?undefined/*UndefinedKeyword"?: ($: api.TNGtype_undefined$<Annotation>) => void
+    readonly "$type/?union/*UnionType"?: {
         readonly "begin": ($: api.TNGtype_union$<Annotation>) => void,
         readonly "end": ($: api.TNGtype_union$<Annotation>) => void,
     }
-    readonly "Gtype_void$"?: ($: api.TNGtype_void$<Annotation>) => void
-    readonly "GtypeParameter$"?: {
+    readonly "$type/?void/*VoidKeyword"?: ($: api.TNGtype_void$<Annotation>) => void
+    readonly "$typeParameter/*TypeParameter"?: {
         readonly "begin": ($: api.TNGtypeParameter$<Annotation>) => void,
         readonly "end": ($: api.TNGtypeParameter$<Annotation>) => void,
     }
-    readonly "GtypeSignature_construct$"?: {
+    readonly "$typeSignature/?construct/*ConstructSignature"?: {
         readonly "begin": ($: api.TNGtypeSignature_construct$<Annotation>) => void,
         readonly "end": ($: api.TNGtypeSignature_construct$<Annotation>) => void,
     }
-    readonly "GtypeSignature_index$"?: {
+    readonly "$typeSignature/?index/*IndexSignature"?: {
         readonly "begin": ($: api.TNGtypeSignature_index$<Annotation>) => void,
         readonly "end": ($: api.TNGtypeSignature_index$<Annotation>) => void,
     }
-    readonly "GtypeSignature_method$"?: {
+    readonly "$typeSignature/?method/*MethodSignature"?: {
         readonly "begin": ($: api.TNGtypeSignature_method$<Annotation>) => void,
         readonly "end": ($: api.TNGtypeSignature_method$<Annotation>) => void,
     }
-    readonly "GtypeSignature_property$_quesionToken$"?: ($: api.TNGtypeSignature_property$_quesionToken$<Annotation>) => void
-    readonly "GtypeSignature_property$"?: {
+    readonly "$typeSignature/?property/*PropertySignature/.quesionToken/*QuestionToken"?: ($: api.TNGtypeSignature_property$_quesionToken$<Annotation>) => void
+    readonly "$typeSignature/?property/*PropertySignature"?: {
         readonly "begin": ($: api.TNGtypeSignature_property$<Annotation>) => void,
         readonly "end": ($: api.TNGtypeSignature_property$<Annotation>) => void,
     }
-    readonly "GvariableDeclaration$"?: {
+    readonly "$variableDeclaration/*VariableDeclaration"?: {
         readonly "begin": ($: api.TNGvariableDeclaration$<Annotation>) => void,
         readonly "end": ($: api.TNGvariableDeclaration$<Annotation>) => void,
     }
-    readonly "GvariableDeclarationList$"?: {
+    readonly "$variableDeclarationList/*VariableDeclarationList"?: {
         readonly "begin": ($: api.TNGvariableDeclarationList$<Annotation>) => void,
         readonly "end": ($: api.TNGvariableDeclarationList$<Annotation>) => void,
     }
-    readonly "root_endOfFile$"?: ($: api.TNroot_endOfFile$<Annotation>) => void
-    readonly "root"?: {
+    readonly "/.endOfFile/*EndOfFileToken"?: ($: api.TNroot_endOfFile$<Annotation>) => void
+    readonly ""?: {
         readonly "begin": ($: api.TNroot<Annotation>) => void,
         readonly "end": ($: api.TNroot<Annotation>) => void,
     }

@@ -88,7 +88,7 @@ export function generateDefaultVisitor(
                                             generateValue(
                                                 option,
                                                 $w,
-                                                `${path}_${key}`
+                                                `${path}/?${key}`
                                             )
                                         })
                                     })
@@ -104,7 +104,7 @@ export function generateDefaultVisitor(
                                             generateValue(
                                                 $.value,
                                                 $w,
-                                                `${path}_${$.name}`
+                                                `${path}/.${$.name}`
                                             )
                                         })
                                     })
@@ -114,7 +114,7 @@ export function generateDefaultVisitor(
                                         generateNode(
                                             $,
                                             $w,
-                                            `${path}$`
+                                            `${path}/*${$.name}`
                                         )
                                     })
                                     break
@@ -140,14 +140,14 @@ export function generateDefaultVisitor(
                             generateValueType(
                                 $,
                                 $w,
-                                `G${key}`,
+                                `$${key}`,
                             )
                         })
         
                         generateNode(
                             grammar.root,
                             $w,
-                            "root",
+                            "",
                         )
         
         

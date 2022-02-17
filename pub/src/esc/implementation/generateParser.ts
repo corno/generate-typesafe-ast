@@ -204,18 +204,22 @@ export function generateParser(
                                 case "leaf":
                                     pr.cc($.type[1], ($) => {
                                         $w.line(($w) => {
-                                            $w.snippet(`callback({`)
-                                            $w.indent(($w) => {
-                                                $w.line(($w) => {
-                                                    $w.snippet(`annotation: $.annotation,`)
-                                                })
-                                                if ($.hasTextContent) {
+                                            $w.snippet(`callback(`)
+                                            if ($.hasTextContent) {
+                                                $w.snippet(`{`)
+                                                $w.indent(($w) => {
                                                     $w.line(($w) => {
-                                                        $w.snippet(`content: $.value`)
+                                                        $w.snippet(`annotation: $.annotation,`)
                                                     })
-                                                }
-                                            })
-                                            $w.snippet(`})`)
+                                                    $w.line(($w) => {
+                                                        $w.snippet(`value: $.value`)
+                                                    })
+                                                })
+                                                $w.snippet(`}`)
+                                            } else {
+                                                $w.snippet(`$.annotation`)
+                                            }
+                                            $w.snippet(`)`)
                                         })
                                     })
                                     break
