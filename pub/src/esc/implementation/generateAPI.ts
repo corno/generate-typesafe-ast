@@ -41,13 +41,13 @@ export function generateAPI(
             switch ($.type[0]) {
                 case "composite":
                     pr.cc($.type[1], ($) => {
-                        $w.snippet(`AnnotatedType<Annotation, TV${path}<Annotation>>`)
+                        $w.snippet(`TAnnotatedType<Annotation, TV${path}<Annotation>>`)
                     })
                     break
                 case "leaf":
                     pr.cc($.type[1], ($) => {
                         if ($.hasTextContent) {
-                            $w.snippet(`AnnotatedString<Annotation>`)
+                            $w.snippet(`TAnnotatedString<Annotation>`)
                         } else {
                             $w.snippet(`Annotation`)
 
@@ -198,10 +198,10 @@ export function generateAPI(
         })
 
         $w.line(($w) => {
-            $w.snippet(`export type AnnotatedString<Annotation> = { readonly "annotation": Annotation; readonly "value": string }`)
+            $w.snippet(`export type TAnnotatedString<Annotation> = { readonly "annotation": Annotation; readonly "value": string }`)
         })
         $w.line(($w) => {
-            $w.snippet(`export type AnnotatedType<Annotation, Type> = { readonly "annotation": Annotation; readonly "content": Type }`)
+            $w.snippet(`export type TAnnotatedType<Annotation, Type> = { readonly "annotation": Annotation; readonly "content": Type }`)
         })
 
         pr.forEachEntry(grammar.globalValueTypes, ($, key) => {

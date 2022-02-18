@@ -1,17 +1,17 @@
 import * as pr from "pareto-runtime"
 
-export type AnnotatedString<Annotation> = { readonly "annotation": Annotation; readonly "value": string }
-export type AnnotatedType<Annotation, Type> = { readonly "annotation": Annotation; readonly "content": Type }
+export type TAnnotatedString<Annotation> = { readonly "annotation": Annotation; readonly "value": string }
+export type TAnnotatedType<Annotation, Type> = { readonly "annotation": Annotation; readonly "content": Type }
 export type TVTGblock$<Annotation> = TGstatement<Annotation>
 export type TVGblock$<Annotation> = TVTGblock$<Annotation>[]
 
-export type TNGblock$<Annotation> = AnnotatedType<Annotation, TVGblock$<Annotation>>
+export type TNGblock$<Annotation> = TAnnotatedType<Annotation, TVGblock$<Annotation>>
 export type TVTGblock<Annotation> = TNGblock$<Annotation>
 export type TGblock<Annotation> =  TVTGblock<Annotation>
 export type TVTGexpression_arrayLiteral$<Annotation> = TGexpression<Annotation>
 export type TVGexpression_arrayLiteral$<Annotation> = TVTGexpression_arrayLiteral$<Annotation>[]
 
-export type TNGexpression_arrayLiteral$<Annotation> = AnnotatedType<Annotation, TVGexpression_arrayLiteral$<Annotation>>
+export type TNGexpression_arrayLiteral$<Annotation> = TAnnotatedType<Annotation, TVGexpression_arrayLiteral$<Annotation>>
 export type TVTGexpression_arrayLiteral<Annotation> = TNGexpression_arrayLiteral$<Annotation>
 export type TVGexpression_arrayLiteral<Annotation> = TVTGexpression_arrayLiteral<Annotation>
 export type TVTGexpression_arrowFunction$_parameters<Annotation> = TGparameter<Annotation>
@@ -38,7 +38,7 @@ export type TVTGexpression_arrowFunction$<Annotation> = {
 }
 export type TVGexpression_arrowFunction$<Annotation> = TVTGexpression_arrowFunction$<Annotation>
 
-export type TNGexpression_arrowFunction$<Annotation> = AnnotatedType<Annotation, TVGexpression_arrowFunction$<Annotation>>
+export type TNGexpression_arrowFunction$<Annotation> = TAnnotatedType<Annotation, TVGexpression_arrowFunction$<Annotation>>
 export type TVTGexpression_arrowFunction<Annotation> = TNGexpression_arrowFunction$<Annotation>
 export type TVGexpression_arrowFunction<Annotation> = TVTGexpression_arrowFunction<Annotation>
 export type TVTGexpression_binary$_leftHandSide<Annotation> = TGexpression<Annotation>
@@ -109,7 +109,7 @@ export type TVTGexpression_binary$<Annotation> = {
 }
 export type TVGexpression_binary$<Annotation> = TVTGexpression_binary$<Annotation>
 
-export type TNGexpression_binary$<Annotation> = AnnotatedType<Annotation, TVGexpression_binary$<Annotation>>
+export type TNGexpression_binary$<Annotation> = TAnnotatedType<Annotation, TVGexpression_binary$<Annotation>>
 export type TVTGexpression_binary<Annotation> = TNGexpression_binary$<Annotation>
 export type TVGexpression_binary<Annotation> = TVTGexpression_binary<Annotation>
 export type TVTGexpression_call$_function<Annotation> = TGexpression<Annotation>
@@ -125,7 +125,7 @@ export type TVTGexpression_call$<Annotation> = {
 }
 export type TVGexpression_call$<Annotation> = TVTGexpression_call$<Annotation>
 
-export type TNGexpression_call$<Annotation> = AnnotatedType<Annotation, TVGexpression_call$<Annotation>>
+export type TNGexpression_call$<Annotation> = TAnnotatedType<Annotation, TVGexpression_call$<Annotation>>
 export type TVTGexpression_call<Annotation> = TNGexpression_call$<Annotation>
 export type TVGexpression_call<Annotation> = TVTGexpression_call<Annotation>
 export type TVTGexpression_conditional$_test<Annotation> = TGexpression<Annotation>
@@ -151,7 +151,7 @@ export type TVTGexpression_conditional$<Annotation> = {
 }
 export type TVGexpression_conditional$<Annotation> = TVTGexpression_conditional$<Annotation>
 
-export type TNGexpression_conditional$<Annotation> = AnnotatedType<Annotation, TVGexpression_conditional$<Annotation>>
+export type TNGexpression_conditional$<Annotation> = TAnnotatedType<Annotation, TVGexpression_conditional$<Annotation>>
 export type TVTGexpression_conditional<Annotation> = TNGexpression_conditional$<Annotation>
 export type TVGexpression_conditional<Annotation> = TVTGexpression_conditional<Annotation>
 export type TVTGexpression_elementAccess$_array<Annotation> = TGexpression<Annotation>
@@ -164,7 +164,7 @@ export type TVTGexpression_elementAccess$<Annotation> = {
 }
 export type TVGexpression_elementAccess$<Annotation> = TVTGexpression_elementAccess$<Annotation>
 
-export type TNGexpression_elementAccess$<Annotation> = AnnotatedType<Annotation, TVGexpression_elementAccess$<Annotation>>
+export type TNGexpression_elementAccess$<Annotation> = TAnnotatedType<Annotation, TVGexpression_elementAccess$<Annotation>>
 export type TVTGexpression_elementAccess<Annotation> = TNGexpression_elementAccess$<Annotation>
 export type TVGexpression_elementAccess<Annotation> = TVTGexpression_elementAccess<Annotation>
 
@@ -183,7 +183,7 @@ export type TVTGexpression_new$<Annotation> = {
 }
 export type TVGexpression_new$<Annotation> = TVTGexpression_new$<Annotation>
 
-export type TNGexpression_new$<Annotation> = AnnotatedType<Annotation, TVGexpression_new$<Annotation>>
+export type TNGexpression_new$<Annotation> = TAnnotatedType<Annotation, TVGexpression_new$<Annotation>>
 export type TVTGexpression_new<Annotation> = TNGexpression_new$<Annotation>
 export type TVGexpression_new<Annotation> = TVTGexpression_new<Annotation>
 
@@ -215,29 +215,29 @@ export type TVTGexpression_objectLiteral$$<Annotation> = {
 }
 export type TVGexpression_objectLiteral$$<Annotation> = TVTGexpression_objectLiteral$$<Annotation>
 
-export type TNGexpression_objectLiteral$$<Annotation> = AnnotatedType<Annotation, TVGexpression_objectLiteral$$<Annotation>>
+export type TNGexpression_objectLiteral$$<Annotation> = TAnnotatedType<Annotation, TVGexpression_objectLiteral$$<Annotation>>
 export type TVTGexpression_objectLiteral$<Annotation> = TNGexpression_objectLiteral$$<Annotation>
 export type TVGexpression_objectLiteral$<Annotation> = TVTGexpression_objectLiteral$<Annotation>[]
 
-export type TNGexpression_objectLiteral$<Annotation> = AnnotatedType<Annotation, TVGexpression_objectLiteral$<Annotation>>
+export type TNGexpression_objectLiteral$<Annotation> = TAnnotatedType<Annotation, TVGexpression_objectLiteral$<Annotation>>
 export type TVTGexpression_objectLiteral<Annotation> = TNGexpression_objectLiteral$<Annotation>
 export type TVGexpression_objectLiteral<Annotation> = TVTGexpression_objectLiteral<Annotation>
 export type TVTGexpression_parenthesizedExpression$<Annotation> = TGexpression<Annotation>
 export type TVGexpression_parenthesizedExpression$<Annotation> = TVTGexpression_parenthesizedExpression$<Annotation>
 
-export type TNGexpression_parenthesizedExpression$<Annotation> = AnnotatedType<Annotation, TVGexpression_parenthesizedExpression$<Annotation>>
+export type TNGexpression_parenthesizedExpression$<Annotation> = TAnnotatedType<Annotation, TVGexpression_parenthesizedExpression$<Annotation>>
 export type TVTGexpression_parenthesizedExpression<Annotation> = TNGexpression_parenthesizedExpression$<Annotation>
 export type TVGexpression_parenthesizedExpression<Annotation> = TVTGexpression_parenthesizedExpression<Annotation>
 export type TVTGexpression_postfixUnary$<Annotation> = TGexpression<Annotation>
 export type TVGexpression_postfixUnary$<Annotation> = TVTGexpression_postfixUnary$<Annotation>
 
-export type TNGexpression_postfixUnary$<Annotation> = AnnotatedType<Annotation, TVGexpression_postfixUnary$<Annotation>>
+export type TNGexpression_postfixUnary$<Annotation> = TAnnotatedType<Annotation, TVGexpression_postfixUnary$<Annotation>>
 export type TVTGexpression_postfixUnary<Annotation> = TNGexpression_postfixUnary$<Annotation>
 export type TVGexpression_postfixUnary<Annotation> = TVTGexpression_postfixUnary<Annotation>
 export type TVTGexpression_prefixUnary$<Annotation> = TGexpression<Annotation>
 export type TVGexpression_prefixUnary$<Annotation> = TVTGexpression_prefixUnary$<Annotation>
 
-export type TNGexpression_prefixUnary$<Annotation> = AnnotatedType<Annotation, TVGexpression_prefixUnary$<Annotation>>
+export type TNGexpression_prefixUnary$<Annotation> = TAnnotatedType<Annotation, TVGexpression_prefixUnary$<Annotation>>
 export type TVTGexpression_prefixUnary<Annotation> = TNGexpression_prefixUnary$<Annotation>
 export type TVGexpression_prefixUnary<Annotation> = TVTGexpression_prefixUnary<Annotation>
 export type TVTGexpression_propertyAccess$_object<Annotation> = TGexpression<Annotation>
@@ -250,23 +250,23 @@ export type TVTGexpression_propertyAccess$<Annotation> = {
 }
 export type TVGexpression_propertyAccess$<Annotation> = TVTGexpression_propertyAccess$<Annotation>
 
-export type TNGexpression_propertyAccess$<Annotation> = AnnotatedType<Annotation, TVGexpression_propertyAccess$<Annotation>>
+export type TNGexpression_propertyAccess$<Annotation> = TAnnotatedType<Annotation, TVGexpression_propertyAccess$<Annotation>>
 export type TVTGexpression_propertyAccess<Annotation> = TNGexpression_propertyAccess$<Annotation>
 export type TVGexpression_propertyAccess<Annotation> = TVTGexpression_propertyAccess<Annotation>
 export type TVTGexpression_stringLiteral<Annotation> = TGstringLiteral<Annotation>
 export type TVGexpression_stringLiteral<Annotation> = TVTGexpression_stringLiteral<Annotation>
 
-export type TNGexpression_template$_head$<Annotation> = AnnotatedString<Annotation>
+export type TNGexpression_template$_head$<Annotation> = TAnnotatedString<Annotation>
 export type TVTGexpression_template$_head<Annotation> = TNGexpression_template$_head$<Annotation>
 export type TVGexpression_template$_head<Annotation> = TVTGexpression_template$_head<Annotation>
 export type TVTGexpression_template$_spans$_expression<Annotation> = TGexpression<Annotation>
 export type TVGexpression_template$_spans$_expression<Annotation> = TVTGexpression_template$_spans$_expression<Annotation>
 
-export type TNGexpression_template$_spans$_x_middle$<Annotation> = AnnotatedString<Annotation>
+export type TNGexpression_template$_spans$_x_middle$<Annotation> = TAnnotatedString<Annotation>
 export type TVTGexpression_template$_spans$_x_middle<Annotation> = TNGexpression_template$_spans$_x_middle$<Annotation>
 export type TVGexpression_template$_spans$_x_middle<Annotation> = TVTGexpression_template$_spans$_x_middle<Annotation>
 
-export type TNGexpression_template$_spans$_x_tail$<Annotation> = AnnotatedString<Annotation>
+export type TNGexpression_template$_spans$_x_tail$<Annotation> = TAnnotatedString<Annotation>
 export type TVTGexpression_template$_spans$_x_tail<Annotation> = TNGexpression_template$_spans$_x_tail$<Annotation>
 export type TVGexpression_template$_spans$_x_tail<Annotation> = TVTGexpression_template$_spans$_x_tail<Annotation>
 export type TVTGexpression_template$_spans$_x<Annotation> =
@@ -279,7 +279,7 @@ export type TVTGexpression_template$_spans$<Annotation> = {
 }
 export type TVGexpression_template$_spans$<Annotation> = TVTGexpression_template$_spans$<Annotation>
 
-export type TNGexpression_template$_spans$<Annotation> = AnnotatedType<Annotation, TVGexpression_template$_spans$<Annotation>>
+export type TNGexpression_template$_spans$<Annotation> = TAnnotatedType<Annotation, TVGexpression_template$_spans$<Annotation>>
 export type TVTGexpression_template$_spans<Annotation> = TNGexpression_template$_spans$<Annotation>
 export type TVGexpression_template$_spans<Annotation> = TVTGexpression_template$_spans<Annotation>[]
 export type TVTGexpression_template$<Annotation> = {
@@ -288,7 +288,7 @@ export type TVTGexpression_template$<Annotation> = {
 }
 export type TVGexpression_template$<Annotation> = TVTGexpression_template$<Annotation>
 
-export type TNGexpression_template$<Annotation> = AnnotatedType<Annotation, TVGexpression_template$<Annotation>>
+export type TNGexpression_template$<Annotation> = TAnnotatedType<Annotation, TVGexpression_template$<Annotation>>
 export type TVTGexpression_template<Annotation> = TNGexpression_template$<Annotation>
 export type TVGexpression_template<Annotation> = TVTGexpression_template<Annotation>
 
@@ -330,7 +330,7 @@ export type TVTGfunctionDefinition<Annotation> = {
 }
 export type TGfunctionDefinition<Annotation> =  TVTGfunctionDefinition<Annotation>
 
-export type TNGidentifier$<Annotation> = AnnotatedString<Annotation>
+export type TNGidentifier$<Annotation> = TAnnotatedString<Annotation>
 export type TVTGidentifier<Annotation> = TNGidentifier$<Annotation>
 export type TGidentifier<Annotation> =  TVTGidentifier<Annotation>
 export type TVTGidentifierOrStringLiteral_identifier<Annotation> = TGidentifier<Annotation>
@@ -359,7 +359,7 @@ export type TVTGmodifier<Annotation> =
     | [ "readonly", TVGmodifier_readonly<Annotation>]
 export type TGmodifier<Annotation> =  TVTGmodifier<Annotation>
 
-export type TNGnumericLiteral$<Annotation> = AnnotatedString<Annotation>
+export type TNGnumericLiteral$<Annotation> = TAnnotatedString<Annotation>
 export type TVTGnumericLiteral<Annotation> = TNGnumericLiteral$<Annotation>
 export type TGnumericLiteral<Annotation> =  TVTGnumericLiteral<Annotation>
 export type TVTGparameter$_name<Annotation> = TGidentifier<Annotation>
@@ -377,7 +377,7 @@ export type TVTGparameter$<Annotation> = {
 }
 export type TVGparameter$<Annotation> = TVTGparameter$<Annotation>
 
-export type TNGparameter$<Annotation> = AnnotatedType<Annotation, TVGparameter$<Annotation>>
+export type TNGparameter$<Annotation> = TAnnotatedType<Annotation, TVGparameter$<Annotation>>
 export type TVTGparameter<Annotation> = TNGparameter$<Annotation>
 export type TGparameter<Annotation> =  TVTGparameter<Annotation>
 export type TVTGstatement_block<Annotation> = TGblock<Annotation>
@@ -385,19 +385,19 @@ export type TVGstatement_block<Annotation> = TVTGstatement_block<Annotation>
 export type TVTGstatement_break$<Annotation> = TGidentifier<Annotation>
 export type TVGstatement_break$<Annotation> = pr.optional<TVTGstatement_break$<Annotation>>
 
-export type TNGstatement_break$<Annotation> = AnnotatedType<Annotation, TVGstatement_break$<Annotation>>
+export type TNGstatement_break$<Annotation> = TAnnotatedType<Annotation, TVGstatement_break$<Annotation>>
 export type TVTGstatement_break<Annotation> = TNGstatement_break$<Annotation>
 export type TVGstatement_break<Annotation> = TVTGstatement_break<Annotation>
 export type TVTGstatement_export$<Annotation> = TGstringLiteral<Annotation>
 export type TVGstatement_export$<Annotation> = TVTGstatement_export$<Annotation>
 
-export type TNGstatement_export$<Annotation> = AnnotatedType<Annotation, TVGstatement_export$<Annotation>>
+export type TNGstatement_export$<Annotation> = TAnnotatedType<Annotation, TVGstatement_export$<Annotation>>
 export type TVTGstatement_export<Annotation> = TNGstatement_export$<Annotation>
 export type TVGstatement_export<Annotation> = TVTGstatement_export<Annotation>
 export type TVTGstatement_expression$<Annotation> = TGexpression<Annotation>
 export type TVGstatement_expression$<Annotation> = TVTGstatement_expression$<Annotation>
 
-export type TNGstatement_expression$<Annotation> = AnnotatedType<Annotation, TVGstatement_expression$<Annotation>>
+export type TNGstatement_expression$<Annotation> = TAnnotatedType<Annotation, TVGstatement_expression$<Annotation>>
 export type TVTGstatement_expression<Annotation> = TNGstatement_expression$<Annotation>
 export type TVGstatement_expression<Annotation> = TVTGstatement_expression<Annotation>
 export type TVTGstatement_for$_initializer<Annotation> = TGvariableDeclarationList<Annotation>
@@ -416,7 +416,7 @@ export type TVTGstatement_for$<Annotation> = {
 }
 export type TVGstatement_for$<Annotation> = TVTGstatement_for$<Annotation>
 
-export type TNGstatement_for$<Annotation> = AnnotatedType<Annotation, TVGstatement_for$<Annotation>>
+export type TNGstatement_for$<Annotation> = TAnnotatedType<Annotation, TVGstatement_for$<Annotation>>
 export type TVTGstatement_for<Annotation> = TNGstatement_for$<Annotation>
 export type TVGstatement_for<Annotation> = TVTGstatement_for<Annotation>
 export type TVTGstatement_function$_modifiers<Annotation> = TGmodifier<Annotation>
@@ -435,7 +435,7 @@ export type TVTGstatement_function$<Annotation> = {
 }
 export type TVGstatement_function$<Annotation> = TVTGstatement_function$<Annotation>
 
-export type TNGstatement_function$<Annotation> = AnnotatedType<Annotation, TVGstatement_function$<Annotation>>
+export type TNGstatement_function$<Annotation> = TAnnotatedType<Annotation, TVGstatement_function$<Annotation>>
 export type TVTGstatement_function<Annotation> = TNGstatement_function$<Annotation>
 export type TVGstatement_function<Annotation> = TVTGstatement_function<Annotation>
 export type TVTGstatement_if$_expression<Annotation> = TGexpression<Annotation>
@@ -451,13 +451,13 @@ export type TVTGstatement_if$<Annotation> = {
 }
 export type TVGstatement_if$<Annotation> = TVTGstatement_if$<Annotation>
 
-export type TNGstatement_if$<Annotation> = AnnotatedType<Annotation, TVGstatement_if$<Annotation>>
+export type TNGstatement_if$<Annotation> = TAnnotatedType<Annotation, TVGstatement_if$<Annotation>>
 export type TVTGstatement_if<Annotation> = TNGstatement_if$<Annotation>
 export type TVGstatement_if<Annotation> = TVTGstatement_if<Annotation>
 export type TVTGstatement_import$_clause$_namespace$<Annotation> = TGidentifier<Annotation>
 export type TVGstatement_import$_clause$_namespace$<Annotation> = TVTGstatement_import$_clause$_namespace$<Annotation>
 
-export type TNGstatement_import$_clause$_namespace$<Annotation> = AnnotatedType<Annotation, TVGstatement_import$_clause$_namespace$<Annotation>>
+export type TNGstatement_import$_clause$_namespace$<Annotation> = TAnnotatedType<Annotation, TVGstatement_import$_clause$_namespace$<Annotation>>
 export type TVTGstatement_import$_clause$_namespace<Annotation> = TNGstatement_import$_clause$_namespace$<Annotation>
 export type TVGstatement_import$_clause$_namespace<Annotation> = TVTGstatement_import$_clause$_namespace<Annotation>
 export type TVTGstatement_import$_clause$_named$$_name<Annotation> = TGidentifier<Annotation>
@@ -470,11 +470,11 @@ export type TVTGstatement_import$_clause$_named$$<Annotation> = {
 }
 export type TVGstatement_import$_clause$_named$$<Annotation> = TVTGstatement_import$_clause$_named$$<Annotation>
 
-export type TNGstatement_import$_clause$_named$$<Annotation> = AnnotatedType<Annotation, TVGstatement_import$_clause$_named$$<Annotation>>
+export type TNGstatement_import$_clause$_named$$<Annotation> = TAnnotatedType<Annotation, TVGstatement_import$_clause$_named$$<Annotation>>
 export type TVTGstatement_import$_clause$_named$<Annotation> = TNGstatement_import$_clause$_named$$<Annotation>
 export type TVGstatement_import$_clause$_named$<Annotation> = TVTGstatement_import$_clause$_named$<Annotation>[]
 
-export type TNGstatement_import$_clause$_named$<Annotation> = AnnotatedType<Annotation, TVGstatement_import$_clause$_named$<Annotation>>
+export type TNGstatement_import$_clause$_named$<Annotation> = TAnnotatedType<Annotation, TVGstatement_import$_clause$_named$<Annotation>>
 export type TVTGstatement_import$_clause$_named<Annotation> = TNGstatement_import$_clause$_named$<Annotation>
 export type TVGstatement_import$_clause$_named<Annotation> = TVTGstatement_import$_clause$_named<Annotation>
 export type TVTGstatement_import$_clause$<Annotation> =
@@ -482,7 +482,7 @@ export type TVTGstatement_import$_clause$<Annotation> =
     | [ "named", TVGstatement_import$_clause$_named<Annotation>]
 export type TVGstatement_import$_clause$<Annotation> = TVTGstatement_import$_clause$<Annotation>
 
-export type TNGstatement_import$_clause$<Annotation> = AnnotatedType<Annotation, TVGstatement_import$_clause$<Annotation>>
+export type TNGstatement_import$_clause$<Annotation> = TAnnotatedType<Annotation, TVGstatement_import$_clause$<Annotation>>
 export type TVTGstatement_import$_clause<Annotation> = TNGstatement_import$_clause$<Annotation>
 export type TVGstatement_import$_clause<Annotation> = TVTGstatement_import$_clause<Annotation>
 export type TVTGstatement_import$_file<Annotation> = TGstringLiteral<Annotation>
@@ -493,7 +493,7 @@ export type TVTGstatement_import$<Annotation> = {
 }
 export type TVGstatement_import$<Annotation> = TVTGstatement_import$<Annotation>
 
-export type TNGstatement_import$<Annotation> = AnnotatedType<Annotation, TVGstatement_import$<Annotation>>
+export type TNGstatement_import$<Annotation> = TAnnotatedType<Annotation, TVGstatement_import$<Annotation>>
 export type TVTGstatement_import<Annotation> = TNGstatement_import$<Annotation>
 export type TVGstatement_import<Annotation> = TVTGstatement_import<Annotation>
 export type TVTGstatement_interface$_modifiers<Annotation> = TGmodifier<Annotation>
@@ -512,7 +512,7 @@ export type TVTGstatement_interface$<Annotation> = {
 }
 export type TVGstatement_interface$<Annotation> = TVTGstatement_interface$<Annotation>
 
-export type TNGstatement_interface$<Annotation> = AnnotatedType<Annotation, TVGstatement_interface$<Annotation>>
+export type TNGstatement_interface$<Annotation> = TAnnotatedType<Annotation, TVGstatement_interface$<Annotation>>
 export type TVTGstatement_interface<Annotation> = TNGstatement_interface$<Annotation>
 export type TVGstatement_interface<Annotation> = TVTGstatement_interface<Annotation>
 export type TVTGstatement_labeled$_label<Annotation> = TGidentifier<Annotation>
@@ -525,13 +525,13 @@ export type TVTGstatement_labeled$<Annotation> = {
 }
 export type TVGstatement_labeled$<Annotation> = TVTGstatement_labeled$<Annotation>
 
-export type TNGstatement_labeled$<Annotation> = AnnotatedType<Annotation, TVGstatement_labeled$<Annotation>>
+export type TNGstatement_labeled$<Annotation> = TAnnotatedType<Annotation, TVGstatement_labeled$<Annotation>>
 export type TVTGstatement_labeled<Annotation> = TNGstatement_labeled$<Annotation>
 export type TVGstatement_labeled<Annotation> = TVTGstatement_labeled<Annotation>
 export type TVTGstatement_return$<Annotation> = TGexpression<Annotation>
 export type TVGstatement_return$<Annotation> = pr.optional<TVTGstatement_return$<Annotation>>
 
-export type TNGstatement_return$<Annotation> = AnnotatedType<Annotation, TVGstatement_return$<Annotation>>
+export type TNGstatement_return$<Annotation> = TAnnotatedType<Annotation, TVGstatement_return$<Annotation>>
 export type TVTGstatement_return<Annotation> = TNGstatement_return$<Annotation>
 export type TVGstatement_return<Annotation> = TVTGstatement_return<Annotation>
 export type TVTGstatement_switch$_expression<Annotation> = TGexpression<Annotation>
@@ -546,13 +546,13 @@ export type TVTGstatement_switch$_caseBlock$_case$<Annotation> = {
 }
 export type TVGstatement_switch$_caseBlock$_case$<Annotation> = TVTGstatement_switch$_caseBlock$_case$<Annotation>
 
-export type TNGstatement_switch$_caseBlock$_case$<Annotation> = AnnotatedType<Annotation, TVGstatement_switch$_caseBlock$_case$<Annotation>>
+export type TNGstatement_switch$_caseBlock$_case$<Annotation> = TAnnotatedType<Annotation, TVGstatement_switch$_caseBlock$_case$<Annotation>>
 export type TVTGstatement_switch$_caseBlock$_case<Annotation> = TNGstatement_switch$_caseBlock$_case$<Annotation>
 export type TVGstatement_switch$_caseBlock$_case<Annotation> = TVTGstatement_switch$_caseBlock$_case<Annotation>
 export type TVTGstatement_switch$_caseBlock$_default$<Annotation> = TGstatement<Annotation>
 export type TVGstatement_switch$_caseBlock$_default$<Annotation> = TVTGstatement_switch$_caseBlock$_default$<Annotation>[]
 
-export type TNGstatement_switch$_caseBlock$_default$<Annotation> = AnnotatedType<Annotation, TVGstatement_switch$_caseBlock$_default$<Annotation>>
+export type TNGstatement_switch$_caseBlock$_default$<Annotation> = TAnnotatedType<Annotation, TVGstatement_switch$_caseBlock$_default$<Annotation>>
 export type TVTGstatement_switch$_caseBlock$_default<Annotation> = TNGstatement_switch$_caseBlock$_default$<Annotation>
 export type TVGstatement_switch$_caseBlock$_default<Annotation> = TVTGstatement_switch$_caseBlock$_default<Annotation>
 export type TVTGstatement_switch$_caseBlock$<Annotation> =
@@ -560,7 +560,7 @@ export type TVTGstatement_switch$_caseBlock$<Annotation> =
     | [ "default", TVGstatement_switch$_caseBlock$_default<Annotation>]
 export type TVGstatement_switch$_caseBlock$<Annotation> = TVTGstatement_switch$_caseBlock$<Annotation>[]
 
-export type TNGstatement_switch$_caseBlock$<Annotation> = AnnotatedType<Annotation, TVGstatement_switch$_caseBlock$<Annotation>>
+export type TNGstatement_switch$_caseBlock$<Annotation> = TAnnotatedType<Annotation, TVGstatement_switch$_caseBlock$<Annotation>>
 export type TVTGstatement_switch$_caseBlock<Annotation> = TNGstatement_switch$_caseBlock$<Annotation>
 export type TVGstatement_switch$_caseBlock<Annotation> = TVTGstatement_switch$_caseBlock<Annotation>
 export type TVTGstatement_switch$<Annotation> = {
@@ -569,13 +569,13 @@ export type TVTGstatement_switch$<Annotation> = {
 }
 export type TVGstatement_switch$<Annotation> = TVTGstatement_switch$<Annotation>
 
-export type TNGstatement_switch$<Annotation> = AnnotatedType<Annotation, TVGstatement_switch$<Annotation>>
+export type TNGstatement_switch$<Annotation> = TAnnotatedType<Annotation, TVGstatement_switch$<Annotation>>
 export type TVTGstatement_switch<Annotation> = TNGstatement_switch$<Annotation>
 export type TVGstatement_switch<Annotation> = TVTGstatement_switch<Annotation>
 export type TVTGstatement_throw$<Annotation> = TGexpression<Annotation>
 export type TVGstatement_throw$<Annotation> = TVTGstatement_throw$<Annotation>
 
-export type TNGstatement_throw$<Annotation> = AnnotatedType<Annotation, TVGstatement_throw$<Annotation>>
+export type TNGstatement_throw$<Annotation> = TAnnotatedType<Annotation, TVGstatement_throw$<Annotation>>
 export type TVTGstatement_throw<Annotation> = TNGstatement_throw$<Annotation>
 export type TVGstatement_throw<Annotation> = TVTGstatement_throw<Annotation>
 export type TVTGstatement_try$_block<Annotation> = TGblock<Annotation>
@@ -590,7 +590,7 @@ export type TVTGstatement_try$_catchClause$<Annotation> = {
 }
 export type TVGstatement_try$_catchClause$<Annotation> = TVTGstatement_try$_catchClause$<Annotation>
 
-export type TNGstatement_try$_catchClause$<Annotation> = AnnotatedType<Annotation, TVGstatement_try$_catchClause$<Annotation>>
+export type TNGstatement_try$_catchClause$<Annotation> = TAnnotatedType<Annotation, TVGstatement_try$_catchClause$<Annotation>>
 export type TVTGstatement_try$_catchClause<Annotation> = TNGstatement_try$_catchClause$<Annotation>
 export type TVGstatement_try$_catchClause<Annotation> = TVTGstatement_try$_catchClause<Annotation>
 export type TVTGstatement_try$<Annotation> = {
@@ -599,7 +599,7 @@ export type TVTGstatement_try$<Annotation> = {
 }
 export type TVGstatement_try$<Annotation> = TVTGstatement_try$<Annotation>
 
-export type TNGstatement_try$<Annotation> = AnnotatedType<Annotation, TVGstatement_try$<Annotation>>
+export type TNGstatement_try$<Annotation> = TAnnotatedType<Annotation, TVGstatement_try$<Annotation>>
 export type TVTGstatement_try<Annotation> = TNGstatement_try$<Annotation>
 export type TVGstatement_try<Annotation> = TVTGstatement_try<Annotation>
 export type TVTGstatement_typeAlias$_modifiers<Annotation> = TGmodifier<Annotation>
@@ -618,7 +618,7 @@ export type TVTGstatement_typeAlias$<Annotation> = {
 }
 export type TVGstatement_typeAlias$<Annotation> = TVTGstatement_typeAlias$<Annotation>
 
-export type TNGstatement_typeAlias$<Annotation> = AnnotatedType<Annotation, TVGstatement_typeAlias$<Annotation>>
+export type TNGstatement_typeAlias$<Annotation> = TAnnotatedType<Annotation, TVGstatement_typeAlias$<Annotation>>
 export type TVTGstatement_typeAlias<Annotation> = TNGstatement_typeAlias$<Annotation>
 export type TVGstatement_typeAlias<Annotation> = TVTGstatement_typeAlias<Annotation>
 export type TVTGstatement_variable$_modifiers<Annotation> = TGmodifier<Annotation>
@@ -631,7 +631,7 @@ export type TVTGstatement_variable$<Annotation> = {
 }
 export type TVGstatement_variable$<Annotation> = TVTGstatement_variable$<Annotation>
 
-export type TNGstatement_variable$<Annotation> = AnnotatedType<Annotation, TVGstatement_variable$<Annotation>>
+export type TNGstatement_variable$<Annotation> = TAnnotatedType<Annotation, TVGstatement_variable$<Annotation>>
 export type TVTGstatement_variable<Annotation> = TNGstatement_variable$<Annotation>
 export type TVGstatement_variable<Annotation> = TVTGstatement_variable<Annotation>
 export type TVTGstatement_while$_condition<Annotation> = TGexpression<Annotation>
@@ -644,7 +644,7 @@ export type TVTGstatement_while$<Annotation> = {
 }
 export type TVGstatement_while$<Annotation> = TVTGstatement_while$<Annotation>
 
-export type TNGstatement_while$<Annotation> = AnnotatedType<Annotation, TVGstatement_while$<Annotation>>
+export type TNGstatement_while$<Annotation> = TAnnotatedType<Annotation, TVGstatement_while$<Annotation>>
 export type TVTGstatement_while<Annotation> = TNGstatement_while$<Annotation>
 export type TVGstatement_while<Annotation> = TVTGstatement_while<Annotation>
 export type TVTGstatement<Annotation> =
@@ -667,7 +667,7 @@ export type TVTGstatement<Annotation> =
     | [ "while", TVGstatement_while<Annotation>]
 export type TGstatement<Annotation> =  TVTGstatement<Annotation>
 
-export type TNGstringLiteral$<Annotation> = AnnotatedString<Annotation>
+export type TNGstringLiteral$<Annotation> = TAnnotatedString<Annotation>
 export type TVTGstringLiteral<Annotation> = TNGstringLiteral$<Annotation>
 export type TGstringLiteral<Annotation> =  TVTGstringLiteral<Annotation>
 
@@ -677,7 +677,7 @@ export type TVGtype_any<Annotation> = TVTGtype_any<Annotation>
 export type TVTGtype_array$<Annotation> = TGtype<Annotation>
 export type TVGtype_array$<Annotation> = TVTGtype_array$<Annotation>
 
-export type TNGtype_array$<Annotation> = AnnotatedType<Annotation, TVGtype_array$<Annotation>>
+export type TNGtype_array$<Annotation> = TAnnotatedType<Annotation, TVGtype_array$<Annotation>>
 export type TVTGtype_array<Annotation> = TNGtype_array$<Annotation>
 export type TVGtype_array<Annotation> = TVTGtype_array<Annotation>
 
@@ -694,7 +694,7 @@ export type TVTGtype_function$<Annotation> = {
 }
 export type TVGtype_function$<Annotation> = TVTGtype_function$<Annotation>
 
-export type TNGtype_function$<Annotation> = AnnotatedType<Annotation, TVGtype_function$<Annotation>>
+export type TNGtype_function$<Annotation> = TAnnotatedType<Annotation, TVGtype_function$<Annotation>>
 export type TVTGtype_function<Annotation> = TNGtype_function$<Annotation>
 export type TVGtype_function<Annotation> = TVTGtype_function<Annotation>
 
@@ -708,13 +708,13 @@ export type TVTGtype_literal$<Annotation> =
     | [ "string", TVGtype_literal$_string<Annotation>]
 export type TVGtype_literal$<Annotation> = TVTGtype_literal$<Annotation>
 
-export type TNGtype_literal$<Annotation> = AnnotatedType<Annotation, TVGtype_literal$<Annotation>>
+export type TNGtype_literal$<Annotation> = TAnnotatedType<Annotation, TVGtype_literal$<Annotation>>
 export type TVTGtype_literal<Annotation> = TNGtype_literal$<Annotation>
 export type TVGtype_literal<Annotation> = TVTGtype_literal<Annotation>
 export type TVTGtype_parenthesized$<Annotation> = TGtype<Annotation>
 export type TVGtype_parenthesized$<Annotation> = TVTGtype_parenthesized$<Annotation>
 
-export type TNGtype_parenthesized$<Annotation> = AnnotatedType<Annotation, TVGtype_parenthesized$<Annotation>>
+export type TNGtype_parenthesized$<Annotation> = TAnnotatedType<Annotation, TVGtype_parenthesized$<Annotation>>
 export type TVTGtype_parenthesized<Annotation> = TNGtype_parenthesized$<Annotation>
 export type TVGtype_parenthesized<Annotation> = TVTGtype_parenthesized<Annotation>
 
@@ -728,19 +728,19 @@ export type TVGtype_number<Annotation> = TVTGtype_number<Annotation>
 export type TVTGtype_optional$<Annotation> = TGtype<Annotation>
 export type TVGtype_optional$<Annotation> = TVTGtype_optional$<Annotation>
 
-export type TNGtype_optional$<Annotation> = AnnotatedType<Annotation, TVGtype_optional$<Annotation>>
+export type TNGtype_optional$<Annotation> = TAnnotatedType<Annotation, TVGtype_optional$<Annotation>>
 export type TVTGtype_optional<Annotation> = TNGtype_optional$<Annotation>
 export type TVGtype_optional<Annotation> = TVTGtype_optional<Annotation>
 export type TVTGtype_tuple$<Annotation> = TGtype<Annotation>
 export type TVGtype_tuple$<Annotation> = TVTGtype_tuple$<Annotation>[]
 
-export type TNGtype_tuple$<Annotation> = AnnotatedType<Annotation, TVGtype_tuple$<Annotation>>
+export type TNGtype_tuple$<Annotation> = TAnnotatedType<Annotation, TVGtype_tuple$<Annotation>>
 export type TVTGtype_tuple<Annotation> = TNGtype_tuple$<Annotation>
 export type TVGtype_tuple<Annotation> = TVTGtype_tuple<Annotation>
 export type TVTGtype_typeLiteral$<Annotation> = TGtypeSignature<Annotation>
 export type TVGtype_typeLiteral$<Annotation> = TVTGtype_typeLiteral$<Annotation>[]
 
-export type TNGtype_typeLiteral$<Annotation> = AnnotatedType<Annotation, TVGtype_typeLiteral$<Annotation>>
+export type TNGtype_typeLiteral$<Annotation> = TAnnotatedType<Annotation, TVGtype_typeLiteral$<Annotation>>
 export type TVTGtype_typeLiteral<Annotation> = TNGtype_typeLiteral$<Annotation>
 export type TVGtype_typeLiteral<Annotation> = TVTGtype_typeLiteral<Annotation>
 
@@ -759,7 +759,7 @@ export type TVTGtype_typeReference$_x_qualifiedName$<Annotation> = {
 }
 export type TVGtype_typeReference$_x_qualifiedName$<Annotation> = TVTGtype_typeReference$_x_qualifiedName$<Annotation>
 
-export type TNGtype_typeReference$_x_qualifiedName$<Annotation> = AnnotatedType<Annotation, TVGtype_typeReference$_x_qualifiedName$<Annotation>>
+export type TNGtype_typeReference$_x_qualifiedName$<Annotation> = TAnnotatedType<Annotation, TVGtype_typeReference$_x_qualifiedName$<Annotation>>
 export type TVTGtype_typeReference$_x_qualifiedName<Annotation> = TNGtype_typeReference$_x_qualifiedName$<Annotation>
 export type TVGtype_typeReference$_x_qualifiedName<Annotation> = TVTGtype_typeReference$_x_qualifiedName<Annotation>
 export type TVTGtype_typeReference$_x<Annotation> =
@@ -774,7 +774,7 @@ export type TVTGtype_typeReference$<Annotation> = {
 }
 export type TVGtype_typeReference$<Annotation> = TVTGtype_typeReference$<Annotation>
 
-export type TNGtype_typeReference$<Annotation> = AnnotatedType<Annotation, TVGtype_typeReference$<Annotation>>
+export type TNGtype_typeReference$<Annotation> = TAnnotatedType<Annotation, TVGtype_typeReference$<Annotation>>
 export type TVTGtype_typeReference<Annotation> = TNGtype_typeReference$<Annotation>
 export type TVGtype_typeReference<Annotation> = TVTGtype_typeReference<Annotation>
 
@@ -784,7 +784,7 @@ export type TVGtype_undefined<Annotation> = TVTGtype_undefined<Annotation>
 export type TVTGtype_union$<Annotation> = TGtype<Annotation>
 export type TVGtype_union$<Annotation> = TVTGtype_union$<Annotation>[]
 
-export type TNGtype_union$<Annotation> = AnnotatedType<Annotation, TVGtype_union$<Annotation>>
+export type TNGtype_union$<Annotation> = TAnnotatedType<Annotation, TVGtype_union$<Annotation>>
 export type TVTGtype_union<Annotation> = TNGtype_union$<Annotation>
 export type TVGtype_union<Annotation> = TVTGtype_union<Annotation>
 
@@ -812,7 +812,7 @@ export type TGtype<Annotation> =  TVTGtype<Annotation>
 export type TVTGtypeParameter$<Annotation> = TGidentifier<Annotation>
 export type TVGtypeParameter$<Annotation> = TVTGtypeParameter$<Annotation>
 
-export type TNGtypeParameter$<Annotation> = AnnotatedType<Annotation, TVGtypeParameter$<Annotation>>
+export type TNGtypeParameter$<Annotation> = TAnnotatedType<Annotation, TVGtypeParameter$<Annotation>>
 export type TVTGtypeParameter<Annotation> = TNGtypeParameter$<Annotation>
 export type TGtypeParameter<Annotation> =  TVTGtypeParameter<Annotation>
 export type TVTGtypeSignature_construct$_parameters<Annotation> = TGparameter<Annotation>
@@ -825,7 +825,7 @@ export type TVTGtypeSignature_construct$<Annotation> = {
 }
 export type TVGtypeSignature_construct$<Annotation> = TVTGtypeSignature_construct$<Annotation>
 
-export type TNGtypeSignature_construct$<Annotation> = AnnotatedType<Annotation, TVGtypeSignature_construct$<Annotation>>
+export type TNGtypeSignature_construct$<Annotation> = TAnnotatedType<Annotation, TVGtypeSignature_construct$<Annotation>>
 export type TVTGtypeSignature_construct<Annotation> = TNGtypeSignature_construct$<Annotation>
 export type TVGtypeSignature_construct<Annotation> = TVTGtypeSignature_construct<Annotation>
 export type TVTGtypeSignature_index$_modifiers<Annotation> = TGmodifier<Annotation>
@@ -841,7 +841,7 @@ export type TVTGtypeSignature_index$<Annotation> = {
 }
 export type TVGtypeSignature_index$<Annotation> = TVTGtypeSignature_index$<Annotation>
 
-export type TNGtypeSignature_index$<Annotation> = AnnotatedType<Annotation, TVGtypeSignature_index$<Annotation>>
+export type TNGtypeSignature_index$<Annotation> = TAnnotatedType<Annotation, TVGtypeSignature_index$<Annotation>>
 export type TVTGtypeSignature_index<Annotation> = TNGtypeSignature_index$<Annotation>
 export type TVGtypeSignature_index<Annotation> = TVTGtypeSignature_index<Annotation>
 export type TVTGtypeSignature_method$_name<Annotation> = TGidentifier<Annotation>
@@ -854,7 +854,7 @@ export type TVTGtypeSignature_method$<Annotation> = {
 }
 export type TVGtypeSignature_method$<Annotation> = TVTGtypeSignature_method$<Annotation>
 
-export type TNGtypeSignature_method$<Annotation> = AnnotatedType<Annotation, TVGtypeSignature_method$<Annotation>>
+export type TNGtypeSignature_method$<Annotation> = TAnnotatedType<Annotation, TVGtypeSignature_method$<Annotation>>
 export type TVTGtypeSignature_method<Annotation> = TNGtypeSignature_method$<Annotation>
 export type TVGtypeSignature_method<Annotation> = TVTGtypeSignature_method<Annotation>
 export type TVTGtypeSignature_property$_modifiers<Annotation> = TGmodifier<Annotation>
@@ -875,7 +875,7 @@ export type TVTGtypeSignature_property$<Annotation> = {
 }
 export type TVGtypeSignature_property$<Annotation> = TVTGtypeSignature_property$<Annotation>
 
-export type TNGtypeSignature_property$<Annotation> = AnnotatedType<Annotation, TVGtypeSignature_property$<Annotation>>
+export type TNGtypeSignature_property$<Annotation> = TAnnotatedType<Annotation, TVGtypeSignature_property$<Annotation>>
 export type TVTGtypeSignature_property<Annotation> = TNGtypeSignature_property$<Annotation>
 export type TVGtypeSignature_property<Annotation> = TVTGtypeSignature_property<Annotation>
 export type TVTGtypeSignature<Annotation> =
@@ -897,13 +897,13 @@ export type TVTGvariableDeclaration$<Annotation> = {
 }
 export type TVGvariableDeclaration$<Annotation> = TVTGvariableDeclaration$<Annotation>
 
-export type TNGvariableDeclaration$<Annotation> = AnnotatedType<Annotation, TVGvariableDeclaration$<Annotation>>
+export type TNGvariableDeclaration$<Annotation> = TAnnotatedType<Annotation, TVGvariableDeclaration$<Annotation>>
 export type TVTGvariableDeclaration<Annotation> = TNGvariableDeclaration$<Annotation>
 export type TGvariableDeclaration<Annotation> =  TVTGvariableDeclaration<Annotation>
 export type TVTGvariableDeclarationList$<Annotation> = TGvariableDeclaration<Annotation>
 export type TVGvariableDeclarationList$<Annotation> = TVTGvariableDeclarationList$<Annotation>[]
 
-export type TNGvariableDeclarationList$<Annotation> = AnnotatedType<Annotation, TVGvariableDeclarationList$<Annotation>>
+export type TNGvariableDeclarationList$<Annotation> = TAnnotatedType<Annotation, TVGvariableDeclarationList$<Annotation>>
 export type TVTGvariableDeclarationList<Annotation> = TNGvariableDeclarationList$<Annotation>
 export type TGvariableDeclarationList<Annotation> =  TVTGvariableDeclarationList<Annotation>
 export type TVTroot_statements<Annotation> = TGstatement<Annotation>
@@ -918,5 +918,5 @@ export type TVTroot<Annotation> = {
 }
 export type TVroot<Annotation> = TVTroot<Annotation>
 
-export type TNroot<Annotation> = AnnotatedType<Annotation, TVroot<Annotation>>
+export type TNroot<Annotation> = TAnnotatedType<Annotation, TVroot<Annotation>>
 export type TRoot<Annotation> = TNroot<Annotation>
